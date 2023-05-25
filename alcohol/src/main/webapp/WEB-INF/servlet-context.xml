@@ -3,10 +3,24 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
     xsi:schemaLocation="
+    	http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    
+    
+ 			<websocket:handlers>
+               <websocket:mapping handler="ChatWebSocketHandler" path="/api/chat"/>
+               <!-- WebSocket Handshake : 웹소켓 핸들러 클래스(echoHandler)가 호출되기전에 HttpSession에 접속하여  -->
+               <!-- '이용자 아이디를 추출하는 기능' 등을 인터셉터가 수행하도록 설정 -->
+               <websocket:handshake-interceptors>
+                       <bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+               </websocket:handshake-interceptors>
+               <!-- <websocket:sockjs /> -->
+        	</websocket:handlers>
+        <bean id="ChatWebSocketHandler" class="com.mid.alcohol.socket.ChatWebSocketHandler" /> 
         
     <!-- Spring MVC 설정들을 애너테이션(annotation) 기반으로 처리 -->
     <mvc:annotation-driven />
