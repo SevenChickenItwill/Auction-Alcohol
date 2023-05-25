@@ -41,7 +41,6 @@
         </init-param>
         <!-- 이 서블릿을 다른 서블릿보다 먼저 처리하겠다 -->
         <load-on-startup>1</load-on-startup>
-        <async-supported>true</async-supported>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
