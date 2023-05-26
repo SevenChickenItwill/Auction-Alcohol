@@ -1,0 +1,12 @@
+package com.mid.alcohol.repository;
+
+import java.util.List;
+
+import com.mid.alcohol.domain.DealReply;
+
+public interface CommentRepository {
+    
+    int insert(DealReply dealReply);
+    List<DealReply> selectByDealId(long dealId);
+    int update(DealReply entity);
+}
