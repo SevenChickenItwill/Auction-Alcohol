@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itwill.spring2.repository.PostRepository">
+<!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
+
+    <insert id="insertAuctionProducts" >
+        insert into auctionproducts (pname, category, constructor, brandname, cost, userid)
+        values (#{pName}, #{category}, #{constructor}, #{brandName}, #{cost}, #{userid});
+    </insert>
+    
+    <select id="selectByPName" resultType="com.mid.alcohol.dto.SearchProductDto">
+        select *
+        from auctionproducts
+        where pname = #{pName}, userid = #{userId}
+    </select>
+
+</mapper>
