@@ -21,7 +21,8 @@
 				
 					<input type="text" name="searchtext" id="searchtext" />
 					<button id="btnSearch" name="btnSearch">상품 검색</button>
-					<button id="btnCreate" name="btnCreate">상품 등록</button>
+					<c:url var="productcreate" value="/auction/productcreate" />
+					<a href="${ productcreate }"><button id="btnCreate" name="btnCreate">상품 등록</button></a>
 				
 				
 				
