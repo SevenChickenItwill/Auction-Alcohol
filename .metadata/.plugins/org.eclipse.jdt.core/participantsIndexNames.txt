@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\team\middlePj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1693634604.index
+\alcohol\src\main\java
+C:\team\middlePj\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1399681173.index
+\alcohol\src\main\java

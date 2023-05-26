@@ -1,0 +1,14 @@
+127.0.0.1 - - [26/May/2023:17:34:49 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:34:51 +0900] "GET /alcohol/ HTTP/1.1" 200 7414
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:34:52 +0900] "GET /assets/dist/css/bootstrap.min.css HTTP/1.1" 404 852
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:34:52 +0900] "GET /alcohol/sidebars.css HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:34:52 +0900] "GET /alcohol/sidebars.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:34:52 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+127.0.0.1 - - [26/May/2023:17:52:09 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:09 +0900] "GET /alcohol/ HTTP/1.1" 200 7326
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:09 +0900] "GET /assets/dist/css/bootstrap.min.css HTTP/1.1" 404 852
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:09 +0900] "GET /alcohol/sidebars.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:09 +0900] "GET /alcohol/sidebars.css HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:12 +0900] "GET /alcohol/auction/auction HTTP/1.1" 200 2092
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:12 +0900] "GET /alcohol/static/js/auction-management.js HTTP/1.1" 200 753
+0:0:0:0:0:0:0:1 - - [26/May/2023:17:52:15 +0900] "GET /alcohol/auction/registration HTTP/1.1" 200 3126
