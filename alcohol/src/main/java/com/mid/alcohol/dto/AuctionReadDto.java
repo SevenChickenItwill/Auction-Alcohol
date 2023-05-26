@@ -7,12 +7,15 @@ import com.mid.alcohol.domain.AuctionProducts;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+
 @Slf4j
 @Builder
 public class AuctionReadDto {
@@ -26,7 +29,7 @@ public class AuctionReadDto {
 	private long cost;
 	
 	public static AuctionReadDto FromEntity(AuctionProducts p){
-		
+		log.info("FromEntity(product={})",p);
 		AuctionReadDto dto = AuctionReadDto.builder().productId(p.getProductId()).pName(p.getPName()).category(p.getCategory()).brandname(p.getBrandName()).constructor(p.getConstructor()).cost(p.getCost()).userId(p.getUserId()).build();
 		
 		
