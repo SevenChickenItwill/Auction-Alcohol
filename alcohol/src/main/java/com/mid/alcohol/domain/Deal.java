@@ -17,9 +17,11 @@ public class Deal {
     private String title; // 거래 포스트 제목
     private String content; // 거래 포스트 내용
     private String nickname; // 유저 닉네임
-    private String userId; // 유저 아이디
-    private int userRanking; // 유저 랭킹
-    private LocalDateTime createdTime; // 최초 작성 시간
-    private LocalDateTime modifiedTime; // 수정 시간
+    private String user_id; // 유저 아이디
+    private long user_ranking; // 유저 랭킹
+    private LocalDateTime created_time; // 최초 작성 시간
+    private LocalDateTime modified_time; // 수정 시간
+    
+    
     
 }

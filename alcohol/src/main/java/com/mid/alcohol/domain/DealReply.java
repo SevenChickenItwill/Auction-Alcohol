@@ -17,8 +17,8 @@ public class DealReply {
     private String dealId; // 댓글 단 포스트 아이디
     private String userNickname; // 댓글 유저 닉네임
     private String userId; // 댓글 유저 아이디
-    private String userRanking; // 유저 랭킹
-    private int content; // 댓글 내용
+    private long userRanking; // 유저 랭킹
+    private String content; // 댓글 내용
     private LocalDateTime time; // 댓글 시간
     
 }
