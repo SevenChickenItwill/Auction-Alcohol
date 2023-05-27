@@ -14,6 +14,8 @@ public class AuctionController {
 
     @GetMapping("/auction")
     public void management() {
+        log.info("management()");
+        
         
     }
     

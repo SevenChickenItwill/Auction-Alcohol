@@ -44,10 +44,10 @@
 					<tbody>
 					<c:forEach var="list" items="${ productlist }">
 					<tr>
-						<td>${ list.productId }</td>
-						<td>오류</td>
+						<td>${ list.productid }</td>
+						<td>${ list.pname }</td>
 						<td>${ list.constructor }</td>
-						<td>오류</td>
+						<td>${ list.brandname }</td>
 						<td>${ list.category }</td>
 						<td>${ list.cost }</td>
 						</tr>
