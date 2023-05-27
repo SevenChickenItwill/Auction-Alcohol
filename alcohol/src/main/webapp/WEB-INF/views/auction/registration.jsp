@@ -20,7 +20,7 @@
         
         <br />
         
-		<div>
+		<div class="card">
             <c:url var="postRegistration" value="/auction/registration"/>
             <form action="${ postRegistration }" method="post">
                 <div>
@@ -78,7 +78,9 @@
             <table>
                 <thead>
                     <tr>
+                    
                         <th class="d-none">상품코드</th>
+                        <th>선택</th>
                         <th>상품명</th>
                         <th>제조사(생산자)</th>
                         <th>브랜드</th>

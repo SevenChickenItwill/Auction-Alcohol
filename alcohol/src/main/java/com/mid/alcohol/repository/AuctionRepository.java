@@ -8,4 +8,6 @@ import com.mid.alcohol.dto.SearchProductDto;
 public interface AuctionRepository {
     
     List<AuctionProducts> selectByPName(AuctionProducts product);
+    
+    AuctionProducts selectByPNameOne(AuctionProducts product);
 }

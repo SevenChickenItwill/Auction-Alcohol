@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.AuctionProducts;
+import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
 import com.mid.alcohol.repository.AuctionRepository;
@@ -33,9 +34,27 @@ public class AuctionService {
 		
 		log.info("serach(dto={})");
 		
-		AuctionProducts product = dto.toEntity();
+		AuctionProducts product = dto.toEntity(0);
 		
 		return auctionrepository.selectByPName(product);
+		
+	}
+
+	public AuctionReadDto read(ProductSearchDto dto) {
+		log.info("read({})",dto);
+		
+		AuctionProducts p = auctionrepository.selectByPNameOne(dto.toEntity(1));
+		
+		if(p==null) {
+			
+			return new AuctionReadDto();
+			
+		}
+		
+		AuctionReadDto ardto = AuctionReadDto.FromEntity(p);
+		
+		return ardto;
+		
 		
 	}
 	
