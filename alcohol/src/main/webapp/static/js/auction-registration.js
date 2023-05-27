@@ -145,7 +145,7 @@
 			 htmlstr += 
 			 `<tr>
 			 	<td id="productid${index}" indexRow="${index}" value="${x.productId}" class="d-none">${x.productId}</td>
-			 	<td><button id="btn${index}" indexRow="${index}" class="btnSelect">선택</button></td>
+			 	<td><button id="btn${index}" indexRow="${index}" class="btnSelect btn">선택</button></td>
 			 	<td indexRow="${index}" value="${x.pname}" id="pname${index}">${x.pname}</td>
 			 	<td indexRow="${index}" id="constructor${index}">${x.constructor}</td>
 			 	<td indexRow="${index}" id="brandName${index}">${x.brandName}</td>
