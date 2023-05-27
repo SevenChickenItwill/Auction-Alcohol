@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mid.alcohol.repository.AuctionRepository">
+<!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
+
+    <insert id="insertAuctionProducts" >
+        insert into AuctionProducts (pName, category, constructor, brandName, cost, userId)
+        values (#{pName}, #{category}, #{constructor}, #{brandName}, #{cost}, #{userId});
+    </insert>
+    
+    <select id="selectByPName" resultType="com.mid.alcohol.domain.AuctionProducts">
+        select * from AuctionProducts WHERE pName LIKE #{pName} AND userId = #{userId}
+    </select>
+
+    
+
+</mapper>
