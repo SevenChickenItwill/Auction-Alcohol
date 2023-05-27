@@ -30,6 +30,7 @@ public class AuctionRestController {
 		log.info("searchProduct(data = {}, userid = {})",dto,userid);
 		
 		List<AuctionProducts> list = acservice.search(dto);
+		log.info("{}",list);
 		
 		return ResponseEntity.ok(list);
 		

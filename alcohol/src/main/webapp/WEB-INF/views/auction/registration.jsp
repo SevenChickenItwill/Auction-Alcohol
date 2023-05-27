@@ -37,6 +37,18 @@
                     <button id="btnProductSearch">내 상품 찾기</button>
                 </div>
                 <div>
+                    <label for="constructor">제조사(생산자)</label>
+                    <input id="constructor" name="constructor" type="text" readonly="readonly">
+                </div>
+                <div>
+                    <label for="brandname">브랜드</label>
+                    <input id="brandname" name="brandname" type="text" readonly="readonly">
+                </div>
+                <div>
+                    <label for="category">종류</label>
+                    <input id="category" name="category" type="text" readonly="readonly">
+                </div>
+                <div>
                     <label for="passBid">즉시 낙찰가</label>
                     <input id="passBid" type="number">
                 </div>
