@@ -17,8 +17,12 @@
                     <div>
                         <div>
                             <!-- TODO : 로그인 구현후 로그인한 아이디 등록 -->
-                            <label for="userId">작성자 아이디</label> 
-                            <input type="text" id="userId" name="userId" required />
+                            <label for="nickname">작성자</label> 
+                            <span id="nickname" name="nickname">닉네임</span>
+                            <label for="user_id"></label>   
+                            <span id="user_id" name="user_id">아이디</span>
+                            <label for="user_ranking"></label>
+                            <span id="user_ranking" name="user_ranking">1111</span>
                         </div>
                         <div>
                             <label for="title">제목</label>

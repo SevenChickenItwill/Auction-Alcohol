@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.Deal;
+import com.mid.alcohol.dto.DealCreateDto;
 import com.mid.alcohol.dto.DealDetailDto;
 import com.mid.alcohol.dto.DealListDto;
 import com.mid.alcohol.repository.DealRepository;
@@ -43,6 +44,13 @@ public class DealService {
         log.info("dealDelete(id= {})", id);
         
         return dealRepository.deleteDealById(id);
+    }
+
+    public int create(DealCreateDto dto) {
+        log.info("creat(dto= {})", dto);
+        
+        
+        return dealRepository.dealInsert(dto);
     }
     
     

@@ -7,8 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.domain.Deal;
+import com.mid.alcohol.dto.DealCreateDto;
 import com.mid.alcohol.dto.DealDetailDto;
 import com.mid.alcohol.dto.DealListDto;
 import com.mid.alcohol.service.DealService;
@@ -18,21 +20,43 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j 
 @RequiredArgsConstructor 
-@RequestMapping("/deal/comment") 
+@RequestMapping("/deal/comment")
 @Controller
 public class DealController {
     
     private final DealService dealService;
     
-    //comment-list.jsp에 Deal Post 목록 전체 보기.
-    @GetMapping("/comment-list") 
-    public void list(Model model) {
+    @GetMapping("/comment-list")
+    public void list(Model model, @RequestParam("num") int num) {
         log.info("list()");
         
+        // 전체 Deal list값을 저장하는 객체 생성.
         List<DealListDto> list = dealService.selectAll();
-        log.info("list= {}", list);
         
+        // list의 전체 개수
+        int length = list.size();
+        
+        // 마지막 인덱스
+        int len = 0;
+        
+        if (num < 0) {
+            num = 0;
+        }
+        
+        int pageCount = 10 * num;
+        
+        if (pageCount + 10 > length) {
+            len = length;
+        } else {
+            len = pageCount + 10;
+        }
+        
+        model.addAttribute("length", length);
+        model.addAttribute("num",num);
+        model.addAttribute("maxIndex", len);
+        model.addAttribute("pageCount", pageCount);
         model.addAttribute("deals", list);
+        
     }
     
     @GetMapping("/detail")
@@ -81,6 +105,16 @@ public class DealController {
     @GetMapping("/create")
     public void create() {
         log.info("create()");
+    }
+    
+    @PostMapping("/create")
+    public String postCreate(DealCreateDto dto) {
+        log.info("postCreate(dto= {})", dto);
+        
+        int result = dealService.create(dto);
+        log.info("생성 수 = {}", result);
+        
+        return "redirect:/deal/comment/comment-list";
     }
     
 }

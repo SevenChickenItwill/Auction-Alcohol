@@ -3,6 +3,7 @@ package com.mid.alcohol.repository;
 import java.util.List;
 
 import com.mid.alcohol.domain.Deal;
+import com.mid.alcohol.dto.DealCreateDto;
 import com.mid.alcohol.dto.DealDetailDto;
 import com.mid.alcohol.dto.DealListDto;
 
@@ -11,7 +12,7 @@ public interface DealRepository {
     
     List<DealListDto> selectWithReplyCount();
     
-    int dealInsert(Deal deal);
+    int dealInsert(DealCreateDto deal);
     
     List<Deal> selectAllOrderByIdDesc();
     

@@ -32,7 +32,7 @@
                 <div>
                     <label for="user">작성자</label> <input id="user"
                         value="${ deal.nickname }(${ deal.user_id })[${ deal.user_ranking }]"
-                        readonly />
+                        readonly /> <!-- 예) 찬희(dlcksgml3685)[★] -->
                 </div>
                 <div>
                     <label for="createdTiem">작성 시간</label>
@@ -49,7 +49,7 @@
                         readonly />
                 </div>
             </form>
-            <div>
+            <div> <!-- if문으로 item을 로그인아이디 = 게시물아이디 조건식 넣어서 조정하기 -->
                 <div>
                     <c:url var="dealModify" value="/deal/comment/modify">
                         <c:param name="id" value="${ deal.id }"></c:param>

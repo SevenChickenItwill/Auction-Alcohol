@@ -15,7 +15,9 @@
         <nav>
             <ul>
                 <li>
-                    <c:url value="/deal/comment/comment-list" var="commentList" />
+                    <c:url value="/deal/comment/comment-list" var="commentList" >
+                        <c:param name="num" value="0" />
+                    </c:url>
                     <a href="${commentList}" >거래</a>
                 </li>
             </ul>

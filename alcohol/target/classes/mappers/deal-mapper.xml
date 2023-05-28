@@ -15,15 +15,15 @@
     
     <!-- 글 작성 -->
     <insert id="dealInsert">
-        insert DEAL (title, content, nickname, user_id, user_ranking)
-        values (#{title}, #{content}, #{nickname}, #{uersId}, #{userRanking})
+        insert into DEAL (title, content, nickname, user_id, user_ranking)
+        values (#{title}, #{content}, #{nickname}, #{user_id}, #{user_ranking})
     </insert>
     
     
     <!-- 전체 글 목록 보기 -->
     <select id="selectAllOrderByIdDesc" resultType="com.mid.alcohol.domain.Deal">
         select * from DEAL order by ID desc
-    </select>
+    </select>   
     
     <!-- 하나의 글 상세보기 -->
     <select id="selectById" resultType="com.mid.alcohol.dto.DealDetailDto">
