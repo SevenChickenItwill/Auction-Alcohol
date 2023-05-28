@@ -16,7 +16,6 @@ import lombok.Setter;
 public class AuctionProducts {
     // 경매물품 테이블
 	
-	
 	private String userId; // 상품을 등록한 ID
     private int productId; // 상품코드
     private String pName; // 상품명

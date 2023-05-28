@@ -10,4 +10,7 @@
 	<select id="read" resultType="com.mid.alcohol.domain.AuctionProducts">
 		SELECT * FROM AuctionProducts WHERE userId = #{userId}
 	</select>
+	<select id="readAt" resultType="com.mid.alcohol.domain.AuctionProducts">
+		SELECT * FROM AuctionProducts WHERE productId = #{productId}
+	</select>
 </mapper>

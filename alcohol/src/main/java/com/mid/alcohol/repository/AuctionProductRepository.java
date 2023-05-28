@@ -12,4 +12,6 @@ public interface AuctionProductRepository {
 	int write(AuctionProducts product);
 	
 	List<AuctionProducts> read(String userId);
+	
+	AuctionProducts readAt(int productId);
 }

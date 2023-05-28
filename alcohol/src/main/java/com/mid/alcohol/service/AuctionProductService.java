@@ -43,5 +43,13 @@ public class AuctionProductService {
 		
 		return auctionpdrepository.read(userId).stream().map(AuctionReadDto::FromEntity).toList();
 	}
+
+	public AuctionProducts readProduct(int productId) {
+		log.info("readProduct(userid={})", productId);
+		
+		
+		
+		return auctionpdrepository.readAt(productId);
+	}
 	
 }

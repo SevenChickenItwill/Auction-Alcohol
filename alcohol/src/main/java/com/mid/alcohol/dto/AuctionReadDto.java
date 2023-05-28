@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Slf4j
 @Builder
 public class AuctionReadDto {
@@ -26,7 +25,15 @@ public class AuctionReadDto {
 	
 	public static AuctionReadDto FromEntity(AuctionProducts p){
 		log.info("FromEntity(product={})",p);
-		AuctionReadDto dto = AuctionReadDto.builder().productid(p.getProductId()).pname(p.getPName()).category(p.getCategory()).brandname(p.getBrandName()).constructor(p.getConstructor()).cost(p.getCost()).userid(p.getUserId()).build();
+		AuctionReadDto dto = AuctionReadDto.builder()
+									.productid(p.getProductId())
+									.pname(p.getPName())
+									.category(p.getCategory())
+									.brandname(p.getBrandName())
+									.constructor(p.getConstructor())
+									.cost(p.getCost())
+									.userid(p.getUserId())
+									.build();
 		
 		
 		
