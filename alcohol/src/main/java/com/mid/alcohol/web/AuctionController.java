@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -70,22 +71,28 @@ public class AuctionController {
     }
     
     @GetMapping("/modify")
-    public void auctionModify(@RequestParam int aid, Model model) {
+    public String auctionModify(@RequestParam int aid, Model model) {
     	
     	log.info("auctionModify(aid={})",aid);
     	AuctionListDto dto = aucservice.readOne(aid);
     	log.info("dto={}",dto);
     	model.addAttribute("detail",dto);
     	
-    	
+    	return "auction/auctionmodify";
     }
     
     @PostMapping("/update")
-    public String auctionUpdate() {
-    	log.info("auctionUpdate()");
+    public String auctionUpdate(AuctionOpenDto dto,@RequestParam int aid ) {
+    	log.info("auctionUpdate(dto={})",dto);
     	
     	
-    	return "redirect:/auction/detail";
+    	
+    	int result = aucservice.update(dto,aid);
+    	
+    	log.info("update row={}",result);
+    	
+    	
+    	return "redirect:/auction/detail?aid=" + aid;
     }
     
 }

@@ -18,4 +18,6 @@ public interface AuctionRepository {
 	List<AuctionListDto> readAuctionList(String userid);
 	
 	AuctionListDto selectModifyOne(int aid);
+
+	int update(Auction auction);
 }

@@ -38,4 +38,9 @@
         ON a.productid = p.productid
         WHERE aid = #{aid}
     </select>
+    
+    <update id="update">
+        update auction set productid = #{productId}, nowbid = #{nowBid},passbid = #{passBid},auctionName = #{auctionName},auctionStart = #{auctionStart}, auctionEnd = #{auctionEnd}, status = #{status}
+        WHERE aid = #{aid} 
+    </update>
 </mapper>

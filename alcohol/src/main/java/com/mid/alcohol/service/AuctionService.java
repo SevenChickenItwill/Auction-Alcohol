@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mid.alcohol.domain.Auction;
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionOpenDto;
@@ -100,6 +101,15 @@ public class AuctionService {
 		
 		return auctionrepository.selectModifyOne(aid);
 		
+	}
+
+	public int update(AuctionOpenDto dto, int aid) {
+		log.info("update(dto= {},aid= {})",dto,aid);
+		
+		Auction auction = dto.toEntity();
+		auction.setAid(aid);
+		
+		return auctionrepository.update(auction);
 	}
 	
 	

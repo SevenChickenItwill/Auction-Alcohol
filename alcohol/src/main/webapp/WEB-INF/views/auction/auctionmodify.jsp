@@ -23,15 +23,15 @@
         
 		<div class="card">
             <c:url var="auctionupdate" value="/auction/update">
-                
+               <c:param name="aid" value="${ detail.aid }" />
             </c:url>
             <form action="${ auctionupdate }" method="post">
                 <div>
-                    <input id="aid" name="aid" readonly value="${ detail.aid }" />
+                    <input type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
                 </div>
                 <div>
                     
-                    <input id="auctioneer" value="${ detail.auctioneer }" name="auctioneer" class="d-none" readonly="readonly"/>
+                    <input type="text" id="auctioneer" value="${ detail.auctioneer }" name="auctioneer" class="d-none" readonly="readonly"/>
                 </div>
                 <div>
                     <label for="auctionName">경매명</label>
@@ -117,7 +117,7 @@
         
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        
+        <script src="../static/js/auction-registration.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
                 crossorigin="anonymous">

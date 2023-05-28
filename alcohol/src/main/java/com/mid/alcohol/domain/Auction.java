@@ -19,7 +19,7 @@ import lombok.Setter;
 public class Auction {
 	// 경매 테이블
 	private int status; // 경매 상태 ( 등록완료 - 진행중 - 완료 )
-    private int id; // 경매코드
+    private int aid; // 경매코드
     private int productId; // 경매상품 테이블 참조하는 상품코드
     private String auctionName; // 경매의 이름
     private String auctioneer; // 경매 개최자
