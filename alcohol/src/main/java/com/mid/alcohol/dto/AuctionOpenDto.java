@@ -32,7 +32,7 @@ public class AuctionOpenDto {
 	
 	public Auction toEntity() {
 		
-		Auction auction = Auction.builder().aucioneer(auctioneer).auctionName(auctionName).productId(productId).passBid(passbid).nowBid((passbid/10)*3).auctionStart(auctionStart).auctionEnd(auctionEnd).bidder(auctioneer).build();
+		Auction auction = Auction.builder().auctioneer(auctioneer).auctionName(auctionName).productId(productId).passBid(passbid).nowBid((passbid/10)*3).auctionStart(auctionStart).auctionEnd(auctionEnd).bidder(auctioneer).build();
 		
 		return auction;
 	}

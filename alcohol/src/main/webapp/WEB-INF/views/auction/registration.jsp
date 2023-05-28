@@ -53,7 +53,7 @@
                 </div>
                 <div>
                     <label for="passBid">즉시 낙찰가</label>
-                    <input id="passBid" name="passBid" type="number">
+                    <input id="passbid" name="passbid" type="number">
                 </div>
                 <div>
                     <label for="auctionStart">경매 시작일</label>
@@ -67,7 +67,7 @@
                     <!-- 현재 입찰가(시작가) -->
                     <input id="nowBid" name="nowBid" type="number">
                 </div>
-                <div class="d-none">
+                <div>
                     <!-- 상품코드 -->
                     <input id="productId" name="productId" type="number">
                 </div>

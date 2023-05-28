@@ -54,6 +54,6 @@ public class AuctionController {
         	return "redirect:/auction/registration";
         }
         
-        return "/auction";
+        return "redirect:/auction/auction";
     }
 }

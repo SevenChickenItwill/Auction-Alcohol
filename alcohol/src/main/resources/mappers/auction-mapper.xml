@@ -20,7 +20,7 @@
     
     <insert id="writeAuction">
         insert into Auction (auctionName, auctioneer, passbid, productId, auctionStart, auctionEnd, bidder, nowBid)
-        VALUES (#{auctionName},#{auctioneer},#{passbid},#{productId},#{auctionStart},#{auctionEnd}, #{bidder}, #{nowBid})
+        VALUES (#{auctionName},#{auctioneer},#{passBid},#{productId},#{auctionStart},#{auctionEnd}, #{bidder}, #{nowBid})
     </insert>
     
     <select id="readAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">

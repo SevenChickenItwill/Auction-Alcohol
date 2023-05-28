@@ -74,7 +74,7 @@ public class AuctionService {
 		Duration duration = Duration.between(start, endtime);
 	    long hoursDifference = duration.toHours();
 		
-		if(diff>=0 && hoursDifference >= 24) {
+		if(diff<0 && hoursDifference >= 24) {
 			
 			return auctionrepository.writeAuction(dto.toEntity());
 			

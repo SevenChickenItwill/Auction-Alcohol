@@ -22,7 +22,7 @@ public class Auction {
     private int id; // 경매코드
     private int productId; // 경매상품 테이블 참조하는 상품코드
     private String auctionName; // 경매의 이름
-    private String aucioneer; // 경매 개최자
+    private String auctioneer; // 경매 개최자
     private String bidder; // 입찰자
     private long passBid; // 즉시낙찰가
     private long nowBid; // 현재입찰가

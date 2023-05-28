@@ -14,7 +14,7 @@
      // 실제로는 아이디값 받기 현재는 로그인 기능 없으니
      	const id = 'test';
      	const productid = document.querySelector('input#productId');
-     	
+     	console.log(productid);
      
      const btnProductSearch = document.querySelector('button#btnProductSearch');
      
@@ -30,7 +30,7 @@
 			brandname.value = `${data.brandname}`;
 			constructor.value = `${data.constructor}`;
 			category.value = categoryselect(`${data.category}`);
-			productid.value = `${data.productid}`;
+			productid.value = `${data.productId}`;
 	 }
      
      const getProductInfo = async (selname,selproductid) => {	
@@ -127,13 +127,13 @@
 		 for(let x of data) {
 			 
 			 
-			 
+		     
 			 if(data.length==1){
 			 	pNameQuery.value= `${x.pname}`;
 			 	brandname.value = `${x.brandName}`;
 			 	constructor.value = `${x.constructor}`;
 			 	category.value = categoryselect(`${x.category}`);
-			 	productid.value = `${x.productid}`;
+			 	productid.value = `${x.productId}`;
 			 	
 		 	 } else{
 				  
