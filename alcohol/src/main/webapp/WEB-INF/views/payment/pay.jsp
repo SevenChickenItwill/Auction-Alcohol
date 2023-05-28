@@ -16,8 +16,9 @@
 	
 <body>
 	<div class="container-fluid">
-	        <header class="my-2 p-5 text-center text-bg-dark">
-	            <h1>결제 메인 페이지</h1>
-	        </header>
+	   <header class="my-2 p-5 text-center text-bg-dark">
+	       <h1>결제 메인 페이지</h1>
+	   </header>
+	</div>   
 </body>
 </html>

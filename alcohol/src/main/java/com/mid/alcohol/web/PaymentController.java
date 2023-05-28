@@ -1,18 +1,22 @@
 package com.mid.alcohol.web;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
 
-import com.mid.alcohol.service.PaymentService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("/payment")
+@RequestMapping("payment")
 @RequiredArgsConstructor
 public class PaymentController {
 	
-
+	@GetMapping("pay")
+	public void paymentRead() {
+		
+	}
 }

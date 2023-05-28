@@ -11,5 +11,4 @@ public interface PaymentRepository {
 	Payment selectById(String userId);
 	Payment selectByMemberId(int mamberId);
 	
-	
 }
