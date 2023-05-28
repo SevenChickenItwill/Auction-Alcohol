@@ -54,4 +54,6 @@ public class AuctionProductController {
 		return "redirect:/auction/product";
 	}
 	
+	
+	
 }

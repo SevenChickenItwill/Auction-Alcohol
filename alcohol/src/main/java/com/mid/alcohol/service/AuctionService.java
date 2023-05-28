@@ -30,11 +30,11 @@ public class AuctionService {
 	
 	public List<AuctionProducts> search(ProductSearchDto dto){
 		
-		if(dto.getPname().length()==0) {
-			
-			return new ArrayList<AuctionProducts>();
-			
-		}
+//		if(dto.getPname().length()==0) {
+//			
+//			return new ArrayList<AuctionProducts>();
+//			
+//		}
 		
 		log.info("serach(dto={})");
 		
@@ -93,5 +93,14 @@ public class AuctionService {
 		
 		return auctionrepository.readAuctionList(userid);
 	}
+	
+	public AuctionListDto readOne(int aid) {
+		log.info("readOne()");
+		
+		
+		return auctionrepository.selectModifyOne(aid);
+		
+	}
+	
 	
 }

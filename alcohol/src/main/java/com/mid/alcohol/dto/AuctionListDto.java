@@ -20,11 +20,12 @@ public class AuctionListDto {
 	private String pname;
 	private String constructor;
 	private String brandname;
-	private String category;
+	private int category;
 	private long passbid;
 	private Timestamp auctionStart;
 	private Timestamp auctionEnd;
 	private long nowbid;
+	private int aid;
 	private int productId;
 	private int bidcount;
 	private int status;

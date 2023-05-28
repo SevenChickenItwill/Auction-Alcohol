@@ -56,4 +56,36 @@ public class AuctionController {
         
         return "redirect:/auction/auction";
     }
+    
+    // detail 페이지로 가기 위해 id 값과 auction키값 받기
+    @GetMapping("/detail")
+    public String auctiondetail(@RequestParam int aid, Model model) {
+    	log.info("auctiondetail(aid={})",aid);
+    	
+    	AuctionListDto dto = aucservice.readOne(aid);
+    	log.info("dto={}",dto);
+    	model.addAttribute("detail",dto);
+    	
+    	return "/auction/auctiondetail";
+    }
+    
+    @GetMapping("/modify")
+    public void auctionModify(@RequestParam int aid, Model model) {
+    	
+    	log.info("auctionModify(aid={})",aid);
+    	AuctionListDto dto = aucservice.readOne(aid);
+    	log.info("dto={}",dto);
+    	model.addAttribute("detail",dto);
+    	
+    	
+    }
+    
+    @PostMapping("/update")
+    public String auctionUpdate() {
+    	log.info("auctionUpdate()");
+    	
+    	
+    	return "redirect:/auction/detail";
+    }
+    
 }

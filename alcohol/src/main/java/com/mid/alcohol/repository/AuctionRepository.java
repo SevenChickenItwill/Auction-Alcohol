@@ -16,4 +16,6 @@ public interface AuctionRepository {
 	int writeAuction(Auction entity);
 
 	List<AuctionListDto> readAuctionList(String userid);
+	
+	AuctionListDto selectModifyOne(int aid);
 }

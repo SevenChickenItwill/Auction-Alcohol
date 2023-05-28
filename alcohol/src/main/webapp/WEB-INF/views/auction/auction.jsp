@@ -60,7 +60,12 @@
                                 <c:if test="${ list.status == 2 }">
                                     <td>경매 종료</td>
                                 </c:if>
-                                <td>${ list.auctionName }</td>
+                                <td class="d-none">${ list.aid }</td>
+                                <td>
+                                <c:url var="detail" value="/auction/detail">
+                                    <c:param name="aid" value="${ list.aid }"></c:param>
+                                </c:url>
+                                <a href="${ detail }">${ list.auctionName }</a></td>
                                 <td>${ list.pname }</td>
                                 <td>${ list.passbid }</td>
                                 <td>${ list.nowbid }</td>

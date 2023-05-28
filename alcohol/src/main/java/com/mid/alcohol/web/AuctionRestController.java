@@ -16,6 +16,7 @@ import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.service.AuctionService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -44,6 +45,8 @@ public class AuctionRestController {
 		
 		AuctionReadDto readdto = acservice.read(dto);
 		log.info("readdto = {}",readdto);
+		
+		
 		
 		return ResponseEntity.ok(readdto);
 	}
