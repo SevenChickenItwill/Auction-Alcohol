@@ -25,7 +25,7 @@
             <c:url var="auctionupdate" value="/auction/update">
                <c:param name="aid" value="${ detail.aid }" />
             </c:url>
-            <form action="${ auctionupdate }" method="post">
+            <form id="forms" name="forms" action="${ auctionupdate }" method="post">
                 <div>
                     <input type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
                 </div>
@@ -90,9 +90,11 @@
                     <input class="d-none" value="${ detail.productId }" id="productId" name="productId" type="number" readonly="readonly" />
                 </div>
                 <div>
-                    <input type="submit" value="수정완료" class="btn">
+                    <input type="submit" value="수정" class="btn">
+                    <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete">삭제</button>
                 </div>
             </form>
+            
         </div>
         <div class="card">
             <table>
@@ -116,6 +118,7 @@
         
         
     </div>
+    <script src="../static/js/auction-delete.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../static/js/auction-registration.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 

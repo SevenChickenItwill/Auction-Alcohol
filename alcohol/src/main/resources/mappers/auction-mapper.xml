@@ -28,7 +28,7 @@
         from auction a
         JOIN auctionProducts p
         ON a.productid = p.productid
-        WHERE p.userid = #{userid}
+        WHERE a.auctioneer = #{auctioneer}
     </select>
     
     <select id="selectModifyOne" resultType="com.mid.alcohol.dto.AuctionListDto">    
@@ -43,4 +43,9 @@
         update auction set productid = #{productId}, nowbid = #{nowBid},passbid = #{passBid},auctionName = #{auctionName},auctionStart = #{auctionStart}, auctionEnd = #{auctionEnd}, status = #{status}
         WHERE aid = #{aid} 
     </update>
+    
+    <delete id="delete">
+        delete from auction where aid = #{aid}
+    </delete>
+    
 </mapper>

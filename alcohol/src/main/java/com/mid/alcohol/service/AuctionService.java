@@ -111,6 +111,13 @@ public class AuctionService {
 		
 		return auctionrepository.update(auction);
 	}
+
+	public int delete(int aid) {
+		// TODO Auto-generated method stub
+		log.info("delete({})",aid);
+		
+		return auctionrepository.delete(aid);
+	}
 	
 	
 }

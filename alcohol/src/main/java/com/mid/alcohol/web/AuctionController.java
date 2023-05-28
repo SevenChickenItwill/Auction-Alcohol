@@ -95,4 +95,14 @@ public class AuctionController {
     	return "redirect:/auction/detail?aid=" + aid;
     }
     
+    @GetMapping("/delete")
+    public String auctionDelete(@RequestParam int aid) {
+    	log.info("aid={}",aid);
+    	
+    	int result = aucservice.delete(aid);
+    	log.info("delete = {}",result);
+    	
+    	return "redirect:/auction/auction";
+    }
+    
 }

@@ -20,4 +20,6 @@ public interface AuctionRepository {
 	AuctionListDto selectModifyOne(int aid);
 
 	int update(Auction auction);
+
+	int delete(int aid);
 }
