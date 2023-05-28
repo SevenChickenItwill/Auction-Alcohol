@@ -14,4 +14,9 @@ public interface AuctionProductRepository {
 	List<AuctionProducts> read(String userId);
 	
 	AuctionProducts readAt(int productId);
+
+	int deleteByProductId(int productid);
+
+
+	int updateProduct(AuctionProducts entity);
 }

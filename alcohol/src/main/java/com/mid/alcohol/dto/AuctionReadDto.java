@@ -40,4 +40,17 @@ public class AuctionReadDto {
 		return dto;
 	}
 	
+	public AuctionProducts toEntity() {
+		return AuctionProducts.builder()
+							.productId(productid)
+							.pName(pname)
+							.category(category)
+							.brandName(brandname)
+							.constructor(constructor)
+							.cost(cost)
+							.userId(userid)
+							.build();
+							
+	}
+	
 }

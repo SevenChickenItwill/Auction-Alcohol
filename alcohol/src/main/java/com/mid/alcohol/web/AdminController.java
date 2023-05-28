@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AdminController {
 
-    @GetMapping("/")
+    @GetMapping("/auction")
     public String adminPage() {
         log.info("adminPage()");
         

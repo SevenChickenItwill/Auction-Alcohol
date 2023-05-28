@@ -51,5 +51,26 @@ public class AuctionProductService {
 		
 		return auctionpdrepository.readAt(productId);
 	}
+
+	public AuctionReadDto read(int productid) {
+		
+	    AuctionProducts product = auctionpdrepository.readAt(productid);
+	    
+	    AuctionReadDto dto = AuctionReadDto.FromEntity(product);
+	    
+		return dto;
+	}
+
+	public int delete(int productid) {
+		
+		int result = auctionpdrepository.deleteByProductId(productid);
+		return result;
+	}
+
+	public int updateProduct(AuctionReadDto dto) {
+		
+		int result = auctionpdrepository.updateProduct(dto.toEntity());
+		return result;
+	}
 	
 }
