@@ -16,6 +16,7 @@
 	<div>
         <header>
             <h1>경매 등록 페이지</h1>
+            
         </header>
         
         <br />
@@ -23,14 +24,16 @@
 		<div class="card">
             <c:url var="postRegistration" value="/auction/registration"/>
             <form action="${ postRegistration }" method="post">
+                
                 <div>
                     <!-- TODO: value test -> ${id}로 바꾸기 -->
-                    <input id="id" value="test" class="d-none"/>
+                    <input id="id" value="test" name="auctioneer" class="d-none"/>
                 </div>
                 <div>
                     <label for="auctionName">경매명</label>
-                    <input id="auctionName" type="text">
+                    <input id="auctionName" name="auctionName" type="text">
                 </div>
+                
                 <div>
                     <label for="pname">상품명</label>
                     <input id="pname" name="pname" type="text">
@@ -50,23 +53,23 @@
                 </div>
                 <div>
                     <label for="passBid">즉시 낙찰가</label>
-                    <input id="passBid" type="number">
+                    <input id="passBid" name="passBid" type="number">
                 </div>
                 <div>
                     <label for="auctionStart">경매 시작일</label>
-                    <input id="auctionStart" type="datetime-local">
+                    <input id="auctionStart" name="auctionStart" type="datetime-local">
                 </div>
                 <div>
                     <label for="auctionEnd">경매 종료일</label>
-                    <input id="auctionEnd" type="datetime-local">
+                    <input id="auctionEnd" name="auctionEnd" type="datetime-local">
                 </div>
                 <div class="d-none">
                     <!-- 현재 입찰가(시작가) -->
-                    <input id="nowBid" type="number">
+                    <input id="nowBid" name="nowBid" type="number">
                 </div>
                 <div class="d-none">
                     <!-- 상품코드 -->
-                    <input id="productId" type="number">
+                    <input id="productId" name="productId" type="number">
                 </div>
                 <div>
                     <input type="submit" value="경매등록">

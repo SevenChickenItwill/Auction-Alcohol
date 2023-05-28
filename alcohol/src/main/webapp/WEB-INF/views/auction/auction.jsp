@@ -48,6 +48,29 @@
                         </tr>
                     </thead>
                     
+                    <tbody id="auctionlist">
+                        <c:forEach var="list" items="${ auctionlist }">
+                            <tr>
+                                <c:if test="${ list.status == 0 }">
+                                    <td>경매 준비중</td>
+                                </c:if>
+                                <c:if test="${ list.status == 1 }">
+                                    <td>경매 진행중</td>
+                                </c:if>
+                                <c:if test="${ list.status == 2 }">
+                                    <td>경매 종료</td>
+                                </c:if>
+                                <td>${ list.auctionName }</td>
+                                <td>${ list.pname }</td>
+                                <td>${ list.passbid }</td>
+                                <td>${ list.nowbid }</td>
+                                <td>${ list.bidcount }</td>
+                                <td>${ list.successbid }</td>
+                                <td>${ list.auctionStart }</td>
+                                <td>${ list.auctionEnd }</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
                 </table>                
             </div>
         </main>

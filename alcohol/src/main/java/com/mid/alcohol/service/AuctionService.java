@@ -1,5 +1,7 @@
 package com.mid.alcohol.service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.AuctionProducts;
+import com.mid.alcohol.dto.AuctionListDto;
+import com.mid.alcohol.dto.AuctionOpenDto;
 import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
@@ -56,6 +60,38 @@ public class AuctionService {
 		return ardto;
 		
 		
+	}
+
+	public int write(AuctionOpenDto dto) {
+		// TODO Auto-generated method stub
+		log.info("write({})",dto);
+		
+		LocalDateTime start = dto.getAuctionStart();
+		LocalDateTime endtime = dto.getAuctionEnd();
+		
+		int diff = start.compareTo(endtime);
+		
+		Duration duration = Duration.between(start, endtime);
+	    long hoursDifference = duration.toHours();
+		
+		if(diff>=0 && hoursDifference >= 24) {
+			
+			return auctionrepository.writeAuction(dto.toEntity());
+			
+		} else {
+			log.info("등록 실패");
+			return 0;
+			
+		}
+		
+		
+		}
+
+	public List<AuctionListDto> readlist(String userid) {
+		// TODO Auto-generated method stub
+		log.info("readlist()");
+		
+		return auctionrepository.readAuctionList(userid);
 	}
 	
 }

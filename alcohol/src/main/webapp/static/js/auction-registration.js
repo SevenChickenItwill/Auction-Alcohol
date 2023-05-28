@@ -13,7 +13,7 @@
      // const idValue = document.querySelector('input#id').value;
      // 실제로는 아이디값 받기 현재는 로그인 기능 없으니
      	const id = 'test';
-     	const productid = document.querySelector('input#productid');
+     	const productid = document.querySelector('input#productId');
      	
      
      const btnProductSearch = document.querySelector('button#btnProductSearch');
@@ -24,12 +24,13 @@
 			brandname.value = '';
 			constructor.value = '';
 			category.value='';
+			productid.value='';
 			
 			pNameQuery.value= `${data.pname}`;
 			brandname.value = `${data.brandname}`;
 			constructor.value = `${data.constructor}`;
 			category.value = categoryselect(`${data.category}`);
-			
+			productid.value = `${data.productid}`;
 	 }
      
      const getProductInfo = async (selname,selproductid) => {	
@@ -132,6 +133,7 @@
 			 	brandname.value = `${x.brandName}`;
 			 	constructor.value = `${x.constructor}`;
 			 	category.value = categoryselect(`${x.category}`);
+			 	productid.value = `${x.productid}`;
 			 	
 		 	 } else{
 				  
@@ -139,7 +141,7 @@
 			 	brandname.value = '';
 			 	constructor.value = '';
 			 	category.value='';
-				  
+				productid.value='';
 			  }
 		 	 
 			 htmlstr += 

@@ -18,5 +18,18 @@
         select * from AuctionProducts WHERE pName = #{pName} AND userId = #{userId} AND productId = #{productId}
     </select>
     
+    <insert id="writeAuction">
+        insert into Auction (auctionName, auctioneer, passbid, productId, auctionStart, auctionEnd, bidder, nowBid)
+        VALUES (#{auctionName},#{auctioneer},#{passbid},#{productId},#{auctionStart},#{auctionEnd}, #{bidder}, #{nowBid})
+    </insert>
+    
+    <select id="readAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
+        select *
+        from auction a
+        JOIN auctionProducts p
+        ON a.productid = p.productid
+        WHERE p.userid = #{userid}
+    </select>
+    
 
 </mapper>

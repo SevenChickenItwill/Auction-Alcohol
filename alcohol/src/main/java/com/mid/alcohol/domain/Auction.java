@@ -29,5 +29,5 @@ public class Auction {
     private long bidCount; // 입찰횟수
     private long successBid; // 낙찰확정가
     private LocalDateTime auctionStart; // 경매시작
-    private LocalDateTime autionEnd; // 경매 종료
+    private LocalDateTime auctionEnd; // 경매 종료
 }
