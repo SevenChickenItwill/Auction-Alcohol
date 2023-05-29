@@ -6,7 +6,7 @@
  document.addEventListener('DOMContentLoaded',()=>{
 	 
 	 // 웹소켓 객체 생성
-	 const ws = new WebSocket("ws://localhost:8082/chat");
+	 const ws = new WebSocket("ws://localhost:8081/chat");
 	 
 	 // 웹소켓 연결될 경우 실행되는 이벤트 핸들러
 	 ws.onopen = (event) =>{
