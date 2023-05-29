@@ -19,6 +19,18 @@
 	   <header class="my-2 p-5 text-center text-bg-dark">
 	       <h1>결제 메인 페이지</h1>
 	   </header>
-	</div>   
+	</div>
+	
+	<caption>주문내역/결제</caption>
+	<tr>
+		<th>상품정보</th>
+		<th>판매자</th>
+		<th>배송비</th>
+		<th>수량</th>
+		<th>상품금액</th>
+	</tr>
+	<h4>
+		<span class="blind">배송지정보</span>
+	</h4>
 </body>
 </html>

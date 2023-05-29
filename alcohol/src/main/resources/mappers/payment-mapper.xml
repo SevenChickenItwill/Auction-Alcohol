@@ -5,5 +5,28 @@
 
 <!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
 <mapper namespace="com.mid.alcohol.repository.PaymentRepository">
+ 
+    <insert id="insert">
+        insert into MEMBER (MEMBERID, MEMBERPASSWORD, MEMBERNAME, MEMBERADRESS, MEMBERPHONE, MEMBEREMAIL)
+        values (#{memberid}, #{memberpassword}, #{membername}, #{memberadress}, #{memberphone}, #{memberemail})
+    </insert>
+    
+    <select id="selectOrderByIdDesc" resultType="com.mid.alchol.domain.Payment">
+        select * from MEMBER order by ID desc
+    </select>
+    
+    <select id="selectById" resultType="com.mid.alchol.domain.Payment">
+        select * from MEMBER where ID = #{id}
+    </select>
+    
+    <update id="updateTitleAndContent">
+        update member
+        set TITLE = #{title}, CONTENT = #{content}, MODIFIED_TIME = systimestamp
+        where ID = #{id}
+    </update>
+    
+    <delete id="deleteById">
+        delete from member where ID = #{id}
+    </delete>
 	
 </mapper>

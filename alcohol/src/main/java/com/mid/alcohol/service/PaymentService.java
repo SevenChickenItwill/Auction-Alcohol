@@ -12,5 +12,4 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PaymentService {
 
-	private final PaymentRepository paymentRepository;
 }
