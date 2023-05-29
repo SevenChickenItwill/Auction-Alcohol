@@ -16,10 +16,6 @@ public class ChatMemberDto {
 	private long cid;
 	private String userid;
 	
-	public static ChatMemberDto fromEntity(Chat chat) {
-		
-		return ChatMemberDto.builder().cid(chat.getCid()).userid(chat.getUserid()).build();
-		
-	}
+	
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mid.alcohol.domain.Chat;
 import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.ChatListDto;
+
 import com.mid.alcohol.repository.AuctionRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -17,14 +18,20 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class AuctionUserService {
-	// 채팅방 관리 클래스
+	// 사실상 채팅방 관리 클래스(ChatRoomManager)
 	@Autowired
 	private AuctionRepository auctionrepository;
 	
-	private Map<Long, List<ChatListDto>> chatRooms;
+
 	
 	@Autowired
 	private AuctionService aucservice;
+	
+
+	
+	
+	
+	
 	
 	// 채팅방 목록 불러오기
 	public List<UserAuction> readAllRoom(){
@@ -55,28 +62,13 @@ public class AuctionUserService {
 		List<UserAuction> dto = readAllRoom();
 		Map<Long, List<ChatListDto>> map = new HashMap<>();
 		
-		for(int i = 0 ; i<dto.size() ; i++) {
-			
-			List<ChatListDto> list = auctionrepository.selectByChatContents(dto.get(i).getCid());
-			
-			map.put(dto.get(i).getCid(),list);
-			
-		}
 		
 		log.info("map = {}",map);		
 		return map;
 		
 	}
 	
-	// 생성자
-	public AuctionUserService() {
-		
-		chatRooms = readChatData();
-		if(chatRooms == null) {
-			chatRooms = new HashMap<>();
-		}
-		
-	}
+	
 	
 	// 방생성하기
 	public int createChatRoom(UserAuction chatroom) {

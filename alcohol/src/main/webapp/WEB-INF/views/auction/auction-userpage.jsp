@@ -18,20 +18,22 @@
         <h1>경매명 + 물건이름 + 채팅방 + 경매번호</h1>
     </header>
     <main>
-        <section>
-        <div>
-            상대의 채팅
+        <section class="bg-color-yellow">
+        <div id="otherchatcontent">
+            <input type="text" readonly value="상대의채팅" />
         </div>
-        <div>
-            나의 채팅    
+        <div id="mychatcontent">
+            <input type="text" readonly value="나의 채팅" />    
         </div>
         </section>
-        <div>
-            <button>전송</button>
-            <button>배팅</button>
+        <div class="card" id="chatsubmit">
+            <input type="text" class="card" id="chatcontent" name="chatcontent" />
+            <button class="btn" id="btnsubmit">전송</button>
+            <button class="btn" id="btnbat">배팅</button>
         </div>
     </main>
 
+<script src="../static/js/auction-chat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

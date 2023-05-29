@@ -14,5 +14,6 @@ public class UserAuction {
 	private long cid;
 	private String chatroom;
 	private int membercount;
+	private long aid;
 	
 }
