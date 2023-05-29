@@ -48,4 +48,37 @@
         delete from auction where aid = #{aid}
     </delete>
     
+    <!-- 옥션 사용자 Chat 관련 -->
+    
+    
+    
+    <select id="selectAllRoom" resultType="com.mid.alcohol.domain.UserAuction">
+        SELECT * FROM UserAuction
+    </select>
+    
+    <select id="selectByChatContents" resultType="com.mid.alcohol.dto.ChatListDto">
+        Select * FROM chat c JOIN userAuction u ON c.cid = u.cid WHERE c.cid = #{cid};
+    </select>
+    
+    <select id="readChatMember" resultType="com.mid.alcohol.domain.Chat">
+        select * from chat
+    </select>
+    
+    <insert id="createChatRoom">
+        INSERT INTO userAuction( chatroom, membercount ) VALUES (#{chatroom}, #{membercount})
+    </insert>
+    
+    <insert id="createChatContents">
+        INSERT INTO chat( cid, userid, conversation, texttype )
+        VALUES (#{cid}, #{userid}, #{conversation}, #{texttype})
+    </insert>
+    
+    <delete id="deleteChatRoom">
+        delete from userAuction where cid = #{cid}
+    </delete>
+    
+    <delete id="deleteChatContents">
+        delete from chat where cid = #{cid}
+    </delete>
+    
 </mapper>
