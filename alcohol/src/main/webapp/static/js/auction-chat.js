@@ -18,9 +18,14 @@
 	 // 메시지를 수신하는 함수
 	 ws.onmessage = function(event){
 		 
-		 const message = JSON.parse(event.data);
-		 displaymessage(message);
-		 console.log(message);
+		 const data = JSON.parse(event.data);
+		 
+		 const message = data.message;
+		 const userid = data.userid;
+		 const cid = data.cid;
+		 
+		 displaymessage(userid + " : " + message);
+		 console.log(cid + " : " + userid + " : " + message);
 	 }
 	 
 	 // 메시지를 전송하는 함수
@@ -38,7 +43,7 @@
 		 }
 		 
 		 // 메시지 값을 서버로 전달
-		 ws.send(JSON.stringify({content: message}));
+		 ws.send(JSON.stringify(msgData));
 		 
 		 // 입력 창을 초기화
 		 messageInput.value='';
