@@ -17,11 +17,11 @@
 <body>
 	<div class="container-fluid">
 	   <header class="my-2 p-5 text-center text-bg-dark">
-	       <h1>결제 메인 페이지</h1>
+	       <h1>결제 확인 페이지</h1>
 	   </header>
 	</div>
 	
-	<caption>주문내역/결제</caption>
+	<caption>주문내역 정보/결제</caption>
 	<tr>
 		<th>상품정보</th>
 		<th>판매자</th>
@@ -33,4 +33,5 @@
 		<span class="blind">배송지정보</span>
 	</h4>
 </body>
+	
 </html>
