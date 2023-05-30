@@ -21,5 +21,4 @@ public class Payment {
     private String memberPhone; // 회원 전화번호
     private String memberEmail; // 회원 이메일
     private Timestamp memberBirthday; // 회원 생년월일
-
 }

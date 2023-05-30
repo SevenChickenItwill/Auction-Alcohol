@@ -4,15 +4,11 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:websocket="http://www.springframework.org/schema/websocket"
-	xsi:schemaLocation="
-    	
+	xsi:schemaLocation="  	
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd">
-
-
-
 
 	<!-- Spring MVC 설정들을 애너테이션(annotation) 기반으로 처리 -->
 	<mvc:annotation-driven />
@@ -36,6 +32,4 @@
 		bean으로 관리: 컨트롤러 클래스들을 작성하는 패키지 이름. -->
 	<context:component-scan
 		base-package="com.mid.alcohol.web" />
-
-
 </beans>

@@ -17,21 +17,40 @@
 <body>
 	<div class="container-fluid">
 	   <header class="my-2 p-5 text-center text-bg-dark">
-	       <h1>결제 확인 페이지</h1>
+	       <h1>결제 정보 페이지</h1>
 	   </header>
 	</div>
 	
-	<caption>주문내역 정보/결제</caption>
-	<tr>
-		<th>상품정보</th>
-		<th>판매자</th>
-		<th>배송비</th>
-		<th>수량</th>
-		<th>상품금액</th>
-	</tr>
-	<h4>
-		<span class="blind">배송지정보</span>
-	</h4>
+	<caption>주문내역 주문정보/결제 내역</caption>
+	<div class="card">
+		<table>
+			<thead>
+				<tr>
+					<th>상품정보</th>
+					<th>판매자</th>
+					<th>구매자</th>
+					<th>구매자 번호</th>
+					<th>구매자 이메일</th>
+					<th>배송비</th>
+					<th>수량</th>
+					<th>총 상품금액</th>
+				</tr>
+			</thead>
+	</div>
+		<div class="card">
+			<tbody>
+				<tr>
+					<th>IPHONE</th>
+					<th>APPLE</th>
+					<th>daehan</th>
+					<th>010 0000 0000</th>
+					<th>dddd@gmail.com</th>
+					<th>$1,100</th>
+					<th>1</th>
+					<th>$1,100</th>
+				</tr>
+			</tbody>
+		</div>	
 </body>
 	
 </html>

@@ -13,15 +13,13 @@ public interface PaymentRepository {
 	List<Payment> selectAllOrderByIdDesc();
 	
 	Payment selectById(String userId);
-	Payment selectByMemberId(int mamberId);
+	Payment selectByMemberId(int memberId);
 	 
-    int dealInsert(PaymentDto payment);
+    int paymentInsert(PaymentDto payment);
     
     PaymentDto selectById(long id);
     
     int updatePaymentById(Payment payment);
     
     int deletePaymentById(long id);
-	
-
 }

@@ -8,13 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class PaymentMainController {
+public class PaymentHomeController {
 	
 	    @GetMapping("/")
-	    public String home() {
-	        
+	    public String home() {    	
+	        log.info("home()");
 	        return "index";
-	    }
-	    
-	
+	    }	    
 }
