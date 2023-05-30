@@ -14,6 +14,7 @@
         select * from AuctionProducts WHERE pName LIKE #{pName} AND userId = #{userId}
     </select>
 
+
     <select id="selectByPNameOne" resultType="com.mid.alcohol.domain.AuctionProducts">
         select * from AuctionProducts WHERE pName = #{pName} AND userId = #{userId} AND productId = #{productId}
     </select>
@@ -81,4 +82,5 @@
         delete from chat where cid = #{cid}
     </delete>
     
+
 </mapper>

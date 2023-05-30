@@ -2,6 +2,7 @@ package com.mid.alcohol.repository;
 
 import java.util.List;
 
+
 import com.mid.alcohol.domain.Auction;
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.domain.Chat;
@@ -51,3 +52,4 @@ public interface AuctionRepository {
 	// 채팅방 참여자 불러오기
 	List<ChatMemberDto> readChatMember();
 }
+

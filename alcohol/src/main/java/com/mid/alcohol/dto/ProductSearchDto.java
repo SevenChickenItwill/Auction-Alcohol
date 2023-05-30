@@ -15,6 +15,7 @@ public class ProductSearchDto {
 
 	private String userid;
 	private String pname;
+
 	private int productid;
 	
 	public AuctionProducts toEntity(int check) {
@@ -31,3 +32,4 @@ public class ProductSearchDto {
 	}
 	
 }
+

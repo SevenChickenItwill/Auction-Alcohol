@@ -10,4 +10,16 @@
 	<select id="read" resultType="com.mid.alcohol.domain.AuctionProducts">
 		SELECT * FROM AuctionProducts WHERE userId = #{userId}
 	</select>
+	<select id="readAt" resultType="com.mid.alcohol.domain.AuctionProducts">
+		SELECT * FROM AuctionProducts WHERE productId = #{productId}
+	</select>
+	<delete id="deleteByProductId">
+		DELETE from AuctionProducts WHERE productId = #{productId}
+	</delete>
+	
+	<update id="updateProduct">
+		UPDATE AuctionProducts
+		set pname = #{pName}, category = #{category}, brandname = #{brandName}, constructor = #{constructor}, cost = #{cost}
+		WHERE productid = #{productId}
+	</update>
 </mapper>
