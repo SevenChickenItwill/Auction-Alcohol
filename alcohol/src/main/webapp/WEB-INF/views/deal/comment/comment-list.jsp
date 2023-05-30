@@ -49,10 +49,11 @@
                         begin="${ count }" end="${ maxIndex - 1 }">
                         <tr>
                             <td>${ deal.id }</td>
-                            <td><c:url var="commentDetail" value="/deal/comment/detail">
-                                    <c:param name="id" value="${ deal.id }" />
-                                </c:url> 
-                                <a href="${ commentDetail }">${ deal.title }</a>
+                            <td><c:url var="commentDetail"
+                                    value="/deal/comment/detail">
+                                    <c:param name="id"
+                                        value="${ deal.id }" />
+                                </c:url> <a href="${ commentDetail }">${ deal.title }</a>
                                 <span>[${ deal.rcnt }]</span></td>
                             <td>${ deal.nickname }(${ deal.user_id })[${ deal.user_ranking }]</td>
                             <td><fmt:formatDate
@@ -82,17 +83,97 @@
                         <c:set var="number" value="${nums}" />
                         <c:param name="num" value="${number}"></c:param>
                     </c:when>
-                    <c:otherwise>   
+                    <c:otherwise>
                         <c:set var="number" value="${nums - 1}" />
                         <c:param name="num" value="${number}"></c:param>
                     </c:otherwise>
                 </c:choose>
-                
+
             </c:url>
             <a href="${ beforelist }"><button>이전</button></a>
-            <a href="${ nextlist }" ><button>다음</button></a>
+
+            <c:choose>
+                <c:when test="${ (num / 10) * 10 - 4 < 0}">
+
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=0" />
+                    <a href="${ listPageNum }">1</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=1" />
+                    <a href="${ listPageNum }">2</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=2" />
+                    <a href="${ listPageNum }">3</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=3" />
+                    <a href="${ listPageNum }">4</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=4" />
+                    <a href="${ listPageNum }">5</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=5" />
+                    <a href="${ listPageNum }">6</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=6" />
+                    <a href="${ listPageNum }">7</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=7" />
+                    <a href="${ listPageNum }">8</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=8" />
+                    <a href="${ listPageNum }">9</a>
+                </c:when>
+
+
+
+                <c:when test="${ (listSize - 10 * num) < 9 }">
+
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 9 }" />
+                    <a href="${ listPageNum }">maxIndex - 8</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 8 }" />
+                    <a href="${ listPageNum }">maxIndex - 7</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 7 }" />
+                    <a href="${ listPageNum }">maxIndex - 6</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 6 }" />
+                    <a href="${ listPageNum }">maxIndex - 5</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 5 }" />
+                    <a href="${ listPageNum }">maxIndex - 4</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 4 }" />
+                    <a href="${ listPageNum }">maxIndex - 3</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 3 }" />
+                    <a href="${ listPageNum }">maxIndex - 2</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 2 }" />
+                    <a href="${ listPageNum }">maxIndex - 1</a>
+                    <c:url var="listPageNum"
+                        value="/deal/comment/comment-list?num=${ listSize - 1 }" />
+                    <a href="${ listSize }">maxIndex</a>
+
+                </c:when>
+                
+                <c:otherwise>
+                    <c:forEach begin="${ (num / 10) * 10 - 3 }" end="${ (num / 10) * 10 + 5 }" var="listFor">
+                        <c:url var="listPageNum"
+                            value="/deal/comment/comment-list?num=${ listFor - 1 }" />
+                        <a href="${ listPageNum }">${ listFor }</a>
+                    </c:forEach>
+                </c:otherwise>
+                
+            </c:choose>
+
+
+
+            <a href="${ nextlist }"><button>다음</button></a>
         </div>
     </main>
+
 
 </body>
 </html>

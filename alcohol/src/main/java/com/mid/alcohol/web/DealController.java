@@ -26,6 +26,8 @@ public class DealController {
     
     private final DealService dealService;
     
+    private int count = 0;
+    
     @GetMapping("/comment-list")
     public void list(Model model, @RequestParam("num") int num) {
         log.info("list()");
@@ -39,11 +41,14 @@ public class DealController {
         // 마지막 인덱스
         int len = 0;
         
+        
         if (num < 0) {
             num = 0;
         }
         
         int pageCount = 10 * num;
+        log.info("num = {}", num);
+        
         
         if (pageCount + 10 > length) {
             len = length;
@@ -51,11 +56,20 @@ public class DealController {
             len = pageCount + 10;
         }
         
+        // 페이지 쪽수를 매기기 위해 설정한 값.
+        count = num;
+        log.info("count= {}", count);
+        
+        // 페이지 쪽수 마지막 값을 찾기 위해서
+        int listPageMax = (list.size() / 10) + (list.size() % 10);
+        
+        model.addAttribute("pageListCount", count);
         model.addAttribute("length", length);
         model.addAttribute("num",num);
         model.addAttribute("maxIndex", len);
         model.addAttribute("pageCount", pageCount);
         model.addAttribute("deals", list);
+        model.addAttribute("listSize", list.size());
         
     }
     
