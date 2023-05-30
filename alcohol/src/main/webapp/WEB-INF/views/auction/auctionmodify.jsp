@@ -15,68 +15,87 @@
 	<body>
 	<div>
         <header>
-            <h1>경매 등록 페이지</h1>
+            <h1>경매 수정/삭제 페이지</h1>
             
         </header>
         
         <br />
         
 		<div class="card">
-            <c:url var="postRegistration" value="/auction/registration"/>
-            <form action="${ postRegistration }" method="post">
-                
+            <c:url var="auctionupdate" value="/auction/update">
+               <c:param name="aid" value="${ detail.aid }" />
+            </c:url>
+            <form id="forms" name="forms" action="${ auctionupdate }" method="post">
                 <div>
-                    <!-- TODO: value test -> ${id}로 바꾸기 -->
-                    <input id="id" value="test" name="auctioneer" class="d-none"/>
+                    <input type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
+                </div>
+                <div>
+                    
+                    <input type="text" id="auctioneer" value="${ detail.auctioneer }" name="auctioneer" class="d-none" readonly="readonly"/>
                 </div>
                 <div>
                     <label for="auctionName">경매명</label>
-                    <input id="auctionName" name="auctionName" type="text">
+                    <input value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" />
                 </div>
                 
                 <div>
                     <label for="pname">상품명</label>
-                    <input id="pname" name="pname" type="text">
+                    <input value="${ detail.pname }" id="pname" name="pname" type="text"  />
                     <button id="btnProductSearch">내 상품 찾기</button>
                 </div>
                 <div>
                     <label for="constructor">제조사(생산자)</label>
-                    <input id="constructor" name="constructor" type="text" readonly="readonly">
+                    <input value="${ detail.constructor }" id="constructor" name="constructor" type="text" readonly="readonly" />
                 </div>
                 <div>
                     <label for="brandname">브랜드</label>
-                    <input id="brandname" name="brandname" type="text" readonly="readonly">
+                    <input value="${ detail.brandname }" id="brandname" name="brandname" type="text" readonly="readonly" />
                 </div>
                 <div>
                     <label for="category">종류</label>
-                    <input id="category" name="category" type="text" readonly="readonly">
+                    <input value="${ detail.category }" id="category" name="category" type="text" readonly="readonly" />
                 </div>
                 <div>
                     <label for="passBid">즉시 낙찰가</label>
-                    <input id="passbid" name="passbid" type="number">
+                    <input value="${ detail.passbid }" id="passbid" name="passbid" type="number"  />
                 </div>
                 <div>
                     <label for="auctionStart">경매 시작일</label>
-                    <input id="auctionStart" name="auctionStart" type="datetime-local">
+                    <input value="${ detail.auctionStart }" id="auctionStart" name="auctionStart" type="datetime-local"  />
                 </div>
                 <div>
                     <label for="auctionEnd">경매 종료일</label>
-                    <input id="auctionEnd" name="auctionEnd" type="datetime-local">
+                    <input value="${ detail.auctionEnd }" id="auctionEnd" name="auctionEnd" type="datetime-local"  />
                 </div>
-                <div class="d-none">
+                <div>
                     <!-- 현재 입찰가(시작가) -->
-                    <input id="nowBid" name="nowBid" type="number">
+                    <label for="nowbid">입찰가액</label>
+                    <input value="${ detail.nowbid }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
+                </div>
+                <div>
+                    <!-- 현재 입찰자 -->
+                    <label for="bidder">입찰자</label>
+                    <input value="${ detail.bidder }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
+                </div>
+                <div>
+                    <!-- status -->
+                    <label for="status">경매 상태</label>
+                    <select name = "status" id="status">
+                        <option value="1">경매 진행 확정</option>
+                        <option value="0">경매 진행 보류</option>
+                    </select>
                 </div>
                 <div>
                     <!-- 상품코드 -->
-                    <input class="d-none" id="productId" name="productId" type="number">
+                    <input class="d-none" value="${ detail.productId }" id="productId" name="productId" type="number" readonly="readonly" />
                 </div>
                 <div>
-                    <input type="submit" value="경매등록">
+                    <input type="submit" value="수정" class="btn">
+                    <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete">삭제</button>
                 </div>
             </form>
+            
         </div>
-        
         <div class="card">
             <table>
                 <thead>
@@ -97,12 +116,14 @@
             </table>
         </div>
         
-    </div>  
+        
+    </div>
+    <script src="../static/js/auction-delete.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../static/js/auction-registration.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
                 crossorigin="anonymous">
-        </script>  
+        </script>    
 	</body>
 </html>

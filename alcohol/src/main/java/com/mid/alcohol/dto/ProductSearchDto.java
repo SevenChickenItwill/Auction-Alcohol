@@ -15,11 +15,21 @@ public class ProductSearchDto {
 
 	private String userid;
 	private String pname;
+
+	private int productid;
 	
-	public AuctionProducts toEntity() {
+	public AuctionProducts toEntity(int check) {
 		
-		return AuctionProducts.builder().userId(userid).pName("%"+pname+"%").build();
+		if(check == 1) {
+			
+			return AuctionProducts.builder().userId(userid).pName(pname).productId(productid).build();
+			
+		}
+		
+		
+		return AuctionProducts.builder().userId(userid).pName("%"+pname+"%").productId(productid).build();
 		
 	}
 	
 }
+

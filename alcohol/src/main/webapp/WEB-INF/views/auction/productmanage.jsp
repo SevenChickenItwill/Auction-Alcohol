@@ -38,6 +38,7 @@
 						<th>브랜드</th>
 						<th>종류</th>
 						<th>원가</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -97,6 +98,7 @@
 								<td>${ list.cost }</td>
 								
 							</tr>
+
 						</c:forEach>
 					</div>
 				</tbody>

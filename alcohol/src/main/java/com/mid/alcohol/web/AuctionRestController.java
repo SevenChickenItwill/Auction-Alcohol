@@ -12,8 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mid.alcohol.domain.AuctionProducts;
+
+import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.service.AuctionService;
+
+import jakarta.servlet.http.HttpSession;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,4 +40,19 @@ public class AuctionRestController {
 		
 	}
 	
+
+	@PostMapping("/info/{userid}")
+	public ResponseEntity<AuctionReadDto> infoProduct(@RequestBody ProductSearchDto dto, @PathVariable String userid){
+		
+		log.info("infoProduct()");
+		
+		AuctionReadDto readdto = acservice.read(dto);
+		log.info("readdto = {}",readdto);
+		
+		
+		
+		return ResponseEntity.ok(readdto);
+	}
+	
 }
+

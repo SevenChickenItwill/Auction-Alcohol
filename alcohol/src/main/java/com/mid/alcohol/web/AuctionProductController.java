@@ -57,6 +57,10 @@ public class AuctionProductController {
 		return "redirect:/auction/product";
 	}
 	
+
+	
+	
+
 	// create.jsp에서 productid를 받아와 해당 product를 찾아 모델에 넣고 productdtail.jsp에 보내준다 
 	@GetMapping("/productdetail")
 	public void productdetail(int productid, Model model) {
@@ -89,4 +93,5 @@ public class AuctionProductController {
 		
 		return "redirect:/auction/product";
 	}
+
 }
