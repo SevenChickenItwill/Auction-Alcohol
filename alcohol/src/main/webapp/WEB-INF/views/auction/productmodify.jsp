@@ -53,7 +53,20 @@
 					</div>
 					<div>
 						<label>종류</label>
-						<input type="text" name="category" value="${ product.category }" >
+						<select class="form-control" id="category" name="category">
+							<option selected="selected" value="1">탁주</option>
+							<option value="2">약주</option>
+							<option value="3">청주</option>
+							<option value="4">맥주</option>
+							<option value="5">과실주</option>
+							<option value="6">소주</option>
+							<option value="7">위스키</option>
+							<option value="8">브랜디</option>
+							<option value="9">증류주</option>
+							<option value="10">리큐르</option>
+							<option value="11">주정</option>
+							<option value="12">기타주류</option>
+						</select>
 					</div>
 					<div>
 						<label>원가</label>
@@ -71,7 +84,6 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous">
-		
 	</script>
 </body>
 </html>

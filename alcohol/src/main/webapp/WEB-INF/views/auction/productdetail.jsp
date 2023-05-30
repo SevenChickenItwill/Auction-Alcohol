@@ -52,7 +52,8 @@
 					</div>
 					<div>
 						<label>종류</label>
-						<input type="text" name="category" value="${ product.category }" readonly>
+						<input id="category" type="text" value="${ product.category }" readonly>
+						<input class="d-none" name="category" value="${ product.category }">
 					</div>
 					<div>
 						<label>원가</label>
@@ -74,6 +75,7 @@
 		crossorigin="anonymous">
 		
 	</script>
+	<script src="../static/js/auction-detail.js"></script>
 	<script src="../static/js/product-management.js"></script>
 </body>
 </html>

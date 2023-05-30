@@ -56,7 +56,44 @@
 								</td>
 								<td>${ list.constructor }</td>
 								<td>${ list.brandname }</td>
-								<td>${ list.category }</td>
+								
+								<c:if test="${ list.category == 1 }">
+									<td>탁주</td>
+								</c:if>
+								<c:if test="${ list.category == 2 }">
+									<td>약주</td>
+								</c:if>
+								<c:if test="${ list.category == 3 }">
+									<td>청주</td>
+								</c:if>
+								<c:if test="${ list.category == 4 }">
+									<td>맥주</td>
+								</c:if>
+								<c:if test="${ list.category == 5 }">
+									<td>과실주</td>
+								</c:if>
+								<c:if test="${ list.category == 6 }">
+									<td>소주</td>
+								</c:if>
+								<c:if test="${ list.category == 7 }">
+									<td>위스키</td>
+								</c:if>
+								<c:if test="${ list.category == 8 }">
+									<td>브랜디</td>
+								</c:if>
+								<c:if test="${ list.category == 9 }">
+									<td>증류주</td>
+								</c:if>
+								<c:if test="${ list.category == 10 }">
+									<td>리큐르</td>
+								</c:if>
+								<c:if test="${ list.category == 11 }">
+									<td>주정</td>
+								</c:if>
+								<c:if test="${ list.category == 12 }">
+									<td>기타주류</td>
+								</c:if>
+								
 								<td>${ list.cost }</td>
 								
 							</tr>
