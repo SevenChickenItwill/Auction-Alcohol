@@ -28,11 +28,12 @@ public class AuctionOpenDto {
 	private LocalDateTime auctionEnd;
 	private long nowbid;
 	private int productId;
+	private int status;
 	
 	
 	public Auction toEntity() {
 		
-		Auction auction = Auction.builder().auctioneer(auctioneer).auctionName(auctionName).productId(productId).passBid(passbid).nowBid((passbid/10)*3).auctionStart(auctionStart).auctionEnd(auctionEnd).bidder(auctioneer).build();
+		Auction auction = Auction.builder().auctioneer(auctioneer).auctionName(auctionName).productId(productId).passBid(passbid).nowBid((passbid/10)*3).auctionStart(auctionStart).auctionEnd(auctionEnd).bidder(auctioneer).status(status).build();
 		
 		return auction;
 	}

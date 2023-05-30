@@ -23,8 +23,8 @@
         
 		<div class="card">
             <c:url var="postRegistration" value="/auction/registration"/>
-            <form action="${ postRegistration }" method="post">
-                
+            <form name="createform" id="createform" action="${ postRegistration }" method="post">
+               
                 <div>
                     <!-- TODO: value test -> ${id}로 바꾸기 -->
                     <input id="id" value="test" name="auctioneer" class="d-none"/>
@@ -72,7 +72,7 @@
                     <input class="d-none" id="productId" name="productId" type="number">
                 </div>
                 <div>
-                    <input type="submit" value="경매등록">
+                     <input type="submit" value="경매등록">
                 </div>
             </form>
         </div>

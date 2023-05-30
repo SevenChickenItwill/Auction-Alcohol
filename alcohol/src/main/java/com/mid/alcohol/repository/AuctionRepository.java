@@ -8,9 +8,9 @@ import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.domain.Chat;
 import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.AuctionListDto;
+import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatMemberDto;
-import com.mid.alcohol.dto.SearchProductDto;
 
 public interface AuctionRepository {
     
@@ -22,6 +22,8 @@ public interface AuctionRepository {
 	int writeAuction(Auction entity);
 
 	List<AuctionListDto> readAuctionList(String userid);
+	
+	List<AuctionListDto> searchText(AuctionSearchDto dto);
 	
 	AuctionListDto selectModifyOne(int aid);
 

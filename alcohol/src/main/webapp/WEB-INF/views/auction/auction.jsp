@@ -11,6 +11,23 @@
               rel="stylesheet" 
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
               crossorigin="anonymous">
+              <style>
+    .scrollable-table-container {
+        height: 200px;
+        overflow-y: scroll;
+    }
+    
+    .scrollable-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .scrollable-table th,
+    .scrollable-table td {
+        padding: 8px;
+        border: 1px solid #ccc;
+    }
+</style>
 	</head>
 	<body>
 	<div>
@@ -22,18 +39,53 @@
         <br />
         
         <main>
+            <div class="card">
+            	<c:url var="search" value="/auction/auction">
+            	</c:url>
+            	<form method="post" action="${ search }" id="searchForm">
+            	<label class="form-control" for="searchtext">검색 내용</label>
+                <input class="card form-control" name="searchtext" id="searchtext" type="text" />
+                <input class="d-none" type="text" name="userid" value="test" />
+                <input class="btn form-control" type="submit" id="btnAuctionSearch" value="검색" />
+                </form>
+            </div>
+            <div class="card" >
+            	<input class="form-control" type="date" id="auctionstart" name="auctionstart"/>
+            	<input class="form-control" type="date" id="auctionend" name="auctionend" />
+            	<select class="form-control" name="status" id="status">
+            		<option value="0">경매 준비중</option>
+            		<option value="1">경매 진행중</option>
+            		<option value="2">경매 완료</option>
+            	</select>           	
+            	<select class="form-control" id="category" name="category">
+						<option selected="selected" value="1">탁주</option>
+						<option value="2">약주</option>
+						<option value="3">청주</option>
+						<option value="4">맥주</option>
+						<option value="5">과실주</option>
+						<option value="6">소주</option>
+						<option value="7">위스키</option>
+						<option value="8">브랜디</option>
+						<option value="9">증류주</option>
+						<option value="10">리큐르</option>
+						<option value="11">주정</option>
+						<option value="12">기타주류</option>
+					</select>
+            </div>
             <div>
-                <input id="auctionSearch" type="text" />
-                <button id="btnAuctionSearch">검색하기</button>
+            	<button>상세검색</button>
+            </div>
+            <div>
                 
-                <button id="btnAuctionRegistration">
+                
+                <button class="btn" id="btnAuctionRegistration">
                 <c:url var="auctionRegistration" value="/auction/registration" />
                 <a href="${ auctionRegistration }">경매등록</a>
                 </button>
             </div>
             
-            <div>
-                <table>
+            <div class="scrollable-table-container">
+                <table class="scrollable-table">
                     <thead>
                         <tr>
                             <th>상태</th>

@@ -9,13 +9,11 @@
 
  document.addEventListener('DOMContentLoaded', function() {
      const auctionSearch = document.querySelector('input#auctionSearch');
-     const auctionSearchValue = document.querySelector('input#auctionSearch').value;
+     
      const btnAuctionSearch = document.querySelector('button#btnAuctionSearch');
+     const searchForm = document.querySelector('form#searchForm');
      
      
-     btnAuctionSearch.addEventListener('click', (auctionSearchValue) => {
-         
-     });
      
      const btnAuctionRegistration = document.querySelector('button#btnAuctionRegistration');
      

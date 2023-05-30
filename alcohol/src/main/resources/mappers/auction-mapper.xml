@@ -24,6 +24,17 @@
         VALUES (#{auctionName},#{auctioneer},#{passBid},#{productId},#{auctionStart},#{auctionEnd}, #{bidder}, #{nowBid})
     </insert>
     
+    <select id="searchText" resultType="com.mid.alcohol.dto.AuctionListDto" >
+    	select *
+        from auction a
+        JOIN auctionProducts p
+        ON a.productid = p.productid
+        WHERE (a.auctionName LIKE #{searchtext}
+        OR p.pname LIKE #{searchtext}
+        OR a.bidder LIKE #{searchtext})
+        AND a.auctioneer = #{userid}
+    </select>
+    
     <select id="readAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
         select *
         from auction a

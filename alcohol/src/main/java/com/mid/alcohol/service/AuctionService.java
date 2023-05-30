@@ -17,6 +17,7 @@ import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionOpenDto;
 import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
@@ -34,6 +35,13 @@ public class AuctionService {
 	@Autowired
 	private AuctionRepository auctionrepository;
 
+	public List<AuctionListDto> searchAuction(AuctionSearchDto dto){
+		dto.toSearch();
+		log.info("{}",dto.getSearchtext());
+		return auctionrepository.searchText(dto);
+	}
+	
+	
 	public List<AuctionProducts> search(ProductSearchDto dto) {
 
 //		if(dto.getPname().length()==0) {
@@ -73,13 +81,14 @@ public class AuctionService {
 
 		LocalDateTime start = dto.getAuctionStart();
 		LocalDateTime endtime = dto.getAuctionEnd();
-
+		LocalDateTime now = LocalDateTime.now();
 		int diff = start.compareTo(endtime);
-
+		int diffnow1 = start.compareTo(now);
+		int diffnow2 = endtime.compareTo(now);
 		Duration duration = Duration.between(start, endtime);
 		long hoursDifference = duration.toHours();
 
-		if (diff < 0 && hoursDifference >= 24) {
+		if (diff < 0 && hoursDifference >= 24 && diffnow1 > 0 && diffnow2 > 0 ) {
 
 			return auctionrepository.writeAuction(dto.toEntity());
 
