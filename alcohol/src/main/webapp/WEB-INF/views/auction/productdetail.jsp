@@ -75,7 +75,7 @@
 		crossorigin="anonymous">
 		
 	</script>
-	<script src="../static/js/auction-detail.js"></script>
+	<script src="../static/js/category-detail.js"></script>
 	<script src="../static/js/product-management.js"></script>
 </body>
 </html>
