@@ -45,6 +45,7 @@
 					</div>
 					<div>
 					<label for="category">카테고리</label>
+                    <%-- value 는 category 테이블의 코드랑 동일하게 설정함. --%>
 					<select class="form-control" id="category" name="category">
 						<option selected="selected" value="1">탁주</option>
 						<option value="2">약주</option>
@@ -67,6 +68,9 @@
 				</form>
 			</div>
 		</main>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+				integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+				crossorigin="anonymous">	
+		</script>
 	</body>
 </html>

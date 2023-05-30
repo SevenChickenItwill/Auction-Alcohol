@@ -24,7 +24,14 @@ public class AuctionCreateDto {
 	
 	public AuctionProducts toEntity(){
 		
-		AuctionProducts product = AuctionProducts.builder().pName(pName).category(category).brandName(brandname).constructor(constructor).cost(cost).userId(userId).build();
+		AuctionProducts product = AuctionProducts.builder()
+												.pName(pName)
+												.category(category)
+												.brandName(brandname)
+												.constructor(constructor)
+												.cost(cost)
+												.userId(userId)
+												.build();
 		
 		return product;
 	}
