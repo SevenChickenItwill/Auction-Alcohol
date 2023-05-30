@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class DealReply {
     
     private long id; // 댓글 고유 아이디
-    private String dealId; // 댓글 단 포스트 아이디
+    private String dealId; // 댓글 단 포스트의 아이디
     private String userNickname; // 댓글 유저 닉네임
     private String userId; // 댓글 유저 아이디
     private long userRanking; // 유저 랭킹

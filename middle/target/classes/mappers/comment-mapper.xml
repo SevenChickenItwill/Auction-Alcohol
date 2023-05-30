@@ -6,12 +6,12 @@
     
     <!-- PK ID로 댓글 읽어오기 -->
     <select id = "selectById"
-        resultType="com.mid.alcohol.domai.DealReply">
+        resultType="com.mid.alcohol.domain.DealReply">
         select * from DEALREPLIES where ID = #{id}
         </select>
     
     <!-- DEAL ID로 댓글 읽어오기 -->
-    <select id="selectByCommentId"
+    <select id="selectByDealId"
         resultType="com.mid.alcohol.domain.DealReply">
         select * from DEALREPLIES
         where DEAL_ID = #{deal_id}
@@ -27,7 +27,7 @@
     </update>
 
     <!-- 댓글 삭제 -->  
-    <delete id="deleteById">
+    <delete id="delete">
         delete from DEALREPLIES
         where ID = #{id}
     </delete>

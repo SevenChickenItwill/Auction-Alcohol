@@ -47,5 +47,11 @@ public class CommentService {
         return commentRepository.update(entity);
     }
     
+    public int delete(long id) {
+        log.info("delete(id={})", id);
+        
+        return commentRepository.delete(id);
+    }
+    
     
 }
