@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.mid.alcohol.domain.Deal;
-import com.mid.alcohol.dto.DealCreateDto;
-import com.mid.alcohol.repository.DealRepository;
+import com.mid.alcohol.domain.Bulletnboard;
+import com.mid.alcohol.dto.BulletnboardCreateDto;
+import com.mid.alcohol.repository.BulletnboardRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,14 +19,14 @@ import lombok.extern.slf4j.Slf4j;
 public class DealCreateTest {
     
     @Autowired
-    private DealRepository dealRepository;
+    private BulletnboardRepository dealRepository;
     
     @Test
     public void createTest() {
         
         
         for (int i = 0; i < 1000; i++) {
-            DealCreateDto deal = new DealCreateDto("test" + i, "test" + i, "test" + 1, "test" + i, i);
+            BulletnboardCreateDto deal = new BulletnboardCreateDto("test" + i, "test" + i, "test" + 1, "test" + i, i);
             
             
             int result = dealRepository.dealInsert(deal);
