@@ -29,19 +29,19 @@
      	btncreateAuction.addEventListener('click',(e)=>{
 			
 			if(auctionEnd.value==""){
-				console.log(1);
+				console.log(auctionEnd.value);
 				eventcatch();
 				return;
 			} else if(auctionStart.value==""){
-				console.log(2);
+				console.log(auctionStart.value);
 				eventcatch();
 				return;
 			} else if(auctionName.value==""){
-				console.log(3);
+				console.log(auctionName);
 				eventcatch();
 				return;
 			} else if(productid.value==""){
-				console.log(4);
+				console.log(productid.value);
 				eventcatch();
 				return;
 			}
@@ -74,7 +74,7 @@
 			brandname.value = `${data.brandname}`;
 			constructor.value = `${data.constructor}`;
 			category.value = categoryselect(`${data.category}`);
-			productid.value = `${data.productId}`;
+			productid.value = `${data.productid}`;
 	 }
      
      const getProductInfo = async (selname,selproductid) => {	
@@ -191,7 +191,7 @@
 			 htmlstr += 
 			 `<tr>
 			 	<td id="productid${index}" indexRow="${index}" value="${x.productId}" class="d-none">${x.productId}</td>
-			 	<td><button id="btn${index}" indexRow="${index}" >선택</button></td>
+			 	<td><button id="btn${index}" class="btnSelect btn" indexRow="${index}" >선택</button></td>
 			 	<td indexRow="${index}" value="${x.pname}" id="pname${index}">${x.pname}</td>
 			 	<td indexRow="${index}" id="constructor${index}">${x.constructor}</td>
 			 	<td indexRow="${index}" id="brandName${index}">${x.brandName}</td>
