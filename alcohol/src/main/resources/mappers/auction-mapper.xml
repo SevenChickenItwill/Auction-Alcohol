@@ -3,111 +3,347 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mid.alcohol.repository.AuctionRepository">
-<!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
 
-    <insert id="insertAuctionProducts" >
-        insert into AuctionProducts (pName, category, constructor, brandName, cost, userId)
-        values (#{pName}, #{category}, #{constructor}, #{brandName}, #{cost}, #{userId});
-    </insert>
-    
-    <select id="selectByPName" resultType="com.mid.alcohol.domain.AuctionProducts">
-        select * from AuctionProducts WHERE pName LIKE #{pName} AND userId = #{userId}
-    </select>
+	<!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
+
+	<insert id="insertAuctionProducts">
+		insert into AuctionProducts (pName, category,
+		constructor, brandName, cost,
+		userId)
+		values (#{pName}, #{category},
+		#{constructor}, #{brandName}, #{cost},
+		#{userId});
+	</insert>
+
+	<select id="selectByPName"
+		resultType="com.mid.alcohol.domain.AuctionProducts">
+		select * from AuctionProducts WHERE pName LIKE #{pName} AND
+		userId =
+		#{userId}
+	</select>
 
 
-    <select id="selectByPNameOne" resultType="com.mid.alcohol.domain.AuctionProducts">
-        select * from AuctionProducts WHERE pName = #{pName} AND userId = #{userId} AND productId = #{productId}
-    </select>
-    
-    <insert id="writeAuction">
-        insert into Auction (auctionName, auctioneer, passbid, productId, auctionStart, auctionEnd, bidder, nowBid)
-        VALUES (#{auctionName},#{auctioneer},#{passBid},#{productId},#{auctionStart},#{auctionEnd}, #{bidder}, #{nowBid})
-    </insert>
-    
-    <select id="readAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
-        select *
-        from auction a
-        JOIN auctionProducts p
-        ON a.productid = p.productid
-        WHERE a.auctioneer = #{auctioneer}
-    </select>
-    
-    <select id="selectModifyOne" resultType="com.mid.alcohol.dto.AuctionListDto">    
-        select *
-        from auction a
-        JOIN auctionProducts p
-        ON a.productid = p.productid
-        WHERE aid = #{aid}
-    </select>
-    
-    <update id="update">
-        update auction set productid = #{productId}, nowbid = #{nowBid},passbid = #{passBid},auctionName = #{auctionName},auctionStart = #{auctionStart}, auctionEnd = #{auctionEnd}, status = #{status}
-        WHERE aid = #{aid} 
-    </update>
-    
-    <delete id="delete">
-        delete from auction where aid = #{aid}
-    </delete>
-    
-    <select id="readAllAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
-        select *
-        from auction a
-        JOIN auctionProducts p
-        ON a.productid = p.productid
-        WHERE a.status = 1 or a.status = 2
-        ORDER BY a.aid desc
-    </select>
-    
-    <select id="readIngAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
-        select *
-        from auction a
-        JOIN auctionProducts p
-        ON a.productid = p.productid
-        WHERE a.status = 1
-        ORDER BY a.aid desc
-    </select>
-    
-    <select id="readEndAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
-        select *
-        from auction a
-        JOIN auctionProducts p
-        ON a.productid = p.productid
-        WHERE a.status = 2
-        ORDER BY a.aid desc
-    </select>
-    
-    <!-- 옥션 사용자 Chat 관련 -->
-    
-    
-    
-    <select id="selectAllRoom" resultType="com.mid.alcohol.domain.UserAuction">
-        SELECT * FROM UserAuction
-    </select>
-    
-    <select id="selectByChatContents" resultType="com.mid.alcohol.dto.ChatListDto">
-        Select * FROM chat c JOIN userAuction u ON c.cid = u.cid WHERE c.cid = #{cid};
-    </select>
-    
-    <select id="readChatMember" resultType="com.mid.alcohol.domain.Chat">
-        select * from chat
-    </select>
-    
-    <insert id="createChatRoom">
-        INSERT INTO userAuction( chatroom, membercount ) VALUES (#{chatroom}, #{membercount})
-    </insert>
-    
-    <insert id="createChatContents">
-        INSERT INTO chat( cid, userid, conversation, texttype )
-        VALUES (#{cid}, #{userid}, #{conversation}, #{texttype})
-    </insert>
-    
-    <delete id="deleteChatRoom">
-        delete from userAuction where cid = #{cid}
-    </delete>
-    
-    <delete id="deleteChatContents">
-        delete from chat where cid = #{cid}
-    </delete>
-    
+	<select id="selectByPNameOne"
+		resultType="com.mid.alcohol.domain.AuctionProducts">
+		select * from AuctionProducts WHERE pName = #{pName} AND
+		userId = #{userId}
+		AND productId = #{productId}
+	</select>
+
+	<insert id="writeAuction">
+		insert into Auction (auctionName, auctioneer,
+		passbid, productId,
+		auctionStart, auctionEnd, bidder, nowBid)
+		VALUES
+		(#{auctionName},#{auctioneer},#{passBid},#{productId},#{auctionStart},#{auctionEnd},
+		#{bidder}, #{nowBid})
+	</insert>
+
+	<select id="searchText"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.auctionName LIKE #{searchtext}
+		OR p.pname LIKE
+		#{searchtext}
+		OR a.bidder LIKE #{searchtext})
+		AND a.auctioneer =
+		#{userid}
+	</select>
+
+	<select id="readAuctionList"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE a.auctioneer = #{auctioneer}
+	</select>
+
+	<select id="selectModifyOne"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE aid = #{aid}
+	</select>
+
+
+
+	<update id="update">
+		update auction set productid = #{productId}, nowbid =
+		#{nowBid},passbid =
+		#{passBid},auctionName =
+		#{auctionName},auctionStart =
+		#{auctionStart}, auctionEnd =
+		#{auctionEnd}, status = #{status}
+		WHERE aid = #{aid}
+	</update>
+
+	<delete id="delete">
+		delete from auction where aid = #{aid}
+	</delete>
+
+	<select id="detailreadfirst1"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND p.category = #{category}
+		AND p.pname
+		= #{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+
+	<select id="detailreadsecond1"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.status = #{status}
+		AND p.pname =
+		#{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+
+	<select id="detailreadthird1"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.status = #{status}
+		AND p.category
+		= #{category}
+		AND a.auctioneer = #{userid}
+		AND (p.pname = #{searchtext2}
+		OR a.auctionname = #{auctionname})
+	</select>
+
+	<select id="detailreadfourth1"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND p.pname = #{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+
+	<select id="detailreadfirst2"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid = p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND
+		(a.auctionstart>=#{auctionstart})
+		AND (#{auctionend}>=a.auctionend)
+		AND p.category = #{category}
+		AND a.auctionname = #{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+	
+		<select id="detailreadfirst3"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid = p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND
+		(a.auctionstart>=#{auctionstart})
+		AND (#{auctionend}>=a.auctionend)
+		AND p.category = #{category}
+		AND a.auctioneer = #{userid}
+		AND ( a.auctionname = #{searchtext2}
+		OR p.name = #{searchtext2})
+	</select>
+
+	<select id="detailreadsecond2"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.status = #{status}
+		AND a.auctionname =
+		#{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+	
+		<select id="detailreadsecond3"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.status = #{status}
+		AND a.auctioneer = #{userid}
+		AND (a.auctionname =
+		#{searchtext2}
+		OR p.pname = #{searchtext2})
+	</select>
+
+		<select id="detailreadthird2"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.status = #{status}
+		AND p.category
+		= #{category}
+		AND a.auctionname = #{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+
+			<select id="detailreadthird3"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.status = #{status}
+		AND p.category
+		= #{category}
+		AND a.auctioneer = #{userid}
+		AND (a.auctionname = #{searchtext2}
+		OR p.pname = #{searchtext2})
+	</select>
+	
+		<select id="detailreadfourth2"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.auctionname = #{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+	
+		<select id="detailreadfourth3"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.auctioneer = #{userid}
+		AND (p.pname = #{searchtext2}
+		OR a.auctionname = #{searchtext2})
+	</select>
+
+	<!-- 옥션 사용자 Chat 관련 -->
+
+
+
+	<select id="selectAllRoom"
+		resultType="com.mid.alcohol.domain.UserAuction">
+		SELECT * FROM UserAuction
+	</select>
+
+	<select id="selectByChatContents"
+		resultType="com.mid.alcohol.dto.ChatListDto">
+		Select * FROM chat c JOIN userAuction u ON c.cid = u.cid
+		WHERE c.cid =
+		#{cid};
+	</select>
+
+	<select id="readChatMember"
+		resultType="com.mid.alcohol.domain.Chat">
+		select * from chat
+	</select>
+
+	<insert id="createChatRoom">
+		INSERT INTO userAuction( chatroom, membercount )
+		VALUES (#{chatroom},
+		#{membercount})
+	</insert>
+
+	<insert id="createChatContents">
+		INSERT INTO chat( cid, userid, conversation, texttype
+		)
+		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype})
+	</insert>
+
+	<delete id="deleteChatRoom">
+		delete from userAuction where cid = #{cid}
+	</delete>
+
+	<delete id="deleteChatContents">
+		delete from chat where cid = #{cid}
+	</delete>
+
 
 </mapper>

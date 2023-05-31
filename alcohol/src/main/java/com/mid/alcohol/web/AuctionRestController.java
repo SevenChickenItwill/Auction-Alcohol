@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mid.alcohol.domain.AuctionProducts;
-
+import com.mid.alcohol.dto.AuctionDetailSearchDto;
+import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.service.AuctionService;
@@ -53,6 +54,17 @@ public class AuctionRestController {
 		
 		return ResponseEntity.ok(readdto);
 	}
+	
+	@PostMapping("/detail/{userid}")
+	public ResponseEntity<List<AuctionListDto>> detailList(@RequestBody AuctionDetailSearchDto dto, @PathVariable String userid){
+		log.info("DetailList(dto={}, userid={})",dto,userid);
+		
+		List<AuctionListDto> detailList = acservice.searchDetail(dto);
+		log.info("result = {}",detailList);
+		
+		return ResponseEntity.ok(detailList);
+	}
+	
 	
 }
 
