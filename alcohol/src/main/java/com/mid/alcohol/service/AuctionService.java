@@ -97,7 +97,8 @@ public class AuctionService {
 			return 0;
 
 		}
-
+		
+		
 	}
 
 	public List<AuctionListDto> readlist(String userid) {
@@ -211,6 +212,30 @@ public class AuctionService {
 	}
 
 	// 경매 운영 관련
+	
+	// 경매 모든 목록 불러오기
+	public List<AuctionListDto> readAlllist() {
+		// TODO Auto-generated method stub
+		log.info("readlist()");
+
+		return auctionrepository.readAllAuctionList();
+	}
+	
+	// 경매 모든 목록 불러오기
+	public List<AuctionListDto> readInglist() {
+		// TODO Auto-generated method stub
+		log.info("readlist()");
+
+		return auctionrepository.readIngAuctionList();
+	}
+		
+		// 경매 모든 목록 불러오기
+	public List<AuctionListDto> readEndlist() {
+		// TODO Auto-generated method stub
+		log.info("readlist()");
+
+		return auctionrepository.readEndAuctionList();
+	}
 
 	// 채팅방-유저 매핑
 

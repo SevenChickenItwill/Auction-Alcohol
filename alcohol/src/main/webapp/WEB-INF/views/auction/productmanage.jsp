@@ -19,13 +19,14 @@
 		<h1>경매 상품 관리</h1>
 		<h4>***님 반갑습니다</h4>
 	</header>
-	<main>
-		<div>
+	<main class="card">
+		<div class="card-body">
 			<input type="text" name="searchtext" id="searchtext" />
 			<button id="btnSearch" name="btnSearch">상품 검색</button>
 			<c:url var="productcreate" value="/auction/productcreate" />
-			<a href="${ productcreate }"><button id="btnCreate"
-					name="btnCreate">상품 등록</button></a>
+			<a href="${ productcreate }">
+				<button id="btnCreate" name="btnCreate">상품 등록</button>
+			</a>
 		</div>
 		
 		<div class="card">
