@@ -14,8 +14,50 @@
      // 실제로는 아이디값 받기 현재는 로그인 기능 없으니
      	const id = 'test';
      	const productid = document.querySelector('input#productId');
+     	const auctionName = document.querySelector('input#auctionName');
+     	const auctionEnd = document.querySelector('input#auctionEnd');
+     	const auctionStart = document.querySelector('input#auctionStart');
      	console.log(productid);
+     	const formst = document.querySelector('form#createform');
+     	const btncreateAuction = document.querySelector('button#btncreateAuction');
      	
+     	function eventcatch(){
+			 alert('입력되지 않은 내용이 존재합니다.');
+			 
+		 }
+     	
+     	btncreateAuction.addEventListener('click',(e)=>{
+			
+			if(auctionEnd.value==""){
+				console.log(1);
+				eventcatch();
+				return;
+			} else if(auctionStart.value==""){
+				console.log(2);
+				eventcatch();
+				return;
+			} else if(auctionName.value==""){
+				console.log(3);
+				eventcatch();
+				return;
+			} else if(productid.value==""){
+				console.log(4);
+				eventcatch();
+				return;
+			}
+			
+			let startdate = new Date(auctionStart.value);
+			let enddate = new Date(auctionEnd.value);
+			let nowdate = new Date();
+			
+			if(startdate.getTime()>enddate.getTime() || nowdate.getTime()>startdate.getTime() || nowdate.getTime() > enddate.getTime()){
+				alert('날짜가 현재보다 이전이거나, 시작일과 종료일이 알맞지 않습니다');
+			}
+			
+			formst.method='post';
+			formst.action='/alcohol/auction/registration';
+			formst.submit(); 
+		 });
      
      
      const btnProductSearch = document.querySelector('button#btnProductSearch');
@@ -149,13 +191,13 @@
 			 htmlstr += 
 			 `<tr>
 			 	<td id="productid${index}" indexRow="${index}" value="${x.productId}" class="d-none">${x.productId}</td>
-			 	<td><button id="btn${index}" indexRow="${index}" class="btnSelect btn">선택</button></td>
+			 	<td><button id="btn${index}" indexRow="${index}" >선택</button></td>
 			 	<td indexRow="${index}" value="${x.pname}" id="pname${index}">${x.pname}</td>
 			 	<td indexRow="${index}" id="constructor${index}">${x.constructor}</td>
 			 	<td indexRow="${index}" id="brandName${index}">${x.brandName}</td>
 			 	<td indexRow="${index}" id="category${index}">${categoryselect(`${x.category}`)}</td>
 			 	<td indexRow="${index}" id="cost${index}">${x.cost}</td>
-			 </tr><br />`
+			 </tr>`
 			 index = index+1;
 		 }
 		 

@@ -21,9 +21,9 @@
         
         <br />
         
-		<div class="card">
+		<div>
             <c:url var="postRegistration" value="/auction/registration"/>
-            <form class="card" name="createform" id="createform" action="${ postRegistration }" method="post">
+            <form class="card" name="createform" id="createform">
                
                 <div class="form-control">
                     <!-- TODO: value test -> ${id}로 바꾸기 -->
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-control">
                     <label for="passBid">즉시 낙찰가</label>
-                    <input id="passbid" name="passbid" type="number">
+                    <input id="passbid" name="passbid" type="number" value="100000">
                 </div>
                 <div class="form-control">
                     <label for="auctionStart">경매 시작일</label>
@@ -72,16 +72,15 @@
                     <input class="d-none" id="productId" name="productId" type="number">
                 </div>
                 <div class="form-control">
-                     <input class="btn btn-outline-dark" type="submit" value="경매등록">
+                     <button id="btncreateAuction" class="btn btn-outline-dark">경매 등록</button>
                 </div>
             </form>
         </div>
         
-        <div>
-            <table class="table">
+        <div class="table-responsive">
+            <table class="table align-middle">
                 <thead>
                     <tr>
-                    
                         <th class="d-none">상품코드</th>
                         <th>선택</th>
                         <th>상품명</th>
@@ -91,7 +90,7 @@
                         <th>원가</th>
                     </tr>
                 </thead>
-                <tbody id="productTboby">
+                <tbody id="productTboby" >
                     
                 </tbody>
             </table>
@@ -103,6 +102,6 @@
                 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
                 crossorigin="anonymous">
         </script>  
-        <script src="../static/js/auction-registration.js"></script>
+        <script src="../static/js/auction-registration2.js"></script>
 	</body>
 </html>
