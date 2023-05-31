@@ -14,6 +14,7 @@ import com.mid.alcohol.domain.Auction;
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.domain.Chat;
 import com.mid.alcohol.domain.UserAuction;
+import com.mid.alcohol.dto.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionOpenDto;
 import com.mid.alcohol.dto.AuctionReadDto;
@@ -35,13 +36,12 @@ public class AuctionService {
 	@Autowired
 	private AuctionRepository auctionrepository;
 
-	public List<AuctionListDto> searchAuction(AuctionSearchDto dto){
+	public List<AuctionListDto> searchAuction(AuctionSearchDto dto) {
 		dto.toSearch();
-		log.info("{}",dto.getSearchtext());
+		log.info("{}", dto.getSearchtext());
 		return auctionrepository.searchText(dto);
 	}
-	
-	
+
 	public List<AuctionProducts> search(ProductSearchDto dto) {
 
 //		if(dto.getPname().length()==0) {
@@ -88,7 +88,7 @@ public class AuctionService {
 		Duration duration = Duration.between(start, endtime);
 		long hoursDifference = duration.toHours();
 
-		if (diff < 0 && hoursDifference >= 24 && diffnow1 > 0 && diffnow2 > 0 ) {
+		if (diff < 0 && hoursDifference >= 24 && diffnow1 > 0 && diffnow2 > 0) {
 
 			return auctionrepository.writeAuction(dto.toEntity());
 
@@ -130,9 +130,88 @@ public class AuctionService {
 		return auctionrepository.delete(aid);
 	}
 
+	public List<AuctionListDto> searchDetail(AuctionDetailSearchDto dto) {
+		// 경매 상세 검색
+
+		dto.formChange(); // 무결성 통과를 위한 값 변환 진행
+
+		return selectByOption(dto);
+	}
+
+	public List<AuctionListDto> selectByOption(AuctionDetailSearchDto dto) {
+		List<AuctionListDto> list = new ArrayList<>();
+
+		int textoption = dto.getTextoption();
+		int status = dto.getStatus();
+		int category = dto.getCategory();
+
+		switch (textoption) {
+		case 1:
+			if (status == 3 && category != 0) {
+
+				list = auctionrepository.detailreadfirst1(dto);
+
+			} else if (status != 3 && category == 0) {
+
+				list = auctionrepository.detailreadsecond1(dto);
+
+			} else if (status == 3 && category == 0) {
+
+				list = auctionrepository.detailreadthird1(dto);
+
+			} else {
+
+				list = auctionrepository.detailreadfourth1(dto);
+
+			}
+			break;
+
+		case 2:
+			if (status == 3 && category != 0) {
+
+				list = auctionrepository.detailreadfirst2(dto);
+
+			} else if (status != 3 && category == 0) {
+
+				list = auctionrepository.detailreadsecond2(dto);
+
+			} else if (status == 3 && category == 0) {
+
+				list = auctionrepository.detailreadthird2(dto);
+
+			} else {
+
+				list = auctionrepository.detailreadfourth2(dto);
+
+			}
+
+			break;
+		case 3:
+			if (status == 3 && category != 0) {
+
+				list = auctionrepository.detailreadfirst3(dto);
+
+			} else if (status != 3 && category == 0) {
+
+				list = auctionrepository.detailreadsecond3(dto);
+
+			} else if (status == 3 && category == 0) {
+
+				list = auctionrepository.detailreadthird3(dto);
+
+			} else {
+
+				list = auctionrepository.detailreadfourth3(dto);
+
+			}
+			break;
+		}
+
+		return list;
+	}
+
 	// 경매 운영 관련
 
 	// 채팅방-유저 매핑
-	
 
 }
