@@ -15,6 +15,8 @@
      	const id = 'test';
      	const productid = document.querySelector('input#productId');
      	console.log(productid);
+     	
+     
      
      const btnProductSearch = document.querySelector('button#btnProductSearch');
      
