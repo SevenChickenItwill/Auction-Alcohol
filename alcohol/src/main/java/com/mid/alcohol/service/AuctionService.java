@@ -133,7 +133,7 @@ public class AuctionService {
 
 	public List<AuctionListDto> searchDetail(AuctionDetailSearchDto dto) {
 		// 경매 상세 검색
-
+		
 		dto.formChange(); // 무결성 통과를 위한 값 변환 진행
 
 		return selectByOption(dto);

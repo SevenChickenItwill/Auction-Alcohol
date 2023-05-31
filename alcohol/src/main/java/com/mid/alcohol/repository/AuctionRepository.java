@@ -32,7 +32,7 @@ public interface AuctionRepository {
 
 	int delete(int aid);
 	
-	List<ChatMemberDto> readChatMember();
+	
 
 	List<AuctionListDto> detailreadfirst1(AuctionDetailSearchDto dto);
 

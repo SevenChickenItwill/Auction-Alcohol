@@ -72,25 +72,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	});
 
-	function makeDetailList(list) {
+	function makeDetailList(data) {
 		let responsetable = document.querySelector('tbody#responsetable');
 		let strhtml = '';
-		for (let x of list) {
-
+		for (let list of data) {
+			
+			let statusvalue = list.status;
+			if(statusvalue==0){
+				statusvalue = '경매 준비중';
+			} else if(statusvalue==1){
+				statusvalue = '경매 진행중';
+			} else {
+				statusvalue = '경매 종료';
+			}
+			
+			let start = new Date(list.auctionStart);
+			let end = new Date(list.auctionEnd);
+			let startvalue = start.toLocaleString();
+			let endvalue = end.toLocaleString();
+			
 			strhtml +=
 				`<tr>
-			 	<td class="d-none">${list.aid}</td>
-								<td><c:url var="detail" value="/auction/detail">
-										<c:param name="aid" value="${list.aid}"></c:param>
-									</c:url> <a href="${detail}">${list.auctionName}</a></td>
-								<td>${list.pname}</td>
-								<td>${list.passbid}</td>
-								<td>${list.nowbid}</td>
-								<td>${list.bidcount}</td>
-								<td>${list.successbid}</td>
-								<td>${list.auctionStart}</td>
-								<td>${list.auctionEnd}</td>
-			 </tr>`
+								<td>${ statusvalue }</td>
+								<td class="d-none">${ list.aid }</td>
+								<td> <a href="/alcohol/auction/detail?aid=${list.aid}">${ list.auctionName }</a></td>
+								<td>${ list.pname }</td>
+								<td>${ list.passbid }</td>
+								<td>${ list.nowbid }</td>
+								<td>${ list.bidcount }</td>
+								<td>${ list.successbid }</td>
+								<td>${ startvalue }</td>
+								<td>${ endvalue }</td>
+							</tr>`
 			 
 
 

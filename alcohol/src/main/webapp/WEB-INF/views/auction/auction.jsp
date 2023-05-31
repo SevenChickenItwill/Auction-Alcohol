@@ -27,10 +27,55 @@
 .scrollable-table th, .scrollable-table td {
 	padding: 8px;
 	border: 1px solid #ccc;
+	
+
+}
+#modals{
+	position: fixed;
+
 }
 </style>
 </head>
 <body>
+<div id="modals" class="modal fade" tabindex="-1">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">상세 검색 결과</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="scrollable-table-container">
+						<%-- 여기가 Modal의 바디 --%>
+						<table class="scrollable-table">
+							<thead>
+						<tr>
+							<th>상태</th>
+							<th>경매명</th>
+							<th>상품</th>
+							<th>즉시낙찰가</th>
+							<th>현재입찰가</th>
+							<th>입찰횟수</th>
+							<th>실낙찰가</th>
+							<th>경매시작일</th>
+							<th>경매종료일</th>
+						</tr>
+					</thead>
+					<tbody id="responsetable">
+						
+					</tbody>
+						</table>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-bs-dismiss="modal">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 	<div>
 		<header>
 			<h1>경매 관리 페이지</h1>
@@ -163,43 +208,9 @@
 					</tbody>
 				</table>
 			</div>
+			
 		</main>
-		<div id="modals" class="modal-dialog fade modal-xl" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">상세 검색 결과</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<%-- 여기가 Modal의 바디 --%>
-						<table>
-							<thead>
-						<tr>
-							<th>상태</th>
-							<th>경매명</th>
-							<th>상품</th>
-							<th>즉시낙찰가</th>
-							<th>현재입찰가</th>
-							<th>입찰횟수</th>
-							<th>실낙찰가</th>
-							<th>경매시작일</th>
-							<th>경매종료일</th>
-						</tr>
-					</thead>
-					<tbody id="responsetable">
-						
-					</tbody>
-						</table>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">닫기</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		
 		 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script
@@ -208,7 +219,7 @@
 			crossorigin="anonymous">
 			
 		</script>
-		<script src="../static/js/auction-management2.js"></script>
+		<script src="../static/js/auction-management.js"></script>
 	</div>
 </body>
 </html>

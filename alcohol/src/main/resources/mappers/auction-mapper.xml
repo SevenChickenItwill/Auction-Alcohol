@@ -104,8 +104,9 @@
 		(#{auctionend}>=a.auctionend)
 		AND p.category = #{category}
 		AND p.pname
-		= #{searchtext2}
-		AND a.auctioneer = #{userid}
+		LIKE #{searchtext2}
+		AND
+		a.auctioneer = #{userid}
 	</select>
 
 	<select id="detailreadsecond1"
@@ -121,9 +122,10 @@
 		AND
 		(#{auctionend}>=a.auctionend)
 		AND a.status = #{status}
-		AND p.pname =
+		AND p.pname LIKE
 		#{searchtext2}
-		AND a.auctioneer = #{userid}
+		AND a.auctioneer
+		= #{userid}
 	</select>
 
 	<select id="detailreadthird1"
@@ -138,12 +140,8 @@
 		AND (a.auctionstart>=#{auctionstart})
 		AND
 		(#{auctionend}>=a.auctionend)
-		AND a.status = #{status}
-		AND p.category
-		= #{category}
 		AND a.auctioneer = #{userid}
-		AND (p.pname = #{searchtext2}
-		OR a.auctionname = #{auctionname})
+		AND p.pname LIKE #{searchtext2}
 	</select>
 
 	<select id="detailreadfourth1"
@@ -158,7 +156,11 @@
 		AND (a.auctionstart>=#{auctionstart})
 		AND
 		(#{auctionend}>=a.auctionend)
-		AND p.pname = #{searchtext2}
+		AND a.status = #{status}
+		AND p.category
+		= #{category}
+		AND p.pname LIKE
+		#{searchtext2}
 		AND a.auctioneer = #{userid}
 	</select>
 
@@ -167,32 +169,37 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid = p.productid
+		ON a.productid
+		= p.productid
 		WHERE (a.nowbid>=#{minimum})
 		AND (#{maximum}>=a.nowbid)
 		AND
 		(a.auctionstart>=#{auctionstart})
 		AND (#{auctionend}>=a.auctionend)
 		AND p.category = #{category}
-		AND a.auctionname = #{searchtext2}
-		AND a.auctioneer = #{userid}
+		AND a.auctionname LIKE #{searchtext2}
+		AND
+		a.auctioneer = #{userid}
 	</select>
-	
-		<select id="detailreadfirst3"
+
+	<select id="detailreadfirst3"
 		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid = p.productid
+		ON a.productid
+		= p.productid
 		WHERE (a.nowbid>=#{minimum})
 		AND (#{maximum}>=a.nowbid)
 		AND
 		(a.auctionstart>=#{auctionstart})
 		AND (#{auctionend}>=a.auctionend)
-		AND p.category = #{category}
+		AND p.category
+		= #{category}
 		AND a.auctioneer = #{userid}
-		AND ( a.auctionname = #{searchtext2}
-		OR p.name = #{searchtext2})
+		AND (
+		a.auctionname LIKE #{searchtext2}
+		OR p.name LIKE #{searchtext2})
 	</select>
 
 	<select id="detailreadsecond2"
@@ -208,12 +215,13 @@
 		AND
 		(#{auctionend}>=a.auctionend)
 		AND a.status = #{status}
-		AND a.auctionname =
+		AND a.auctionname LIKE
 		#{searchtext2}
-		AND a.auctioneer = #{userid}
+		AND
+		a.auctioneer = #{userid}
 	</select>
-	
-		<select id="detailreadsecond3"
+
+	<select id="detailreadsecond3"
 		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
@@ -227,12 +235,49 @@
 		(#{auctionend}>=a.auctionend)
 		AND a.status = #{status}
 		AND a.auctioneer = #{userid}
-		AND (a.auctionname =
+		AND (a.auctionname
+		LIKE
 		#{searchtext2}
-		OR p.pname = #{searchtext2})
+		OR p.pname LIKE #{searchtext2})
 	</select>
 
-		<select id="detailreadthird2"
+	<select id="detailreadthird2"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.auctionname
+		LIKE #{searchtext2}
+		AND a.auctioneer = #{userid}
+	</select>
+
+	<select id="detailreadthird3"
+		resultType="com.mid.alcohol.dto.AuctionListDto">
+		select *
+		from auction a
+		JOIN auctionProducts p
+		ON a.productid
+		= p.productid
+		WHERE (a.nowbid>=#{minimum})
+		AND (#{maximum}>=a.nowbid)
+		AND (a.auctionstart>=#{auctionstart})
+		AND
+		(#{auctionend}>=a.auctionend)
+		AND a.auctioneer =
+		#{userid}
+		AND (a.auctionname LIKE #{searchtext2}
+		OR p.pname LIKE
+		#{searchtext2})
+	</select>
+
+	<select id="detailreadfourth2"
 		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
@@ -247,11 +292,11 @@
 		AND a.status = #{status}
 		AND p.category
 		= #{category}
-		AND a.auctionname = #{searchtext2}
+		AND a.auctionname LIKE #{searchtext2}
 		AND a.auctioneer = #{userid}
 	</select>
 
-			<select id="detailreadthird3"
+	<select id="detailreadfourth3"
 		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
@@ -267,41 +312,9 @@
 		AND p.category
 		= #{category}
 		AND a.auctioneer = #{userid}
-		AND (a.auctionname = #{searchtext2}
-		OR p.pname = #{searchtext2})
-	</select>
-	
-		<select id="detailreadfourth2"
-		resultType="com.mid.alcohol.dto.AuctionListDto">
-		select *
-		from auction a
-		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
-		WHERE (a.nowbid>=#{minimum})
-		AND (#{maximum}>=a.nowbid)
-		AND (a.auctionstart>=#{auctionstart})
-		AND
-		(#{auctionend}>=a.auctionend)
-		AND a.auctionname = #{searchtext2}
-		AND a.auctioneer = #{userid}
-	</select>
-	
-		<select id="detailreadfourth3"
-		resultType="com.mid.alcohol.dto.AuctionListDto">
-		select *
-		from auction a
-		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
-		WHERE (a.nowbid>=#{minimum})
-		AND (#{maximum}>=a.nowbid)
-		AND (a.auctionstart>=#{auctionstart})
-		AND
-		(#{auctionend}>=a.auctionend)
-		AND a.auctioneer = #{userid}
-		AND (p.pname = #{searchtext2}
-		OR a.auctionname = #{searchtext2})
+		AND (p.pname LIKE #{searchtext2}
+		OR
+		a.auctionname LIKE #{searchtext2})
 	</select>
 
 	<!-- 옥션 사용자 Chat 관련 -->
