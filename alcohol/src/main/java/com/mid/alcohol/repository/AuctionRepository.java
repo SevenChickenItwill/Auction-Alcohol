@@ -53,5 +53,11 @@ public interface AuctionRepository {
 	
 	// 경매 목록 불러오기
 	List<AuctionListDto> readAllAuctionList();
+	
+	// 진행중 경매 목록 불러오기
+	List<AuctionListDto> readIngAuctionList();
+	
+	// 종료된 경매 목록 불러오기
+	List<AuctionListDto> readEndAuctionList();
 }
 

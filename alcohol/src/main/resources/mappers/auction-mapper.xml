@@ -54,6 +54,25 @@
         from auction a
         JOIN auctionProducts p
         ON a.productid = p.productid
+        WHERE a.status = 1 or a.status = 2
+        ORDER BY a.aid desc
+    </select>
+    
+    <select id="readIngAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
+        select *
+        from auction a
+        JOIN auctionProducts p
+        ON a.productid = p.productid
+        WHERE a.status = 1
+        ORDER BY a.aid desc
+    </select>
+    
+    <select id="readEndAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
+        select *
+        from auction a
+        JOIN auctionProducts p
+        ON a.productid = p.productid
+        WHERE a.status = 2
         ORDER BY a.aid desc
     </select>
     

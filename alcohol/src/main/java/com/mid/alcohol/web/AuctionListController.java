@@ -28,4 +28,16 @@ public class AuctionListController {
 		List<AuctionListDto> list = auctionservice.readAlllist();
 		model.addAttribute("auctioninfo", list);
 	}
+	
+	@GetMapping("/auctioninglist")
+	public void auctionIngList(Model model) {
+		List<AuctionListDto> list = auctionservice.readInglist();
+		model.addAttribute("auctioninfo", list);
+	}
+	
+	@GetMapping("/auctionendlist")
+	public void auctionEndList(Model model) {
+		List<AuctionListDto> list = auctionservice.readEndlist();
+		model.addAttribute("auctioninfo", list);
+	}
 }

@@ -23,21 +23,6 @@
 
 
 <style>
-a:link {
-	color:secondary;
-}
-
-a:visited {
-	color : secondary;
-}
-
-a:hover {
-	color : secondary;
-}
-
-a:active {
-	color : secondary;
-}
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -98,8 +83,11 @@ a:active {
 	<header>
 		<div class="navbar navbar-dark bg-dark shadow-sm">
 			<div class="container">
-				<a href="#" class="navbar-brand d-flex align-items-center"> 
-				
+				<a href="#" class="navbar-brand d-flex align-items-center"> <svg
+						xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+						fill="none" stroke="currentColor" stroke-linecap="round"
+						stroke-linejoin="round" stroke-width="2" aria-hidden="true"
+						class="me-2" viewBox="0 0 24 24">
 						<path
 							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
 						<circle cx="12" cy="13" r="4"></circle></svg> <strong>Album</strong>
@@ -120,25 +108,20 @@ a:active {
 		<div class="row">
 		<div class="my-4 text-center">
 		<div class="btn-group center" role="group" aria-label="Basic radio toggle button group">
-					
-			<input for="totalList" type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked/> 
-				
+			<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" /> 
 				<label class="btn btn-outline-secondary" for="btnradio1">
-				<c:url var="totallist" value="/auction/auctionlist"/>
-					<a id="totalList" href="${ totallist }" style=" padding: 4px; text-decoration: none;">
-					전체
-					</a>
+					<c:url var="totallist" value="/auction/auctionlist"/>
+					<a href="${ totallist }" style=" padding: 4px; text-decoration: none;">전체</a>
 				</label> 
-					
-			<input for="ingList" type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" > 
+			<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" > 
 				<label class="btn btn-outline-secondary" for="btnradio2">
 					<c:url var="inglist" value="/auction/auctioninglist"/>
-					<a id="ingList" href="${ inglist }"  style=" text-decoration: none;">진행중</a>
+					<a href="${ inglist }" style="text-decoration: none;">진행중</a>
 				</label> 
-			<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" >
-				<label for="endList" class="btn btn-outline-secondary" for="btnradio3">
+			<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked>
+				<label class="btn btn-outline-secondary" for="btnradio3">
 					<c:url var="endlist" value="/auction/auctionendlist"/>
-					<a id="endList" href="${ endlist }"  style=" padding: 4px; text-decoration: none;">종료</a>
+					<a href="${ endlist }" style=" padding: 4px; text-decoration: none;">종료</a>
 				</label>
 		</div>
 		</div>
@@ -164,7 +147,7 @@ a:active {
 						<c:url var="viewauction" value="/auction/viewauction">
 							<c:param name="auctionName" value="${ list.auctionName }" />
 						</c:url>
-						<a href="${ viewauction }" style=" color:black; text-decoration: none;">
+						<a href="${ viewauction }">
 						<div class="col">
 							<div class="card shadow-sm">
 								<p class="my-1 mx-2">${ list.auctionName }</p>
