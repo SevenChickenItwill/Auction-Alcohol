@@ -10,7 +10,6 @@ import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatMemberDto;
-import com.mid.alcohol.dto.SearchProductDto;
 
 public interface AuctionRepository {
     
@@ -51,5 +50,8 @@ public interface AuctionRepository {
 	
 	// 채팅방 참여자 불러오기
 	List<ChatMemberDto> readChatMember();
+	
+	// 경매 목록 불러오기
+	List<AuctionListDto> readAllAuctionList();
 }
 

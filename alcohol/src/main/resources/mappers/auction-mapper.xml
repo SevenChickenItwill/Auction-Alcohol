@@ -49,6 +49,14 @@
         delete from auction where aid = #{aid}
     </delete>
     
+    <select id="readAllAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
+        select *
+        from auction a
+        JOIN auctionProducts p
+        ON a.productid = p.productid
+        ORDER BY a.aid desc
+    </select>
+    
     <!-- 옥션 사용자 Chat 관련 -->
     
     

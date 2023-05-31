@@ -122,6 +122,12 @@ public class AuctionService {
 	}
 
 	// 경매 운영 관련
+	public List<AuctionListDto> readAlllist() {
+		// TODO Auto-generated method stub
+		log.info("readlist()");
+
+		return auctionrepository.readAllAuctionList();
+	}
 
 	// 채팅방-유저 매핑
 	
