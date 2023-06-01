@@ -1,8 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.alcohol</groupId>
-    <artifactId>middelpj</artifactId>
+
+    <groupId>com.mid</groupId>
+    <artifactId>alcohol</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <description>Spring MVC &amp; MyBatis Example</description>
+
     <!-- 프로젝트에서 사용하는 라이브러리(의존성) 이름/버전 설정 -->
     <dependencies>
         <!-- Java EE(servlet/JSP, EL, action tag)을 사용하기 위해 jakarta.servlet-api을 이용한다. -->
@@ -128,22 +132,34 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.1</version>
         </dependency>
-        <!-- Web Socket -->
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>6.0.9</version>
-        </dependency>
-         Web Socket Api(JAVA-X)
+
+                <!-- Web Socket -->
         <dependency>
-            <groupId>javax.websocket</groupId>
-            <artifactId>javax.websocket-api</artifactId>
-            <version>1.1</version>
-        </dependency>-->
+    		<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+    		<version>6.0.9</version>
+		</dependency>
+		<!-- Web Socket Api(JAVA-X)-->
+        <dependency>
+    		<groupId>javax.websocket</groupId>
+    		<artifactId>javax.websocket-api</artifactId>
+    		<version>1.1</version>
+		</dependency>
+        <!-- Spring-messaging -->
+        <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-messaging</artifactId>
+    <version>6.0.9</version>
+</dependency>
+		<!-- stomp-websoc -->
+		<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>stomp-websocket</artifactId>
+    <version>2.3.4</version>
+</dependency>
     </dependencies>
-    <packaging>war</packaging>
     <build>
-        <testSourceDirectory>src/test/main</testSourceDirectory>
+
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
