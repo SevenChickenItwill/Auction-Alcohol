@@ -317,7 +317,10 @@
 		a.auctionname LIKE #{searchtext2})
 	</select>
 
-		<select id="readAllAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
+
+
+	<select id="readAllAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
+
         select *
         from auction a
         JOIN auctionProducts p
@@ -345,6 +348,7 @@
     </select>
 
 	<!-- 옥션 사용자 Chat 관련 -->
+	
 
 
 

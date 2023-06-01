@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mid.alcohol.repository.BulletinboardRepository">
+    
+    <!-- 전체 게시글 보기 -->
+    <select id="selectAllOrderByIdDesc" resultType="com.mid.alcohol.domain.Bulletinboard">
+        select * from BULLETINBOARD order by BOARD_ID desc
+    </select>
+    
+    <!-- 글 작성 -->
+    <insert id="bulletinboardInsert">
+        insert into BULLETINBOARD (CATEGORY, TITLE, IMAGE, NICKNAME, USER_ID, CONTENT)
+        values (#{category}, #{title}, #{image}, #{nickname}, #{user_id}, #{content})
+    </insert>
+    
+    <!-- 게시글 상세보기 -->
+    <select id="selectById" resultType="com.mid.alcohol.dto.BulletinboardDetailDto">
+        select * from BULLETINBOARD where BOARD_ID = #{board_id}
+    </select>
+    
+</mapper>

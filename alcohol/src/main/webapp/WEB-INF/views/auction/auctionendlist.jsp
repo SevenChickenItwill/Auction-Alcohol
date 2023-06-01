@@ -147,6 +147,7 @@
 						<c:url var="viewauction" value="/auction/mainsite">
 							<c:param name="aid" value="${ list.aid }" />
 							<c:param name="auctionName" value="${ list.auctionName }" />
+							<c:param name="aid" value="${ list.aid }" />
 						</c:url>
 						<a href="${ viewauction }">
 						<div class="col">
@@ -161,6 +162,7 @@
 								<text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
 
 								<div class="card-body">
+									<p class="d-none">${ list.aid }</p>
 									<p>상품명: ${ list.pname }</p>
 									<p>브랜드: ${ list.brandname }</p>
 									<p>즉시낙찰가: ${ list.passbid }</p>

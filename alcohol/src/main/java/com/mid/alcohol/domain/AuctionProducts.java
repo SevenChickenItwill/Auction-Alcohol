@@ -3,6 +3,7 @@ package com.mid.alcohol.domain;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,3 +26,4 @@ public class AuctionProducts {
     private long cost; // 경매품 원가(매입가)
     
 }
+

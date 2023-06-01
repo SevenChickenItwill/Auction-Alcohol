@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,4 +43,14 @@ public class ProductRestController {
 		return ResponseEntity.ok(product);
 	}
 	
+	@PostMapping("/detailsearch")
+	public ResponseEntity<List<AuctionReadDto>> readDetail(@RequestBody AuctionReadDto dto) {
+		log.info("readDetail(dto={})", dto);
+		
+		List<AuctionReadDto> list = auctionProductService.readDetail(dto);
+		for (AuctionReadDto x : list) {
+			log.info("x=", x);
+		}
+		return ResponseEntity.ok(list);
+	}
 }
