@@ -44,11 +44,10 @@
 				<c:url var="search" value="/auction/auction">
 				</c:url>
 				<form method="post" action="${ search }" id="searchForm">
-					<label class="form-label card" for="searchtext">검색 내용</label> <input
-						class="card form-control" name="searchtext" id="searchtext"
-						type="text" /> <input class="d-none" type="text" name="userid"
-						value="test" /> <input class="btn form-control" type="submit"
-						id="btnAuctionSearch" value="검색" />
+					<label class="form-label card" for="searchtext">검색 내용</label> 
+					<input class="card form-control" name="searchtext" id="searchtext" type="text" /> 
+					<input class="d-none" type="text" name="userid"	value="test" /> 
+					<input class="btn form-control" type="submit" id="btnAuctionSearch" value="검색" />
 				</form>
 			</div>
 			<div class="card">

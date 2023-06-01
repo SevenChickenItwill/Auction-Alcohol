@@ -331,6 +331,8 @@
         WHERE a.status = 2
         ORDER BY a.aid desc
     </select>
+    
+    
 	<!-- 옥션 사용자 Chat 관련 -->
 	
 
