@@ -34,17 +34,17 @@ public class BulletinboardService {
         return bulletinboardRepository.selectById(id);
     }
 
-//    public int readByIdUpdate(Bulletnboard bulletnboard) {
-//        log.info("readByIdUpdate()");
-//        
-//        return dealRepository.bulletnboardUpdateById(bulletnboard);
-//    }
-//
-//    public int dealDelete(long id) {
-//        log.info("dealDelete(id= {})", id);
-//        
-//        return dealRepository.bulletnboardDeleteById(id);
-//    }
+    public int readByIdUpdate(Bulletinboard bulletnboard) {
+        log.info("readByIdUpdate()");
+        
+        return bulletinboardRepository.bulletinboardUpdateById(bulletnboard);
+    }
+
+    public int bulletinboardDelete(long board_id) {
+        log.info("dealDelete(id= {})", board_id);
+        
+        return bulletinboardRepository.bulletinboardDeleteById(board_id);
+    }
 
     public int create(BulletinboardCreateDto dto) {
         log.info("creat(dto= {})", dto);
@@ -53,23 +53,25 @@ public class BulletinboardService {
         return bulletinboardRepository.bulletinboardInsert(dto);
     }
 
-//    public List<BulletnboardListDto> search(String category, String keyword) {
-//        log.info("searech(category= {}, keyword= {})", category, keyword);
-//        
-//        if (category.equals("t")) {
-//            return dealRepository.selectWhereTitle(keyword).stream().map(BulletnboardListDto::fromEntity).toList();
-//        } else if (category.equals("c")) {
-//            return dealRepository.selectWhereContent(keyword).stream().map(BulletnboardListDto::fromEntity).toList();
-//        } else if (category.equals("tc")) {
-//            return dealRepository.selectWhereTitleAndContent(keyword).stream().map(BulletnboardListDto::fromEntity).toList();
-//        } else if (category.equals("n")) {
-//            return dealRepository.selectWhereNickname(keyword).stream().map(BulletnboardListDto::fromEntity).toList();
-//        } else if (category.equals("i")) {
-//            return dealRepository.selectWhereUserId(keyword).stream().map(BulletnboardListDto::fromEntity).toList();
-//        }
-//        
-//        return null;
-//    }
+    public List<BulletinboardListDto> search(String category, String keyword) {
+        log.info("searech(category= {}, keyword= {})", category, keyword);
+        
+        if (category.equals("t")) {
+            return bulletinboardRepository.selectWhereTitle(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        } else if (category.equals("c")) {
+            return bulletinboardRepository.selectWhereContent(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        } else if (category.equals("tc")) {
+            String keywordT = keyword;
+            String keywordC = keywordT;
+            return bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC).stream().map(BulletinboardListDto::fromEntity).toList();
+        } else if (category.equals("n")) {
+            return bulletinboardRepository.selectWhereNickname(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        } else if (category.equals("i")) {
+            return bulletinboardRepository.selectWhereUserId(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        }
+        
+        return null;
+    }
     
     
     

@@ -16,5 +16,17 @@ public interface BulletinboardRepository {
     
     BulletinboardDetailDto selectById(long id);
     
+    int bulletinboardDeleteById(long board_id);
     
+    int bulletinboardUpdateById(Bulletinboard bulletnboard);
+    
+    List<Bulletinboard> selectWhereTitle(String keyword);
+    
+    List<Bulletinboard> selectWhereContent(String keyword);
+    
+    List<Bulletinboard> selectWhereTitleAndContent(String keywordT, String keywordC);
+    
+    List<Bulletinboard> selectWhereNickname(String keyword);
+
+    List<Bulletinboard> selectWhereUserId(String keyword);
 }
