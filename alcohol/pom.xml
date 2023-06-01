@@ -24,7 +24,9 @@
             <groupId>org.glassfish.web</groupId>
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>3.0.1</version>
-        </dependency>   
+
+        </dependency>
+
         <!-- JUnit Test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -130,19 +132,32 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.15.1</version>
         </dependency>
-        
+
+                <!-- Web Socket -->
+        <dependency>
+    		<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+    		<version>6.0.9</version>
+		</dependency>
+		<!-- Web Socket Api(JAVA-X)-->
+        <dependency>
+    		<groupId>javax.websocket</groupId>
+    		<artifactId>javax.websocket-api</artifactId>
+    		<version>1.1</version>
+		</dependency>
         <!-- Spring-messaging -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>6.0.9</version>
-        </dependency>
-        <!-- stomp-websoc -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>stomp-websocket</artifactId>
-            <version>2.3.4</version>
-        </dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-messaging</artifactId>
+    <version>6.0.9</version>
+</dependency>
+		<!-- stomp-websoc -->
+		<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>stomp-websocket</artifactId>
+    <version>2.3.4</version>
+</dependency>
+
     </dependencies>
     <build>
         <plugins>
