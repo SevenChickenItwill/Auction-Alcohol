@@ -7,7 +7,7 @@
     <!-- PK ID로 댓글 읽어오기 -->
     <select id = "selectById"
         resultType="com.mid.alcohol.domain.Comment">
-        select * from COMMENTS where COMMENTID = #{comment_id}
+        select * from COMMENTS where COMMENT_ID = #{comment_id}
         </select>
     
     <!-- BODARD ID로 댓글 읽어오기 -->
@@ -23,13 +23,13 @@
     <update id="update">
         update COMMENTS
         set CONTENT = #{content}, TIME = systimestamp
-        where COMMENTID = #{comment_id}
+        where COMMENT_ID = #{comment_id}
     </update>
 
     <!-- 댓글 삭제 -->  
     <delete id="delete">
         delete from COMMENTS
-        where COMMENTID = #{comment_id}
+        where COMMENT_ID = #{comment_id}
     </delete>
 
     <!-- 댓글 생성 -->

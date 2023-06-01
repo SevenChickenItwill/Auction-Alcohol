@@ -21,6 +21,8 @@ public class CommentService {
     
     private final CommentRepository commentRepository;
         
+    
+    
     public int create(CommentCreateDto dto) {
         log.info("create(dto={})", dto);
         
@@ -52,6 +54,8 @@ public class CommentService {
         
         return commentRepository.delete(commentId);
     }
+
+
     
     
 }
