@@ -22,4 +22,24 @@
 		set pname = #{pName}, category = #{category}, brandname = #{brandName}, constructor = #{constructor}, cost = #{cost}
 		WHERE productid = #{productId}
 	</update>
+	
+	<select id="readDetail" resultType="com.mid.alcohol.dto.AuctionReadDto">
+    	SELECT * 
+    	FROM auctionproducts
+    	where
+    		userid = #{userId}
+    		<if test="category != 50">
+    			AND category LIKE #{category}
+    		</if>
+    		<if test="pName != ''">
+    			AND pname LIKE #{pName}
+    		</if>
+    		<if test="constructor != ''">
+    			AND constructor = #{constructor}
+    		</if>
+    		<if test="brandName != ''">
+    			AND brandname LIKE #{brandName}
+    		</if>
+    	
+    </select>
 </mapper>

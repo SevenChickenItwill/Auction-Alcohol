@@ -72,5 +72,15 @@ public class AuctionProductService {
 		int result = auctionpdrepository.updateProduct(dto.toEntity());
 		return result;
 	}
+
+	public List<AuctionReadDto> readDetail(AuctionReadDto dto) {
+		
+		log.info("service readDetail(dto={})", dto);
+		
+		AuctionProducts entity = dto.toEntity();
+		log.info("service entity={}", entity);
+		
+		return auctionpdrepository.readDetail(entity);
+	}
 	
 }
