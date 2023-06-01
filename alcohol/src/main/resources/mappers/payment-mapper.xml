@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
+<mapper namespace="com.mid.alcohol.repository.PaymentRepository">
+ 	<update id="updateDeliveryInfo">
+ 		UPDATE payment
+ 		SET ORDER_NAME = #{order_name}, ORDER_ADRESS = #{order_adress}, ORDER_PHONE = #{order_phone}, ORDER_EMAIL = #{order_email}
+ 		WHERE ORDER_ID = #{order_id}
+ 	</update>
+</mapper>

@@ -2,6 +2,7 @@ package com.mid.alcohol.domain;
 
 import java.time.LocalDateTime;
 
+import jakarta.servlet.http.Part;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
