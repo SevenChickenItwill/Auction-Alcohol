@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper.xml -->
+<mapper namespace="com.mid.alcohol.repository.UserRepository">
+  
+  <!-- 회원가입 -->
+  <insert id="userEmailSignup">
+    INSERT INTO USERS (userEmail)
+    VALUES (#{userEmail})
+  </insert>
+  
+  <insert id="userMainSignup" >
+    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userBirthday, userJoindate, userGender)
+    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userBirthday}, #{userJoindate}, #{userGender})
+    
+  </insert>
+
+  <!-- 아이디로 사용자 조회 -->
+  <select id="findByUserEmail" resultType="com.mid.alcohol.domain.User">
+    select * from USERS where userEmail = #{userEmail}
+  </select>
+  
+</mapper>

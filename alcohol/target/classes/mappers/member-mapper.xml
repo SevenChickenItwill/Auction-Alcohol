@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- UserMapper.xml -->
+<mapper namespace="com.mid.alohol.repository.memberMapper">
+  
+  <!-- 회원가입 -->
+  <insert id="registerMember" parameterType="com.mid.domain.Mamber">
+    INSERT INTO Users (memberId, memberPassword, memberPasswordSame, memberName, memberAge, memberPhone, memberEmail, memberBerthday, memberJoindate, memberGender)
+    VALUES (#{memberId}, #{memberPassword}, #{memberPasswordSame}, #{memberName}, #{memberAge}, #{memberPhone}, #{memberEmail}, #{memberBerthday}, #{memberJoindate}, #{memberGender})
+  </insert>
+
+  <!-- 아이디로 사용자 조회 -->
+  <select id="findByMemberId" parameterType="String" resultType="com.mid.domain.Mamber">
+    SELECT * FROM Users WHERE memberId = #{memberId}
+  </select>
+  
+</mapper>
