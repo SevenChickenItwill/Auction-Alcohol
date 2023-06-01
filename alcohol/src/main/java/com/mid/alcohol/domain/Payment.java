@@ -11,14 +11,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Payment {
-	private int memberId; // TODO:
-	private String userId; // 회원 아이디
-    private String memberPassword;	// 회원 비밀번호
-    private String memberName; // 회원 이름
-    private String memberAge; // 회원 나이
-    private String memberGender; // 회원 성별
-    private String memberadress; // 회원 주소
-    private String memberPhone; // 회원 전화번호
-    private String memberEmail; // 회원 이메일
-    private Timestamp memberBirthday; // 회원 생년월일
+	private String order_id; // 주문자 아이디
+	private String order_name; // 주문자 이름
+    private String order_phone;	// 주문자 핸드폰 번호
+    private String order_adress; // 주문자 주소
+    private String order_email; // 주문자 이메일
+    private int product_price; // 상품 가격
+    private int total_price; // 총 결제 금액
+    private int product_quantity; // 상품 수량
+    private String product_name;	// 상품 이름
+    private String product_info;	// 상품 정보(간략한 설명)
+    private int delivery_fee;	// 배송비
+    private String card_number;  // 카드 번호
 }
