@@ -20,4 +20,45 @@
         select * from BULLETINBOARD where BOARD_ID = #{board_id}
     </select>
     
+    <!-- 글 삭제하기(delete) -->
+    <delete id="bulletinboardDeleteById">
+        delete from BULLETINBOARD where BOARD_ID = #{board_id}
+    </delete>
+    
+    <!-- 게시글 수정하기(업데이트) -->
+    <update id="bulletinboardUpdateById">
+        update BULLETINBOARD
+        set TITLE= #{title}, IMAGE= #{image}, CONTENT= #{content}, TIME= systimestamp
+        where BOARD_ID= #{board_id}
+    </update>
+    
+    <!-- 검색하기 (title, content, title and content, nickname, user_id) -->
+    <!-- 글 제목으로 검색하기 -->
+    <select id="selectWhereTitle" resultType="com.mid.alcohol.domain.Bulletinboard">
+        select * from BULLETINBOARD where lower(TITLE) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    </select>
+    
+    <!-- 글 내용으로 검색하기 -->
+    <select id="selectWhereContent" resultType="com.mid.alcohol.domain.Bulletinboard">
+        select * from BULLETINBOARD where lower(CONTENT) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    </select>
+    
+    <!-- 제목과 내용으로 검색하기 -->
+    <select id="selectWhereTitleAndContent" resultType="com.mid.alcohol.domain.Bulletinboard">
+        select * from BULLETINBOARD 
+        where lower(TITLE) like lower('%' || #{keywordT} || '%') or lower(CONTENT) like lower('%' || #{keywordC} || '%') 
+        order by BOARD_ID desc
+    </select>
+    
+    <!-- 닉네임으로 검색하기 -->
+    <select id="selectWhereNickname" resultType="com.mid.alcohol.domain.Bulletinboard">
+        select * from BULLETINBOARD where lower(NICKNAME) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    </select>
+    
+    <!-- 유저 아이디로 검색하기 -->
+    <select id="selectWhereUserId" resultType="com.mid.alcohol.domain.Bulletinboard">
+        select * from BULLETINBOARD where lower(USER_ID) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    </select>
+    
+    
 </mapper>

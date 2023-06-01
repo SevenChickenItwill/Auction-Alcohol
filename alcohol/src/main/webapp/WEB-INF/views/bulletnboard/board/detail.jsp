@@ -22,7 +22,8 @@
         <main>
             
             <section>
-                <form>
+                <form id="boardForm">
+                    <input type="hidden" value="${ board.board_id }" id="boardId" name="board_id" />
                     <div>
                         <span>${ board.title }</span>
                     </div>
@@ -55,7 +56,7 @@
                     </c:url>
                     <a href="${ boardModify }">수정하기</a>
                     
-                    / 삭제하기
+                    <a id="deleteBtn">삭제하기</a>
                 </span>
                 
             </section>
@@ -69,7 +70,7 @@
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
                 crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            
+            <script src="../../static/js/board-detail.js"></script>
         </div>
         
     </body>
