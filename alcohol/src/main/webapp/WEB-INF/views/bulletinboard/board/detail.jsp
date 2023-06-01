@@ -58,7 +58,41 @@
                     
                     <a id="deleteBtn">삭제하기</a>
                 </span>
+                 <div>
+                    <span>댓글[개수]</span>
+                </div>
                 
+                
+                <div>
+                    <form id="commentForm">
+                        <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
+                    </form>
+                    
+                    <div>
+                        <table>        
+                            <thead>
+                                <tr>
+                                    <th>닉네임</th>
+                                    <th>작성시간</th>
+                                </tr>
+                            </thead>       
+                              <tbody>    
+                                <c:forEach items="${ comment }" var="comments">
+                                    <tr>
+                                        <td>${ comments.content }</td>
+                                        <td>${ comments.nickname }</td>
+                                        <td>
+                                            <fmt:formatDate value="${ comments.time }"
+                                                pattern="yyyy-MM-dd HH:mm"/>
+                                        </td>
+                                </c:forEach>
+                              </tbody> 
+                        </table>    
+                    </div>    
+                </div>
+                <div>    
+                    <button id="commentRegister">등록</button>
+                </div>
             </section>
             
             
