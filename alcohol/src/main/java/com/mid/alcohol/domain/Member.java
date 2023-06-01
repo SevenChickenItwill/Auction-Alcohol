@@ -26,7 +26,7 @@ public class Member {
     private String memberAdress; // 유저 주소
     private String memberPhone; // 유저 전화번호
     private String memberEmail; // 유저 이메일 
-    private LocalDateTime memberBerthday; // 유저 생년월일
+    private LocalDateTime memberBirthday; // 유저 생년월일
     private LocalDateTime memberJoindate; // 유저 가입 시간
     private String memberGender; // 유저 성별
     private long memberRanking; // 유저 등급

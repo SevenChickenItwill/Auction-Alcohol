@@ -18,7 +18,7 @@ import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.repository.AuctionRepository;
 
-import jakarta.annotation.PostConstruct;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
