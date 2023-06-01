@@ -144,7 +144,8 @@
 
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 					<c:forEach var="list" items="${ auctioninfo }">
-						<c:url var="viewauction" value="/auction/viewauction">
+						<c:url var="viewauction" value="/auction/mainsite">
+							<c:param name="aid" value="${ list.aid }" />
 							<c:param name="auctionName" value="${ list.auctionName }" />
 						</c:url>
 						<a href="${ viewauction }">

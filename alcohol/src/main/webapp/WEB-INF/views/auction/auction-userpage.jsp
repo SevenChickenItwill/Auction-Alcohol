@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <h1>경매명 + 물건이름 + 채팅방 + 경매번호</h1>
+        <h1>${ list2.auctionName } / ${ list2.pname }</h1>
     </header>
     <main>
         <section class="bg-color-yellow">

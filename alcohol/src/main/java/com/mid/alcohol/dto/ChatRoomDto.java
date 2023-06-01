@@ -5,6 +5,8 @@ import java.util.Set;
 
 import org.springframework.web.socket.WebSocketSession;
 
+import com.mid.alcohol.service.AuctionUserService;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,13 +20,20 @@ public class ChatRoomDto {
 
 	private long cid;
 	private String chatroom;
-	private Set<WebSocketSession> sessions = new HashSet<>();
+	
 	//WebSocketSession 은 Spring에서 WebSocket Connection 이 맺어진 세션.
 	
-	public static ChatRoomDto make(AuctionListDto dto) {
+	public static ChatRoomDto make(String chatroom, long cid) {
 		
-		ChatRoomDto chatroom = ChatRoomDto.builder().chatroom(dto.getAuctionName()).cid(dto.getAid()).build();
-		return chatroom;
+		
+		
+		ChatRoomDto chats = ChatRoomDto.builder().chatroom(chatroom).cid(cid).build();
+		return chats;
 	}
+	
+    
+
+    
+
 	
 }

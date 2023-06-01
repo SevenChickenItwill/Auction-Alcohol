@@ -90,8 +90,11 @@
                     <input class="d-none" value="${ detail.productId }" id="productId" name="productId" type="number" readonly="readonly" />
                 </div>
                 <div>
+                	<c:if test="${ detail.status < 1 }">
                     <input type="submit" value="수정" class="btn">
+                    </c:if>
                     <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete">삭제</button>
+                    
                 </div>
             </form>
             

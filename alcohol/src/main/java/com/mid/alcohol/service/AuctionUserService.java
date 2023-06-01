@@ -1,22 +1,30 @@
 package com.mid.alcohol.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketSession;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mid.alcohol.domain.Chat;
 import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.ChatListDto;
-
+import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.repository.AuctionRepository;
 
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class AuctionUserService {
 	// 사실상 채팅방 관리 클래스(ChatRoomManager)
 	@Autowired
@@ -38,7 +46,11 @@ public class AuctionUserService {
 
 		Map<Long, List<ChatListDto>> map = readChatData();
 		log.info("readChatDataOne({})", cid);
-
+		
+		if(map.size()==0) {
+			return new ArrayList<ChatListDto>();
+		}
+		
 		List<ChatListDto> list = map.get(cid);
 		log.info("{}", list);
 
@@ -59,14 +71,6 @@ public class AuctionUserService {
 
 	}
 
-	// 방생성하기
-	public int createChatRoom(UserAuction chatroom) {
-		log.info("createChatRoom({})", chatroom);
-		int result = auctionrepository.createChatRoom(chatroom);
-		log.info("result = {}", result);
-		return result;
-	}
-
 	// 채팅 실행하기
 	public int createChatContent(Chat chat) {
 
@@ -81,10 +85,9 @@ public class AuctionUserService {
 	public int deleteChatRoom(long cid) {
 		log.info("deleteChatRoom(cid={})", cid);
 
-		int result = deleteChatContent(cid);
-		log.info("row : {} is delete", result);
-
-		result = deleteChatRoom(cid);
+		
+		
+		int result = auctionrepository.deleteChatRoom(cid);
 		log.info("{} 개 방 삭제", result);
 
 		return result;
@@ -98,5 +101,9 @@ public class AuctionUserService {
 		int result = auctionrepository.deleteChatContents(cid);
 		return result;
 	}
+	
+
+	
+	
 
 }

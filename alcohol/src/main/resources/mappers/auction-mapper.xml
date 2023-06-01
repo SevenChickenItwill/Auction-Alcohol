@@ -366,9 +366,9 @@
 	</select>
 
 	<insert id="createChatRoom">
-		INSERT INTO userAuction( chatroom, membercount )
+		INSERT INTO userAuction( chatroom, cid )
 		VALUES (#{chatroom},
-		#{membercount})
+		#{cid})
 	</insert>
 
 	<insert id="createChatContents">
