@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Bulletnboard {
+public class Bulletinboard {
     
     private long board_id; // 고유 게시글 아이디
     private String title; // 게시글 제목
@@ -22,6 +22,7 @@ public class Bulletnboard {
     private long recommend; // 게시글 추천수
     private String content; // 게시글 내용
     private String image; // 게시글 이미지
+    private String thum_image; // 게시글 썸네일 이미지
     private int category; // 게시글 종류 ( 1 -> 일반글작성, 0 -> 공지사항글 작성)
     
     

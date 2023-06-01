@@ -2,16 +2,18 @@ package com.mid.alcohol.dto;
 
 import java.sql.Timestamp;
 
-import com.mid.alcohol.domain.Bulletnboard;
+import com.mid.alcohol.domain.Bulletinboard;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @AllArgsConstructor
-public class BulletnboardDetailDto {
+@NoArgsConstructor
+public class BulletinboardDetailDto {
     
     private long board_id; // 게시글 고유 번호
     private String image; // 게시글 이미지
@@ -23,8 +25,8 @@ public class BulletnboardDetailDto {
     private long recommend; // 게시글 추천수
     private String content; // 게시글 내용
     
-    public static BulletnboardDetailDto fromEntity(Bulletnboard entity) {
-        return BulletnboardDetailDto.builder()
+    public static BulletinboardDetailDto fromEntity(Bulletinboard entity) {
+        return BulletinboardDetailDto.builder()
                 .board_id(entity.getBoard_id())
                 .image(entity.getImage())
                 .title(entity.getTitle())
