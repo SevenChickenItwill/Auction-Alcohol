@@ -22,22 +22,20 @@
     <nav>
         <div>
             <ul>
-                <li>
-                    <c:url value="/bulletinboard/board/create" var="dealCreated" />
-                    <a href="${ dealCreated }">새글작성</a>
+                <li><c:url value="/bulletinboard/board/create"
+                        var="dealCreated" /> <a href="${ dealCreated }">새글작성</a>
                 </li>
-                <li>
-                    <c:url value="/" var="mainPage" /> 
-                    <a href="${ mainPage }">메인페이지</a>
-                </li>
+                <li><c:url value="/" var="mainPage" /> <a
+                    href="${ mainPage }">메인페이지</a></li>
             </ul>
         </div>
     </nav>
 
     <main>
-        
+
         <!-- 포스트 테이블 -->
-        <div class="">
+
+        <div>
             <c:set var="len" value="${ length }"></c:set>
             <c:set var="count" value="${ pageCount }" />
             <c:set var="nums" value="${ param.num }" />
@@ -45,6 +43,13 @@
 
             <c:forEach items="${ boards }" var="board"
                 begin="${ count }" end="${ maxIndex - 1 }">
+                <c:url var="detailPage" value="/bulletinboard/board/detail">
+                    <c:param name="id" value="${ board.board_id }"></c:param>
+                </c:url>
+                <a href="${ detailPage }">
+
+                <input type="hidden" value="${ board.board_id }"
+                    id="boardId" />
 
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
@@ -61,19 +66,20 @@
                                 <!-- 닉네임(아이디) ㅣ 시간 ㅣ 조회수 ㅣ 추천수   대로 나타냄 -->
                                 <p class="card-text">
                                     <small class="text-body-secondary">${ board.nickname }(${ board.board_id }),
-                                            <fmt:formatDate
-                                                value="${ board.time }"
-                                                pattern="yyyy-MM-dd HH:mm" />,${ board.recommend },[${ board.rcnt }]
-                                                </small>
+                                        <fmt:formatDate
+                                            value="${ board.time }"
+                                            pattern="yyyy-MM-dd HH:mm" />,${ board.recommend },[${ board.rcnt }]
+                                    </small>
                                 </p>
                                 <p class="card-text">${ board.content }</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                </a>
             </c:forEach>
         </div>
-        
+
         <div>
             <c:url var="nextlist" value="/bulletinboard/board/list">
                 <c:choose>
@@ -189,7 +195,7 @@
                 value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
             <a href="${ maxIndex }"><button>&gt;&gt;</button></a>
         </div>
-        
+
         <!-- 검색 -->
         <c:url value="/bulletinboard/board/search" var="searchPage">
             <c:param name="pagenum" value="0" />
@@ -204,8 +210,8 @@
             </select> <input type="text" name="keyword" placeholder="검색어"
                 required /> <input type="submit" value="검색" />
         </form>
-        
-        
+
+
     </main>
 
     <div>

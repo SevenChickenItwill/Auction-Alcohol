@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
@@ -45,13 +46,13 @@ public class BulletinboardService {
 //        return dealRepository.bulletnboardDeleteById(id);
 //    }
 
-//    public int create(BulletnboardDetailDto dto) {
-//        log.info("creat(dto= {})", dto);
-//        
-//        
-//        return dealRepository.BulletnboardInsert(dto);
-//    }
-//
+    public int create(BulletinboardCreateDto dto) {
+        log.info("creat(dto= {})", dto);
+        
+        
+        return bulletinboardRepository.bulletinboardInsert(dto);
+    }
+
 //    public List<BulletnboardListDto> search(String category, String keyword) {
 //        log.info("searech(category= {}, keyword= {})", category, keyword);
 //        

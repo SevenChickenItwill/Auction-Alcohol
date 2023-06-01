@@ -1,7 +1,5 @@
 package com.mid.alcohol.dto;
 
-import java.sql.Timestamp;
-
 import com.mid.alcohol.domain.Bulletinboard;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class BulletinboardCreateDto {
     
+    private int category;
     private String nickname;
     private String user_id;
     private String title;
@@ -23,6 +22,7 @@ public class BulletinboardCreateDto {
     
     public Bulletinboard entity(Bulletinboard bulletinboard) {
         return bulletinboard.builder()
+                .category(category)
                 .title(title)
                 .image(image)
                 .nickname(nickname)

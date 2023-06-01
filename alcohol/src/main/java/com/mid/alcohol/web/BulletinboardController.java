@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
@@ -171,15 +173,15 @@ public class BulletinboardController {
         log.info("create()");
     }
     
-//    @PostMapping("/create")
-//    public String postCreate(BulletnboardCreateDto dto) {
-//        log.info("postCreate(dto= {})", dto);
-//        
-//        int result = dealService.create(dto);
-//        log.info("생성 수 = {}", result);
-//        
-//        return "redirect:/deal/comment/comment-list";
-//    }
+    @PostMapping("/create")
+    public String boardCreate(BulletinboardCreateDto dto) {
+        log.info("boardCreate(dto= {}, category= {})", dto, dto.getCategory());
+        
+        int result = bulletinboardService.create(dto);
+        log.info("생성 수 = {}", result);
+        
+        return "redirect:/bulletinboard/board/list?num=0";
+    }
     
     
     

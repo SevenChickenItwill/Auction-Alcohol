@@ -11,8 +11,8 @@
     
     <!-- 글 작성 -->
     <insert id="bulletinboardInsert">
-        insert into BULLETINBOARD (TITLE, IMAGE, NICKNAME, USER_ID, CONTENT)
-        values (#{title}, #{image}, #{nickname}, #{user_id}, #{content})
+        insert into BULLETINBOARD (CATEGORY, TITLE, IMAGE, NICKNAME, USER_ID, CONTENT)
+        values (#{category}, #{title}, #{image}, #{nickname}, #{user_id}, #{content})
     </insert>
     
     <!-- 게시글 상세보기 -->
