@@ -7,16 +7,15 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-public class HomeController {
+public class HomeContoller {
     
     @GetMapping("/")
     public String home() {
         log.info("home()");
         
-        return "index";
+        return "signup";
     }
     
-
     
 
 
