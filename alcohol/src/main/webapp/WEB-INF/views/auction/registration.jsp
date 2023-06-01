@@ -21,45 +21,45 @@
         
         <br />
         
-		<div class="card">
+		<div>
             <c:url var="postRegistration" value="/auction/registration"/>
-            <form name="createform" id="createform" action="${ postRegistration }" method="post">
+            <form class="card" name="createform" id="createform">
                
-                <div>
+                <div class="form-control">
                     <!-- TODO: value test -> ${id}로 바꾸기 -->
                     <input id="id" value="test" name="auctioneer" class="d-none"/>
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="auctionName">경매명</label>
                     <input id="auctionName" name="auctionName" type="text">
                 </div>
                 
-                <div>
+                <div class="form-control">
                     <label for="pname">상품명</label>
                     <input id="pname" name="pname" type="text">
-                    <button id="btnProductSearch">내 상품 찾기</button>
+                    <button class="btn btn-outline-dark" id="btnProductSearch">내 상품 찾기</button>
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="constructor">제조사(생산자)</label>
                     <input id="constructor" name="constructor" type="text" readonly="readonly">
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="brandname">브랜드</label>
                     <input id="brandname" name="brandname" type="text" readonly="readonly">
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="category">종류</label>
                     <input id="category" name="category" type="text" readonly="readonly">
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="passBid">즉시 낙찰가</label>
-                    <input id="passbid" name="passbid" type="number">
+                    <input id="passbid" name="passbid" type="number" value="100000">
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="auctionStart">경매 시작일</label>
                     <input id="auctionStart" name="auctionStart" type="datetime-local">
                 </div>
-                <div>
+                <div class="form-control">
                     <label for="auctionEnd">경매 종료일</label>
                     <input id="auctionEnd" name="auctionEnd" type="datetime-local">
                 </div>
@@ -67,21 +67,20 @@
                     <!-- 현재 입찰가(시작가) -->
                     <input id="nowBid" name="nowBid" type="number">
                 </div>
-                <div>
+                <div class="form-control">
                     <!-- 상품코드 -->
                     <input class="d-none" id="productId" name="productId" type="number">
                 </div>
-                <div>
-                     <input type="submit" value="경매등록">
+                <div class="form-control">
+                     <button id="btncreateAuction" class="btn btn-outline-dark">경매 등록</button>
                 </div>
             </form>
         </div>
         
-        <div class="card">
-            <table>
+        <div class="table-responsive">
+            <table class="table align-middle">
                 <thead>
                     <tr>
-                    
                         <th class="d-none">상품코드</th>
                         <th>선택</th>
                         <th>상품명</th>
@@ -91,7 +90,7 @@
                         <th>원가</th>
                     </tr>
                 </thead>
-                <tbody id="productTboby">
+                <tbody id="productTboby" >
                     
                 </tbody>
             </table>
@@ -103,6 +102,6 @@
                 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
                 crossorigin="anonymous">
         </script>  
-        <script src="../static/js/auction-registration.js"></script>
+        <script src="../static/js/auction-registration2.js"></script>
 	</body>
 </html>

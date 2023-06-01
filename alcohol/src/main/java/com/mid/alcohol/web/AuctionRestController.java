@@ -15,8 +15,10 @@ import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.dto.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.service.AuctionService;
+import com.mid.alcohol.service.AuctionUserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -27,6 +29,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api/auction")
 public class AuctionRestController {
     
+	@Autowired
+	private AuctionUserService userservice;
+	
 	@Autowired
 	private AuctionService acservice;
 	
@@ -64,6 +69,9 @@ public class AuctionRestController {
 		
 		return ResponseEntity.ok(detailList);
 	}
+	
+	
+	
 	
 	
 }

@@ -90,8 +90,11 @@
                     <input class="d-none" value="${ detail.productId }" id="productId" name="productId" type="number" readonly="readonly" />
                 </div>
                 <div>
+                	<c:if test="${ detail.status < 1 }">
                     <input type="submit" value="수정" class="btn">
+                    </c:if>
                     <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete">삭제</button>
+                    
                 </div>
             </form>
             
@@ -120,7 +123,7 @@
     </div>
     <script src="../static/js/auction-delete.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="../static/js/auction-registration.js"></script>
+        <script src="../static/js/auction-registration2.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
                 crossorigin="anonymous">

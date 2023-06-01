@@ -20,6 +20,7 @@ import com.mid.alcohol.dto.AuctionOpenDto;
 import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.dto.ChatListDto;
+import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
 import com.mid.alcohol.repository.AuctionRepository;
@@ -36,6 +37,8 @@ public class AuctionService {
 	@Autowired
 	private AuctionRepository auctionrepository;
 
+	
+	
 	public List<AuctionListDto> searchAuction(AuctionSearchDto dto) {
 		dto.toSearch();
 		log.info("{}", dto.getSearchtext());
@@ -120,20 +123,26 @@ public class AuctionService {
 
 		Auction auction = dto.toEntity();
 		auction.setAid(aid);
-
+		if(dto.getStatus()==1) {
+			ChatRoomDto dto2= ChatRoomDto.make(dto.getAuctionName(),aid);
+			UserAuction chatroom = UserAuction.builder().chatroom(dto2.getChatroom()).cid(aid).build();
+			auctionrepository.createChatRoom(chatroom);
+			log.info("{} room is created",aid);
+		}
 		return auctionrepository.update(auction);
 	}
 
-	public int delete(int aid) {
-		// TODO Auto-generated method stub
+	public int delete(long aid) {
+		
 		log.info("delete({})", aid);
-
+		
+		
 		return auctionrepository.delete(aid);
 	}
 
 	public List<AuctionListDto> searchDetail(AuctionDetailSearchDto dto) {
 		// 경매 상세 검색
-
+		
 		dto.formChange(); // 무결성 통과를 위한 값 변환 진행
 
 		return selectByOption(dto);

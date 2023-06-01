@@ -10,9 +10,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class ChatInputDto {
-
+	
+	public enum MessageType{
+        ENTER, TALK
+    }
+	
+	private MessageType type;
 	private long cid;
 	private String userid;
 	private String conversation;
 	private int texttype;
+	
 }

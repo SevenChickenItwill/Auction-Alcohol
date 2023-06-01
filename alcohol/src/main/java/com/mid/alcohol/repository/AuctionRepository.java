@@ -2,6 +2,7 @@ package com.mid.alcohol.repository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 
 import com.mid.alcohol.domain.Auction;
 import com.mid.alcohol.domain.AuctionProducts;
@@ -13,6 +14,7 @@ import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatMemberDto;
 
+@Repository
 public interface AuctionRepository {
     
 	// 경매 관리 관련 SQL
@@ -30,7 +32,8 @@ public interface AuctionRepository {
 
 	int update(Auction auction);
 
-	int delete(int aid);
+	int delete(long aid);
+	
 	
 
 	List<AuctionListDto> detailreadfirst1(AuctionDetailSearchDto dto);
@@ -80,7 +83,7 @@ public interface AuctionRepository {
 	// 채팅방 삭제
 	int deleteChatRoom(long cid);
 
-
+	
 
 	
 	// 채팅방 참여자 불러오기

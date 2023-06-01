@@ -19,6 +19,7 @@ import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionOpenDto;
 import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.service.AuctionService;
+import com.mid.alcohol.service.AuctionUserService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -33,6 +34,9 @@ public class AuctionController {
 
 	@Autowired
 	private final AuctionService aucservice;
+	
+	@Autowired
+	private AuctionUserService userservice;
 	
     @GetMapping("/auction")
     public void management(Model model) {
@@ -115,11 +119,15 @@ public class AuctionController {
     }
     
     @GetMapping("/delete")
-    public String auctionDelete(@RequestParam int aid) {
+    public String auctionDelete(@RequestParam long aid) {
     	log.info("aid={}",aid);
     	
     	int result = aucservice.delete(aid);
     	log.info("delete = {}",result);
+    	result = userservice.deleteChatContent(aid);
+    	
+    	result = userservice.deleteChatRoom(aid);
+    	log.info("deletechatRoom = {}",result);
     	
     	return "redirect:/auction/auction";
     }
