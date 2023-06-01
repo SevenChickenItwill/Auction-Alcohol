@@ -199,15 +199,12 @@
                 value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
             <a href="${ maxIndex }"><button>&gt;&gt;</button></a>
         </div>
-        
-        
 
         <!-- 검색 -->
         <c:url value="/bulletinboard/board/search" var="searchPage">
-            <c:param name="pagenum" value="${ pagenum2 }"></c:param>
+            <c:param name="pagenum" value="0" />
         </c:url>
         <form action="${ searchPage }">
-            <input type="number" class="d-none" name="pagenum2" value="0" />
             <select name="category">
                 <option value="t">제목</option>
                 <option value="c">내용</option>
