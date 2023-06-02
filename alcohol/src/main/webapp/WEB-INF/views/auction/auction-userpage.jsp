@@ -23,13 +23,15 @@
     	<input class="d-none" id="loginid" name="loginid" type="text" value="${ loginid }" />
         <section class="bg-color-yellow">
         <div class="card" id="otherchatcontent">
-            <c:forEach items="${ list1 }" var="list">
-            	<c:if test="${ list1.userid == loginid }" >
-            		<input class="form-control text-bg-warning" type="text" value="${list1.userid} : ${list1.conversation}"/>
+        	
+            <c:forEach items="${ list1 }" var="list1">
+            <input class="d-none" name="listuserid" value="${list1.userid }" type="text" />
+            	<c:if test="${ listuserid ne loginid }" >
+            		<input class="form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
-            	<c:if test="${ list1.userid != loginid }" >
-            		<input class="form-control text-end text-bg-secondary" type="text" value="${list1.conversation} : ${list1.userid}"/>
+            	<c:if test="${ listuserid eq loginid }" >
+            		<input class="form-control text-end text-bg-warning" type="text" value="${list1.conversation} : ${list1.userid}"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             </c:forEach>

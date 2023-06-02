@@ -42,7 +42,7 @@ public class AuctionUserController {
 		
 		AuctionListDto auctiondto = aucservice.readOne(aid);
 		List<ChatListDto> chatdto = userservice.readChatDataOne(aid);
-		
+		log.info("list1 ={}", chatdto);
 		
 		model.addAttribute("list1", chatdto);
 		model.addAttribute("list2",auctiondto);
@@ -50,12 +50,7 @@ public class AuctionUserController {
 		return "/auction/auction-userpage";
 	}
 	
-	@GetMapping("/testmain")
-	public void testmain() {
-		
-		
-		
-	}
+	
 
 	
 
