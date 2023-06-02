@@ -10,9 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class PayHomeController {
 	
-	    @GetMapping("/paymain")
-	    public String home() {    	
-	        log.info("home()");
-	        return "payindex";
-	    }   	   
+	@GetMapping("/paymain")
+    public String home() {    	
+        log.info("home()");
+        return "payindex";
+    }   	   
 }
