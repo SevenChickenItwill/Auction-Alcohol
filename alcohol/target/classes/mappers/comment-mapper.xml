@@ -7,14 +7,14 @@
     <!-- PK ID로 댓글 읽어오기 -->
     <select id = "selectById"
         resultType="com.mid.alcohol.domain.Comment">
-        select * from COMMENTS where COMMENT_ID = #{comment_id}
+        select * from COMMENTS where COMMENT_ID = #{commentId}
         </select>
     
     <!-- BODARD ID로 댓글 읽어오기 -->
     <select id="selectByBoardId"
         resultType="com.mid.alcohol.domain.Comment">
         select * from COMMENTS
-        where BOARD_ID = #{board_id}
+        where BOARD_ID = #{boardId}
         order by TIME desc
     </select>
     
@@ -23,26 +23,26 @@
     <update id="update">
         update COMMENTS
         set CONTENT = #{content}, TIME = systimestamp
-        where COMMENT_ID = #{comment_id}
+        where COMMENT_ID = #{commentId}
     </update>
 
     <!-- 댓글 삭제 -->  
     <delete id="delete">
         delete from COMMENTS
-        where COMMENT_ID = #{comment_id}
+        where COMMENT_ID = #{commentId}
     </delete>
 
     <!-- 댓글 생성 -->
     <insert id="insert">
         insert into COMMENTS (board_id, nickname, content, time) 
-            values (#{board_id}, #{nickname}, #{content}, systimestamp) <!-- 모델 이름과 완벽히 일치 --> 
+            values (#{boardId}, #{nickname}, #{content}, systimestamp) <!-- 모델 이름과 완벽히 일치 --> 
     </insert>    
     
     <!-- 달린 댓글 갯수 세기 -->
     <select id="selectCommentCountWithDealId"
         resultType="java.lang.Long">
         select count(*) from COMMENTS
-        where BOARD_ID = #{board_id}
+        where BOARD_ID = #{boardId}
         </select>
 
 

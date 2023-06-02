@@ -58,8 +58,11 @@
                     
                     <a id="deleteBtn">삭제하기</a>
                 </span>
+                
                  <div>
-                    <span>댓글[개수]</span>
+                 <!-- 댓글 목록 보여줄 영역 -->
+                    <span>댓글</span>
+                    <span id="commentCount"></span>
                 </div>
                 
                 
@@ -67,32 +70,12 @@
                     <form id="commentForm">
                         <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
                     </form>
-                    
-                    <div>
-                        <table>        
-                            <thead>
-                                <tr>
-                                    <th>닉네임</th>
-                                    <th>작성시간</th>
-                                </tr>
-                            </thead>       
-                              <tbody>    
-                                <c:forEach items="${ comment }" var="comments">
-                                    <tr>
-                                        <td>${ comments.content }</td>
-                                        <td>${ comments.nickname }</td>
-                                        <td>
-                                            <fmt:formatDate value="${ comments.time }"
-                                                pattern="yyyy-MM-dd HH:mm"/>
-                                        </td>
-                                </c:forEach>
-                              </tbody> 
-                        </table>    
-                    </div>    
                 </div>
+                 
                 <div>    
                     <button id="commentRegister">등록</button>
                 </div>
+                <div id="replies"></div>
             </section>
             
             
@@ -104,7 +87,11 @@
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
                 crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="../../static/js/comment.js"></script>
             <script src="../../static/js/board-detail.js"></script>
+            
+            
+            
         </div>
         
     </body>

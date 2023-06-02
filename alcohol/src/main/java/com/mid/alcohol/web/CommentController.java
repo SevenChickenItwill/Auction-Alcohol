@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.mid.alcohol.domain.Comment;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.dto.CommentCreateDto;
+import com.mid.alcohol.dto.CommentListDto;
 import com.mid.alcohol.dto.CommentReadDto;
 import com.mid.alcohol.dto.CommentUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
@@ -26,45 +29,38 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("/bulletinboard/comment")
-@Controller
+@RequestMapping("/api/comment")
+@RestController
 public class CommentController {
 
     private final CommentService commentService;
     private final BulletinboardService bulletinboardService;
     
     
-    @GetMapping("/templist")
-    public void templist() {
-        
+    @GetMapping("/all/{boardId}")
+    public ResponseEntity<List<CommentListDto>> detail(@PathVariable long boardId) {
+    	log.info("detail=id{}", boardId);
+    	
+    	List<CommentListDto> dto = commentService.read(boardId);
+    	log.info("dto= {}", dto);
+    	
+    	return ResponseEntity.ok(dto);
+  
     }
     
-    
-    @PostMapping
-    public ResponseEntity<Integer> createComment(@RequestBody CommentCreateDto dto) {
-        log.info("CommentCreateDto(dto={}", dto);
-        
-        int result = commentService.create(dto);
-        
-        
-        return ResponseEntity.ok(result);
-        
-    }
-    
-    
-    @GetMapping("/comment-list")
-    public ResponseEntity<List<CommentReadDto>> read(@RequestParam("boardId") long boardId) {
-        log.info("read(dealId={})", boardId);
-        
-        List<CommentReadDto> list = commentService.read(boardId);
-        log.info("# of comment= {}", list.size());
-        
-        // 리턴 값이 없는 경우 뷰의 이름은 요청 주소와 같음.
-        // /WEB-INF/views/bulletinboard/comment/commentlist.jsp
-        
-        return ResponseEntity.ok(list);
-    }
-    
+//    @PostMapping
+//    public ResponseEntity<Integer> createComment(@RequestBody CommentCreateDto dto) {
+//        log.info("CommentCreateDto(dto={}", dto);
+//        
+//        int result = commentService.create(dto);
+//        
+//     
+//        
+//        return ResponseEntity.ok(result);
+//        
+//    }
+//    
+//    
     @PutMapping("/{commentId}")
     public ResponseEntity<Integer> updateReply(
             @PathVariable long commentId,
@@ -76,13 +72,13 @@ public class CommentController {
         return ResponseEntity.ok(result);
     }
     
-    @DeleteMapping("/{commentId}")
-    public ResponseEntity<Integer> deleteComment(@PathVariable long commentId) {
-        log.info("deleteComment={}", commentId);
-        
-        int result = commentService.delete(commentId);
-        
-        
-        return ResponseEntity.ok(result);
-    }
+//    @DeleteMapping("/{commentId}")
+//    public ResponseEntity<Integer> deleteComment(@PathVariable long commentId) {
+//        log.info("deleteComment={}", commentId);
+//        
+//        int result = commentService.delete(commentId);
+//        
+//        
+//        return ResponseEntity.ok(result);
+//    }
 }

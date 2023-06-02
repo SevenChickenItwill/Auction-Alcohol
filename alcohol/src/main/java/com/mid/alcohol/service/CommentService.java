@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.Comment;
 import com.mid.alcohol.dto.CommentCreateDto;
+import com.mid.alcohol.dto.CommentListDto;
 import com.mid.alcohol.dto.CommentReadDto;
 import com.mid.alcohol.dto.CommentUpdateDto;
 import com.mid.alcohol.repository.CommentRepository;
@@ -29,12 +30,14 @@ public class CommentService {
         return commentRepository.insert(dto.toEntity());
     }
 
-    public List<CommentReadDto> read(long boardId) {
+    
+    // 게시글 고유 번호로 댓글을 찾아 list에 저장, 댓글 읽어오기
+    public List<CommentListDto> read(long boardId) {
         log.info("read(boardId={})", boardId);
         
         List<Comment> list = commentRepository.selectByBoardId(boardId);
     
-        return list.stream().map(CommentReadDto::fromEntity).toList();
+        return list.stream().map(CommentListDto::fromEntity).toList();
     }
 
     public int update(long commentId, CommentUpdateDto dto) {
