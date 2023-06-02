@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.WebSocketSession;
 
 import com.mid.alcohol.domain.Chat;
 import com.mid.alcohol.domain.UserAuction;
@@ -49,15 +50,13 @@ public class AuctionUserController {
 		return "/auction/auction-userpage";
 	}
 	
-	@GetMapping("/chat/room/")
-	public String chatRoom(Model model, ChatListDto dto) {
+	@GetMapping("/testmain")
+	public void testmain() {
 		
-		List<UserAuction> chatRooms = userservice.readAllRoom();
-		model.addAttribute("chatroom", chatRooms);
-		model.addAttribute("chatinfo",dto);
-		return "auction-userpage";
+		
 		
 	}
+
 	
 
 }

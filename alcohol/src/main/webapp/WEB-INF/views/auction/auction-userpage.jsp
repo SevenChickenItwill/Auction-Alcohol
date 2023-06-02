@@ -18,18 +18,29 @@
         <h1>${ list2.auctionName } / ${ list2.pname }</h1>
     </header>
     <main>
+    	<%-- 로그인 완성되면 바꿔야할 변수, 세션값 받아오기 --%>
+    	<c:set var="loginid" value="다훈"></c:set>
+    	<input class="d-none" id="loginid" name="loginid" type="text" value="${ loginid }" />
         <section class="bg-color-yellow">
-        <div id="otherchatcontent">
-            <input type="text" readonly value="상대의채팅" />
+        <div class="card" id="otherchatcontent">
+            <c:forEach items="${ list1 }" var="list">
+            	<c:if test="${ list1.userid == loginid }" >
+            		<input class="form-control text-bg-warning" type="text" value="${list1.userid} : ${list1.conversation} // ${list1.cid}"/>
+            	</c:if>
+            	<c:if test="${ list1.userid != loginid }" >
+            		<input class="form-control text-end text-bg-secondary" type="text" value="${list1.cid} // ${list1.conversation} : ${list1.userid}"/>
+            	</c:if>
+            </c:forEach>
         </div>
-        <div id="mychatcontent">
-            <input type="text" readonly value="나의 채팅" />    
-        </div>
+        
         </section>
         <div class="card" id="chatsubmit">
+        	<input type="number" class="d-none" id="cid" name="cid" value="${list2.aid }" />
+        	<input type="text" class="card" id="userid" name="userid" />
             <input type="text" class="card" id="chatcontent" name="chatcontent" />
             <button class="btn" id="btnsubmit">전송</button>
             <button class="btn" id="btnbat">배팅</button>
+            <button class="btn" id="btnconn">연결</button>
         </div>
     </main>
 
