@@ -57,24 +57,19 @@
                             <br />
                             <input type="text" id="userAddress" name="userAddress" placeholder="ADDRESS" required >
                         </div>
-                        <div>
+                        <div> 
                             <label for="userPhone">전화번호</label>
                             <br />
                             <input type="text" id="userPhone" name="userPhone" placeholder="PHONE" required>
-                        </div>
-                        <!-- TODO: 
-                        <div>
-                            <label for="userAge">나이</label>
-                            <input type="number" id="userAge" name="userAge" placeholder="AGE" required />
-                        </div> -->
-                        
+                            <!--  <small id="phoneErrorMessage" style="color: red;"></small> -->
+                        </div>  
                     </div>
                     <div>
                         <div>
                             <!-- 체크박스 -->
-                            <input type="radio" name="userGender" value="1" id="userGender" required />
+                            <input type="radio" name="userGender" value="남성" id="userGender" required />
                             <label for="cb1">남성</label>
-                            <input type="radio" name="userGender" value="2" id="userGender" required />
+                            <input type="radio" name="userGender" value="여성" id="userGender" required />
                             <label for="cb2">여성</label>
                         </div>
                     </div>

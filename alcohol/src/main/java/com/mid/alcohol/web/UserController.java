@@ -1,5 +1,6 @@
 package com.mid.alcohol.web;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,6 @@ import com.mid.alcohol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -67,18 +67,22 @@ public class UserController {
     public void signupCompletion() {
         log.info("signupCompletion()");
     }
+        
     
-    // 회원가입 완료 페이지에 정보를 가져갈 수 있음
-//    @PostMapping("/signupCompletion")
-//    public String signupCompletion(UserSignupDto dto) {
-//    log.info("signupCompletion()", dto);
-//    
-//    int result = userService.signup(dto);
-//    log.info("회원가입 결과 = {}", result);
-//
-//    // 회원가입 완료 페이지로 넘겨줌
-//    return "/signup/main";
-//    }
+    
+
+
+    
+    //회원가입 페이지 이동
+    @GetMapping("/userJoin")
+    public void userJoin() {}
+    
+    
+    
+    
+    
+    
+
     
     @GetMapping("/main")
     public void main() {
