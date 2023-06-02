@@ -3,7 +3,9 @@ package com.mid.alcohol.service;
 
 import org.springframework.stereotype.Service;
 
+import com.mid.alcohol.domain.Payment;
 import com.mid.alcohol.dto.AdressUpdateDto;
+import com.mid.alcohol.dto.PaymentDetailDto;
 import com.mid.alcohol.repository.PaymentRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,5 +23,16 @@ public class PaymentService {
 		log.info("update({})", payment);
 		
 		return paymentRepository.updateDeliveryInfo(payment.toEntity());
+	}
+	
+	// 구매 상세 정보
+	public PaymentDetailDto read(String order_name) {
+		log.info("read(order_name={})", order_name);
+		
+		Payment entity = paymentRepository.selectByOrder_name(order_name);
+		
+		PaymentDetailDto dto = PaymentDetailDto.fromEntity(entity);
+		
+		return dto;
 	}
 }

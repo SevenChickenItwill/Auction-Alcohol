@@ -6,10 +6,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Payment</title>
+	<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+			crossorigin="anonymous">
 </head>
+<header class="my-2 p-5 text-center text-bg-dark">
+	<h1>결제 메인 페이지</h1>
+</header>
 
 <body>
-	<h1>결제 메인 페이지</h1>
 	<h2>배송지</h2>
 	<ul>
 		<li><c:url value="/payment/modify" var="adressModify">
@@ -28,43 +35,24 @@
         <input type="tel" id="phone" name="phone" required>
         <br><br>
     </form>
-	
-	<h2>주문 예정 상품</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>상품명</th>
-                <th>가격</th>
-                <th>수량</th>
-                <th>합계</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>macBook</td>
-                <td>$2,200</td>
-                <td>1</td>
-                <td>$2,200</td>
-            </tr>
-            <tr>
-                <td>iPhone</td>
-                <td>$1,100</td>
-                <td>1</td>
-                <td>$1,100</td>
-            </tr>
-            <tr>
-                <td>전통주</td>
-                <td>15,000원</td>
-                <td>4</td>
-                <td>60,000원</td>
-            </tr>
-            <!-- 추가 상품들을 동적으로 생성할 수도 있습니다. -->
-        </tbody>
-    </table>
-    <form action="/process-payment" method="POST">
-        <!-- 결제 관련 폼 요소들을 추가하세요 -->
-    </form>
     
+    <h2>상품정보</h2>
+    <form action="/save-shipping-address" method="POST">
+        <label for="name">상품이름</label>
+        <input type="text" id="name" name="name" required>
+        <br><br>
+        <label for="address">상품설명</label>
+        <textarea id="address" name="address" required></textarea>
+        <br><br>
+        <label for="phone">가격</label>
+        <input type="tel" id="phone" name="phone" required>
+        <br><br>
+    </form>
+
+	<form method="post" action="/kakaoPay">
+		<button>카카오 페이 결제하기</button>
+	</form>	
+	<!-- 
     <h2>결제 방법 선택</h2>
     <form action="/process-payment" method="POST">
         <input type="radio" id="credit-card" name="paymentMethod" value="credit-card" checked>
@@ -78,8 +66,7 @@
         <br><br>
         <input type="submit" value="결제">
     </form>
-	<button type="button" id="kakaopay" class="btn btn-primary">카카오페이 결제하기</button>
-
+    
 	<form>
 		<label for="cardNumber">카드 번호:</label>
 	 	<input type="text" id="cardNumber" name="cardNumber" required><br><br>
@@ -91,6 +78,7 @@
 		<input type="text" id="cardHolderName" name="cardHolderName" required><br><br>
 		<input type="submit" value="결제하기">
 	</form>
+	-->
 	
 	<ul>
 		<li><c:url value="/payment/information" var="paymentInformation">

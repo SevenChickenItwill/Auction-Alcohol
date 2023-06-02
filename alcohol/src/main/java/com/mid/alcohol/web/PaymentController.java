@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mid.alcohol.dto.AdressUpdateDto;
+import com.mid.alcohol.dto.PaymentDetailDto;
 import com.mid.alcohol.service.PaymentService;
 
 import lombok.RequiredArgsConstructor;
@@ -41,8 +42,9 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/detail")
-	public void paymentDetail(Model model) {
-		log.info("paymentDetail()");
+	public void paymentDetail(String order_id, Model model) {
+		log.info("paymentDetail(order_id={})", order_id);
+		
 	}
 	
 	@GetMapping("/update")
@@ -57,7 +59,7 @@ public class PaymentController {
 		int result = paymentService.update(dto);
 		log.info("update = {}", result);
 		
-		return "redirect:/information";
+		return "redirect:/paymain";
 	}
 
 
