@@ -8,6 +8,9 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Component
 public class SocketHandler extends TextWebSocketHandler {
 
@@ -16,9 +19,12 @@ public class SocketHandler extends TextWebSocketHandler {
 	@Override
 	public void handleTextMessage(WebSocketSession session, TextMessage message) {
 		//메시지 발송
+		
 		String msg = message.getPayload();
+		log.info(msg);
 		for(String key : sessionMap.keySet()) {
 			WebSocketSession wss = sessionMap.get(key);
+			
 			try {
 				wss.sendMessage(new TextMessage(msg));
 			}catch(Exception e) {
@@ -30,6 +36,7 @@ public class SocketHandler extends TextWebSocketHandler {
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		//소켓 연결
+		
 		super.afterConnectionEstablished(session);
 		sessionMap.put(session.getId(), session);
 	}

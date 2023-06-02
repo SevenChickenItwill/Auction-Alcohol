@@ -361,7 +361,7 @@
 		resultType="com.mid.alcohol.dto.ChatListDto">
 		Select * FROM chat c JOIN userAuction u ON c.cid = u.cid
 		WHERE c.cid =
-		#{cid};
+		#{cid}
 	</select>
 
 	<select id="readChatMember"
@@ -376,9 +376,9 @@
 	</insert>
 
 	<insert id="createChatContents">
-		INSERT INTO chat( cid, userid, conversation, texttype
+		INSERT INTO chat( cid, userid, conversation, texttype, createdtime
 		)
-		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype})
+		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype}, systimestamp)
 	</insert>
 
 	<delete id="deleteChatRoom">

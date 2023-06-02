@@ -5,8 +5,9 @@
 
  document.addEventListener('DOMContentLoaded',()=>{
 	 const cid = document.querySelector('input#cid').value;
+	 
 	 // 웹소켓 객체 생성
-	 let ws = new WebSocket("ws://"+ location.host + "/alcohol/chat"); 
+	 let ws = new WebSocket("ws://"+ location.host + "/alcohol/chat?aid="+cid); 
 	 const loginid = document.querySelector('#loginid').value;
 	 
 	 let otherchatlist = document.querySelector('div#otherchatcontent');
@@ -20,8 +21,12 @@
 	 
 	 // 메시지를 수신하는 함수
 	 ws.onmessage = function(event){
-		 
+		 let aid = document.querySelector('input#cid').value;
 		 const data = JSON.parse(event.data);
+		 
+		 if(data.cid!=aid){
+			 return;
+		 }
 		 console.log(data);
 		 const message = data.message;
 		 const userid = data.userid;
@@ -30,23 +35,49 @@
 		 let html = '';
 		 if(loginid==userid){
 		 
-		 html = `<input class="form-control text-end text-bg-warning" type="text" value="${cid} // ${message} : ${userid}"/>`;
+		 html = `<input class="form-control text-end text-bg-warning" type="text" value="${message} : ${userid}"/>
+		 		<input class="d-none" name="cid${cid}" id="cid${cid}" value="${cid}"/>`;
 		 ;
 		 } else{
-			 html = `<input class="form-control text-bg-secondary" type="text" value="${userid} : ${message} // ${cid}"/>`;
+			 html = `<input class="form-control text-bg-secondary" type="text" value="${userid} : ${message}"/>
+			 <input class="d-none" name="cid${cid}" id="cid${cid}" value="${cid}"/>`;
 		 }
 		 otherchatlist.innerHTML += html;
 		 
-		 console.log(cid + " : " + userid + " : " + message);
+		 
+	 }
+	 
+	 async function senddaomsg(msgData){
+		 console.log(msgData.message);
+		 let conversation = msgData.message;
+		 let userid = msgData.userid;
+		 let cids = msgData.cid;
+		 let reqUrl = `/alcohol/api/auction/send/${msgData.cid}/${msgData.userid}`;
+		 let senddata = {
+			 cid : cids ,
+			 conversation : conversation,
+			 userid : userid
+		 }
+		 
+		 axios.post(reqUrl,senddata)
+		 .then(response=>{
+			 console.log(response.data);
+		 })
+		 .catch(error=>{
+			 console.log(error);
+		 })
+		 
 	 }
 	 
 	 // 메시지를 전송하는 함수
-	 function sendMessage(){
+	 function sendMessage() {
 		 const useridinput = document.querySelector('input#userid');
 		 
 		 const messageInput = document.querySelector('input#chatcontent');
-		 const message = messageInput.value;
-		 const userid = useridinput.value;
+		 let message = messageInput.value;
+		 let userid = useridinput.value;
+		 
+		 
 		 
 		 let msgData = {
 			 
@@ -58,7 +89,7 @@
 		 
 		 // 메시지 값을 서버로 전달
 		 ws.send(JSON.stringify(msgData));
-		 
+		 senddaomsg(msgData);
 		 // 입력 창을 초기화
 		 messageInput.value='';
 		 

@@ -25,10 +25,12 @@
         <div class="card" id="otherchatcontent">
             <c:forEach items="${ list1 }" var="list">
             	<c:if test="${ list1.userid == loginid }" >
-            		<input class="form-control text-bg-warning" type="text" value="${list1.userid} : ${list1.conversation} // ${list1.cid}"/>
+            		<input class="form-control text-bg-warning" type="text" value="${list1.userid} : ${list1.conversation}"/>
+            		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             	<c:if test="${ list1.userid != loginid }" >
-            		<input class="form-control text-end text-bg-secondary" type="text" value="${list1.cid} // ${list1.conversation} : ${list1.userid}"/>
+            		<input class="form-control text-end text-bg-secondary" type="text" value="${list1.conversation} : ${list1.userid}"/>
+            		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             </c:forEach>
         </div>

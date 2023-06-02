@@ -15,6 +15,8 @@ import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.dto.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.dto.ChatInputDto;
+import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.service.AuctionService;
@@ -68,6 +70,20 @@ public class AuctionRestController {
 		log.info("result = {}",detailList);
 		
 		return ResponseEntity.ok(detailList);
+	}
+	
+	@PostMapping("/send/{aid}/{userid}")
+	public ResponseEntity<Integer> sendchat(@RequestBody ChatInputDto dto){
+		log.info("sendchat(dto= {})", dto);
+		
+		
+		
+		
+		int result = userservice.createChatContent(dto);
+		
+		return ResponseEntity.ok(result);
+		
+		
 	}
 	
 	

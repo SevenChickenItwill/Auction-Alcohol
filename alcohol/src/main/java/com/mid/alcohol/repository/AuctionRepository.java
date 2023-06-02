@@ -99,5 +99,7 @@ public interface AuctionRepository {
 	// 종료된 경매 목록 불러오기
 	List<AuctionListDto> readEndAuctionList();
 
+	List<ChatListDto> readchatDataOne(int aid);
+
 }
 
