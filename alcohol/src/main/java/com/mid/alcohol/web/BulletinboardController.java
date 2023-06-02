@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageListDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
 import com.mid.alcohol.service.BulletinboardService;
@@ -91,6 +93,36 @@ public class BulletinboardController {
         // 전체 Deal list값을 저장하는 객체 생성.
         List<BulletinboardListDto> list = bulletinboardService.selectAll();
         
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+        // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (IOException e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
+        
         // list의 전체 개수
         int length = list.size();
         
@@ -125,10 +157,9 @@ public class BulletinboardController {
         model.addAttribute("num",num);
         model.addAttribute("maxIndex", len);
         model.addAttribute("pageCount", pageCount);
-        model.addAttribute("boards", list);
+        model.addAttribute("boards", dtos);
         model.addAttribute("listSize", list.size());
         model.addAttribute("listPageMax", listPageMax);
-        
     }
     
     @GetMapping("/detail")
@@ -138,6 +169,16 @@ public class BulletinboardController {
         BulletinboardDetailDto dto = bulletinboardService.selectById(id);
         log.info("dto= {}", dto);
         
+        String image = "";
+        
+        try {
+			image = bulletinboardService.toTagImage(id);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+        
+        
+        model.addAttribute("image", image);
         model.addAttribute("board", dto);
     }
     

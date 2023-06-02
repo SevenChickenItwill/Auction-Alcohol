@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const form = document.querySelector('form#boardForm');
     
+    // 삭제버튼 객체 생성.
     const deleteBtn = document.querySelector('a#deleteBtn');
+    
+    // 아이디를 불러올 수 있는 객체 생성.
     const inputId = document.querySelector('input#boardId');
     
     deleteBtn.addEventListener('click', (e) => {
@@ -23,5 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
              
          }
     });
+    
+    // 추천을 올려주는 버튼 생성.
+    const recommendUp = document.querySelector('button#recommendUp');
+    
+    
+    // 추천을 내려주는 버튼 생성.
+    const recommendDown = document.querySelector('button#recommendDown');
+    
+    
     
 });

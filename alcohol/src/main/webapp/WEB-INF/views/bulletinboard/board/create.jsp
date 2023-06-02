@@ -34,7 +34,7 @@
                             id="title" name="title" autofocus required />
                     </div>
                     <div>
-                        <label for="image">이미지:</label>
+                        <label for="image">이미지</label>
                         <input type="file" id="image" name="image">
                     </div>
                     <div>

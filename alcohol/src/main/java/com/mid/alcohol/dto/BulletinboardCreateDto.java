@@ -1,5 +1,7 @@
 package com.mid.alcohol.dto;
 
+import java.sql.Blob;
+
 import com.mid.alcohol.domain.Bulletinboard;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +19,7 @@ public class BulletinboardCreateDto {
     private String nickname;
     private String user_id;
     private String title;
-    private String image;
+    private byte[] image;
     private String content;
     
     public Bulletinboard entity(Bulletinboard bulletinboard) {

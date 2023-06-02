@@ -13,12 +13,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BulletinboardListDto {
+public class BulletinboardImageListDto {
     
     private long board_id; // 고유 게시글 번호
     private int category; // 게시글 종류 ( 1 -> 일반글작성, 0 -> 공지사항 작성)
     private String title; // 게시글 제목
-    private byte[] image; // 게시글 이미지
+    private String image; // 게시글 이미지
     private String nickname; // 게시글 작성자 닉네임
     private String user_id; // 게시글 작성자 아이디
     private Timestamp time; // 게시글 작성 & 수정 시간
@@ -27,20 +27,5 @@ public class BulletinboardListDto {
     private long rcnt; // 게시글 댓글수
     private String content; // 게시글 내용
     
-    public static BulletinboardListDto fromEntity(Bulletinboard entity) {
-        
-        return BulletinboardListDto.builder()
-                .board_id(entity.getBoard_id())
-                .category(entity.getCategory())
-                .title(entity.getTitle())
-                .image(entity.getImage())
-                .nickname(entity.getNickname())
-                .user_id(entity.getUser_id())
-                .time(Timestamp.valueOf(entity.getTime()))
-                .views(entity.getViews())
-                .recommend(entity.getRecommend())
-                .content(entity.getContent())
-                .build();
-    }
     
 }
