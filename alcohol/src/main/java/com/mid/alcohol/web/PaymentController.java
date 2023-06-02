@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mid.alcohol.dto.AdressUpdateDto;
+import com.mid.alcohol.dto.BasketListDto;
 import com.mid.alcohol.service.PaymentService;
 
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,8 @@ public class PaymentController {
 	
 	@GetMapping("/paymain")
 	public void paymentMain(Model model) {
+		
+		
 		log.info("paymentMain()");
 	}
 	

@@ -6,10 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>payment</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-			crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+	crossorigin="anonymous">
 </head>
 
 <body>
@@ -27,7 +28,8 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="#">Home</a></li>
 					<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button"
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="#">Action</a></li>
@@ -36,8 +38,7 @@
 							<li><a class="dropdown-item" href="#">Something else
 									here</a></li>
 						</ul></li>
-					<li class="nav-item">
-						<a class="nav-link disabled">Disabled</a>
+					<li class="nav-item"><a class="nav-link disabled">Disabled</a>
 					</li>
 				</ul>
 				<form class="d-flex" role="search">
@@ -48,13 +49,44 @@
 			</div>
 		</div>
 	</nav>
-</hr>
-	<h1>임시 바구니 페이지</h1>
+	</hr>
+	<header>
+		<h1>장바구니 페이지</h1>
+	</header>
+	<hr />
+	<h4 class="mx-2 text-center">장바구니</h4>
+	<div class="card">
+		<div class="card-header">
+			<input type="checkbox" id="myCheckbox" name="myCheckbox"
+				value="checkboxValue"> <label class="py-6" for="myCheckbox">전체선택</label>
+			<span class="btn">삭제</span>
+		</div>
+		<div class="card-boby">
+			<c:forEach var="basket" items="${ list }">
+				<input type="checkbox" id="myCheckbox" name="myCheckbox"
+					value="${ basket.quantity * basket.price }">
+				<label for="myCheckbox">${ basket.brandname }</label>
+				<hr>
+				<label>${ basket.pname }</label>
+				<br>
+				<label>주문수량</label>
+				<input style="width: 50px;" id="inputQuantity" type="number"
+					value="${ basket.quantity }">
+				<br>
+				<label>주문금액</label>
+				<label class="mx-2">${ basket.quantity * basket.price }원</label>
+			</c:forEach>
+		</div>
+		<div class="card-footer">
+			<label>총 주문금액</label>
+			<label>원</label>
+			<br>
+			<a>결제하기</a>
 
-	<ul>
-		<li><c:url value="/payment/paymain" var="paymentMain">
-				<c:param name="num" value="0" />
-			</c:url> <a href="${paymentMain}">결제하기</a></li>
-	</ul>
+		</div>
+	</div>
+
+
+
 </body>
 </html>

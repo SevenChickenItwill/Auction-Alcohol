@@ -1,9 +1,12 @@
 package com.mid.alcohol.service;
 
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.dto.AdressUpdateDto;
+import com.mid.alcohol.dto.BasketListDto;
 import com.mid.alcohol.repository.PaymentRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,5 +24,10 @@ public class PaymentService {
 		log.info("update({})", payment);
 		
 		return paymentRepository.updateDeliveryInfo(payment.toEntity());
+	}
+
+	public List<BasketListDto> readBasketByUserid(String userid) {
+		log.info("readBasketByUserid(userid={})", userid);
+		return paymentRepository.readBasketByUserid(userid);
 	}
 }
