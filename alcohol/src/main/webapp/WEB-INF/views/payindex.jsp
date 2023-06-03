@@ -63,18 +63,21 @@
 		</div>
 		<div class="card-boby">
 			<c:forEach var="basket" items="${ list }">
-				<input type="checkbox" id="myCheckbox" name="myCheckbox"
-					value="${ basket.quantity * basket.price }">
-				<label for="myCheckbox">${ basket.brandname }</label>
-				<hr>
-				<label>${ basket.pname }</label>
-				<br>
-				<label>주문수량</label>
-				<input style="width: 50px;" id="inputQuantity" type="number"
-					value="${ basket.quantity }">
-				<br>
-				<label>주문금액</label>
-				<label class="mx-2">${ basket.quantity * basket.price }원</label>
+				<div>
+					<input type="checkbox" name="myCheckbox"
+						value="${ basket.quantity * basket.price }">
+					<label >${ basket.brandname }</label>
+					<hr>
+					<label>${ basket.pname }</label>
+					<br>
+					<label>주문수량</label>
+					<input style="width: 50px;" id="inputQuantity" type="number"
+						value="${ basket.quantity }">
+					<br>
+					<label>주문금액</label>
+					<label class="mx-2">${ basket.quantity * basket.price }원</label>
+					<hr>
+				</div>
 			</c:forEach>
 		</div>
 		<div class="card-footer">
