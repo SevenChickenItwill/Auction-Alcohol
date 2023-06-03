@@ -58,38 +58,33 @@
 	<div class="card">
 		<div class="card-header">
 			<input type="checkbox" id="myCheckbox" name="myCheckbox"
-				value="checkboxValue"> <label class="py-6" for="myCheckbox">전체선택</label>
-			<span class="btn">삭제</span>
+				value="checkboxValue" onchange="toggleSelectAll()"> <label
+				class="py-6" for="myCheckbox">전체선택</label> <span class="btninit"
+				onclick="deleteSelectedItems()">삭제</span>
 		</div>
 		<div class="card-boby">
-			<c:forEach var="basket" items="${ list }">
+			<c:forEach var="basket" items="${list}">
 				<div>
 					<input type="checkbox" name="myCheckbox"
-						value="${ basket.quantity * basket.price }">
-					<label >${ basket.brandname }</label>
+						value="${basket.quantity * basket.price}"
+						onchange="updateTotalOrderAmount()"> <label>${basket.brandname}</label>
 					<hr>
-					<label>${ basket.pname }</label>
-					<br>
-					<label>주문수량</label>
-					<input style="width: 50px;" id="inputQuantity" type="number"
-						value="${ basket.quantity }">
-					<br>
-					<label>주문금액</label>
-					<label class="mx-2">${ basket.quantity * basket.price }원</label>
+					<label>${basket.pname}</label> <br> <label>주문수량</label> <input
+						style="width: 50px;" id="inputQuantity-${basket.productid}"
+						type="number" value="${basket.quantity}"
+						onchange="updateOrderAmount(${basket.productid})"> <br>
+					<label>주문금액</label> <label id="orderAmount-${basket.productid}"
+						class="mx-2" data-price="${basket.price}">${(basket.quantity * basket.price)}원</label>
 					<hr>
 				</div>
 			</c:forEach>
 		</div>
 		<div class="card-footer">
-			<label>총 주문금액</label>
-			<label>원</label>
-			<br>
-			<a>결제하기</a>
-
+			<label>총 주문금액</label> <label id="totalAmount">원</label> <br> <a>결제하기</a>
 		</div>
 	</div>
 
 
-
+	<script src="./static/js/basket2.js"></script>
 </body>
 </html>
