@@ -126,7 +126,7 @@ public class BulletinboardService {
 	}
     
     // DB에서 이미지 Base64로 인코딩 후 값 리턴하는 메서드.
-    public String toTagImage(long id) throws IOException {
+    public String toTagImage(long id) throws Exception {
     	log.info("toTagImage(id= {}) ", id);
     	
 		BulletinboardDetailDto board = selectById(id);
@@ -178,7 +178,7 @@ public class BulletinboardService {
         return resizedBufferedImage;
     }
     
-    public String listToTagImage(BufferedImage bufImage) throws IOException {
+    public String listToTagImage(BufferedImage bufImage) throws Exception {
     	log.info("listToTagImage()");
 		
 		BufferedImage image = bufImage;
@@ -192,5 +192,50 @@ public class BulletinboardService {
 		return base64Image;
 	}
     
+    // 추천 관련 service
+
+	public int recommendUp(long boardId) {
+		log.info("recommentUp(id= {})", boardId);
+		
+		int result = bulletinboardRepository.recommendUp(boardId);
+		
+		return result;
+	}
+
+	public int recommendDo(long boardId) {
+		log.info("recommendDo(id= {})", boardId);
+		
+		int result = bulletinboardRepository.recommendDo(boardId);
+		
+		return result;
+	}
     
+	// 추천 시 중복검사를 위해 COMMENDUP 테이블에 객체 생성
+//    public int recommendListInsert(long boardId, String userId) {
+//    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
+//    	
+//    	int result = bulletinboardRepository.recommendList(boardId, userId);
+//    	
+//    	return result;
+//    }
+//    
+//    // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
+//    public int recommendDelete(long boardId, String userId) {
+//    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
+//    	
+//    	int result = bulletinboardRepository.recommendDelete(boardId, userId);
+//    	
+//    	return result;
+//    }
+	
+	// 조회수 증가하는 service
+	public int viewsUp(long boardId) {
+		log.info("viewsUp(boardId= {})", boardId);
+		
+		int result = bulletinboardRepository.viewsUp(boardId);
+		
+		return result;
+	}
+	
+	
 }

@@ -32,7 +32,8 @@
                         <span name="time">${ board.time }</span>
                     </div>
                     <div>
-                        <input value="${ board.image }" id="image" name="image" />
+                        <img src="data:image/jpeg;base64,${ board.image }"
+												class="img-fluid rounded-start" alt="이미지">
                     </div>
                     <div>
                         <textarea id="content" name="content">${ board.content }</textarea>

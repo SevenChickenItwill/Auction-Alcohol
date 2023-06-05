@@ -23,7 +23,7 @@
 
 		<section>
 			<form id="boardForm">
-				<input type="hidden" value="${ board.board_id }" id="boardId"
+				<input type="number" class="d-none" value="${ board.board_id }" id="boardId"
 					name="board_id" />
 				<div class="container">
 					<div class="row">
@@ -33,14 +33,17 @@
 									<h5 class="card-title">${ board.title }</h5>
 									<p class="card-text">${ board.nickname }(${ board.user_id })
 										${ board.time }</p>
-									<p class="card-text">${ board.views }${ board.recommend }
-										댓글[개수]</p>
+									<p class="card-text" >
+										<span>조회수 : [${ board.views }]</span>
+										<span id="recommendCnt">추천수 : [${ board.recommend }]</span>
+										<span>댓글[개수]</span>
+									</p>
 									<img src="data:image/jpeg;base64,${ image }" alt="이미지" />
 									<p class="card-text">${ board.content }</p>
 
 									<div>
-										<button id="recommendUp">추천</button>
-										<button id="recommendDown">비추천</button>
+										<input type="button" value="추천" id="recommendUp" />
+										<input type="button" value="비추천" id="recommendDo" />
 									</div>
 
 
@@ -55,7 +58,8 @@
 			</span> <span> <c:url var="boardModify"
 					value="/bulletinboard/board/modify">
 					<c:param name="id" value="${ board.board_id }"></c:param>
-				</c:url> <a href="${ boardModify }">수정하기</a> <a id="deleteBtn">삭제하기</a>
+				</c:url> <a href="${ boardModify }">수정하기</a> 
+				<a id="deleteBtn">삭제하기</a>
 			</span>
 
 

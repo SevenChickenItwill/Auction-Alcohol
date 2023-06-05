@@ -61,13 +61,14 @@
 										<div class="col-md-8">
 											<div class="card-body">
 												<!-- 게시글 제목, 게시글 댓글수 -->
-												<h5 class="card-title">${ board.title }[${ board.views }]</h5>
+												<h5 class="card-title">${ board.title }[${ board.rcnt }]</h5>
 
 												<!-- 닉네임(아이디) ㅣ 시간 ㅣ 조회수 ㅣ 추천수   대로 나타냄 -->
 												<p class="card-text">
 													<small class="text-body-secondary">${ board.nickname }(${ board.board_id }),
 														<fmt:formatDate value="${ board.time }"
-															pattern="yyyy-MM-dd HH:mm" />,${ board.recommend },[${ board.rcnt }]
+															pattern="yyyy-MM-dd HH:mm" />
+															,추천수 : [${ board.recommend }], 조회수 : [${ board.views }]
 													</small>
 												</p>
 												<p class="card-text">${ board.content }</p>

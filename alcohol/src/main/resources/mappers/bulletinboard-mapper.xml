@@ -60,5 +60,26 @@
         select * from BULLETINBOARD where lower(USER_ID) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
     </select>
     
+    <!-- 추천업 버튼 -->
+    <update id="recommendUp">
+    	update BULLETINBOARD
+        set RECOMMEND = RECOMMEND + 1
+        where BOARD_ID= #{boardId}
+    </update>
+    
+    <!-- 추천다운 버튼 -->
+    <update id="recommendDo">
+    	update BULLETINBOARD
+        set RECOMMEND = RECOMMEND - 1
+        where BOARD_ID= #{boardId}
+    </update>
+    
+    <!-- 조회수 기능 -->
+    <update id="viewsUp">
+    	update BULLETINBOARD
+        set VIEWS = VIEWS + 1
+        where BOARD_ID= #{boardId}
+    </update>
+    
     
 </mapper>

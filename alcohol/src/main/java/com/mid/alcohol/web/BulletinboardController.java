@@ -1,9 +1,5 @@
 package com.mid.alcohol.web;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageDetailDto;
 import com.mid.alcohol.dto.BulletinboardImageListDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
-import com.mid.alcohol.repository.BulletinboardRepository;
 import com.mid.alcohol.service.BulletinboardService;
 
-import jakarta.servlet.http.Part;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -116,7 +111,7 @@ public class BulletinboardController {
         		
         		dtos.add(dto);
         		
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			} 
         	
@@ -166,6 +161,9 @@ public class BulletinboardController {
     public void readById(long id, Model model) {
         log.info("readById(id={})", id);
         
+        int result = bulletinboardService.viewsUp(id);
+        log.info("result = {}", result);
+        
         BulletinboardDetailDto dto = bulletinboardService.selectById(id);
         log.info("dto= {}", dto);
         
@@ -173,7 +171,7 @@ public class BulletinboardController {
         
         try {
 			image = bulletinboardService.toTagImage(id);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
         
@@ -189,7 +187,22 @@ public class BulletinboardController {
         BulletinboardDetailDto dto = bulletinboardService.selectById(id);
         log.info("dto= {}", dto);
         
-        model.addAttribute("board", dto);
+        BulletinboardImageDetailDto imageDto = new BulletinboardImageDetailDto();
+		try {
+			imageDto = new BulletinboardImageDetailDto(0
+					, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(dto.getImage()))
+					, dto.getTitle()
+					, dto.getNickname()
+					, dto.getUser_id()
+					, dto.getTime()
+					, dto.getViews()
+					, dto.getRecommend()
+					, dto.getContent());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+        model.addAttribute("board", imageDto);
     }
     
     @PostMapping("/update")
