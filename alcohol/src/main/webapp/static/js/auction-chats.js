@@ -50,7 +50,7 @@
 		 }
 		 nowbids.value = `${nowbid}`;
 		 bidders.value = `${bidder}`;
-		 bidcount.value = `${bidcount}`;
+		 bidcounts.value = `${bidcount}`;
 		 otherchatlist.innerHTML += html;
 		 
 		 

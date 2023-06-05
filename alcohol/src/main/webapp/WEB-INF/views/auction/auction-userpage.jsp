@@ -38,14 +38,19 @@
         </div>
         <div class="batting" id="batsection" >
         	<img src="https://biz.chosun.com/resizer/6YuMZCIEekRHxZRAflffewbmPvo=/464x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/L42AC76QP5UT65XY2XEM2JQJWI.png" />
+        	<label for="nowbid">현재 입찰가</label>
         	<input type="number" readonly="readonly" id="nowbid" value="${ list2.nowbid }" />
+        	<label for="bidder">현재 입찰자</label>
         	<input type="text" readonly="readonly" id="bidder" value="${ list2.bidder }" />
+        	<label for="bidcount">입찰 횟수</label>
         	<input type="number" readonly="readonly" id="bidcount" value="${ list2.bidcount }" />
+        	<label for="passbid">즉시 낙찰가</label>
         	<input type="number" readonly="readonly" id="passbid" value="${ list2.passbid }" />
         	<h3>${ list2.pname }</h3>
         	<h4>${ list2.brandname }</h4>
         	<h4>${ list2.constructor }</h4>
-        	<h5>$$ 배팅은 Tik 방식으로 진행됩니다. 버튼을 누르면 즉시낙찰가액의 1%가 배팅액으로 책정되어 증가합니다.</h5>
+        	<h5>$$ 배팅은 Tik 방식으로 진행됩니다. 버튼을 누르면 즉시낙찰가액의 1%,2%,5%가 배팅액으로 책정되어 증가합니다.</h5>
+        	<h5>$$ 즉시낙찰 버튼을 누를 경우 현재 경매액과 무관하게 즉시 낙찰금액으로 낙찰되며 경매는 종료됩니다.</h5>
         </div>
         
         </section>
