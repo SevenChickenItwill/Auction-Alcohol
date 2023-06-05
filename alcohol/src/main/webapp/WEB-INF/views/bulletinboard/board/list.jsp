@@ -67,8 +67,8 @@
 												<p class="card-text">
 													<small class="text-body-secondary">${ board.nickname }(${ board.board_id }),
 														<fmt:formatDate value="${ board.time }"
-															pattern="yyyy-MM-dd HH:mm" />
-															,추천수 : [${ board.recommend }], 조회수 : [${ board.views }]
+															pattern="yyyy-MM-dd HH:mm" /> ,추천수 : [${ board.recommend }],
+														조회수 : [${ board.views }]
 													</small>
 												</p>
 												<p class="card-text">${ board.content }</p>
@@ -111,6 +111,15 @@
 							href="${ beforelist }"><button>&lt;</button></a>
 
 						<c:choose>
+
+							<c:when test="${ listPageMax < 9 }">
+								<c:forEach begin="${ 1 }" end="${ listPageMax }" var="listFor">
+									<c:url var="listPageNum"
+										value="/bulletinboard/board/list?num=${ listFor - 1 } }" />
+									<a href="${ listPageNum }">${ listFor }</a>
+								</c:forEach>
+							</c:when>
+
 							<c:when test="${ (num / 10) * 10 - 4 < 0}">
 
 								<c:url var="listPageNum" value="/bulletinboard/board/list?num=0" />

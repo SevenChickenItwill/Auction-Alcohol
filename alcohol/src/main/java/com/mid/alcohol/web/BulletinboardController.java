@@ -43,6 +43,35 @@ public class BulletinboardController {
         List<BulletinboardListDto> list = bulletinboardService.search(category, keyword);
         log.info("list ={}", list);
         
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+     // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
         // list의 전체 개수
         int length = list.size();
         
@@ -68,7 +97,7 @@ public class BulletinboardController {
         log.info("count= {}", searchCount);
         
         // 페이지 쪽수 마지막 값을 찾기 위해서
-        int listPageMax = (int) ((list.size() / 10) + (list.size() % 10) - 1);
+        int listPageMax = (int) ((list.size() / 10) + 1);
         log.info("listPageMax ={}", listPageMax);
         
         model.addAttribute("pageListCount", searchCount);
@@ -76,9 +105,11 @@ public class BulletinboardController {
         model.addAttribute("num",pagenum);
         model.addAttribute("maxIndex", len);
         model.addAttribute("pageCount", pageCount);
-        model.addAttribute("boards", list);
+        model.addAttribute("boards", dtos);
         model.addAttribute("listSize", list.size());
         model.addAttribute("listPageMax", listPageMax);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("category", category);
     }
     
     @GetMapping("/list")
@@ -144,7 +175,7 @@ public class BulletinboardController {
         log.info("count= {}", count);
         
         // 페이지 쪽수 마지막 값을 찾기 위해서
-        int listPageMax = (int) ((list.size() / 10) + (list.size() % 10) - 1);
+        int listPageMax = (int) ((list.size() / 10) + 1);
         log.info("listPageMax ={}", listPageMax);
         
         model.addAttribute("pageListCount", count);
