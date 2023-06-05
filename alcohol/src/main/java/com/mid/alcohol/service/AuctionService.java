@@ -19,6 +19,7 @@ import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionOpenDto;
 import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.AuctionSearchDto;
+import com.mid.alcohol.dto.ChatInputDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.dto.ProductSearchDto;
@@ -244,6 +245,14 @@ public class AuctionService {
 		log.info("readlist()");
 
 		return auctionrepository.readEndAuctionList();
+	}
+
+	public int updatebat(ChatInputDto dto) {
+		// TODO Auto-generated method stub
+		log.info("dto={}",dto);
+		Auction entity = dto.toAuctionEntity();
+		log.info("{}",entity);
+		return auctionrepository.updatebat(entity);
 	}
 
 	// 채팅방-유저 매핑

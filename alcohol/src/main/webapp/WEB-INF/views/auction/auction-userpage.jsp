@@ -31,10 +31,21 @@
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             	<c:if test="${ listuserid eq loginid }" >
-            		<input class="form-control text-end text-bg-warning" type="text" value="${list1.conversation} : ${list1.userid}"/>
+            		<input class="form-control text-end text-bg-warning" type="text" value="${list1.conversation} : ${list1.userid}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             </c:forEach>
+        </div>
+        <div class="batting" id="batsection" >
+        	<img src="https://biz.chosun.com/resizer/6YuMZCIEekRHxZRAflffewbmPvo=/464x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/L42AC76QP5UT65XY2XEM2JQJWI.png" />
+        	<input type="number" readonly="readonly" id="nowbid" value="${ list2.nowbid }" />
+        	<input type="text" readonly="readonly" id="bidder" value="${ list2.bidder }" />
+        	<input type="number" readonly="readonly" id="bidcount" value="${ list2.bidcount }" />
+        	<input type="number" readonly="readonly" id="passbid" value="${ list2.passbid }" />
+        	<h3>${ list2.pname }</h3>
+        	<h4>${ list2.brandname }</h4>
+        	<h4>${ list2.constructor }</h4>
+        	<h5>$$ 배팅은 Tik 방식으로 진행됩니다. 버튼을 누르면 즉시낙찰가액의 1%가 배팅액으로 책정되어 증가합니다.</h5>
         </div>
         
         </section>
@@ -42,13 +53,14 @@
         	<input type="number" class="d-none" id="cid" name="cid" value="${list2.aid }" />
         	<input type="text" class="card" id="userid" name="userid" />
             <input type="text" class="card" id="chatcontent" name="chatcontent" />
-            <button class="btn" id="btnsubmit">전송</button>
-            <button class="btn" id="btnbat">배팅</button>
-            <button class="btn" id="btnconn">연결</button>
+            <button class="btn btnsle" id="btnsubmit" data-bid="0">전송</button>
+            <button class="btn btnsle" id="btnbat" data-bid="1">배팅</button>
+            <c:url var="mainmenu" value="/auction/auctionlist" />
+            <button class="btn"><a href="${ mainmenu }">메인 메뉴로 가기</a></button>
         </div>
     </main>
 
-<script src="../static/js/auction-chat.js"></script>
+<script src="../static/js/auction-chats.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

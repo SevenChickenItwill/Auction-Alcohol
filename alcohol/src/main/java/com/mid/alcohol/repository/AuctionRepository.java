@@ -101,5 +101,7 @@ public interface AuctionRepository {
 
 	List<ChatListDto> readchatDataOne(int aid);
 
+	int updatebat(Auction auctionEntity);
+
 }
 

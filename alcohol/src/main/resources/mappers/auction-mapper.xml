@@ -361,7 +361,7 @@
 		resultType="com.mid.alcohol.dto.ChatListDto">
 		Select * FROM chat c JOIN userAuction u ON c.cid = u.cid
 		WHERE c.cid =
-		#{cid}
+		#{cid} ORDER BY c.createdtime
 	</select>
 
 	<select id="readChatMember"
@@ -388,6 +388,10 @@
 	<delete id="deleteChatContents">
 		delete from chat where cid = #{cid}
 	</delete>
+	
+	<update id="updatebat">
+		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid} WHERE aid = #{aid}
+	</update>
 
 
 </mapper>

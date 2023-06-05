@@ -77,9 +77,9 @@ public class AuctionRestController {
 		log.info("sendchat(dto= {})", dto);
 		
 		
+		int result = acservice.updatebat(dto);
 		
-		
-		int result = userservice.createChatContent(dto);
+		int result2 = userservice.createChatContent(dto);
 		
 		return ResponseEntity.ok(result);
 		
