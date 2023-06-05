@@ -36,7 +36,7 @@ public class PaymentController {
 		log.info("modify()");
 	}
 	
-	@GetMapping("/paymain")
+	@GetMapping("/paymentmain")
 	public void paymentMain(Model model) {
 		log.info("paymentMain()");
 	}

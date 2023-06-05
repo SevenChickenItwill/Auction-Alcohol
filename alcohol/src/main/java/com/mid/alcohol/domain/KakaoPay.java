@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class KakaoPay {
+	// KakaoPayApprovalVO
 	private String cid;			// 가맹점 코드 MAX 10
 	private String partner_order_id;	// 가맹점 주문번호 MAX100
 	private String partner_user_id;	// 가맹점 회원 id MAX100

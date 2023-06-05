@@ -22,25 +22,27 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/payment")
 @RequiredArgsConstructor
 public class KakaoPayController {
-	 @Setter(onMethod_ = {@Autowired})
-	 private KakaoPayService kakaoService;
-	 
-	 @GetMapping("/kakaoPay")
-	 public void kakaoPayGet() {
-		 
-	 }
-	 
-	 @PostMapping("/kakaoPay")
-	 public String kakaoPay() {
-		 log.info("kakaoPay post");
-		 
-		 return "redirect:"; // TODO:
-	 }
-	 
-	 @GetMapping("kakaoPaySuccess")
-	 public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
-		 log.info("kakaoPaySuccess get");
-		 log.info("kakaoPaySuccess pg_token" + pg_token);
-	 }
+//	 @Setter(onMethod_ = {@Autowired})
+//	 private KakaoPayService kakaoService;
+//	 
+//	 @GetMapping("/detial")
+//	 public void kakaoPayGet() {
+//		 log.info("kakaoPayGet");
+//	 }
+//	 
+//	 @PostMapping("/modify")
+//	 public String kakaoPay() {
+//		 log.info("kakaoPay post");
+//		 
+//		 return "redirect:/post/paymain";
+//	 }
+//	 
+//	 @GetMapping("/kakaopaysuccess")
+//	 public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+//		 log.info("kakaopaysuccess get");
+//		 log.info("kakaopaysuccess pg_token" + pg_token);
+//	 }
+
+	
 
 }

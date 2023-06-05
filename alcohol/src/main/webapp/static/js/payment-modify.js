@@ -1,5 +1,5 @@
 /**
- * views-payment-deliverymodify
+ * views-payment-ymodify
  */
 
 document.addEventListener('DOMContentLoaded', () => {

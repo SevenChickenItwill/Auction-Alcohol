@@ -52,7 +52,7 @@
 	<h1>임시 바구니 페이지</h1>
 
 	<ul>
-		<li><c:url value="/payment/paymain" var="paymentMain">
+		<li><c:url value="/payment/paymentmain" var="paymentMain">
 				<c:param name="num" value="0" />
 			</c:url> <a href="${paymentMain}">결제하기</a></li>
 	</ul>

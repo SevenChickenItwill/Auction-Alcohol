@@ -20,7 +20,7 @@
 	       <h1>주문/결제 내역 페이지</h1>
 	   </header>
 	</div>
-	<caption>주문내역 주문정보/결제 내역</caption>
+	
 	<div class="card">
 		<table>
 			<thead>
@@ -32,18 +32,24 @@
 					<th>총 상품금액</th>
 				</tr>
 			</thead>
-	</div>
-		<div class="card">
+			
 			<tbody>
-				<tr>
-					<th>IPHONE</th>
-					<th>daehan</th>
-					<th>$2.3</th>
-					<th>1</th>
-					<th>$1,100</th>
-				</tr>
+				<c:forEach items="${ posts }" var="post">
+					<tr>
+						<td>${ post.id }</td>
+						<td><c:url var="postDetailPage" value="/post/detail">
+								<c:param name="id" value="${ post.id }" />
+							</c:url> <a href="${ postDetailPage }">${ post.title }</a>
+							 <span class="text-danger">[${ post.rcnt }]</span></td>
+						<td>${ post.author }</td>
+						<td><fmt:formatDate value="${ post.created_time }"
+								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					</tr>
+				</c:forEach>
 			</tbody>
-		</div>	
+		</table>
+	</div>	
+			
 	<ul>
 		<li><c:url value="/payment/detail" var="paymentDetail">
 				<c:param name="num" value="0" />
