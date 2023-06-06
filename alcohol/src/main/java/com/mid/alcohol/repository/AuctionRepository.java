@@ -1,5 +1,6 @@
 package com.mid.alcohol.repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -102,6 +103,10 @@ public interface AuctionRepository {
 	List<ChatListDto> readchatDataOne(int aid);
 
 	int updatebat(Auction auctionEntity);
+
+	void updateStatus(Timestamp now);
+
+	void updateStart(Timestamp now);
 
 }
 

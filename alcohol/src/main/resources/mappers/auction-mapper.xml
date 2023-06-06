@@ -393,5 +393,12 @@
 		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid} WHERE aid = #{aid}
 	</update>
 
-
+    <update id="updateStatus">
+        update auction set status = 2 WHERE #{now} > auctionend AND status != 2
+    </update>
+    
+    <update id="updateStart">
+        update auction set status = 1 WHERE #{now} > auctionstart AND auctionend > #{now} AND status != 1
+    </update>
+    
 </mapper>

@@ -1,5 +1,6 @@
 package com.mid.alcohol.service;
 
+import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.Auction;
@@ -255,6 +257,11 @@ public class AuctionService {
 		return auctionrepository.updatebat(entity);
 	}
 
+	// 스케줄링 관련 메서드
+	
+	
+	
+	
 	// 채팅방-유저 매핑
 
 }
