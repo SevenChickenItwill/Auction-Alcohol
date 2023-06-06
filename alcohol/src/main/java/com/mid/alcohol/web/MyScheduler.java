@@ -20,7 +20,7 @@ public class MyScheduler {
 	@Autowired
 	private AuctionRepository auctionrepository;
 
-	@Scheduled(fixedRate = 1000)
+	@Scheduled(fixedRate = 60000)
 	public void updateStatus() {
 		Timestamp now = Timestamp.valueOf(LocalDateTime.now());
 		log.info("updateStatus({})",now);
@@ -28,7 +28,7 @@ public class MyScheduler {
 		
 	}
 	
-	@Scheduled(fixedRate = 1000)
+	@Scheduled(fixedRate = 60000)
 	public void updateStart() {
 		Timestamp now = Timestamp.valueOf(LocalDateTime.now());
 		log.info("updateStart({})",now);

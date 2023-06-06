@@ -54,12 +54,15 @@
         </div>
         
         </section>
+        <c:set var="status" value="${ list2.status }"></c:set>
         <div class="card" id="chatsubmit">
         	<input type="number" class="d-none" id="cid" name="cid" value="${list2.aid }" />
         	<input type="text" class="card" id="userid" name="userid" />
             <input type="text" class="card" id="chatcontent" name="chatcontent" />
+            <c:if test="${ status == 1 }">
             <button class="btn btnsle" id="btnsubmit" data-bid="0">전송</button>
             <button class="btn btnsle" id="btnbat" data-bid="1">배팅</button>
+            </c:if>
             <c:url var="mainmenu" value="/auction/auctionlist" />
             <button class="btn"><a href="${ mainmenu }">메인 메뉴로 가기</a></button>
         </div>
