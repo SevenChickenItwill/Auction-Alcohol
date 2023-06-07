@@ -25,13 +25,13 @@
 		<label>이메일</label> 
 		<br /> 
 		<input type="text" id="userAccountEmail"
-			name="userAccountEmail" readonly />
+			name="userAccountEmail" readonly value="${ userEmail }"/>
 	</div>
 	<div id="userAccountDiv">
 		<label>비밀번호</label> 
 		<br /> 
 		<input type="text"
-			id="userAccountPassword" name="userAccountPassword" />
+			id="userAccountPassword" name="userAccountPassword" value="${ userPassword }" />
 		<input type="submit" id="btnAccountPassword" value="수정"/>
 	</div>
 	</form>
@@ -39,14 +39,14 @@
 		<label>전화번호</label> 
 		<br /> 
 		<input type="text" id="userAccountPhone"
-			name="userAccountPhone" />
+			name="userAccountPhone" value="${ userPhone }"/>
 		<button id="btnAccountPhone">수정</button>
 	</div>
 	<div>
 		<label>생년월일</label> 
 		<br /> 	
 		<input type="date"
-			id="userAccountBirthday" name="userAccountBirthday" readonly>
+			id="userAccountBirthday" name="userAccountBirthday" value="${ userBirthday }" readonly>
 	</div>
 	
 	<br />

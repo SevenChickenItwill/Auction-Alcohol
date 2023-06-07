@@ -1,51 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+    xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
-<<<<<<< HEAD
 
- 
-	
- 
-	<!-- bean definitions here -->
-	<!-- HikariConfig hikariConfig = new HidariConfig(); 생성자 호출 -->
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<!-- hikariConfig.setDriverClassName("...") 메서드 호출 -->
-		<property name="driverClassName"
-			value="oracle.jdbc.OracleDriver" />
-		<property name="jdbcUrl"
-			value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-		<property name="username" value="scott"></property>
-		<property name="password" value="tiger"></property>
-	</bean>
-	<!-- HikariDataSource.dataSource = new HikariDataSource(hikariConfig) -->
-=======
- 
-      <!-- 이메일 인증을 위해 -->
-      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-      <property name="host" value="smtp.gmail.com" />
-      <property name="port" value="587" />
-      <property name="username" value="${userEmail.account}" />
-      <property name="password" value="${userEmail.password}" />
-      <property name="javaMailProperties">
-         <props>
-                <prop key="mail.transport.protocol">smtp</prop>
-                <prop key="mail.smtp.auth">true</prop>
-                <!-- gmail의 경우 보안문제 업데이트로 인해 SSLSocketFactory를 추가해야 smtp 사용 가능. -->
-                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.debug">true</prop>
-                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
-    <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
-            </props>
-      </property>
-      
-   </bean>
         
     <!-- bean definitions here -->
     <!-- HikariConfig hikariConfig = new HidariConfig(); 생성자 호출 -->    
@@ -57,27 +19,25 @@
         <property name="password" value="tiger"></property>
     </bean>
     <!-- HikariDataSource.dataSource = new HikariDataSource(hikariConfig) -->
->>>>>>> a8c802486c6414e73de5f95c071a1b783388ad78
 
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
-		<constructor-arg ref="hikariConfig" />
-	</bean>
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <constructor-arg ref="hikariConfig" />
+    </bean>
+    
 
-
-	<!-- SqlSesstionFactoryBean 객체: Data Source(Connection Pool)을 이용해서 SQL문장들을 
-		실행하고 결과 처리를 수행하는 객체 -->
-	<bean id="sessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<property name="mapperLocations"
-			value="classpath:/mappers/**/*.xml"></property>
-	</bean>
-
-	<!-- Mybatis 프레임워크에서 생성하고 관리하는 bean base-package와 그 하위 패키지에서 검색함. -->
-	<mybatis:scan base-package="com.mid.alcohol.repository" />
-
-	<!-- Service 애너테이션이 설정된 객체들을 생성하고 관리하기 위해서 -->
-	<context:component-scan
-		base-package="com.mid.alcohol.service" />
+    <!-- SqlSesstionFactoryBean 객체:
+        Data Source(Connection Pool)을 이용해서 SQL문장들을 실행하고 결과 처리를 수행하는 객체
+     -->
+     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
+     </bean>
+     
+     <!-- Mybatis 프레임워크에서 생성하고 관리하는 bean 
+     base-package와 그 하위 패키지에서 검색함.-->
+     <mybatis:scan base-package="com.mid.alcohol.repository" />
+     
+     <!-- Service 애너테이션이 설정된 객체들을 생성하고 관리하기 위해서 -->
+     <context:component-scan base-package="com.mid.alcohol.service" />
 
 </beans>

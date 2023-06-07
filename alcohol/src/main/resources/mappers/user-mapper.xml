@@ -13,9 +13,9 @@
   </insert>
   
   <insert id="userMainSignup" >
-    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userBirthday, userJoindate, userGender)
-    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userBirthday}, #{userJoindate}, #{userGender})
-    
+    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender)
+    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userNickname}, #{userBirthday}, #{userJoindate}, #{userGender})
+     
   </insert>
 
   <!-- 아이디로 사용자 조회 -->
@@ -23,4 +23,8 @@
     select * from USERS where userEmail = #{userEmail}
   </select>
   
+  <!-- 별명으로 사용자 조회 -->
+  <select id="findByUserNickname" resultType="com.mid.alcohol.domain.User">
+    select * from USERS where userNickname = #{userNickname}
+  </select>
 </mapper>

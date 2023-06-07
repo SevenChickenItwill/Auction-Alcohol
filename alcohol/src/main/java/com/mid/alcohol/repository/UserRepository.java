@@ -9,4 +9,6 @@ public interface UserRepository {
     int userMainSignup(User user);
 
     User findByUserEmail(String userEmail);
+    
+    User findByUserNickname(String userNickname);
 }

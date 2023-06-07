@@ -21,10 +21,15 @@
         <form id="signupEmailForm" method="post" action="${ signupEmail }">
             <div>
                 <label for="userEmail">이메일</label>
+                
                 <br />
                 <input type="text" id="userEmail" name="userEmail" placeholder="EMAIL" required  autofocus />
+                <input type="submit" id="userEmailCheck" name="userEmailCheck" value="중복확인" />
                 <span id="idCk" class="dpn"></span>
-                <button id="btnEmailCheck">인증번호 받기</button>
+            </div>
+            <!-- 
+            <div>
+                <button id="btnEmailCheck">인증번호 받기</button>            
             </div>
             <div>
                 <label for="userEmail">인증번호</label>
@@ -32,6 +37,7 @@
                 <input type="text" id="userEmailCheck" name="userEmailCheck" placeholder="AUTENTICATION NUMBER" disabled="disabled" maxlength="6" required  />
                 <span id="mailCheckWarn"></span>
             </div>
+             -->
             </div> 
             <div>
                 <input type="submit" id="btnNext" value="다음" />
@@ -45,10 +51,6 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
         crossorigin="anonymous"></script>
         <script src="../static/js/signupEmail.js"></script>
-<<<<<<< HEAD
 	
-=======
-	</div>
->>>>>>> a8c802486c6414e73de5f95c071a1b783388ad78
 	</body>
 </html>

@@ -62,6 +62,11 @@
                             <br />
                             <input type="text" id="userPhone" name="userPhone" placeholder="PHONE" required>
                             <!--  <small id="phoneErrorMessage" style="color: red;"></small> -->
+                        </div>
+                        <div>
+                            <label for="userNickname">별명</label>
+                            <br />
+                            <input type="text" id="userNickname" name="userNickname" placeholder="NICKNAME" required />
                         </div>  
                     </div>
                     <div>

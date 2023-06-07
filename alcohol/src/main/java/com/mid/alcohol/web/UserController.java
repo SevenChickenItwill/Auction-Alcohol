@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mid.alcohol.domain.User;
+import com.mid.alcohol.dto.UserModifyDto;
 import com.mid.alcohol.dto.UserSignupDto;
 import com.mid.alcohol.service.UserService;
 
@@ -54,18 +56,22 @@ public class UserController {
 
         int result = userService.signup(dto);
         log.info("회원가입 결과 = {}", result);
+        
+        if (result == 2) {
+            return  null;
+        } else
 
         // 회원가입 완료 페이지로 넘겨줌
         return "/signup/signupCompletion";
     }
 
-
+    // 회원가입 완료 페이지로 이동
     @GetMapping("/signupCompletion")
     public void signupCompletion() {
         log.info("signupCompletion()");
     }
         
-<<<<<<< HEAD
+
  
     // 메인 페이지 이동
      @GetMapping("/main")
@@ -73,30 +79,20 @@ public class UserController {
          log.info("main()");
      }
     
-=======
-    
-    
-
 
     
-    //회원가입 페이지 이동
-    @GetMapping("/userJoin")
-    public void userJoin() {}
-    
-    
-    
-    
-    
-    
-
->>>>>>> a8c802486c6414e73de5f95c071a1b783388ad78
-    
-    // 계정 목록으로 페이지 이동 
+    // 계정 페이지 이동 
      @GetMapping("/userModify")
-     public void userModify() {
-      // 사용자 수정 페이지로 이동하는 로직 구현
-      
+     public String userModify(@RequestParam("userEmail") String userEmail, Model model) {
+       log.info("userModify");
+
+       UserModifyDto dto = userService.read(userEmail);
+
+       model.addAttribute("User", dto);
+       
+       return "/signup/userModify";
      }
+     
     @PostMapping("/userModify")
     public String userModify(UserSignupDto dto) {
     	
@@ -110,7 +106,8 @@ public class UserController {
     
     @PostMapping("/userPasswordModify")
     public String userPasswordModify(UserSignupDto dto) {
-      // 비밀번호 수정 로직 구현
+        
+     
       return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
     
