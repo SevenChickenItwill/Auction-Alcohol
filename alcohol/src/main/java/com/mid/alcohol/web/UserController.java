@@ -65,6 +65,7 @@ public class UserController {
         log.info("signupCompletion()");
     }
         
+<<<<<<< HEAD
  
     // 메인 페이지 이동
      @GetMapping("/main")
@@ -72,6 +73,23 @@ public class UserController {
          log.info("main()");
      }
     
+=======
+    
+    
+
+
+    
+    //회원가입 페이지 이동
+    @GetMapping("/userJoin")
+    public void userJoin() {}
+    
+    
+    
+    
+    
+    
+
+>>>>>>> a8c802486c6414e73de5f95c071a1b783388ad78
     
     // 계정 목록으로 페이지 이동 
      @GetMapping("/userModify")

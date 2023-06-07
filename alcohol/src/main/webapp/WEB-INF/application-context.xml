@@ -7,6 +7,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+<<<<<<< HEAD
 
  
 	
@@ -23,6 +24,40 @@
 		<property name="password" value="tiger"></property>
 	</bean>
 	<!-- HikariDataSource.dataSource = new HikariDataSource(hikariConfig) -->
+=======
+ 
+      <!-- 이메일 인증을 위해 -->
+      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+      <property name="host" value="smtp.gmail.com" />
+      <property name="port" value="587" />
+      <property name="username" value="${userEmail.account}" />
+      <property name="password" value="${userEmail.password}" />
+      <property name="javaMailProperties">
+         <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <!-- gmail의 경우 보안문제 업데이트로 인해 SSLSocketFactory를 추가해야 smtp 사용 가능. -->
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.debug">true</prop>
+                <prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+    <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+            </props>
+      </property>
+      
+   </bean>
+        
+    <!-- bean definitions here -->
+    <!-- HikariConfig hikariConfig = new HidariConfig(); 생성자 호출 -->    
+    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+        <!-- hikariConfig.setDriverClassName("...") 메서드 호출 -->
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
+        <property name="username" value="scott"></property>
+        <property name="password" value="tiger"></property>
+    </bean>
+    <!-- HikariDataSource.dataSource = new HikariDataSource(hikariConfig) -->
+>>>>>>> a8c802486c6414e73de5f95c071a1b783388ad78
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg ref="hikariConfig" />

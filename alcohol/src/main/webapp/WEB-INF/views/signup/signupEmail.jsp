@@ -45,6 +45,10 @@
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
         crossorigin="anonymous"></script>
         <script src="../static/js/signupEmail.js"></script>
+<<<<<<< HEAD
 	
+=======
+	</div>
+>>>>>>> a8c802486c6414e73de5f95c071a1b783388ad78
 	</body>
 </html>
