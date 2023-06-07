@@ -65,16 +65,26 @@
 		<div class="card-boby">
 			<c:forEach var="basket" items="${list}">
 				<div>
-					<input type="checkbox" name="myCheckbox"
-						value="${basket.quantity * basket.price}"
-						onchange="updateTotalOrderAmount()"> <label>${basket.brandname}</label>
+					<input type="checkbox" name="myCheckbox" id="checkbox-${ basket.basketid }"
+						oninput="updateTotalOrderAmount()"> 
+					<label>${basket.brandname}</label>
 					<hr>
-					<label>${basket.pname}</label> <br> <label>주문수량</label> <input
-						style="width: 50px;" id="inputQuantity-${basket.productid}"
+					<label>${basket.pname}</label> <br> 
+					
+					<label>주문수량</label> 
+					<input
+						style="width: 50px;" id="inputQuantity-${basket.basketid}"
 						type="number" value="${basket.quantity}"
-						onchange="updateOrderAmount(${basket.productid})"> <br>
-					<label>주문금액</label> <label id="orderAmount-${basket.productid}"
-						class="mx-2" data-price="${basket.price}">${(basket.quantity * basket.price)}원</label>
+						oninput="updateOrderAmount(${basket.basketid})">
+					
+					<br>
+					
+					<label>주문금액</label> 
+					<label id="orderAmount-${basket.basketid}"
+						class="mx-2" data-price="${basket.price}">
+						${(basket.quantity * basket.price)}원
+					</label>
+					
 					<hr>
 				</div>
 			</c:forEach>
@@ -85,6 +95,6 @@
 	</div>
 
 
-	<script src="./static/js/basket2.js"></script>
+	<script src="./static/js/basket3.js"></script>
 </body>
 </html>

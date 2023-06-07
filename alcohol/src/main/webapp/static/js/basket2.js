@@ -3,9 +3,9 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
 
-	function updateOrderAmount(productid) {
-		const inputQuantity = document.getElementById(`inputQuantity-${productid}`);
-		const orderAmount = document.getElementById(`orderAmount-${productid}`);
+	function updateOrderAmount(basketid) {
+		const inputQuantity = document.getElementById(`inputQuantity-${basketid}`);
+		const orderAmount = document.getElementById(`orderAmount-${basketid}`);
 		const price = parseFloat(orderAmount.dataset.price);
 		const quantity = parseInt(inputQuantity.value);
 
