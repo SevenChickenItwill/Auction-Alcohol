@@ -126,7 +126,9 @@
 		</div>
 		</div>
 		</div>
-		
+		<div>
+			<button class="btn" id="btnrefresh" status="2">자동 새로 고침 적용</button>
+		</div>
 		
 		<section class="text-center container">
 			<div class="row py-lg-3">
@@ -142,7 +144,7 @@
 		<div class="album py-5 bg-light">
 			<div class="container">
 
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="listmain">
 					<c:forEach var="list" items="${ auctioninfo }">
 						<c:url var="viewauction" value="/auction/mainsite">
 							<c:param name="aid" value="${ list.aid }" />
@@ -181,6 +183,7 @@
 		</div>
 
 	</main>
-
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../static/js/auction-list.js"></script>
 </body>
 </html>

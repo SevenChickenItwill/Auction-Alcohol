@@ -86,7 +86,21 @@ public class AuctionRestController {
 		
 	}
 	
-	
+	@GetMapping("/refresh/{status}")
+	public ResponseEntity<List<AuctionListDto>> refreshChat(@PathVariable int status){
+		
+		log.info("refreshChat()");
+		List<AuctionListDto> list;
+		if(status == 1) {
+			list = acservice.readInglist();
+		} else if(status == 2) {
+			list = acservice.readEndlist();
+		} else {
+			list = acservice.readAlllist();
+		}
+		
+		return ResponseEntity.ok(list);
+	}
 	
 	
 	

@@ -37,8 +37,8 @@ public class AuctionUserController {
 	private AuctionUserService userservice;
 	
 	@GetMapping("/mainsite")
-	public String usermain(@RequestParam int aid, String auctionname, Model model) {
-		log.info("usermain(aid={}, auctionname={})",aid,auctionname);
+	public String usermain(@RequestParam int aid, String auctionName, Model model) {
+		log.info("usermain(aid={}, auctionname={})",aid,auctionName);
 		
 		AuctionListDto auctiondto = aucservice.readOne(aid);
 		List<ChatListDto> chatdto = userservice.readChatDataOne(aid);
