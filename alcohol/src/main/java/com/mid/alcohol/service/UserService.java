@@ -1,8 +1,8 @@
 package com.mid.alcohol.service;
 
+
 import org.springframework.stereotype.Repository;
 
-import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.UserSignupDto;
 import com.mid.alcohol.repository.UserRepository;
 
@@ -19,12 +19,9 @@ public class UserService {
     
     public int signup(UserSignupDto dto) {
         log.info("signup({})", dto);
-        
-          
-        
         // 회원가입 처리
         return userRepository.userMainSignup(dto.toEntity());
-
     }
     
-}
+    
+    }

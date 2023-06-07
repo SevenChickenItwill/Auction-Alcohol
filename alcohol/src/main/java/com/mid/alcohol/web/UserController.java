@@ -1,5 +1,6 @@
 package com.mid.alcohol.web;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,6 @@ import com.mid.alcohol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -35,8 +35,6 @@ public class UserController {
         
         model.addAttribute("userEmail",userEmail);
         
-        
-
         return "/signup/signup";
     }
     
@@ -59,7 +57,6 @@ public class UserController {
 
         // 회원가입 완료 페이지로 넘겨줌
         return "/signup/signupCompletion";
-
     }
 
 
@@ -67,28 +64,46 @@ public class UserController {
     public void signupCompletion() {
         log.info("signupCompletion()");
     }
+        
+ 
+    // 메인 페이지 이동
+     @GetMapping("/main")
+     public void main() {
+         log.info("main()");
+     }
     
-    // 회원가입 완료 페이지에 정보를 가져갈 수 있음
-//    @PostMapping("/signupCompletion")
-//    public String signupCompletion(UserSignupDto dto) {
-//    log.info("signupCompletion()", dto);
-//    
-//    int result = userService.signup(dto);
-//    log.info("회원가입 결과 = {}", result);
-//
-//    // 회원가입 완료 페이지로 넘겨줌
-//    return "/signup/main";
-//    }
     
-    @GetMapping("/main")
-    public void main() {
-        log.info("main()");
+    // 계정 목록으로 페이지 이동 
+     @GetMapping("/userModify")
+     public void userModify() {
+      // 사용자 수정 페이지로 이동하는 로직 구현
+      
+     }
+    @PostMapping("/userModify")
+    public String userModify(UserSignupDto dto) {
+    	
+    	return"/signup/userPasswordModify";
     }
     
-    @GetMapping("/index")
-    public void index() {
-        log.info("index()");
+    @GetMapping("/userPasswordModify")
+    public void userPasswordModify() {
+    	
     }
+    
+    @PostMapping("/userPasswordModify")
+    public String userPasswordModify(UserSignupDto dto) {
+      // 비밀번호 수정 로직 구현
+      return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+    }
+    
+    
+    
+    
+    @PostMapping("/userPhoneModify")
+    public String userPhoneModify() {
+      // 전화번호 수정 로직 구현
+      return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+    }
+    
 
 }
-

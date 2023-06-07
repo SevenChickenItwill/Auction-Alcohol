@@ -13,7 +13,7 @@ public class HomeContoller {
     public String home() {
         log.info("home()");
         
-        return "signup";
+        return "indexSignup";
     }
     
     

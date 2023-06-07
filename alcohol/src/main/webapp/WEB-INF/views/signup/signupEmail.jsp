@@ -17,22 +17,34 @@
 		<header>
             <h1>가입 또는 로그인을 위해 이메일을 입력하세요.</h1>
         </header>
-        <c:url var="signupEmail" value="/signup/signupEmail" ></c:url>
+          <c:url var="signupEmail" value="/signup/signupEmail" ></c:url>
         <form id="signupEmailForm" method="post" action="${ signupEmail }">
             <div>
                 <label for="userEmail">이메일</label>
                 <br />
                 <input type="text" id="userEmail" name="userEmail" placeholder="EMAIL" required  autofocus />
+                <span id="idCk" class="dpn"></span>
+                <button id="btnEmailCheck">인증번호 받기</button>
             </div>
-             
+            <div>
+                <label for="userEmail">인증번호</label>
+                <br />
+                <input type="text" id="userEmailCheck" name="userEmailCheck" placeholder="AUTENTICATION NUMBER" disabled="disabled" maxlength="6" required  />
+                <span id="mailCheckWarn"></span>
+            </div>
+            </div> 
             <div>
                 <input type="submit" id="btnNext" value="다음" />
             </div>
         </form>
         
+        
+        
+        
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" 
         crossorigin="anonymous"></script>
-	</div>
+        <script src="../static/js/signupEmail.js"></script>
+	
 	</body>
 </html>
