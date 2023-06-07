@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const signupForm = document.querySelector('#signupForm');
   const btnCancel = document.querySelector('#btnCancel');
+  const btnNicknameCheck = document.querySelector('#btnNicknameCheck');
   btnCancel.addEventListener('click', () => {
     const check = confirm('회원가입을 취소할까요?');
     if (check) {
@@ -10,8 +11,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+btnNicknameCheck.addEventListener('click', async (e) => {
+	e.preventDefault(); // 이벤트의 기본 동작(폼 제출)을 중지합니다.
+	const userNickname = document.querySelector('#userNickname').value;
+
+	const url = `/alcohol/api/signup/signup/${userNickname}`;
+	try {
+		let response = await axios.get(url, userNickname);
+		console.log(response);
+		// 중복된 경우
+		if (response.data.isDuplicate) {
+			alert('별명이 이미 사용 중입니다. 다른 별명을 선택해주세요.');
+		} else {
+			// 중복되지 않은 경우, 다음 작업 수행
+		}
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+	
   const btnSignup = document.querySelector('#btnSignup');
   btnSignup.addEventListener('click', () => {
+	  
     const userName = document.querySelector('#userName').value;
     const userPassword = document.querySelector('#userPassword').value;
     const userPasswordCheck = document.querySelector('#userPasswordCheck').value;
@@ -20,7 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const userNickname = document.querySelector('#userNickname').value;
     const userGender = document.querySelector('#userGender').value;
     const userBirthday = document.querySelector('#userBirthday').value;
-
+	
+	
+	
     if (userName.length >= 8) {
       alert('사용자 이름은 8글자 미만이어야 합니다.');
       return;
@@ -77,11 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
       signupForm.submit();
     }
   });
-  
-   if (result === null) {
-  	  alert('이미 사용 중인 별명입니다.');
-  	  return;
-}
 
   // 비밀번호 무결성 체크
   function isValidPassword(password) {

@@ -14,17 +14,18 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Repository
 public class UserService {
-
+	
+	// 회원가입을 하기위해
     private final UserRepository userRepository;
 
     public int signup(UserSignupDto dto) {
         log.info("signup({})", dto);
+       
         
-
-        // 중복이 없는 경우 회원가입 처리
         return userRepository.userMainSignup(dto.toEntity());
     }
-
+    
+    // 계정 정보를 수정하기 위해
     public UserModifyDto read(String userEmail) {
         log.info("read(userEmail={})", userEmail);
 
@@ -34,4 +35,13 @@ public class UserService {
 
         return dto; 
     }
+    
+    // 중복된 별명이 있는지 
+    public UserSignupDto findByNickname(String userNickname) {
+		log.info("readOne()");
+
+		return userRepository.findByUserNickname(userNickname);
+
+	}
+    
 }

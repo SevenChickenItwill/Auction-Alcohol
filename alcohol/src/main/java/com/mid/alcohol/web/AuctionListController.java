@@ -27,6 +27,7 @@ public class AuctionListController {
 	public void auctionList(Model model) {
 		List<AuctionListDto> list = auctionservice.readAlllist();
 		model.addAttribute("auctioninfo", list);
+		
 	}
 	
 	@GetMapping("/auctioninglist")

@@ -24,11 +24,13 @@ public class UserController {
 
     private final UserService userService;
     
+    // 이메일 페이지로 이동하기 위해
     @GetMapping("/signupEmail")
     public void signupEmail() {
         log.info("signupEmail()");
     }
     
+    // 이메일 페이지에서 받은 이메일 정보를 보내기위해
     @PostMapping("/signupEmail")
     public String signupEmail(UserSignupDto dto,
             @RequestParam("userEmail") String userEmail, Model model) {
@@ -45,6 +47,8 @@ public class UserController {
     public void signup() {
         log.info("signup()");
     }
+    
+
 
     // 회원가입 처리
     @PostMapping("/signup")
@@ -57,10 +61,6 @@ public class UserController {
         int result = userService.signup(dto);
         log.info("회원가입 결과 = {}", result);
         
-        if (result == 2) {
-            return  null;
-        } else
-
         // 회원가입 완료 페이지로 넘겨줌
         return "/signup/signupCompletion";
     }
@@ -93,17 +93,20 @@ public class UserController {
        return "/signup/userModify";
      }
      
+    // 로그인된 상태에 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보 
     @PostMapping("/userModify")
     public String userModify(UserSignupDto dto) {
     	
     	return"/signup/userPasswordModify";
     }
     
+    // 비밀번호 수정 페이지로 이동하기 위해
     @GetMapping("/userPasswordModify")
     public void userPasswordModify() {
     	
     }
     
+    // 비밀번호를 수정하기위한(미완성)
     @PostMapping("/userPasswordModify")
     public String userPasswordModify(UserSignupDto dto) {
         
@@ -113,7 +116,7 @@ public class UserController {
     
     
     
-    
+    // 전화번호를 수정하기위해
     @PostMapping("/userPhoneModify")
     public String userPhoneModify() {
       // 전화번호 수정 로직 구현

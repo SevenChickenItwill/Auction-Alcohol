@@ -66,7 +66,8 @@
                         <div>
                             <label for="userNickname">별명</label>
                             <br />
-                            <input type="text" id="userNickname" name="userNickname" placeholder="NICKNAME" required />
+                            <input type="text" id="userNickname" name="userNickname" placeholder="NICKNAME"	 required />
+                            <button id="btnNicknameCheck" >중복체크</button>
                         </div>  
                     </div>
                     <div>
