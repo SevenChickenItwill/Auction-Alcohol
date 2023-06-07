@@ -2,17 +2,11 @@
  * 
  */
 document.addEventListener('DOMContentLoaded', () => {
-  function updateOrderAmount(basketid) {
-    const inputQuantity = document.getElementById(`inputQuantity-${basketid}`);
-    const orderAmount = document.getElementById(`orderAmount-${basketid}`);
-    const price = parseFloat(orderAmount.dataset.price);
-    const quantity = parseInt(inputQuantity.value);
-
-    const newAmount = price * quantity;
-    orderAmount.innerHTML = `${newAmount.toLocaleString()}원`;
-
-    updateTotalOrderAmount();
-  }
+	const updateOrderAmount = (basketid) => {
+		const orderAmount = document.getElementById(`inputQuantity-${basketid}`).value;
+		console.log(orderAmount);
+	};
+  
 
   function toggleSelectAll() {
     const checkboxes = document.querySelectorAll('input[name="myCheckbox"]');
