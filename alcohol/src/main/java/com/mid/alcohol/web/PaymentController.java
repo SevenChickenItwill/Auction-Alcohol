@@ -2,6 +2,8 @@ package com.mid.alcohol.web;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.dto.AdressUpdateDto;
 import com.mid.alcohol.dto.PaymentDetailDto;
+import com.mid.alcohol.dto.PaymentReadDto;
 import com.mid.alcohol.service.PaymentService;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +30,17 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
+	
+	@GetMapping("/paymentmain")
+	public void read(@RequestParam String order_name, Model model) {
+		log.info("read(order_name={})", order_name);
+		
+		PaymentReadDto dto = paymentService.read(order_name);
+		
+		model.addAttribute("payment", dto);
+		log.info("run2()");
+	}
+	
 	@GetMapping("/information")
 	public void paymentInformation(Model model) {
 		log.info("information()");
@@ -34,11 +49,6 @@ public class PaymentController {
 	@GetMapping("/modify")
 	public void adressModify(Model model) {
 		log.info("modify()");
-	}
-	
-	@GetMapping("/paymentmain")
-	public void paymentMain(Model model) {
-		log.info("paymentMain()");
 	}
 	
 	@GetMapping("/detail")
@@ -59,7 +69,7 @@ public class PaymentController {
 		int result = paymentService.update(dto);
 		log.info("update = {}", result);
 		
-		return "redirect:/paymain";
+		return "redirect:/paymentmain";
 	}
 
 

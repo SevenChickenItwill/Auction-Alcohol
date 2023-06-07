@@ -12,6 +12,8 @@ import lombok.Data;
 @Builder
 @AllArgsConstructor
 public class PaymentDetailDto {
+	// 결제/주문한 내역 상세보기에서 사용하는 Dto
+	
 	private String seller_name; // 판매자	
 	private int product_quantity;	// 상품 수량
 	private String product_info;	// 상품 정보

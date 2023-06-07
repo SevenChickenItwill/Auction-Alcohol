@@ -26,7 +26,7 @@
 			<div class="card">
 				<form class="card-body" id="modifyForm">
 					<div class="my-2">
-						<label class="form-label" for="order_name">주문자 이름</label>
+						<label class="form-label" for="order_name">이름</label>
 						 <textarea class="form-control" id="order_name" name="order_name">${ payment.order_name }</textarea>
 					</div>
 					<div class="my-2">

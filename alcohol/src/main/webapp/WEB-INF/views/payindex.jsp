@@ -53,7 +53,7 @@
 
 	<ul>
 		<li><c:url value="/payment/paymentmain" var="paymentMain">
-				<c:param name="num" value="0" />
+				<c:param name="order_name" value="admin" />
 			</c:url> <a href="${paymentMain}">결제하기</a></li>
 	</ul>
 </body>
