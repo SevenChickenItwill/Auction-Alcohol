@@ -22,12 +22,12 @@
     	<c:set var="loginid" value="다훈"></c:set>
     	<input class="d-none" id="loginid" name="loginid" type="text" value="${ loginid }" />
         <section class="bg-color-yellow">
-        <div class="card" id="otherchatcontent">
+        <div class="card" id="otherchatcontent"  style="width: 500px;">
         	
             <c:forEach items="${ list1 }" var="list1">
             <input class="d-none" name="listuserid" value="${list1.userid }" type="text" />
             	<c:if test="${ listuserid ne loginid }" >
-            		<input class="form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}"/>
+            		<input class="form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             	<c:if test="${ listuserid eq loginid }" >
@@ -56,13 +56,17 @@
         </section>
         <c:set var="status" value="${ list2.status }"></c:set>
         <div class="card" id="chatsubmit">
+        	<input type="number" id = "statusinput" class="d-none" name="statusinput" value="${ status }" />
         	<input type="number" class="d-none" id="cid" name="cid" value="${list2.aid }" />
-        	<input type="text" class="card" id="userid" name="userid" />
-            <input type="text" class="card" id="chatcontent" name="chatcontent" />
-            <c:if test="${ status == 1 }">
+        	<input type="text" class="card" id="userid" name="userid" required="required" />
+            <input type="text" class="card" id="chatcontent" name="chatcontent" value=" "/>
+            
             <button class="btn btnsle" id="btnsubmit" data-bid="0">전송</button>
-            <button class="btn btnsle" id="btnbat" data-bid="1">배팅</button>
-            </c:if>
+            <button class="btn btnsle" id="btnbat" data-bid="1" pers="1">배팅</button>
+            <button class="btn btnsle" id="btnbat2" data-bid="1" pers="2">배팅(X2)</button>
+            <button class="btn btnsle" id="btnbat3" data-bid="1" pers="5">배팅(X5)</button>
+            <button class="btn btnsle" id="btnpassbat" data-bid="2">즉시낙찰</button>
+            
             <c:url var="mainmenu" value="/auction/auctionlist" />
             <button class="btn"><a href="${ mainmenu }">메인 메뉴로 가기</a></button>
         </div>

@@ -20,6 +20,7 @@ public class ChatInputDto {
 	private String bidder;
 	private long bidcount;
 	private long nowbid;
+	private int status;
 	
 	
 	public Chat toEntity() {
@@ -30,7 +31,7 @@ public class ChatInputDto {
 	
 	public Auction toAuctionEntity() {
 		
-		return Auction.builder().aid((int)cid).bidCount(bidcount).nowBid(nowbid).bidder(bidder).build();
+		return Auction.builder().aid((int)cid).bidCount(bidcount).nowBid(nowbid).bidder(bidder).status(status).build();
 		
 	}
 	

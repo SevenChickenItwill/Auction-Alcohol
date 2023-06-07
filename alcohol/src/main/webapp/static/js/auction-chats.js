@@ -12,7 +12,7 @@
 	 // 웹소켓 객체 생성
 	 let ws = new WebSocket("ws://"+ location.host + "/alcohol/chat?aid="+cid); 
 	 const loginid = document.querySelector('#loginid').value;
-	 
+	 const statusinput = document.querySelector('#statusinput');
 	 let otherchatlist = document.querySelector('div#otherchatcontent');
 	 
 	 // 웹소켓 연결될 경우 실행되는 이벤트 핸들러
@@ -37,6 +37,7 @@
 		 const nowbid = data.nowbid;
 		 const bidcount = data.bidcount;
 		 const bidder =data.bidder;
+		 const statusvalue = data.status;
 		 console.log(cid);
 		 let html = '';
 		 if(loginid==userid){
@@ -52,6 +53,7 @@
 		 bidders.value = `${bidder}`;
 		 bidcounts.value = `${bidcount}`;
 		 otherchatlist.innerHTML += html;
+		 statusinput.value = `${statusvalue}`;
 		 
 		 
 	 }
@@ -64,6 +66,10 @@
 		 let bidup = msgData.nowbid;
 		 let bidman = msgData.bidder;
 		 let countup = msgData.bidcount;
+		 let status = msgData.status;
+		 if(bidup>=passbid){
+			 status = 2;
+		 }
 		 
 		 let reqUrl = `/alcohol/api/auction/send/${msgData.cid}/${msgData.userid}`;
 		 let senddata = {
@@ -72,7 +78,8 @@
 			 userid : userid,
 			 nowbid : bidup,
 			 bidder : bidman,
-			 bidcount : countup
+			 bidcount : countup,
+			 status : status
 		 }
 		 
 		 axios.post(reqUrl,senddata)
@@ -91,6 +98,16 @@
 		 const useridinput = document.querySelector('input#userid');
 		 const btndbid = event.target;
 		 const databid = btndbid.getAttribute('data-bid');
+		 const pers = btndbid.getAttribute('pers');
+		 if(statusinput.value==2){
+			 alert('이미 종료된 경매에는 대화나 배팅이 불가합니다.');
+			 return;
+		 }
+		 
+		 if(useridinput.value==''){
+				 alert('채팅 입력자가 없습니다');
+				 return;
+			 }
 		 	 
 		 console.log(databid);
 
@@ -105,12 +122,27 @@
 		 passbid = parseInt(passbid);
 		 bidnow = parseInt(bidnow);
 		 countbid = parseInt(countbid);
-		 let dealbid = `${bidnow + (passbid * 0.01)}`;
+		 let dealbid;
+		 if(pers==1){
+		  dealbid = `${bidnow + (passbid * 0.01)}`;
+		 } else if(pers==2){
+			dealbid = `${bidnow + (passbid * 0.02)}`; 
+		 } else if(pers==5){
+			 dealbid = `${bidnow + (passbid * 0.05)}`;
+		 }
+		 dealbid = parseInt(dealbid);
 		 let batmsg = `${userid} 님이 ${dealbid} 원 금액에 배팅했습니다.`;
 		 let bidup = `${dealbid}`;
 		 let countup = `${countbid+1}`;
+		 let status = `${statusinput.value}`;
+		 if(dealbid>=passbid){
+			 status = 2;
+		 }
+		 
 		 let msgData;
 		 if(databid==1){
+			 
+			 
 			 
 			 msgData = {
 				 
@@ -119,14 +151,19 @@
 				 message : batmsg,
 				 nowbid : bidup,
 				 bidder : bidman,
-				 bidcount : countup
+				 bidcount : countup,
+				 status : status
 				 
 				 
 			 }
 			 
-		 } else {
+		 } else if(databid==0) {
 		 
-		 
+		 	if(message == ''){
+				 alert('대화내용을 입력 후 전송하세요.');
+				 return;
+			 }
+		 	
 		 	msgData = {
 			 
 			 cid : cid,
@@ -134,10 +171,25 @@
 			 message : message,
 			 nowbid : bidnow,
 			 bidder : bidman,
-			 bidcount : countbid
+			 bidcount : countbid,
+			 status : status
 			 
 			 
 		 	}
+		 } else {
+			 batmsg = `${userid} 님이 즉시낙찰 금액에 배팅했습니다.`;
+			 msgData = {
+				 
+				 cid : cid,
+				 userid : userid,
+				 message : batmsg,
+				 nowbid : passbid,
+				 bidder : bidman,
+				 bidcount : countup,
+				 status : status
+				 
+			 }
+			 
 		 }
 		 // 메시지 값을 서버로 전달
 		 ws.send(JSON.stringify(msgData));
@@ -149,10 +201,18 @@
 	 
 	 const btnSubmit = document.querySelector('button#btnsubmit');
 	 const btnbat = document.querySelector('button#btnbat');
+	 const btnpassbat = document.querySelector('button#btnpassbat');
+	 const btnbat2 = document.querySelector('button#btnbat2');
+	 const btnbat3 = document.querySelector('button#btnbat3');
+	 
 	 
 	 btnSubmit.addEventListener('click',sendMessage);
 	 btnbat.addEventListener('click',sendMessage);
-	
+	 btnpassbat.addEventListener('click',sendMessage);
+	 btnbat2.addEventListener('click',sendMessage);
+	 btnbat3.addEventListener('click',sendMessage);
+	 
+	 
 	 const messageInput = document.querySelector('input#chatcontent');
 	 messageInput.addEventListener('keypress',(event)=>{
 		

@@ -3,14 +3,21 @@
  */
 
  document.addEventListener('DOMContentLoaded',()=>{
-	 const btnrefresh = document.querySelector('button#btnrefresh');
+	 const btnrefresh = document.querySelector('input#status');
 	 const listmain = document.querySelector('div#listmain'); 
 	 const makeNewList = (data) => {
-		 
+		 let result = '';
 		 for(let list of data){
 			 let viewauction = `/alcohol/auction/mainsite?aid=${list.aid}&auctionName=${list.auctionName}`;
+			 
+			 let start = new Date(list.auctionStart);
+			 let end = new Date(list.auctionEnd);
+			 
+			 start = start.toLocaleString();
+			 end = end.toLocaleString();
+			 
 			 let html = `
-						<a href="${ viewauction }">
+						<a style=" color:black; text-decoration: none;" href="${ viewauction }">
 						<div class="col">
 							<div class="card shadow-sm">
 								<p class="my-1 mx-2">${ list.auctionName }</p>
@@ -30,8 +37,8 @@
 									<p>현재입찰가: ${ list.nowbid }</p>
 									<p>입찰자: ${ list.bidder }</p>
 									<p>입찰횟수: ${ list.bidcount }</p>
-									<p>경매시작일: ${ list.auctionStart }</p>
-									<p>경매종료일: ${ list.auctionEnd}</p>
+									<p>경매시작일: ${ start }</p>
+									<p>경매종료일: ${ end }</p>
 								</div>
 							</div>
 						</div>
@@ -45,9 +52,9 @@
 		 
 	 }
 	 
-	 btnrefresh.addEventListener('click',()=>{
-		 console.log('페이지 갱신 작업 시작');
-		 let status = btnrefresh.getAttribute('status');
+	 console.log('페이지 갱신 작업 시작');
+		 let status = btnrefresh.value;
+		 status = parseInt(status);
 		 setInterval(()=>{
 		 
 	 		console.log(status);
@@ -63,10 +70,11 @@
 			 console.log(error);
 		 });
 		 
-	 },3000);
+	 },2000);
 		 
-	 })
-	 let result = '';
+	 
+	 
+	 
 	 
 	 
  })

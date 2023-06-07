@@ -23,7 +23,7 @@
 
 
 <style>
-a:link {
+a:link {`1
 	color:secondary;
 }
 
@@ -143,9 +143,7 @@ a:active {
 		</div>
 		</div>
 		</div>
-		<div>
-			<button class="btn" id="btnrefresh" status="3">자동 새로 고침 적용</button>
-		</div>
+		<input class="d-none" value=${ status } id="status" type="number" />
 		
 		<section class="text-center container">
 			<div class="row py-lg-3">
@@ -184,14 +182,14 @@ a:active {
 
 								<div class="card-body">
 									<p class="d-none">${ list.aid }</p>
-									<p>상품명: ${ list.pname }</p>
-									<p>브랜드: ${ list.brandname }</p>
-									<p>즉시낙찰가: ${ list.passbid }</p>
-									<p>현재입찰가: ${ list.nowbid }</p>
-									<p>입찰자: ${ list.bidder }</p>
-									<p>입찰횟수: ${ list.bidcount }</p>
-									<p>경매시작일: ${ list.auctionStart }</p>
-									<p>경매종료일: ${ list.auctionEnd}</p>
+									<p>상품명: </p>
+									<p>브랜드: </p>
+									<p>즉시낙찰가: </p>
+									<p>현재입찰가: </p>
+									<p>입찰자: </p>
+									<p>입찰횟수: </p>
+									<p>경매시작일: </p>
+									<p>경매종료일: </p>
 								</div>
 							</div>
 						</div>

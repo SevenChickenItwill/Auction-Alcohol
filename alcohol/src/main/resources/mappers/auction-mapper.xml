@@ -390,7 +390,7 @@
 	</delete>
 	
 	<update id="updatebat">
-		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid} WHERE aid = #{aid}
+		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid}, status = ${status} WHERE aid = #{aid}
 	</update>
 
     <update id="updateStatus">
