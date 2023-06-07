@@ -274,6 +274,156 @@ public class BulletinboardController {
         return "redirect:/bulletinboard/board/list?num=0";
     }
     
+    @GetMapping("/announcement")
+    public void announcementList(Model model, @RequestParam("num") int num) {
+    	log.info("announcementList()");
+        
+        // 공지사항을 저장하는 리스트 생성
+        List<BulletinboardListDto> list = bulletinboardService.selectAnnouncement();
+        
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+        // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
+        
+        // list의 전체 개수
+        int length = list.size();
+        
+        // 마지막 인덱스
+        int len = 0;
+        
+        
+        if (num < 0) {
+            num = 0;
+        }
+        
+        int pageCount = 10 * num;
+        log.info("num = {}", num);
+        
+        
+        if (pageCount + 10 > length) {
+            len = length;
+        } else {
+            len = pageCount + 10;
+        }
+        
+        // 페이지 쪽수를 매기기 위해 설정한 값.
+        count = num;
+        log.info("count= {}", count);
+        
+        // 페이지 쪽수 마지막 값을 찾기 위해서
+        int listPageMax = (int) ((list.size() / 10) + 1);
+        log.info("listPageMax ={}", listPageMax);
+        
+        model.addAttribute("pageListCount", count);
+        model.addAttribute("length", length);
+        model.addAttribute("num",num);
+        model.addAttribute("maxIndex", len);
+        model.addAttribute("pageCount", pageCount);
+        model.addAttribute("boards", list);
+        model.addAttribute("listSize", list.size());
+        model.addAttribute("listPageMax", listPageMax);
+    }
     
+    @GetMapping("/recommend")
+    public void recommendOrderByReommend(Model model, @RequestParam("num") int num) {
+    	log.info("announcementList()");
+        
+        // 공지사항을 저장하는 리스트 생성
+        List<BulletinboardListDto> list = bulletinboardService.selectOrderByRecommend();
+        
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+        // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
+        
+        // list의 전체 개수
+        int length = list.size();
+        
+        // 마지막 인덱스
+        int len = 0;
+        
+        
+        if (num < 0) {
+            num = 0;
+        }
+        
+        int pageCount = 10 * num;
+        log.info("num = {}", num);
+        
+        
+        if (pageCount + 10 > length) {
+            len = length;
+        } else {
+            len = pageCount + 10;
+        }
+        
+        // 페이지 쪽수를 매기기 위해 설정한 값.
+        count = num;
+        log.info("count= {}", count);
+        
+        // 페이지 쪽수 마지막 값을 찾기 위해서
+        int listPageMax = (int) ((list.size() / 10) + 1);
+        log.info("listPageMax ={}", listPageMax);
+        
+        model.addAttribute("pageListCount", count);
+        model.addAttribute("length", length);
+        model.addAttribute("num",num);
+        model.addAttribute("maxIndex", len);
+        model.addAttribute("pageCount", pageCount);
+        model.addAttribute("boards", dtos);
+        model.addAttribute("listSize", list.size());
+        model.addAttribute("listPageMax", listPageMax);
+    }
     
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardListDto;
 
 // bulletinboard-mapper
 public interface BulletinboardRepository {
@@ -38,5 +39,9 @@ public interface BulletinboardRepository {
 //	int recommendDelete(long boardId, String userId);
 	
 	int viewsUp(long boardId);
+
+	List<Bulletinboard> selectAnnouncement();
+	
+	List<Bulletinboard> selectOrderByRecommend();
 	
 }

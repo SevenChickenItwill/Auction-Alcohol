@@ -81,5 +81,16 @@
         where BOARD_ID= #{boardId}
     </update>
     
+    <!-- 게시판 공지 사항만 보는 기능 -->
+    <select id="selectAnnouncement" resultType="com.mid.alcohol.domain.Bulletinboard">
+    	select * from BULLETINBOARD where CATEGORY = 1 order by BOARD_ID desc
+    </select>
+    
+    <!-- 게시판 추천 높은순으로 나열하는 기능 -->
+    <select id="selectOrderByRecommend" resultType="com.mid.alcohol.domain.Bulletinboard">
+    	select * from BULLETINBOARD order by RECOMMEND desc
+    </select>
+    
+    
     
 </mapper>

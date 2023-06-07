@@ -237,5 +237,23 @@ public class BulletinboardService {
 		return result;
 	}
 	
+	// 공지사항만 보는 메서드
+	public List<BulletinboardListDto> selectAnnouncement() {
+		log.info("selectAnnouncement()");
+		
+		List<Bulletinboard> list = bulletinboardRepository.selectAnnouncement();
+		
+		return list.stream().map(BulletinboardListDto::fromEntity).toList();
+	}
+	
+	// 추천순으로 보는 메서드
+	public List<BulletinboardListDto> selectOrderByRecommend() {
+		log.info("selectOrderByRecommend()");
+		
+		List<Bulletinboard> list = bulletinboardRepository.selectOrderByRecommend();
+		
+		return list.stream().map(BulletinboardListDto::fromEntity).toList();
+	}
+	
 	
 }
