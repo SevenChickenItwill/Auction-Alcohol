@@ -15,6 +15,7 @@ import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatMemberDto;
 
+
 @Repository
 public interface AuctionRepository {
     
@@ -107,6 +108,8 @@ public interface AuctionRepository {
 	void updateStatus(Timestamp now);
 
 	void updateStart(Timestamp now);
+
+	
 
 }
 

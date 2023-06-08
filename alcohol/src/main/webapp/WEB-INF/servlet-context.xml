@@ -50,7 +50,8 @@
     <bean id="SocketHandler"
         class="com.mid.alcohol.socket.SocketHandler" />
 
-
+	<bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"> </bean>
+	
 
 
 

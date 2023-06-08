@@ -15,6 +15,7 @@
 	 const statusinput = document.querySelector('#statusinput');
 	 let otherchatlist = document.querySelector('div#otherchatcontent');
 	 
+	 console.log(loginid);
 	 // 웹소켓 연결될 경우 실행되는 이벤트 핸들러
 	 ws.onopen = () =>{
 		
@@ -39,6 +40,7 @@
 		 const bidder =data.bidder;
 		 const statusvalue = data.status;
 		 console.log(cid);
+		 
 		 let html = '';
 		 if(loginid==userid){
 		 
@@ -95,7 +97,7 @@
 	 
 	 // 메시지를 전송하는 함수
 	 function sendMessage(event) {
-		 const useridinput = document.querySelector('input#userid');
+		 const useridinput = document.querySelector('input#loginid');
 		 const btndbid = event.target;
 		 const databid = btndbid.getAttribute('data-bid');
 		 const pers = btndbid.getAttribute('pers');
@@ -119,6 +121,7 @@
 		 const messageInput = document.querySelector('input#chatcontent');
 		 let message = messageInput.value;
 		 let userid = useridinput.value;
+		 console.log(userid);
 		 passbid = parseInt(passbid);
 		 bidnow = parseInt(bidnow);
 		 countbid = parseInt(countbid);
@@ -150,7 +153,7 @@
 				 userid : userid,
 				 message : batmsg,
 				 nowbid : bidup,
-				 bidder : bidman,
+				 bidder : userid,
 				 bidcount : countup,
 				 status : status
 				 
@@ -184,7 +187,7 @@
 				 userid : userid,
 				 message : batmsg,
 				 nowbid : passbid,
-				 bidder : bidman,
+				 bidder : userid,
 				 bidcount : countup,
 				 status : status
 				 

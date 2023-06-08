@@ -19,18 +19,19 @@
     </header>
     <main>
     	<%-- 로그인 완성되면 바꿔야할 변수, 세션값 받아오기 --%>
-    	<c:set var="loginid" value="다훈"></c:set>
-    	<input class="d-none" id="loginid" name="loginid" type="text" value="${ loginid }" />
+    	<c:set var="loginid" value="${ sessionScope.userNickname }"></c:set>
+    	<input class="d-none" id="loginid" name="loginid" type="text" value="${ sessionScope.userNickname }" />
         <section class="bg-color-yellow">
         <div class="card" id="otherchatcontent"  style="width: 500px;">
         	
             <c:forEach items="${ list1 }" var="list1">
             <input class="d-none" name="listuserid" value="${list1.userid }" type="text" />
-            	<c:if test="${ listuserid ne loginid }" >
+            	
+            	<c:if test="${ list1.userid ne loginid }" >
             		<input class="form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
-            	<c:if test="${ listuserid eq loginid }" >
+            	<c:if test="${ list1.userid eq loginid }" >
             		<input class="form-control text-end text-bg-warning" type="text" value="${list1.conversation} : ${list1.userid}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
@@ -72,7 +73,7 @@
         </div>
     </main>
 
-<script src="../static/js/auction-chats.js"></script>
+<script src="../static/js/auction-chat.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

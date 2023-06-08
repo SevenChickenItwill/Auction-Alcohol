@@ -1,5 +1,7 @@
 package com.mid.alcohol.web;
 
+import java.io.File;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +11,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.dto.AuctionCreateDto;
 import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.service.AuctionProductService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,11 +33,11 @@ public class AuctionProductController {
 	private AuctionProductService apservice;
 	
 	@GetMapping("/product")
-	public String productManage(Model model) {
+	public String productManage(Model model, HttpSession session) {
 		log.info("ProductManage");
 		
 		// 아이디 값 받으면 불러와야함
-		List<AuctionReadDto> list =  apservice.read("test");
+		List<AuctionReadDto> list =  apservice.read((String) session.getAttribute("userNickname"));
 		log.info("list={}",list);
 		model.addAttribute("productlist", list );
 		
@@ -93,5 +98,13 @@ public class AuctionProductController {
 		
 		return "redirect:/auction/product";
 	}
+	
+	private static final String UPLOAD_DIR = "classpath:/static/image/";
+	
+
+	
+
+	
+	
 
 }

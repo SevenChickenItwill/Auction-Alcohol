@@ -18,6 +18,7 @@ import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.dto.ChatInputDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatRoomDto;
+
 import com.mid.alcohol.dto.ProductSearchDto;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
@@ -102,7 +103,7 @@ public class AuctionRestController {
 		return ResponseEntity.ok(list);
 	}
 	
-	
+
 	
 	
 }

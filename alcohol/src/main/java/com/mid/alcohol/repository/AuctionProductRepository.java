@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.mid.alcohol.domain.AuctionProducts;
+import com.mid.alcohol.domain.Photo;
 import com.mid.alcohol.dto.AuctionReadDto;
 
 @Repository
@@ -22,4 +23,6 @@ public interface AuctionProductRepository {
 	int updateProduct(AuctionProducts entity);
 
 	List<AuctionReadDto> readDetail(AuctionProducts entity);
+
+	int savePhotoPath(Photo photo);
 }

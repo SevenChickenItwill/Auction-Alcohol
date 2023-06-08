@@ -257,6 +257,8 @@ public class AuctionService {
 		return auctionrepository.updatebat(entity);
 	}
 
+	
+
 	// 스케줄링 관련 메서드
 	
 	

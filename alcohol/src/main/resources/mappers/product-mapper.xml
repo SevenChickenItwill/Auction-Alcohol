@@ -42,4 +42,9 @@
     		</if>
     	
     </select>
+    
+    <insert id="savePhotoPath">
+    	insert into productphoto (productid, photopath) VALUES (#{productid}, #{filepath})
+    </insert>
+    
 </mapper>

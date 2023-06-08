@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.AuctionProducts;
+import com.mid.alcohol.domain.Photo;
 import com.mid.alcohol.dto.AuctionCreateDto;
 import com.mid.alcohol.dto.AuctionReadDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
@@ -81,6 +82,16 @@ public class AuctionProductService {
 		log.info("service entity={}", entity);
 		
 		return auctionpdrepository.readDetail(entity);
+	}
+
+	public int savePhotoPath(String filepath, int productid) {
+		// TODO Auto-generated method stub
+		
+		log.info("savePhotoPath({})",filepath);
+		
+		Photo photo = Photo.builder().productid(productid).filepath(filepath).build();
+		
+		return auctionpdrepository.savePhotoPath(photo);
 	}
 	
 }
