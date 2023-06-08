@@ -38,7 +38,7 @@ public class UserService {
     
     // 중복된 별명이 있는지 
     public UserSignupDto findByNickname(String userNickname) {
-		log.info("readOne()");
+		log.info("findByNickname()");
 
 		return userRepository.findByUserNickname(userNickname);
 

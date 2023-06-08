@@ -19,12 +19,12 @@
      
   </insert>
 
-  <!-- 이메일로 중복체크 -->
+  <!-- 이메일 중복체크 -->
   <select id="findByUserEmail" resultType="com.mid.alcohol.domain.User">
     select * from USERS where userEmail = #{userEmail}
   </select>
   
-  <!-- 별명으로 중복체크 -->
+  <!-- 별명 중복체크 -->
   <select id="findByUserNickname" resultType="com.mid.alcohol.domain.User">
     select * from USERS where userNickname = #{userNickname}
   </select>

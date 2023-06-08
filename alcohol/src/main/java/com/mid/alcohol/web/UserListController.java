@@ -2,8 +2,8 @@ package com.mid.alcohol.web;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mid.alcohol.dto.UserSignupDto;
@@ -22,7 +22,7 @@ public class UserListController {
 	
   // 중복된 별명이 있는지 확인하기위해
   @GetMapping("/signup/{userNickname}")
-  public void signup(@RequestParam String userNickname, Model model) {
+  public void signup(@PathVariable String userNickname, Model model) {
   	log.info("singup(userNickname={})", userNickname);
   	
   	UserSignupDto dto = userService.findByNickname(userNickname);
