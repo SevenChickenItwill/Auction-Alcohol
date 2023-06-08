@@ -22,26 +22,31 @@
 	<h4 class="mx-2 text-center">장바구니</h4>
 	<div class="card">
 		<div class="card-header">
-			<input type="checkbox" id="myCheckbox" name="myCheckbox"
-				value="checkboxValue" onchange="toggleSelectAll()"> <label
-				class="py-6" for="myCheckbox">전체선택</label> <span class="btninit"
-				onclick="deleteSelectedItems()">삭제</span>
+			<input type="checkbox" id="allCheckbox" /> 
+			<label class="py-6" for="allCheckbox">전체선택</label> 
+			<span class="btnDeleteBasket">삭제</span>
 		</div>
 		<div class="card-boby">
 			<c:forEach var="basket" items="${list}">
 				<div>
-					<input type="checkbox" name="myCheckbox"
-						id="checkbox-${basket.basketid}"
-						oninput="updateTotalOrderAmount()"> <label>${basket.brandname}</label>
+					<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
+					<label>${basket.brandname}</label>
 					<hr>
-					<label>${basket.pname}</label><br> <label>주문수량</label> <input
-						style="width: 50px;" id="inputQuantity-${basket.basketid}"
-						type="number" value="${basket.quantity}"
-						oninput="updateOrderAmount(${basket.basketid})"> <br>
+					<label>${basket.pname}</label>
+					<br> 
+					<label>주문수량</label>
+					<input
+						style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
+						type="number" value="${basket.quantity}" name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
+					<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }">
+						
+					<br>
 
-					<label>주문금액</label> <label id="orderAmount-${basket.basketid}"
-						class="mx-2" data-price="${basket.price}">
-						${(basket.quantity * basket.price)}원 </label>
+					<label>주문금액</label> 
+					<span id="orderAmount-${basket.basketid}" class="mx-2" 
+						  data-value="${(basket.quantity * basket.price)}">
+						${(basket.quantity * basket.price)}원
+					</span>
 
 					<hr>
 				</div>
@@ -49,14 +54,9 @@
 
 		</div>
 		<div class="card-footer">
-			<label>총 주문금액</label> <label id="totalAmount">원</label> <br> <a>결제하기</a>
+			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> <br> <a>결제하기</a>
 		</div>
 	</div>
-	<script>
-	const updateOrderAmount = (basketid) => {
-		const orderAmount = document.getElementById(`inputQuantity-${basketid}`).value;
-		console.log(orderAmount);
-	};
-	</script>
+	<script src="./static/js/basket2.js"></script>
 </body>
 </html>
