@@ -22,8 +22,7 @@
 			<ul>
 				<li>
 					<div>
-						<c:url var="userModify" value="/signup/userModify"></c:url>
-						<a href="${ userModify }">계정</a>
+						<a href="/alcohol/signup/userModify">계정</a>
 					</div>
 				</li>
 			</ul>

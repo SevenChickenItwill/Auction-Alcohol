@@ -80,47 +80,45 @@ public class UserController {
      }
     
 
-    
+ //=============================여기서부터 수정 컨트롤러===================================================================//  
     // 계정 페이지 이동 
      @GetMapping("/userModify")
-     public String userModify(@RequestParam("userEmail") String userEmail, Model model) {
+     public String userModify() {
        log.info("userModify");
 
-       UserModifyDto dto = userService.read(userEmail);
-
-       model.addAttribute("User", dto);
+       
        
        return "/signup/userModify";
      }
      
-    // 로그인된 상태에 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보 
+    // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보 
     @PostMapping("/userModify")
-    public String userModify(UserSignupDto dto) {
+    public void userModifyPPP() {
     	
-    	return"/signup/userPasswordModify";
+    	//return"/signup/userPasswordModify";
     }
     
     // 비밀번호 수정 페이지로 이동하기 위해
-    @GetMapping("/userPasswordModify")
-    public void userPasswordModify() {
-    	
-    }
+//    @GetMapping("/userPasswordModify")
+//    public void userPasswordModify() {
+//    	
+//    }
     
     // 비밀번호를 수정하기위한(미완성)
-    @PostMapping("/userPasswordModify")
-    public String userPasswordModify(UserSignupDto dto) {
-        
+    @PostMapping ("/userPasswordModify")
+    public void userPasswordModify() {
+        log.info("userPasswordModify");
      
-      return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+     // return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
     
     
     
     // 전화번호를 수정하기위해
     @PostMapping("/userPhoneModify")
-    public String userPhoneModify() {
+    public void userPhoneModify() {
       // 전화번호 수정 로직 구현
-      return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+//      return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
     
 

@@ -11,11 +11,10 @@ public interface UserRepository {
     // 회원정보를 DB에 넣기위해
     int userMainSignup(User user);
     
-    // 수정할 때 정보를 가져오기위해
-    User findByUserEmail(String userEmail);
-    
-//    User findByUserNickname(String userNickname);
-    
     // 중복된 별명이 있는지
-    UserSignupDto findByUserNickname(String userNickname);
+    User findByUserNickname(String userNickname);
+    
+    // 중복된 이메일이 있는지
+    User findByUserEmail(String userEmail);
+
 }

@@ -42,6 +42,7 @@
                             <br />
                             <input type="password" id="userPasswordCheck" name="userPasswordCheck" placeholder="PASSWORD CHECK" required />
                         </div>
+                        
                             <ul>
                                 <li>
                                     <label>8자 이상 20자 미만</label>
@@ -50,7 +51,6 @@
                                     <label>숫자, 특수 기호, 알파벳으로만 구성되어야 합니다.</label>                                
                                 </li>
                             </ul>
-                        
                         
                         <div>
                             <label for="userAddress">주소</label>

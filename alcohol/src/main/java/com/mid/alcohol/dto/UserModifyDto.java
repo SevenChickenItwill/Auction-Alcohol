@@ -1,10 +1,6 @@
 package com.mid.alcohol.dto;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import com.mid.alcohol.domain.User;
 

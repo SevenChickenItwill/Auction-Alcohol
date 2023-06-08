@@ -3,13 +3,13 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
  
- const userAccountForm = document.querySelector('#userAccountForm');
+ const accountPasswordForm = document.querySelector('#accountPasswordForm');
  const btnAccountPassword = document.querySelector('button#btnAccountPassword');
  btnAccountPassword.addEventListener('click', () => {
 	 
-	 userAccountForm.action = './userPasswordModify';
-	 userAccountForm.method = 'post';
-	 userAccountForm.submit();
+	 accountPasswordForm.action = './userPasswordModify';
+	 accountPasswordForm.method = 'post';
+	 accountPasswordForm.submit();
 	 
 	 
  });
@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
  const btnAccountPhone = document.querySelector('button#btnAccountPhone');
   btnAccountPhone.addEventListener('click', () => {
 	  
+	  
+	  accountPasswordForm.action = './userPhoneModify';
+	  accountPasswordForm.mothod = 'post';
+	  accountPasswordForm.submit();
 	  
   });
 	

@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const signupForm = document.querySelector('#signupForm');
 	const btnCancel = document.querySelector('#btnCancel');
 	const btnNicknameCheck = document.querySelector('#btnNicknameCheck');
+	let signupOk = 0;
 	btnCancel.addEventListener('click', () => {
 		const check = confirm('회원가입을 취소할까요?');
 		if (check) {
@@ -14,19 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	btnNicknameCheck.addEventListener('click', async (e) => {
 		e.preventDefault(); // 이벤트의 기본 동작(폼 제출)을 중지합니다.
-		
+
 		const userNickname = document.querySelector('input#userNickname').value;
 		console.log(userNickname);
 		const url = `/alcohol/api/signup/signup/${userNickname}`;
 		try {
-			let response = await axios.get(url, userNickname);
+			let response = await axios.get(url);
 			console.log(response);
-			// 중복된 경우
-			if (response.data.isDuplicate) {
+
+			if (response.data) {
+				// 중복된 경우
 				alert('이미 사용중인 별명입니다.');
-				return;
+				document.querySelector('input#userNickname').value = ''; // 입력된 별명을 지웁니다.
 			} else {
+				// 사용 가능한 경우
 				alert('사용 가능한 별명입니다.');
+				signupOk = 1;
 			}
 		} catch (error) {
 			console.log(error);
@@ -37,6 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const btnSignup = document.querySelector('#btnSignup');
 	btnSignup.addEventListener('click', () => {
 
+		if(signupOk == 0){
+			alert('중복검사를 진행하세요');
+			return;
+		}
+		
 		const userName = document.querySelector('#userName').value;
 		const userPassword = document.querySelector('#userPassword').value;
 		const userPasswordCheck = document.querySelector('#userPasswordCheck').value;

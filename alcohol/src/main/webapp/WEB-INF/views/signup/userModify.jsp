@@ -17,24 +17,28 @@
 		<h1>회원 정보관리</h1>
 	</header>
 	<c:url var="userModify" value="/signup/userModify"></c:url>
-	<form id="userAccountForm" method="post" action="${ userModify }">
+	<form id="accountPasswordForm" method="post" action="${ userModify }">
 	<div>
 		<h2>계정</h2>
 	</div>
 	<div>
 		<label>이메일</label> 
 		<br /> 
-		<input type="text" id="userAccountEmail"
+		<input type="email" id="userAccountEmail"
 			name="userAccountEmail" readonly value="${ userEmail }"/>
 	</div>
-	<div id="userAccountDiv">
+	<div>
 		<label>비밀번호</label> 
 		<br /> 
-		<input type="text"
+		<input type="password"
 			id="userAccountPassword" name="userAccountPassword" value="${ userPassword }" />
-		<input type="submit" id="btnAccountPassword" value="수정"/>
+		<button id="btnAccountPassword">수정</button>
 	</div>
-	</form>
+	
+	<!-- 
+	<c:url var="userModify" value="/signup/userModify"></c:url>
+	<form id="AccountPhoneForm" method="post" action="userModify">
+	 -->
 	<div>
 		<label>전화번호</label> 
 		<br /> 
@@ -48,7 +52,7 @@
 		<input type="date"
 			id="userAccountBirthday" name="userAccountBirthday" value="${ userBirthday }" readonly>
 	</div>
-	
+	</form>
 	<br />
 	<div>
 		<label>계정 삭제</label>
