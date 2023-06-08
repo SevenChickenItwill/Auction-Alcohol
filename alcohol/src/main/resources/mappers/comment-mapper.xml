@@ -5,7 +5,7 @@
 <mapper namespace="com.mid.alcohol.repository.CommentRepository">
     
     <!-- PK ID로 댓글 읽어오기 -->
-    <select id = "selectById"
+    <select id = "selectByCommentId"
         resultType="com.mid.alcohol.domain.Comment">
         select * from COMMENTS where COMMENT_ID = #{commentId}
         </select>
@@ -23,7 +23,7 @@
     <update id="update">
         update COMMENTS
         set CONTENT = #{content}, TIME = systimestamp
-        where COMMENT_ID = #{commentId}
+        where COMMENT_ID = #{comment_id}
     </update>
 
     <!-- 댓글 삭제 -->  
@@ -35,7 +35,7 @@
     <!-- 댓글 생성 -->
     <insert id="insert">
         insert into COMMENTS (board_id, nickname, content, time) 
-            values (#{boardId}, #{nickname}, #{content}, systimestamp) <!-- 모델 이름과 완벽히 일치 --> 
+            values (#{board_id}, #{nickname}, #{content}, systimestamp) <!-- 모델 이름과 완벽히 일치 --> 
     </insert>    
     
     <!-- 달린 댓글 갯수 세기 -->

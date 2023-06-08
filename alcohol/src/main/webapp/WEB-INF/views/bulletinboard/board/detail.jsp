@@ -34,7 +34,8 @@
                     <div>
                         <span>${ board.views }</span>
                         <span>${ board.recommend }</span>
-                        <span>댓글[개수]</span>
+                        <span>댓글</span>
+                        <span id="commentCount">${ post.rcnt }</span>개
                     </div>
                         이미지
                     <div>
@@ -66,15 +67,30 @@
                 </div>
                 
                 
+                
                 <div>
-                    <form id="commentForm">
-                        <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
-                    </form>
+                댓글 수정 테스트
                 </div>
-                 
-                <div>    
-                    <button id="commentRegister">등록</button>
+                <div>
+                <input id="updateCommentId" type="hidden"/>
                 </div>
+                <textarea id="updateTest" placeholder="업데이트 테스트"> </textarea>
+                <div>
+                <button id ="confirmButton">댓글 수정 등록</button>
+                </div>
+                
+                
+                <div>
+                    <input value="test33" id="userNickname" readonly/>
+                </div>
+                <div>
+                    <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
+                </div>
+                <div>
+                	<button id="commentReg" >등록</button>
+                </div>
+                
+                
                 <div id="replies"></div>
             </section>
             
@@ -87,7 +103,7 @@
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
                 crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script src="../../static/js/comment.js"></script>
+            <script src="../../static/js/comments.js"></script>
             <script src="../../static/js/board-detail.js"></script>
             
             

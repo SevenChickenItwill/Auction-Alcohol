@@ -38,28 +38,39 @@ public class CommentController {
     
     
     @GetMapping("/all/{boardId}")
-    public ResponseEntity<List<CommentListDto>> detail(@PathVariable long boardId) {
+    public ResponseEntity<List<CommentListDto>> detail(@PathVariable long boardId, Model model) {
     	log.info("detail=id{}", boardId);
     	
     	List<CommentListDto> dto = commentService.read(boardId);
     	log.info("dto= {}", dto);
     	
+    	model.addAttribute("post",dto);
     	return ResponseEntity.ok(dto);
   
     }
     
-//    @PostMapping
-//    public ResponseEntity<Integer> createComment(@RequestBody CommentCreateDto dto) {
-//        log.info("CommentCreateDto(dto={}", dto);
-//        
-//        int result = commentService.create(dto);
-//        
-//     
-//        
-//        return ResponseEntity.ok(result);
-//        
-//    }
-//    
+    @PostMapping
+    public ResponseEntity<Integer> createComment(@RequestBody CommentCreateDto dto) {
+        log.info("CommentCreateDto(dto={}", dto);
+        
+        int result = commentService.create(dto);
+        
+       
+        
+        return ResponseEntity.ok(result);
+        
+    }
+    
+    @GetMapping("/{commentId}")
+    public ResponseEntity<CommentReadDto> readByCommentId(@PathVariable long commentId) {
+    	log.info("readByCommentId=(id={})", commentId);
+    	
+    	CommentReadDto dto = commentService.readByCommentId(commentId);
+    	log.info("dto={}", dto);
+    	
+    	return ResponseEntity.ok(dto);
+    }
+    
 //    
     @PutMapping("/{commentId}")
     public ResponseEntity<Integer> updateReply(
@@ -72,13 +83,13 @@ public class CommentController {
         return ResponseEntity.ok(result);
     }
     
-//    @DeleteMapping("/{commentId}")
-//    public ResponseEntity<Integer> deleteComment(@PathVariable long commentId) {
-//        log.info("deleteComment={}", commentId);
-//        
-//        int result = commentService.delete(commentId);
-//        
-//        
-//        return ResponseEntity.ok(result);
-//    }
+    @DeleteMapping("/{commentId}")
+    public ResponseEntity<Integer> deleteComment(@PathVariable long commentId) {
+        log.info("deleteComment={}", commentId);
+        
+        int result = commentService.delete(commentId);
+        
+        
+        return ResponseEntity.ok(result);
+    }
 }

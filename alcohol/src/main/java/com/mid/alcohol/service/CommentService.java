@@ -1,5 +1,6 @@
 package com.mid.alcohol.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -36,15 +37,21 @@ public class CommentService {
         log.info("read(boardId={})", boardId);
         
         List<Comment> list = commentRepository.selectByBoardId(boardId);
-    
-        return list.stream().map(CommentListDto::fromEntity).toList();
+        List<CommentListDto> list2 = new ArrayList<>();
+        for(Comment x : list) {
+        	
+        	list2.add(CommentListDto.fromEntity(x));
+        	
+        }
+        
+        return list2;
     }
 
     public int update(long commentId, CommentUpdateDto dto) {
-        log.info("update={}", dto);
+        log.info("update(commentId={}, dto={})", commentId, dto);
         
         Comment entity = Comment.builder()
-                .commentId(commentId)
+                .comment_id(commentId)
                 .content(dto.getContent())
                 .build();
         log.info("entity={}", entity);
@@ -57,6 +64,15 @@ public class CommentService {
         
         return commentRepository.delete(commentId);
     }
+
+
+	public CommentReadDto readByCommentId(long commentId) {
+		log.info("delete(id={})", commentId);
+		
+		Comment entity = commentRepository.selectByCommentId(commentId);
+		
+		return CommentReadDto.fromEntity(entity);
+	}
 
 
     

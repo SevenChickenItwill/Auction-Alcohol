@@ -41,6 +41,7 @@
                 
                 <span>
                     <button id="updateBtn">수정완료</button>
+                	
                 </span>
                 
             </section>

@@ -14,7 +14,7 @@ public interface BulletinboardRepository {
     
     List<Bulletinboard> selectAllOrderByIdDesc();
     
-    BulletinboardDetailDto selectById(long id);
+    BulletinboardDetailDto selectById(long board_id);
     
     int bulletinboardDeleteById(long board_id);
     

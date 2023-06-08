@@ -30,8 +30,8 @@ public class CommentListDto {
 				.nickname(entity.getNickname())
 				.time(Timestamp.valueOf(entity.getTime()))
 				.content(entity.getContent())
-				.commentId(entity.getCommentId())
-				.boardId(entity.getBoardId())
+				.commentId(entity.getComment_id())
+				.boardId(entity.getBoard_id())
 					.build();
 	}
 	
