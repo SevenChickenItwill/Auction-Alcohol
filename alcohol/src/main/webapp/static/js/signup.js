@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			// 중복된 경우
 			if (response.data.isDuplicate) {
 				alert('이미 사용중인 별명입니다.');
+				return;
 			} else {
 				alert('사용 가능한 별명입니다.');
 			}

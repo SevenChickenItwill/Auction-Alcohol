@@ -25,6 +25,8 @@ public class UserListController {
   public void signup(@PathVariable String userNickname, Model model) {
   	log.info("singup(userNickname={})", userNickname);
   	
+  	
+  	
   	UserSignupDto dto = userService.findByNickname(userNickname);
   	log.info("dto={}", dto);
   	model.addAttribute("signup", dto);
