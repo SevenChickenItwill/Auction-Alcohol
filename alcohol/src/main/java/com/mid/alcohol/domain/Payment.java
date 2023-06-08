@@ -1,6 +1,4 @@
 package com.mid.alcohol.domain;
-import java.sql.Timestamp;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
