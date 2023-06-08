@@ -52,11 +52,17 @@
 				</div>
 			</c:forEach>
 
+
+		<c:url value="/payment/paymentmain" var="paymentMain">
+			<c:param name="order_name" value="admin" />
+		</c:url> <a href="${paymentMain}">결제하기</a>
+
 		</div>
 		<div class="card-footer">
 			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> <br> <a>결제하기</a>
 		</div>
 	</div>
 	<script src="./static/js/basket2.js"></script>
+
 </body>
 </html>

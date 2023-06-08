@@ -19,6 +19,13 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PayHomeController {
 	
+
+	    @GetMapping("/payindex")
+	    public String home() {    	
+	        log.info("home()");
+	        return "payindex";
+	    }   	   
+
 	@Autowired
 	private final PaymentService paymentService;
 	
@@ -33,4 +40,5 @@ public class PayHomeController {
 		model.addAttribute("list", dto);
         return "payindex";
     }   	   
+
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mid.alcohol.domain.KakaoPay;
+import com.mid.alcohol.domain.KakaoPayResponse;
 import com.mid.alcohol.dto.KakaoPayDto;
 import com.mid.alcohol.service.KakaoPayService;
 
@@ -22,18 +22,27 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/payment")
 @RequiredArgsConstructor
 public class KakaoPayController {
-	 
-    /**
-     * 결제요청
-     */
-  
-    /**
-     * 결제 진행 중 취소
-     */
+//	 @Setter(onMethod_ = {@Autowired})
+//	 private KakaoPayService kakaoService;
+//	 
+//	 @GetMapping("/detial")
+//	 public void kakaoPayGet() {
+//		 log.info("kakaoPayGet");
+//	 }
+//	 
+//	 @PostMapping("/modify")
+//	 public String kakaoPay() {
+//		 log.info("kakaoPay post");
+//		 
+//		 return "redirect:/post/paymain";
+//	 }
+//	 
+//	 @GetMapping("/kakaopaysuccess")
+//	 public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+//		 log.info("kakaopaysuccess get");
+//		 log.info("kakaopaysuccess pg_token" + pg_token);
+//	 }
 
-
-    /**
-     * 결제 실패
-     */
+	
 
 }

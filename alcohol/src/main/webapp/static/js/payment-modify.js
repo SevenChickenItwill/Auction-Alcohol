@@ -1,5 +1,5 @@
 /**
- * views-payment-deliverymodify
+ * views-payment-ymodify
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		console.log(order_phone);
 		const check = confirm('변경하신 배송지로 배송받으시겠습니까?');
 		if(check) {
-			modifyForm.action = './update';
+			modifyForm.action = './paymentmain';
 			modifyForm.method = 'post';
 			modifyForm.submit();
 		}
