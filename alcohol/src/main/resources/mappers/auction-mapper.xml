@@ -401,8 +401,6 @@
         update auction set status = 1 WHERE #{now} > auctionstart AND auctionend > #{now} AND status != 1 AND status !=2
     </update>
     
-    <select id="readImage" resultType="com.mid.alcohol.dto.ImageRoot">
-    	select photopath from productphoto where productid = #{productid}
-    </select>
+    
     
 </mapper>
