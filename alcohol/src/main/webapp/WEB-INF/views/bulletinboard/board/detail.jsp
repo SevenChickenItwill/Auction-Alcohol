@@ -20,7 +20,9 @@
 	</header>
 
 	<main>
-
+		
+		<input type="text" class="d-none" value="${ sessionScope.userEmail }" id="loginId" />
+		
 		<section>
 			<form id="boardForm">
 				<input type="number" class="d-none" value="${ board.board_id }" id="boardId"
@@ -40,12 +42,11 @@
 									</p>
 									<img src="data:image/jpeg;base64,${ image }" alt="이미지" />
 									<p class="card-text">${ board.content }</p>
-
-									<div>
-										<input type="button" value="추천" id="recommendUp" />
-										<input type="button" value="비추천" id="recommendDo" />
-									</div>
-
+									
+										<div>
+											<input type="button" value="추천" id="recommendUp" />
+											<input type="button" value="비추천" id="recommendDo" />
+										</div>
 
 								</div>
 							</div>
@@ -55,12 +56,17 @@
 			</form>
 			<span> <c:url value="/bulletinboard/board/list?num=0"
 					var="boardList" /> <a href="${ boardList }">목록페이지</a>
-			</span> <span> <c:url var="boardModify"
-					value="/bulletinboard/board/modify">
-					<c:param name="id" value="${ board.board_id }"></c:param>
-				</c:url> <a href="${ boardModify }">수정하기</a> 
-				<a id="deleteBtn">삭제하기</a>
 			</span>
+			<!-- if문 넣기 -->
+				<span> 
+				<c:url var="boardModify" value="/bulletinboard/board/modify">
+					<c:param name="id" value="${ board.board_id }"></c:param>
+				</c:url> 
+				<a href="${ boardModify }">수정하기</a> 
+				<a id="deleteBtn">삭제하기</a>
+				</span>
+			
+			
 
 
 		</section>

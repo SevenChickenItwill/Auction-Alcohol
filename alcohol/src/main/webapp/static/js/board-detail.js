@@ -3,7 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+	
     const form = document.querySelector('form#boardForm');
     
     // 삭제버튼 객체 생성.
@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 추천수를 바로 갱신하기 위한 객체 생성.
     const spanRecommendCnt = document.querySelector('span#recommendCnt');
+    
+    // 로그인한 아이디
+    const loginId = document.querySelector('input#loginId').value;
     
     deleteBtn.addEventListener('click', (e) => {
         e.preventDefault;
@@ -67,12 +70,18 @@ document.addEventListener('DOMContentLoaded', () => {
 		const boardId = document.querySelector('input#boardId').value;
 		const data = { boardId };
 		
-		axios.post(`/alcohol/api/recommend/recommendup/${boardId}`)
+		if (loginId == null) {
+			alert('로그인이 필요한 서비스입니다.')
+			
+		} else {
+			axios.post(`/alcohol/api/recommend/recommendup/${boardId}`)
 			.then ((response) => {
 				console.log(response);
 				getRecommendWithBoardId(); // 갱신
 			})
 			.catch((error) => console.log(error));
+		}
+		
 		
 	};
 	
@@ -87,12 +96,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		const boardId = document.querySelector('input#boardId').value;
 		const data = { boardId };
 		
-		axios.post(`/alcohol/api/recommend/recommenddo/${ boardId }`)
+		if (loginId == null) {
+			alert('로그인이 필요한 서비스입니다.')
+			
+		} else {
+			
+			axios.post(`/alcohol/api/recommend/recommenddo/${ boardId }`)
 			.then((response) => {
 				console.log(response);
 				getRecommendWithBoardId();
 			})
 			.catch((error) => console.log(error));
+		}
+		
+		
+		
 	};
 	
 	recommendDo.addEventListener('click', recommendClickDo);

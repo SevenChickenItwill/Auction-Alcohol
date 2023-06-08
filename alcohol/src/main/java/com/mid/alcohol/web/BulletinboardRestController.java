@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.service.BulletinboardService;
 
@@ -51,5 +53,6 @@ public class BulletinboardRestController {
 		
 		return ResponseEntity.ok(result);
 	}
+	
 	
 }

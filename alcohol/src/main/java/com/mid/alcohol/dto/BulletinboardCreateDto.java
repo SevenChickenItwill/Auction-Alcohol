@@ -2,7 +2,10 @@ package com.mid.alcohol.dto;
 
 import java.sql.Blob;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.service.BulletinboardService;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,9 +13,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
 public class BulletinboardCreateDto {
     
     private int category;
@@ -22,13 +25,13 @@ public class BulletinboardCreateDto {
     private byte[] image;
     private String content;
     
-    public Bulletinboard entity(Bulletinboard bulletinboard) {
+    public Bulletinboard toEntity(Bulletinboard bulletinboard) throws Exception {
         return bulletinboard.builder()
                 .category(category)
                 .title(title)
-                .image(image)
                 .nickname(nickname)
                 .user_id(user_id)
+                .image(image)
                 .content(content)
                 .build();
     }

@@ -1,14 +1,26 @@
 package com.mid.alcohol.web;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
@@ -41,7 +53,6 @@ public class BulletinboardController {
         
         // 검색한 Deal list값을 저장하는 객체 생성.
         List<BulletinboardListDto> list = bulletinboardService.search(category, keyword);
-        log.info("list ={}", list);
         
         // 이미지를 저장하는 리스트 생성
         List<BulletinboardImageListDto> dtos = new ArrayList<>();
@@ -237,16 +248,29 @@ public class BulletinboardController {
     }
     
     @PostMapping("/update")
-    public String readByIdUpdate(Bulletinboard board, Model model) {
+    public String readByIdUpdate(Bulletinboard board, String file, Model model) {
         log.info("update(deal={})", board);
+        
+        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        log.info("fileName= {}", path + file);
+        byte[] image = new byte[1024];
+        
+        try {
+			image = bulletinboardService.imageToByteArray(path + file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+        board.setImage(image);
         
         int result = bulletinboardService.readByIdUpdate(board);
         log.info("result= {}", result);
         
         BulletinboardDetailDto dto = bulletinboardService.selectById(board.getBoard_id());
+        
         model.addAttribute("deal", dto);
         
-        return "redirect:/bulletinboard/board/detail?id=" + board.getBoard_id();
+        return "redirect:/bulletinboard/board/detail?id=" + dto.getBoard_id();
     }
     
     @PostMapping("/delete")
@@ -265,11 +289,26 @@ public class BulletinboardController {
     }
     
     @PostMapping("/create")
-    public String boardCreate(BulletinboardCreateDto dto) {
-        log.info("boardCreate(dto= {}, category= {})", dto, dto.getCategory());
+    public String boardCreate(BulletinboardCreateDto dto, String file) {
+        log.info("boardCreate(dto= {})", dto);
+        
+        
+        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        log.info("fileName= {}", path + file);
+        byte[] image = new byte[1024];
+        
+        try {
+			image = bulletinboardService.imageToByteArray(path + file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        dto.setImage(image);
+        
         
         int result = bulletinboardService.create(dto);
         log.info("생성 수 = {}", result);
+        
+        
         
         return "redirect:/bulletinboard/board/list?num=0";
     }
