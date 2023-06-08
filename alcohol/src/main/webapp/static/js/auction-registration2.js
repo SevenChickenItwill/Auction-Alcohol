@@ -12,7 +12,7 @@
      	const category = document.querySelector('input#category');
      // const idValue = document.querySelector('input#id').value;
      // 실제로는 아이디값 받기 현재는 로그인 기능 없으니
-     	const id = 'test';
+     	const id = document.querySelector('input#id').value;
      	const productid = document.querySelector('input#productId');
      	const auctionName = document.querySelector('input#auctionName');
      	const auctionEnd = document.querySelector('input#auctionEnd');

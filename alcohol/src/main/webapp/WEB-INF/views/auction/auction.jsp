@@ -138,7 +138,7 @@
         <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item">*** 님</li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
       </ul>
     </header>
   </div>

@@ -58,7 +58,7 @@
         <div class="card" id="chatsubmit">
         	<input type="number" id = "statusinput" class="d-none" name="statusinput" value="${ status }" />
         	<input type="number" class="d-none" id="cid" name="cid" value="${list2.aid }" />
-        	<input type="text" class="card" id="userid" name="userid" required="required" />
+        	<input type="text" class="card" id="userid" name="userid" value="${ sessionScope.userNickname }" required="required" />
             <input type="text" class="card" id="chatcontent" name="chatcontent" value=" "/>
             
             <button class="btn btnsle" id="btnsubmit" data-bid="0">전송</button>

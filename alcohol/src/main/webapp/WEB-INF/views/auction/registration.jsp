@@ -82,7 +82,7 @@
         <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item">*** 님</li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
       </ul>
     </header>
   </div>
@@ -92,7 +92,7 @@
 
                 <div class="form-control">
                     <!-- TODO: value test -> ${id}로 바꾸기 -->
-                    <input id="id" value="test" name="auctioneer"
+                    <input id="id" value="${ sessionScope.userNickname }" name="auctioneer"
                         class="d-none" />
                 </div>
                 <div class="form-control">

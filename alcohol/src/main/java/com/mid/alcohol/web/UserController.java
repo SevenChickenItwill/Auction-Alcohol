@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mid.alcohol.domain.Login;
 import com.mid.alcohol.dto.UserSignupDto;
 import com.mid.alcohol.service.UserService;
 
+import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import oracle.jdbc.proxy.annotation.Post;
@@ -89,6 +92,8 @@ public class UserController {
     public void index() {
         log.info("index()");
     }
+    
+    
 
 }
 

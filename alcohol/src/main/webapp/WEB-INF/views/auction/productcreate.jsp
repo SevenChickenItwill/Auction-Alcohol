@@ -26,7 +26,7 @@
 			
 				<c:url var="createsuccess" value="/auction/createsuccess" />
 				<form method="post" action="${ createsuccess }">
-					<input class="d-none" name="userId" id="userId" value="test"/>
+					<input class="d-none" name="userId" id="userId" value="${ sessionScope.userNickname }"/>
 					<div class="form-control">
 					<label for="productName">상품명</label>
 						<input class="form-control" type="text" name="pName" id="pName" />

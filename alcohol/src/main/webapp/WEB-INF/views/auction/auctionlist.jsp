@@ -112,6 +112,7 @@ a:active {
 				</button>
 			</div>
 		</div>
+		<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	</header>
 
 	<main>
