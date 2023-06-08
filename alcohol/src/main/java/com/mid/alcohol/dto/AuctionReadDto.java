@@ -44,7 +44,7 @@ public class AuctionReadDto {
 							.cost(cost)
 							.userId(userid)
 							.build();
-							
 	}
+	
 	
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
 <mapper namespace="com.mid.alcohol.repository.PaymentRepository">
@@ -12,10 +12,20 @@
  		WHERE ORDER_ID = #{order_id}
  	</update>
  	
+
  	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
  	<select id="selectByOrderInfo" resultType="com.mid.alcohol.domain.Payment">
  		SELECT * FROM payment WHERE ORDER_NAME = #{order_name}
  	</select>
  	
- 	
+
+ 	<!-- userid의 장바구니 목록을 가져온다. -->
+ 	<select id="readBasketByUserid" resultType="com.mid.alcohol.dto.BasketListDto">
+ 		SELECT b.basketid, b.productid, b.price, b.quantity, p.brandname, p.pname
+ 		FROM basket b
+ 		JOIN auctionproducts p
+ 		ON b.productid = p.productid
+ 		WHERE b.userid = #{userid}
+ 	</select>
+
 </mapper>
