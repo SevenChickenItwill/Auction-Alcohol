@@ -29,7 +29,7 @@ public class PaymentService {
 		return paymentRepository.updateDeliveryInfo(payment.toEntity());
 	}
 	
-	// 결제창에서 회원가입시 저장된 기존 회원 정보 불러오기
+	// 결제창에서 회원가입시 DB에 저장되어 있는 기존 회원 정보 불러오기
 	public PaymentReadDto read(String order_name) {
 		log.info("read(order_name={})", order_name);
 		

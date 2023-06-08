@@ -51,10 +51,8 @@
 </hr>
 	<h1>임시 바구니 페이지</h1>
 
-	<ul>
-		<li><c:url value="/payment/paymentmain" var="paymentMain">
-				<c:param name="order_name" value="admin" />
-			</c:url> <a href="${paymentMain}">결제하기</a></li>
-	</ul>
+		<c:url value="/payment/paymentmain" var="paymentMain">
+			<c:param name="order_name" value="admin" />
+		</c:url> <a href="${paymentMain}">결제하기</a>
 </body>
 </html>

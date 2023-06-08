@@ -1,20 +1,14 @@
 package com.mid.alcohol.web;
 
-
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.dto.AdressUpdateDto;
-import com.mid.alcohol.dto.PaymentDetailDto;
 import com.mid.alcohol.dto.PaymentReadDto;
 import com.mid.alcohol.service.PaymentService;
 
@@ -29,6 +23,7 @@ public class PaymentController {
 	
 	@Autowired
 	private PaymentService paymentService;
+	
 	
 	
 	@GetMapping("/paymentmain")
@@ -69,7 +64,7 @@ public class PaymentController {
 		int result = paymentService.update(dto);
 		log.info("update = {}", result);
 		
-		return "redirect:/paymentmain";
+		return "redirect:/payment/paymentmain";
 	}
 
 

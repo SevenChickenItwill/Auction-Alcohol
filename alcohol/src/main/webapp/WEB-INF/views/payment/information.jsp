@@ -25,25 +25,18 @@
 		<table>
 			<thead>
 				<tr>
-					<th>상품정보</th>
-					<th>구매자</th>
-					<th>배송비</th>
 					<th>수량</th>
+					<th>상품 정보</th>
+					<th>상품 금액</th>
+					<th>배송비</th>
 					<th>총 상품금액</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<c:forEach items="${ posts }" var="post">
+				<c:forEach items="${ payment }" var="payment">
 					<tr>
-						<td>${ post.id }</td>
-						<td><c:url var="postDetailPage" value="/post/detail">
-								<c:param name="id" value="${ post.id }" />
-							</c:url> <a href="${ postDetailPage }">${ post.title }</a>
-							 <span class="text-danger">[${ post.rcnt }]</span></td>
-						<td>${ post.author }</td>
-						<td><fmt:formatDate value="${ post.created_time }"
-								pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td></td>
 					</tr>
 				</c:forEach>
 			</tbody>
