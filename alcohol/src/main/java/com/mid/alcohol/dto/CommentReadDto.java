@@ -28,8 +28,8 @@ public class CommentReadDto {
     public static CommentReadDto fromEntity(Comment entity) {
         
         return CommentReadDto.builder()
-                .commentId(entity.getCommentId())
-                .boardId(entity.getBoardId())
+                .commentId(entity.getComment_id())
+                .boardId(entity.getBoard_id())
                 .nickname(entity.getNickname())
                 .content(entity.getContent())
                 .time(Timestamp.valueOf(entity.getTime()))

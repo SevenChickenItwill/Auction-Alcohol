@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,7 +67,35 @@
 				<a id="deleteBtn">삭제하기</a>
 				</span>
 			
-			
+			  <div>
+                 <!-- 댓글 목록 보여줄 영역 -->
+                    <span>댓글</span>
+                    <span id="commentCount"></span>
+                </div>
+                
+                
+                
+                <div>
+                댓글 수정 테스트
+                </div>
+                <div>
+                <input id="updateCommentId" type="hidden"/>
+                </div>
+                 
+                
+                
+                <div>
+                    <input value="test33" id="userNickname" readonly/>
+                </div>
+                <div>
+                    <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
+                </div>
+                <div>
+                	<button id="commentReg" >등록</button>
+                </div>
+                
+                
+                <div id="replies"></div>
 
 
 		</section>
@@ -80,8 +109,10 @@
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../../static/js/comments.js"></script>
 		<script src="../../static/js/board-details.js"></script>
 	</div>
 
 </body>
+
 </html>

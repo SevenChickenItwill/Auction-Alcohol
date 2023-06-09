@@ -13,14 +13,14 @@ import lombok.ToString;
 @ToString
 public class CommentCreateDto {
     
-    private long boardId;
-    private String nickname;
-    private String content;
+    private long boardId; // 댓글 게시판 고유 아이디
+    private String nickname; // 댓글 작성자 닉넴
+    private String content; // 댓글 내용
     
     
     public Comment toEntity() {
         return Comment.builder()
-                .boardId(boardId)
+                .board_id(boardId)
                 .nickname(nickname)
                 .content(content)
                 .build();
