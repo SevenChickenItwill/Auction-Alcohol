@@ -79,6 +79,7 @@ public class AuctionProductService {
 		
 		AuctionProducts entity = dto.toEntity();
 		log.info("service entity={}", entity);
+		entity.toWildcard(entity);
 		
 		return auctionpdrepository.readDetail(entity);
 	}
