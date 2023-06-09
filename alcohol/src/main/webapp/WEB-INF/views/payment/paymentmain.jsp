@@ -75,10 +75,8 @@
 	
 	  <!-- 결제 방법 영역-->
 	  <div class="title">결제 방법</div>
-	  <div id="payment-method"></div>
-	  <div id="agreement"></div> 
-	  <button id="payment-button">결제하기</button>
-	  
+	  <img src="../static/img/small.png">
+	  <br>
 	  <c:url value="/payment/information" var="paymentinformation">
 			<c:param name="num" value="0" />
 	  </c:url><a href="${paymentinformation}">주문/결제 내역</a>
