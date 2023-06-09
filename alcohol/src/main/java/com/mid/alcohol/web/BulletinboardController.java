@@ -28,6 +28,7 @@ import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.dto.BulletinboardImageDetailDto;
 import com.mid.alcohol.dto.BulletinboardImageListDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
+import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
 
 import lombok.RequiredArgsConstructor;
@@ -231,7 +232,8 @@ public class BulletinboardController {
         
         BulletinboardImageDetailDto imageDto = new BulletinboardImageDetailDto();
 		try {
-			imageDto = new BulletinboardImageDetailDto(0
+			imageDto = new BulletinboardImageDetailDto(
+					dto.getBoard_id()
 					, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(dto.getImage()))
 					, dto.getTitle()
 					, dto.getNickname()
@@ -248,8 +250,8 @@ public class BulletinboardController {
     }
     
     @PostMapping("/update")
-    public String readByIdUpdate(Bulletinboard board, String file, Model model) {
-        log.info("update(deal={})", board);
+    public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
+        log.info("update(dto={})", dto);
         
         String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
         log.info("fileName= {}", path + file);
@@ -261,16 +263,16 @@ public class BulletinboardController {
 			e.printStackTrace();
 		}
         
-        board.setImage(image);
+        dto.setImage(image);
         
-        int result = bulletinboardService.readByIdUpdate(board);
+        int result = bulletinboardService.readByIdUpdate(dto);
         log.info("result= {}", result);
         
-        BulletinboardDetailDto dto = bulletinboardService.selectById(board.getBoard_id());
+        BulletinboardDetailDto Detaildto = bulletinboardService.selectById(dto.getBoard_id());
         
-        model.addAttribute("deal", dto);
+        model.addAttribute("deal", Detaildto);
         
-        return "redirect:/bulletinboard/board/detail?id=" + dto.getBoard_id();
+        return "redirect:/bulletinboard/board/detail?id=" + Detaildto.getBoard_id();
     }
     
     @PostMapping("/delete")
@@ -290,7 +292,7 @@ public class BulletinboardController {
     
     @PostMapping("/create")
     public String boardCreate(BulletinboardCreateDto dto, String file) {
-        log.info("boardCreate(dto= {})", dto);
+        log.info("boardCreate()");
         
         
         String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
@@ -312,6 +314,37 @@ public class BulletinboardController {
         
         return "redirect:/bulletinboard/board/list?num=0";
     }
+    
+//    @PostMapping("")
+//    public String boardCreate(
+//    		MultipartFile file,
+//    		@RequestParam("category") String category,
+//    		@RequestParam("nickname")  String nickname,
+//    		@RequestParam("userId")  String user_id,
+//    		@RequestParam("title")  String title,
+//    		@RequestParam("content") String content
+//    ) {
+//    	
+//        log.info("boardCreate()");
+//        
+//        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+//        log.info("fileName= {}", path + file);
+//        byte[] image = new byte[1024];
+//        
+//        try {
+//			image = bulletinboardService.imageToByteArray(path + file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//        
+//        BulletinboardCreateDto dto = new BulletinboardCreateDto(Integer.parseInt(category), nickname, user_id, title, image, content);
+//        log.info("dto= {}", dto);
+//        
+//        int result = bulletinboardService.create(dto);
+//        log.info("생성 수 = {}", result);
+//        
+//        return "redirect:/bulletinboard/board/list?num=0";
+//    }
     
     @GetMapping("/announcement")
     public void announcementList(Model model, @RequestParam("num") int num) {

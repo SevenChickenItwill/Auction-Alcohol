@@ -17,7 +17,7 @@
     
     <!-- 게시글 상세보기 -->
     <select id="selectById" resultType="com.mid.alcohol.dto.BulletinboardDetailDto">
-        select * from BULLETINBOARD where BOARD_ID = #{board_id}
+        select * from BULLETINBOARD where BOARD_ID = #{boardId}
     </select>
     
     <!-- 글 삭제하기(delete) -->
@@ -29,6 +29,13 @@
     <update id="bulletinboardUpdateById">
         update BULLETINBOARD
         set TITLE= #{title}, IMAGE= #{image}, CONTENT= #{content}, TIME= systimestamp
+        where BOARD_ID= #{board_id}
+    </update>
+    
+    <!-- 이미지가 null일때 업데이트 -->
+    <update id="bulletinboardUpdateByIdImageNull">
+        update BULLETINBOARD
+        set TITLE= #{title}, CONTENT= #{content}, TIME= systimestamp
         where BOARD_ID= #{board_id}
     </update>
     

@@ -32,8 +32,8 @@
 					</div>
 					<div>
 						<label for="nickname">작성자</label> 
-						<input type="text" name="nickname" id="nickname" value="${ sessionScope.userNickname }" /> 
-						<input type="text" name="user_id"  id="userId" value="${ sessionScope.userEmail }" />
+						<input type="text" name="nickname" id="nickname" value="타락파워전사" /> <!-- ${ sessionScope.userNickname } -->
+						<input type="text" name="user_id"  id="userId" value="wooooa" /> <!-- ${ sessionScope.userEmail } -->
 					</div>
 					<div>
 						<label for="title">제목</label> 
@@ -62,9 +62,8 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="../../static/js/board-create.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="../../static/js/board-creates.js"></script>
 
 </body>
 </html>

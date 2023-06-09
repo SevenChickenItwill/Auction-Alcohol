@@ -22,7 +22,7 @@
         <main>
             <section>
                 <form id="modifyForm">
-                    <input type="number" class="d-none" value="${ board.board_id }" id="boardId" name="board_id" />
+                    <input type="number" class="d-none" value="${ board.board_id }" id="board_id" name="board_id" />
                     <div>
                         <input value="${ board.title }" id="title" name="title" />
                     </div>
@@ -44,7 +44,6 @@
                 </form>
                 
                 <span>
-                	
                     <button id="updateBtn">수정완료</button>
                 </span>
                 

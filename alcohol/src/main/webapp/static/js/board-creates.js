@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		if (result) {
 			createForm.method = 'post';
-			createForm.action = './update';
+			createForm.action = './create';
 			createForm.sumit(data);
 		}
 		

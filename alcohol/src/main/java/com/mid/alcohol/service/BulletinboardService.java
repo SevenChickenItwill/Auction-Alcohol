@@ -19,6 +19,7 @@ import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
+import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -45,10 +46,15 @@ public class BulletinboardService {
         return bulletinboardRepository.selectById(id);
     }
 
-    public int readByIdUpdate(Bulletinboard bulletnboard) {
+    public int readByIdUpdate(BulletinboardUpdateDto dto) {
         log.info("readByIdUpdate()");
         
-        return bulletinboardRepository.bulletinboardUpdateById(bulletnboard);
+        if (dto.getImage() != null) {
+        	return bulletinboardRepository.bulletinboardUpdateById(dto);
+        } else {
+        	return bulletinboardRepository.bulletinboardUpdateByIdImageNull(dto);
+        }
+        
     }
 
     public int bulletinboardDelete(long board_id) {
