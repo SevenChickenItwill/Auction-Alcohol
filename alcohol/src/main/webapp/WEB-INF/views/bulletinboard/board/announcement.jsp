@@ -70,7 +70,8 @@
 									<div class="row g-0">
 										<div class="col-md-4">
 											<!-- 이미지 -->
-											이미지
+											<img src="data:image/jpeg;base64,${ board.image }"
+												class="img-fluid rounded-start" alt="이미지">
 										</div>
 										<div class="col-md-8">
 											<div class="card-body">

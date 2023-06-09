@@ -26,8 +26,8 @@
 				<div>
 					<div>
 						<select name="category" id="category">
-							<option value="0">공지사항</option>
-							<option value="1">글작성</option>
+							<option value="1">공지사항</option>
+							<option value="0">글작성</option>
 						</select>
 					</div>
 					<div>
