@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+	package com.mid.alcohol.web;
 
 import com.mid.alcohol.domain.Login;
 import oracle.jdbc.proxy.annotation.Post;

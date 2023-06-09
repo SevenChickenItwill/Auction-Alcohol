@@ -14,11 +14,7 @@
 	 const form = document.querySelector('form#subform');
 	 const btnimgupload = document.querySelector('button#btnimgupload');
 	 
-	 btnimgupload.addEventListener('click',()=>{
-		
-		console.log(imgTag.value);
-		 
-	 })
+	 
 	 
 	 let imguploadok = 0;
 	 btnsubmit.addEventListener('click',(e)=>{

@@ -253,7 +253,7 @@ public class BulletinboardController {
     public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
         log.info("update(dto={})", dto);
         
-        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        String path = "C:/team/middlePj/alcohol/src/main/webapp/static/images/";
         log.info("fileName= {}", path + file);
         byte[] image = new byte[1024];
         
@@ -295,7 +295,7 @@ public class BulletinboardController {
         log.info("boardCreate()");
         
         
-        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        String path = "C:/team/middlePj/alcohol/src/main/webapp/static/images/";
         log.info("fileName= {}", path + file);
         byte[] image = new byte[1024];
         

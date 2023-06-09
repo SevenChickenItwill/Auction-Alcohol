@@ -33,6 +33,8 @@ public class PaymentController {
 	@PostMapping("/paymentmain")
 	public void paymentInfo() {
 		log.info("paymentInfo()");
+		
+	
 	}
 	
 	@GetMapping("/paymentmain")

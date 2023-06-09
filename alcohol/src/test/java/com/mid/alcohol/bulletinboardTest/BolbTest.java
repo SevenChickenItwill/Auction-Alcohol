@@ -72,7 +72,7 @@ public class BolbTest {
 		return returnValue;
 	}
 	
-	@Test
+	//@Test
 	public void toTagImage() throws IOException {
 		
 		BulletinboardDetailDto board = bulletinboardServie.selectById(1010);
@@ -90,13 +90,13 @@ public class BolbTest {
 		log.info("base64Image ={}", base64Image);
 	}
 	
-//	@Test
+	@Test
 	public void createTest() throws Exception {
 		log.info("createTest()");
 		
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 1; i++) {
 			
-			byte[] image = imageToByteArray("C:/Users/PC2304/Desktop/DefaultImage.png");
+			byte[] image = imageToByteArray("C:\\team\\middlePj\\alcohol\\src\\main\\webapp\\static\\images\\ioio.jpg");
 			
 			HashMap<String, byte[]> param = new HashMap<>();
 			
