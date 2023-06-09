@@ -20,12 +20,7 @@
   TABLESPACE "USERS" ;
 REM INSERTING into SCOTT.COMMENTS
 SET DEFINE OFF;
-Insert into SCOTT.COMMENTS (COMMENT_ID,BOARD_ID,NICKNAME,CONTENT,TIME) values (21,3,'test33','1113abc',to_date('2023/06/08 16:34:51','YYYY/MM/DD HH24:MI:SS'));
-Insert into SCOTT.COMMENTS (COMMENT_ID,BOARD_ID,NICKNAME,CONTENT,TIME) values (25,4,'test33','안녕
-',to_date('2023/06/08 20:08:14','YYYY/MM/DD HH24:MI:SS'));
-Insert into SCOTT.COMMENTS (COMMENT_ID,BOARD_ID,NICKNAME,CONTENT,TIME) values (24,4,'ada','수정 삭제 버튼 보이냐',to_date('2023/06/09 11:47:25','YYYY/MM/DD HH24:MI:SS'));
-Insert into SCOTT.COMMENTS (COMMENT_ID,BOARD_ID,NICKNAME,CONTENT,TIME) values (5,3,'ada','ㅎㅇ',to_date('2023/06/09 13:33:19','YYYY/MM/DD HH24:MI:SS'));
-Insert into SCOTT.COMMENTS (COMMENT_ID,BOARD_ID,NICKNAME,CONTENT,TIME) values (22,4,'test33','안녕',to_date('2023/06/07 18:20:14','YYYY/MM/DD HH24:MI:SS'));
+
 --------------------------------------------------------
 --  DDL for Index COMMENTS_PK
 --------------------------------------------------------
