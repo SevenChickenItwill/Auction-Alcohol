@@ -1,5 +1,7 @@
 package com.mid.alcohol.web;
 
+import com.mid.alcohol.domain.Login;
+import oracle.jdbc.proxy.annotation.Post;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,8 @@ import com.mid.alcohol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
+import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
+import jakarta.servlet.http.HttpSession;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/signup")

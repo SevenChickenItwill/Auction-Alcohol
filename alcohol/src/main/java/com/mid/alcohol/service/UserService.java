@@ -2,7 +2,9 @@ package com.mid.alcohol.service;
 
 import org.springframework.stereotype.Repository;
 
+import com.mid.alcohol.domain.Login;
 import com.mid.alcohol.domain.User;
+import com.mid.alcohol.dto.LoginCheckDto;
 import com.mid.alcohol.dto.UserModifyDto;
 import com.mid.alcohol.dto.UserSignupDto;
 import com.mid.alcohol.repository.UserRepository;
@@ -52,5 +54,11 @@ public class UserService {
         return userRepository.findByUserEmail(userEmail);
     }
     
+    public Login login(LoginCheckDto login) {
+
+    	log.info("login()");
+
+    	return userRepository.signInMain(login.toEntity());
+    }
     
 }
