@@ -18,6 +18,12 @@
  		SELECT * FROM payment WHERE ORDER_NAME = #{order_name}
  	</select>
  	
+ 	
+ 	<!--  -->
+ 	<update id="">
+ 		
+ 	</update>
+ 	
 
  	<!-- userid의 장바구니 목록을 가져온다. -->
  	<select id="readBasketByUserid" resultType="com.mid.alcohol.dto.BasketListDto">

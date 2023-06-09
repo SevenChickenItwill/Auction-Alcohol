@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mid.alcohol.dto.AdressUpdateDto;
 
 import com.mid.alcohol.dto.PaymentReadDto;
+
+import com.mid.alcohol.dto.BasketListDto;
+
+
 import com.mid.alcohol.service.PaymentService;
 import com.mid.alcohol.dto.BasketListDto;
 
@@ -44,8 +48,13 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/modify")
-	public void adressModify(Model model) {
+	public void adressModify(Model model, @RequestParam String order_name) {
 		log.info("modify()");
+		
+		PaymentReadDto dto = paymentService.read(order_name);
+		
+		model.addAttribute("payment", dto);
+		log.info("run3()");	
 	}
 	
 
@@ -56,7 +65,6 @@ public class PaymentController {
 		log.info("paymentMain()");
 	}
 	
-
 	@GetMapping("/detail")
 	public void paymentDetail(String order_id, Model model) {
 		log.info("paymentDetail(order_id={})", order_id);
