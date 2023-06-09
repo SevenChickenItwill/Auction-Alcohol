@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PaymentReadDto {
-	// 결제창에서 회원 기본 정보 불러오기 테스트
+	// 결제창에서 회원 기본 정보 불러오기 기본 값
 	private String order_name;
 	private String order_adress;
 	private String order_phone;

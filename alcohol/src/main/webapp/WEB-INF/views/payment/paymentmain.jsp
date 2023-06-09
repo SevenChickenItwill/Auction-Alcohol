@@ -20,7 +20,7 @@
 	</head>
 
 	<body>
-	   <!-- 상품 정보 영역-->
+	  <!-- 상품 정보 영역
 	  <div class="title">주문 예정 상품 정보</div>
 	  <div class="my-2">
 			<label class="form-label" for="name">판매자</label>
@@ -44,32 +44,33 @@
 	    <input type="checkbox" id="coupon"/>5,000원 할인받기 
 	  </form>
 	  <hr>	
+	   -->
 	  
 	  	<div class="title">배송지 정보</div>
 	  		<li>
 	  			<c:url value="/payment/modify" var="adressModify">
-	  				<c:param name="" value="" />
+	  				<c:param name="order_name" value="admin" />
 				</c:url><a href="${adressModify}">배송지 수정</a>
 			</li>
 		<div class="my-2">
-			<label class="form-label" for="name">이름</label>
-			<input class="form-control" id="name" value="${ payment.order_name }" readonly />
+			<label class="form-label" for="order_name">이름</label>
+			<input class="form-control" id="order_name" value="${ payment.order_name }" readonly />
 		</div>
 		<div class="my-2">
-			<label class="form-label" for="adress">주소</label>
-			<textarea class="form-control" id="adress" readonly>${ payment.order_adress }</textarea>
+			<label class="form-label" for="order_adress">주소</label>
+			<textarea class="form-control" id="order_adress" readonly>${ payment.order_adress }</textarea>
 		</div>
 		<div class="my-2">	
-			<label class="form-label" for="phone">핸드폰 번호</label>
-			<input class="form-control" id="phone" value="${ payment.order_phone }" readonly />
+			<label class="form-label" for="order_phone">핸드폰 번호</label>
+			<input class="form-control" id="order_phone" value="${ payment.order_phone }" readonly />
 		</div>
 		<div class="my-2">
-			<label class="form-label" for="email">이메일</label>
-			<input class="form-control" id="email" value="${ payment.order_email }" readonly />
+			<label class="form-label" for="order_email">이메일</label>
+			<input class="form-control" id="order_email" value="${ payment.order_email }" readonly />
 		</div>
 		<hr>	
 		
-		<div class="title">계산서</div>
+		<div class="title">계산서</div>		
 		<hr>
 	
 	  <!-- 결제 방법 영역-->
