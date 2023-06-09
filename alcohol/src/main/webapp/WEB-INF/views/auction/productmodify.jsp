@@ -37,7 +37,7 @@
 			<section>
 				<c:url var="productupdate" value="/auction/productupdate" />
 				<form id="modifyform" action="${ productupdate }" method="post">
-					<input name="userid" value="test" class="d-done">
+					<input name="userid" value="${ sessionScope.userNickname }" class="d-done">
 					<input type="text" value="${ product.productid }" name="productid" class="d-none">
 					<div>
 						<label>상품명</label>

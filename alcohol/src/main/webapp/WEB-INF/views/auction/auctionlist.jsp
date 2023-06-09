@@ -23,7 +23,7 @@
 
 
 <style>
-a:link {
+a:link {`1
 	color:secondary;
 }
 
@@ -112,6 +112,7 @@ a:active {
 				</button>
 			</div>
 		</div>
+		<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	</header>
 
 	<main>
@@ -143,7 +144,7 @@ a:active {
 		</div>
 		</div>
 		</div>
-		
+		<input class="d-none" value=${ status } id="status" type="number" />
 		
 		<section class="text-center container">
 			<div class="row py-lg-3">
@@ -155,11 +156,13 @@ a:active {
 				</div>
 			</div>
 		</section>
-
+		
+		
+		
 		<div class="album py-5 bg-light">
 			<div class="container">
 
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="listmain">
 					<c:forEach var="list" items="${ auctioninfo }">
 						<c:url var="viewauction" value="/auction/mainsite">
 							<c:param name="aid" value="${ list.aid }" />
@@ -180,14 +183,14 @@ a:active {
 
 								<div class="card-body">
 									<p class="d-none">${ list.aid }</p>
-									<p>상품명: ${ list.pname }</p>
-									<p>브랜드: ${ list.brandname }</p>
-									<p>즉시낙찰가: ${ list.passbid }</p>
-									<p>현재입찰가: ${ list.nowbid }</p>
-									<p>입찰자: ${ list.bidder }</p>
-									<p>입찰횟수: ${ list.bidcount }</p>
-									<p>경매시작일: ${ list.auctionStart }</p>
-									<p>경매종료일: ${ list.auctionEnd}</p>
+									<p>상품명: </p>
+									<p>브랜드: </p>
+									<p>즉시낙찰가: </p>
+									<p>현재입찰가: </p>
+									<p>입찰자: </p>
+									<p>입찰횟수: </p>
+									<p>경매시작일: </p>
+									<p>경매종료일: </p>
 								</div>
 							</div>
 						</div>
@@ -198,6 +201,7 @@ a:active {
 		</div>
 
 	</main>
-
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../static/js/auction-list.js"></script>
 </body>
 </html>

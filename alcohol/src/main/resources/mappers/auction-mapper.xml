@@ -356,7 +356,7 @@
 		resultType="com.mid.alcohol.dto.ChatListDto">
 		Select * FROM chat c JOIN userAuction u ON c.cid = u.cid
 		WHERE c.cid =
-		#{cid};
+		#{cid} ORDER BY c.createdtime
 	</select>
 
 	<select id="readChatMember"
@@ -371,9 +371,9 @@
 	</insert>
 
 	<insert id="createChatContents">
-		INSERT INTO chat( cid, userid, conversation, texttype
+		INSERT INTO chat( cid, userid, conversation, texttype, createdtime
 		)
-		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype})
+		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype}, systimestamp)
 	</insert>
 
 	<delete id="deleteChatRoom">
@@ -383,6 +383,19 @@
 	<delete id="deleteChatContents">
 		delete from chat where cid = #{cid}
 	</delete>
+	
+	<update id="updatebat">
+		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid}, status = ${status} WHERE aid = #{aid}
+	</update>
 
-
+    <update id="updateStatus">
+        update auction set status = 2 WHERE #{now} > auctionend AND status != 2
+    </update>
+    
+    <update id="updateStart">
+        update auction set status = 1 WHERE #{now} > auctionstart AND auctionend > #{now} AND status != 1 AND status !=2
+    </update>
+    
+    
+    
 </mapper>

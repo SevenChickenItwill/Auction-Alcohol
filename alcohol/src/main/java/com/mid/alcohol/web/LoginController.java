@@ -5,7 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
- 
+import com.mid.alcohol.domain.Login;
+import com.mid.alcohol.dto.LoginCheckDto;
+import com.mid.alcohol.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -15,6 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller // DispatcherServlet에게 컨트롤러 컴포넌트로 등록
 public class LoginController {
     
+	private final UserService userService;
     // 컨테스트 루트는 프로젝트 이름까지.
     
     // 컨트롤러에서 요청주소들을 처리한다
@@ -41,6 +46,24 @@ public class LoginController {
     @GetMapping("/enroll")
     public void enroll() {
         log.info("enroll()");  
+    }
+    
+    @PostMapping("/login")
+    public String login(LoginCheckDto dto, HttpSession session) {
+    	
+    	Login user = userService.login(dto);
+    	
+    	session.setAttribute("userEmail", user.getUserEmail());
+    	session.setAttribute("userPassword", user.getUserPassword());
+    	session.setAttribute("userNickname", user.getUserNickname());
+    	
+    	return "redirect:/auction/auctionlist";
+    }
+    
+    @GetMapping("/loginNew")
+    public void loginNew() {
+    	
+    	
     }
   
 
