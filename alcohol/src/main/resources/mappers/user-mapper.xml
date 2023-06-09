@@ -6,25 +6,26 @@
 <!-- UserMapper.xml -->
 <mapper namespace="com.mid.alcohol.repository.UserRepository">
   
-  <!-- 회원가입 -->
+  <!-- 회원가입 (이메일) -->
   <insert id="userEmailSignup">
     INSERT INTO USERS (userEmail)
     VALUES (#{userEmail})
   </insert>
   
+  <!-- 회원가입 정보  -->
   <insert id="userMainSignup" >
-    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userBirthday, userJoindate, userGender)
-    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userBirthday}, #{userJoindate}, #{userGender})
-    
+    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender)
+    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userNickname}, #{userBirthday}, #{userJoindate}, #{userGender})
+     
   </insert>
 
-  <!-- 아이디로 사용자 조회 -->
+  <!-- 이메일 중복체크 -->
   <select id="findByUserEmail" resultType="com.mid.alcohol.domain.User">
     select * from USERS where userEmail = #{userEmail}
   </select>
   
-  <select id="signInMain" resultType="com.mid.alcohol.domain.Login">
-  	select * from Login WHERE userEmail = #{userEmail} AND userPassword = #{userPassword}
+  <!-- 별명 중복체크 -->
+  <select id="findByUserNickname" resultType="com.mid.alcohol.domain.User">
+    select * from USERS where userNickname = #{userNickname}
   </select>
-  
 </mapper>
