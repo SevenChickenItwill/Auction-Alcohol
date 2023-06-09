@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.mid.alcohol.dto.AdressUpdateDto;
 
 import com.mid.alcohol.dto.PaymentReadDto;
-
-import com.mid.alcohol.dto.BasketListDto;
-
 import com.mid.alcohol.service.PaymentService;
+import com.mid.alcohol.dto.BasketListDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,17 +26,17 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
-	
+	@PostMapping("/paymentmain")
+	public void paymentInfo() {
+		log.info("paymentInfo()");
+	}
 	
 	@GetMapping("/paymentmain")
-	public void read(@RequestParam String order_name, Model model) {
-		log.info("read(order_name={})", order_name);
+	public void paymentInfoGet() {
+		log.info("paymentInfoGet()");
 		
-		PaymentReadDto dto = paymentService.read(order_name);
-		
-		model.addAttribute("payment", dto);
-		log.info("run2()");
 	}
+	
 	
 	@GetMapping("/information")
 	public void paymentInformation(Model model) {

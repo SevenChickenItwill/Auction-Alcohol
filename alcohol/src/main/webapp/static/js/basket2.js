@@ -70,4 +70,32 @@ document.addEventListener('DOMContentLoaded', () => {
 			labelTotalAmount.innerHTML = getTotalAmount + '원';
 		});
 	});
+	
+	// 결제 정보 넘기기
+	const btnPayment = document.querySelector('span#btnPayment');
+	btnPayment.addEventListener('click', () => {
+		let list = [];
+		checkboxes.forEach((checkbox) => {
+			if (checkbox.checked) {
+				const basketid = checkbox.getAttribute('data-id');
+				const productid = document.querySelector(`input#productid-${basketid}`).value;
+				const quantity = document.querySelector(`input#quantity-${basketid}`).value;
+				const totalAmount = document.querySelector('label#totalAmount').getAttribute('data-totalAmount');
+				
+				const data = {
+					basketid,
+					productid,
+					quantity,
+					totalAmount
+				};
+				
+				list.push(data);
+			}
+		});
+		
+		axios.post('/alcohol/payment/paymentmain', list)
+			.then((response) => {
+				window.location.href = '/alcohol/payment/paymentmain';
+			})
+	});
 });

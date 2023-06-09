@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.mid.alcohol.domain.Payment;
 
 import com.mid.alcohol.dto.BasketListDto;
-import com.mid.alcohol.dto.PaymentDto;
 
 
 @Repository
