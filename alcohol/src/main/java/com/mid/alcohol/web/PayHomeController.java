@@ -39,6 +39,8 @@ public class PayHomeController {
 		
 		model.addAttribute("list", dto);
         return "payindex";
-    }   	   
+    }
+	
+	
 
 }

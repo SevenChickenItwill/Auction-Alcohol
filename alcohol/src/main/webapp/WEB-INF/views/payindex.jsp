@@ -29,11 +29,14 @@
 		<div class="card-boby">
 			<c:forEach var="basket" items="${list}">
 				<div>
+					<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
 					<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
 					<label>${basket.brandname}</label>
 					<hr>
 					<label>${basket.pname}</label>
 					<br> 
+					<label>상품금액 ${ basket.price }</label>
+					<br>
 					<label>주문수량</label>
 					<input
 						style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
@@ -51,18 +54,15 @@
 					<hr>
 				</div>
 			</c:forEach>
-
-
-		<c:url value="/payment/paymentmain" var="paymentMain">
-			<c:param name="order_name" value="admin" />
-		</c:url> <a href="${paymentMain}">결제하기</a>
-
 		</div>
+		
 		<div class="card-footer">
-			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> <br> <a>결제하기</a>
+			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> 
+			<br>
+			<span id="btnPayment" class="btn">결제하기</span>
 		</div>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="./static/js/basket2.js"></script>
-
 </body>
 </html>
