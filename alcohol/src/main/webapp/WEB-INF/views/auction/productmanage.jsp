@@ -17,11 +17,11 @@
 <body class="mx-3">
 	<header>
 		<h1>경매 상품 관리</h1>
-		<h4>***님 반갑습니다</h4>
+		<h4>${ sessionScope.userNickname } 님 반갑습니다</h4>
 	</header>
 	<main class="card">
 			<div class="d-none">
-				<input id="userid" value="test" name="userid">
+				<input id="userid" value="${ sessionScope.userNickname }" name="userid">
 			</div>
 			<div>
 				<label for="productname" class="mx-3 my-2">상품명</label>

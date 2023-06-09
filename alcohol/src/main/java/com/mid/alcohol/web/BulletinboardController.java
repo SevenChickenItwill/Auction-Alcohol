@@ -1,26 +1,36 @@
 package com.mid.alcohol.web;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageListDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
-import com.mid.alcohol.repository.BulletinboardRepository;
+import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
 
-import jakarta.servlet.http.Part;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,7 +54,35 @@ public class BulletinboardController {
         
         // 검색한 Deal list값을 저장하는 객체 생성.
         List<BulletinboardListDto> list = bulletinboardService.search(category, keyword);
-        log.info("list ={}", list);
+        
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+     // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
         
         // list의 전체 개수
         int length = list.size();
@@ -71,7 +109,7 @@ public class BulletinboardController {
         log.info("count= {}", searchCount);
         
         // 페이지 쪽수 마지막 값을 찾기 위해서
-        int listPageMax = (int) ((list.size() / 10) + (list.size() % 10) - 1);
+        int listPageMax = (int) ((list.size() / 10) + 1);
         log.info("listPageMax ={}", listPageMax);
         
         model.addAttribute("pageListCount", searchCount);
@@ -79,9 +117,11 @@ public class BulletinboardController {
         model.addAttribute("num",pagenum);
         model.addAttribute("maxIndex", len);
         model.addAttribute("pageCount", pageCount);
-        model.addAttribute("boards", list);
+        model.addAttribute("boards", dtos);
         model.addAttribute("listSize", list.size());
         model.addAttribute("listPageMax", listPageMax);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("category", category);
     }
     
     @GetMapping("/list")
@@ -90,6 +130,36 @@ public class BulletinboardController {
         
         // 전체 Deal list값을 저장하는 객체 생성.
         List<BulletinboardListDto> list = bulletinboardService.selectAll();
+        
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+        // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
         
         // list의 전체 개수
         int length = list.size();
@@ -117,7 +187,7 @@ public class BulletinboardController {
         log.info("count= {}", count);
         
         // 페이지 쪽수 마지막 값을 찾기 위해서
-        int listPageMax = (int) ((list.size() / 10) + (list.size() % 10) - 1);
+        int listPageMax = (int) ((list.size() / 10) + 1);
         log.info("listPageMax ={}", listPageMax);
         
         model.addAttribute("pageListCount", count);
@@ -125,19 +195,31 @@ public class BulletinboardController {
         model.addAttribute("num",num);
         model.addAttribute("maxIndex", len);
         model.addAttribute("pageCount", pageCount);
-        model.addAttribute("boards", list);
+        model.addAttribute("boards", dtos);
         model.addAttribute("listSize", list.size());
         model.addAttribute("listPageMax", listPageMax);
-        
     }
     
     @GetMapping("/detail")
     public void readById(long id, Model model) {
         log.info("readById(id={})", id);
         
+        int result = bulletinboardService.viewsUp(id);
+        log.info("result = {}", result);
+        
         BulletinboardDetailDto dto = bulletinboardService.selectById(id);
         log.info("dto= {}", dto);
         
+        String image = "";
+        
+        try {
+			image = bulletinboardService.toTagImage(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+        
+        model.addAttribute("image", image);
         model.addAttribute("board", dto);
     }
     
@@ -148,20 +230,49 @@ public class BulletinboardController {
         BulletinboardDetailDto dto = bulletinboardService.selectById(id);
         log.info("dto= {}", dto);
         
-        model.addAttribute("board", dto);
+        BulletinboardImageDetailDto imageDto = new BulletinboardImageDetailDto();
+		try {
+			imageDto = new BulletinboardImageDetailDto(
+					dto.getBoard_id()
+					, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(dto.getImage()))
+					, dto.getTitle()
+					, dto.getNickname()
+					, dto.getUser_id()
+					, dto.getTime()
+					, dto.getViews()
+					, dto.getRecommend()
+					, dto.getContent());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+        model.addAttribute("board", imageDto);
     }
     
     @PostMapping("/update")
-    public String readByIdUpdate(Bulletinboard board, Model model) {
-        log.info("update(deal={})", board);
+    public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
+        log.info("update(dto={})", dto);
         
-        int result = bulletinboardService.readByIdUpdate(board);
+        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        log.info("fileName= {}", path + file);
+        byte[] image = new byte[1024];
+        
+        try {
+			image = bulletinboardService.imageToByteArray(path + file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+        dto.setImage(image);
+        
+        int result = bulletinboardService.readByIdUpdate(dto);
         log.info("result= {}", result);
         
-        BulletinboardDetailDto dto = bulletinboardService.selectById(board.getBoard_id());
-        model.addAttribute("deal", dto);
+        BulletinboardDetailDto Detaildto = bulletinboardService.selectById(dto.getBoard_id());
         
-        return "redirect:/bulletinboard/board/detail?id=" + board.getBoard_id();
+        model.addAttribute("deal", Detaildto);
+        
+        return "redirect:/bulletinboard/board/detail?id=" + Detaildto.getBoard_id();
     }
     
     @PostMapping("/delete")
@@ -180,15 +291,211 @@ public class BulletinboardController {
     }
     
     @PostMapping("/create")
-    public String boardCreate(BulletinboardCreateDto dto) {
-        log.info("boardCreate(dto= {}, category= {})", dto, dto.getCategory());
+    public String boardCreate(BulletinboardCreateDto dto, String file) {
+        log.info("boardCreate()");
+        
+        
+        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        log.info("fileName= {}", path + file);
+        byte[] image = new byte[1024];
+        
+        try {
+			image = bulletinboardService.imageToByteArray(path + file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        dto.setImage(image);
+        
         
         int result = bulletinboardService.create(dto);
         log.info("생성 수 = {}", result);
         
+        
+        
         return "redirect:/bulletinboard/board/list?num=0";
     }
     
+//    @PostMapping("")
+//    public String boardCreate(
+//    		MultipartFile file,
+//    		@RequestParam("category") String category,
+//    		@RequestParam("nickname")  String nickname,
+//    		@RequestParam("userId")  String user_id,
+//    		@RequestParam("title")  String title,
+//    		@RequestParam("content") String content
+//    ) {
+//    	
+//        log.info("boardCreate()");
+//        
+//        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+//        log.info("fileName= {}", path + file);
+//        byte[] image = new byte[1024];
+//        
+//        try {
+//			image = bulletinboardService.imageToByteArray(path + file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//        
+//        BulletinboardCreateDto dto = new BulletinboardCreateDto(Integer.parseInt(category), nickname, user_id, title, image, content);
+//        log.info("dto= {}", dto);
+//        
+//        int result = bulletinboardService.create(dto);
+//        log.info("생성 수 = {}", result);
+//        
+//        return "redirect:/bulletinboard/board/list?num=0";
+//    }
     
+    @GetMapping("/announcement")
+    public void announcementList(Model model, @RequestParam("num") int num) {
+    	log.info("announcementList()");
+        
+        // 공지사항을 저장하는 리스트 생성
+        List<BulletinboardListDto> list = bulletinboardService.selectAnnouncement();
+        
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+        // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
+        
+        // list의 전체 개수
+        int length = list.size();
+        
+        // 마지막 인덱스
+        int len = 0;
+        
+        
+        if (num < 0) {
+            num = 0;
+        }
+        
+        int pageCount = 10 * num;
+        log.info("num = {}", num);
+        
+        
+        if (pageCount + 10 > length) {
+            len = length;
+        } else {
+            len = pageCount + 10;
+        }
+        
+        // 페이지 쪽수를 매기기 위해 설정한 값.
+        count = num;
+        log.info("count= {}", count);
+        
+        // 페이지 쪽수 마지막 값을 찾기 위해서
+        int listPageMax = (int) ((list.size() / 10) + 1);
+        log.info("listPageMax ={}", listPageMax);
+        
+        model.addAttribute("pageListCount", count);
+        model.addAttribute("length", length);
+        model.addAttribute("num",num);
+        model.addAttribute("maxIndex", len);
+        model.addAttribute("pageCount", pageCount);
+        model.addAttribute("boards", list);
+        model.addAttribute("listSize", list.size());
+        model.addAttribute("listPageMax", listPageMax);
+    }
+    
+    @GetMapping("/recommend")
+    public void recommendOrderByReommend(Model model, @RequestParam("num") int num) {
+    	log.info("announcementList()");
+        
+        // 공지사항을 저장하는 리스트 생성
+        List<BulletinboardListDto> list = bulletinboardService.selectOrderByRecommend();
+        
+        // 이미지를 저장하는 리스트 생성
+        List<BulletinboardImageListDto> dtos = new ArrayList<>();
+        
+        // 이미지 크기 조정후 이미지를 view에 보내주기
+        for (int i = 0; i < list.size(); i++) {
+        	
+        	try {
+        		
+        		BulletinboardImageListDto dto = new BulletinboardImageListDto(
+        				list.get(i).getBoard_id()
+        				, list.get(i).getCategory()
+        				, list.get(i).getTitle()
+        				, bulletinboardService.listToTagImage(bulletinboardService.resizeImage(list.get(i).getImage()))
+        				, list.get(i).getNickname()
+        				, list.get(i).getUser_id()
+        				, list.get(i).getTime()
+        				, list.get(i).getViews()
+        				, list.get(i).getRecommend()
+        				, list.get(i).getRcnt()
+        				, list.get(i).getContent());
+        		
+        		dtos.add(dto);
+        		
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+        	
+        }
+        
+        
+        // list의 전체 개수
+        int length = list.size();
+        
+        // 마지막 인덱스
+        int len = 0;
+        
+        
+        if (num < 0) {
+            num = 0;
+        }
+        
+        int pageCount = 10 * num;
+        log.info("num = {}", num);
+        
+        
+        if (pageCount + 10 > length) {
+            len = length;
+        } else {
+            len = pageCount + 10;
+        }
+        
+        // 페이지 쪽수를 매기기 위해 설정한 값.
+        count = num;
+        log.info("count= {}", count);
+        
+        // 페이지 쪽수 마지막 값을 찾기 위해서
+        int listPageMax = (int) ((list.size() / 10) + 1);
+        log.info("listPageMax ={}", listPageMax);
+        
+        model.addAttribute("pageListCount", count);
+        model.addAttribute("length", length);
+        model.addAttribute("num",num);
+        model.addAttribute("maxIndex", len);
+        model.addAttribute("pageCount", pageCount);
+        model.addAttribute("boards", dtos);
+        model.addAttribute("listSize", list.size());
+        model.addAttribute("listPageMax", listPageMax);
+    }
     
 }

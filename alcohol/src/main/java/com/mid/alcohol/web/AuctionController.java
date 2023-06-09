@@ -39,10 +39,10 @@ public class AuctionController {
 	private AuctionUserService userservice;
 	
     @GetMapping("/auction")
-    public void management(Model model) {
+    public void management(Model model,HttpSession session) {
         log.info("management()");
         
-        List<AuctionListDto> list = aucservice.readlist("test");
+        List<AuctionListDto> list = aucservice.readlist((String) session.getAttribute("userNickname"));
         log.info("list = {}",list);
         model.addAttribute("auctionlist", list);
         

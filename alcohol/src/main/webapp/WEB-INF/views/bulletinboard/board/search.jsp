@@ -57,9 +57,8 @@
                         <div class="row g-0">
                             <div class="col-md-4">
                                 <!-- 이미지 -->
-                                <img src=""
-                                    class="img-fluid rounded-start"
-                                    alt="이미지">
+                                <img src="data:image/jpeg;base64,${board.image}"
+												class="img-fluid rounded-start" alt="이미지">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -85,7 +84,7 @@
         </div>
 
         <div>
-            <c:url var="nextlist" value="/bulletinboard/board/list">
+            <c:url var="nextlist" value="/bulletinboard/board/search?pagenum2=${ num }&category=${ category }&keyword=${ keyword }">
                 <c:choose>
                     <c:when test="${(nums) * 10 > maxIndex - 10 }">
                         <c:set var="number" value="${nums}" />
@@ -97,7 +96,7 @@
                     </c:otherwise>
                 </c:choose>
             </c:url>
-            <c:url var="beforelist" value="/bulletinboard/board/list">
+            <c:url var="beforelist" value="/bulletinboard/board/search?pagenum2=${ num }&category=${ category }&keyword=${ keyword }">
                 <c:choose>
                     <c:when test="${(nums - 1) * 10 < 0 }">
                         <c:set var="number" value="${nums}" />
@@ -111,39 +110,49 @@
 
             </c:url>
             <c:url var="indexZero"
-                value="/bulletinboard/board/list?num=0" />
+                value="/bulletinboard/board/search?pagenum2=0&category=${ category }&keyword=${ keyword }" />
             <a href="${ indexZero }"><button>&lt;&lt;</button></a> <a
                 href="${ beforelist }"><button>&lt;</button></a>
 
             <c:choose>
+            	
+            	<c:when test="${ listPageMax < 9 }">
+            		<c:forEach begin="${ 1 }"
+                        end="${ listPageMax }" var="listFor">
+                        <c:url var="listPageNum"
+                            value="/bulletinboard/board/search?pagenum2=${ listFor - 1 }&category=${ category }&keyword=${ keyword }" />
+                        <a href="${ listPageNum }">${ listFor }</a>
+                    </c:forEach>
+            	</c:when>
+            	
                 <c:when test="${ (num / 10) * 10 - 4 < 0}">
 
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=0" />
+                        value="/bulletinboard/board/search?pagenum2=0&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">1</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=1" />
+                        value="/bulletinboard/board/search?pagenum2=1&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">2</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=2" />
+                        value="/bulletinboard/board/search?pagenum2=2&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">3</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=3" />
+                        value="/bulletinboard/board/search?pagenum2=3&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">4</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=4" />
+                        value="/bulletinboard/board/search?pagenum2=4&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">5</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=5" />
+                        value="/bulletinboard/board/search?pagenum2=5&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">6</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=6" />
+                        value="/bulletinboard/board/search?pagenum2=6&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">7</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=7" />
+                        value="/bulletinboard/board/search?pagenum2=7&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">8</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=8" />
+                        value="/bulletinboard/board/search?pagenum2=8&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">9</a>
                 </c:when>
 
@@ -152,31 +161,31 @@
                 <c:when test="${ (num / 10) * 10 + 5 > listPageMax  }">
 
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 9 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 9 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 8 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 8 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 8 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 7 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 7 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 7 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 6 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 6 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 6 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 5 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 5 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 5 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 4 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 4 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 4 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 3 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 3 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 3 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 2 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 2 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 2 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax - 1 }</a>
                     <c:url var="listPageNum"
-                        value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
+                        value="/bulletinboard/board/search?pagenum2=${ listPageMax - 1 }&category=${ category }&keyword=${ keyword }" />
                     <a href="${ listPageNum }">${ listPageMax }</a>
 
                 </c:when>
@@ -185,7 +194,7 @@
                     <c:forEach begin="${ (num / 10) * 10 - 3 }"
                         end="${ (num / 10) * 10 + 5 }" var="listFor">
                         <c:url var="listPageNum"
-                            value="/bulletinboard/board/list?num=${ listFor - 1 }" />
+                            value="/bulletinboard/board/search?pagenum2=${ listFor - 1 }&category=${ category }&keyword=${ keyword }" />
                         <a href="${ listPageNum }">${ listFor }</a>
                     </c:forEach>
                 </c:otherwise>
@@ -196,15 +205,16 @@
 
             <a href="${ nextlist }"><button>&gt;</button></a>
             <c:url var="maxIndex"
-                value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
+                value="/bulletinboard/board/search?pagenum2=${ listPageMax - 1 }&category=${ category }&keyword=${ keyword }" />
             <a href="${ maxIndex }"><button>&gt;&gt;</button></a>
         </div>
 
         <!-- 검색 -->
         <c:url value="/bulletinboard/board/search" var="searchPage">
-            <c:param name="pagenum" value="0" />
+            <c:param name="pagenum" value="${ pagenum2 } }" />
         </c:url>
         <form action="${ searchPage }">
+        	<input type="number" class="d-none" name="pagenum2" value="0" />
             <select name="category">
                 <option value="t">제목</option>
                 <option value="c">내용</option>

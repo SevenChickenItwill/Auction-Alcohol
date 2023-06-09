@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spring 3</title>
 <link
@@ -37,7 +35,7 @@
                     <a href="${ tempPage }">임시페이지</a>
                 </li>
                 <li>
-                    <c:url value="/bulletinboard/board/list" var="boardList" >
+                    <c:url value="/bulletinboard/board/list?num=0" var="boardList" >
                         <c:param name="num" value="0" />
                     </c:url>
                     <a href="${boardList}" >거래</a>

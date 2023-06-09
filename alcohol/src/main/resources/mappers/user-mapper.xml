@@ -23,4 +23,8 @@
     select * from USERS where userEmail = #{userEmail}
   </select>
   
+  <select id="signInMain" resultType="com.mid.alcohol.domain.Login">
+  	select * from Login WHERE userEmail = #{userEmail} AND userPassword = #{userPassword}
+  </select>
+  
 </mapper>

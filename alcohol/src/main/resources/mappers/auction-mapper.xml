@@ -44,14 +44,10 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
+		ON a.productidn= p.productid
 		WHERE (a.auctionName LIKE #{searchtext}
-		OR p.pname LIKE
-		#{searchtext}
-		OR a.bidder LIKE #{searchtext})
-		AND a.auctioneer =
-		#{userid}
+		OR p.pname LIKE #{searchtext}
+		OR a.bidder LIKE #{searchtext}) AND a.auctioneer = #{userid}
 	</select>
 
 	<select id="readAuctionList"
@@ -59,8 +55,7 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
+		ON a.productid = p.productid
 		WHERE a.auctioneer = #{auctioneer}
 	</select>
 
@@ -69,20 +64,20 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
+		ON a.productid = p.productid
 		WHERE aid = #{aid}
 	</select>
 
 
 
 	<update id="update">
-		update auction set productid = #{productId}, nowbid =
-		#{nowBid},passbid =
-		#{passBid},auctionName =
-		#{auctionName},auctionStart =
-		#{auctionStart}, auctionEnd =
-		#{auctionEnd}, status = #{status}
+		update auction set productid = #{productId}, 
+		nowbid = #{nowBid},
+		passbid = #{passBid},
+		auctionName = #{auctionName},
+		auctionStart = #{auctionStart},
+		auctionEnd = #{auctionEnd},
+		status = #{status}
 		WHERE aid = #{aid}
 	</update>
 
@@ -361,7 +356,7 @@
 		resultType="com.mid.alcohol.dto.ChatListDto">
 		Select * FROM chat c JOIN userAuction u ON c.cid = u.cid
 		WHERE c.cid =
-		#{cid};
+		#{cid} ORDER BY c.createdtime
 	</select>
 
 	<select id="readChatMember"
@@ -376,9 +371,9 @@
 	</insert>
 
 	<insert id="createChatContents">
-		INSERT INTO chat( cid, userid, conversation, texttype
+		INSERT INTO chat( cid, userid, conversation, texttype, createdtime
 		)
-		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype})
+		VALUES (#{cid}, #{userid}, #{conversation}, #{texttype}, systimestamp)
 	</insert>
 
 	<delete id="deleteChatRoom">
@@ -388,6 +383,19 @@
 	<delete id="deleteChatContents">
 		delete from chat where cid = #{cid}
 	</delete>
+	
+	<update id="updatebat">
+		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid}, status = ${status} WHERE aid = #{aid}
+	</update>
 
-
+    <update id="updateStatus">
+        update auction set status = 2 WHERE #{now} > auctionend AND status != 2
+    </update>
+    
+    <update id="updateStart">
+        update auction set status = 1 WHERE #{now} > auctionstart AND auctionend > #{now} AND status != 1 AND status !=2
+    </update>
+    
+    
+    
 </mapper>

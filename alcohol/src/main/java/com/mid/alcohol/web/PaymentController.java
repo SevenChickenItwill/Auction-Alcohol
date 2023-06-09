@@ -1,17 +1,22 @@
 package com.mid.alcohol.web;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.dto.AdressUpdateDto;
+
+import com.mid.alcohol.dto.PaymentReadDto;
+
+import com.mid.alcohol.dto.BasketListDto;
+
+
 import com.mid.alcohol.service.PaymentService;
+import com.mid.alcohol.dto.BasketListDto;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,24 +30,45 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
+	@PostMapping("/paymentmain")
+	public void paymentInfo() {
+		log.info("paymentInfo()");
+	}
+	
+	@GetMapping("/paymentmain")
+	public void paymentInfoGet() {
+		log.info("paymentInfoGet()");
+		
+	}
+	
+	
 	@GetMapping("/information")
 	public void paymentInformation(Model model) {
 		log.info("information()");
 	}
 	
 	@GetMapping("/modify")
-	public void adressModify(Model model) {
+	public void adressModify(Model model, @RequestParam String order_name) {
 		log.info("modify()");
+		
+		PaymentReadDto dto = paymentService.read(order_name);
+		
+		model.addAttribute("payment", dto);
+		log.info("run3()");	
 	}
 	
+
 	@GetMapping("/paymain")
 	public void paymentMain(Model model) {
+		
+		
 		log.info("paymentMain()");
 	}
 	
 	@GetMapping("/detail")
-	public void paymentDetail(Model model) {
-		log.info("paymentDetail()");
+	public void paymentDetail(String order_id, Model model) {
+		log.info("paymentDetail(order_id={})", order_id);
+		
 	}
 	
 	@GetMapping("/update")
@@ -57,7 +83,7 @@ public class PaymentController {
 		int result = paymentService.update(dto);
 		log.info("update = {}", result);
 		
-		return "redirect:/information";
+		return "redirect:/payment/paymentmain";
 	}
 
 

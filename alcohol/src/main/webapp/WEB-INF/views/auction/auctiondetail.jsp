@@ -11,13 +11,74 @@
               rel="stylesheet" 
               integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" 
               crossorigin="anonymous">
+                  <style>
+        .sidebars{
+        
+            position: fixed;
+            left:0;
+            top:0;
+            width:200px;
+            height: 100%;
+            
+        }
+        .mainsite{
+            margin-left: 220px;
+        
+        }
+    </style>
 	</head>
 	<body>
-	<div>
-        <header>
-            <h1>경매 상세보기 페이지</h1>
-            
-        </header>
+<div class="flex-shrink-0 p-3 bg-white sidebars" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+      	<c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+      	<c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+      	<c:url var="auctionManagement" value="/auction/auction" />
+        <a href="${ auctionManagement }" class="nav-link link-dark">
+          경매조회/수정
+        </a>
+      </li>
+      <li>
+      	<c:url var="auctionRegistration" value="/auction/registration" />
+        <a href="${ auctionRegistration }" class="nav-link link-dark">
+          경매등록
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
+	        <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">경매 상세 페이지</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-link px-2 link-dark">
+        <a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
+      </ul>
+    </header>
+  </div>
+    
+    <div class="mainsite">
+        
         
         <br />
         

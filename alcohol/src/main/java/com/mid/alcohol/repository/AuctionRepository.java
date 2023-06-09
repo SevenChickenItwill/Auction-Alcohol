@@ -1,5 +1,6 @@
 package com.mid.alcohol.repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
@@ -13,6 +14,7 @@ import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionSearchDto;
 import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatMemberDto;
+
 
 @Repository
 public interface AuctionRepository {
@@ -98,6 +100,16 @@ public interface AuctionRepository {
 	
 	// 종료된 경매 목록 불러오기
 	List<AuctionListDto> readEndAuctionList();
+
+	List<ChatListDto> readchatDataOne(int aid);
+
+	int updatebat(Auction auctionEntity);
+
+	void updateStatus(Timestamp now);
+
+	void updateStart(Timestamp now);
+
+	
 
 }
 

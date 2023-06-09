@@ -1,5 +1,8 @@
 package com.mid.alcohol.dto;
 
+import com.mid.alcohol.domain.Auction;
+import com.mid.alcohol.domain.Chat;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,14 +14,25 @@ import lombok.NoArgsConstructor;
 @Data
 public class ChatInputDto {
 	
-	public enum MessageType{
-        ENTER, TALK
-    }
-	
-	private MessageType type;
 	private long cid;
 	private String userid;
 	private String conversation;
-	private int texttype;
+	private String bidder;
+	private long bidcount;
+	private long nowbid;
+	private int status;
+	
+	
+	public Chat toEntity() {
+		
+		return Chat.builder().cid(cid).userid(userid).conversation(conversation).texttype(0).build();
+		
+	}
+	
+	public Auction toAuctionEntity() {
+		
+		return Auction.builder().aid((int)cid).bidCount(bidcount).nowBid(nowbid).bidder(bidder).status(status).build();
+		
+	}
 	
 }

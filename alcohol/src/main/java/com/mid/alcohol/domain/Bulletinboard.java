@@ -1,5 +1,6 @@
 package com.mid.alcohol.domain;
 
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 import jakarta.servlet.http.Part;
@@ -22,8 +23,7 @@ public class Bulletinboard {
     private long views; // 게시글 조회수
     private long recommend; // 게시글 추천수
     private String content; // 게시글 내용
-    private String image; // 게시글 이미지
-    private String thum_image; // 게시글 썸네일 이미지
+    private byte[] image; // 게시글 이미지
     private int category; // 게시글 종류 ( 1 -> 일반글작성, 0 -> 공지사항글 작성)
     
     
