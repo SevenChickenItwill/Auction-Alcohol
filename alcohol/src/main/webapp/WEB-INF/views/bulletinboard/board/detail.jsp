@@ -74,10 +74,7 @@
                 <div>
                 <input id="updateCommentId" type="hidden"/>
                 </div>
-                <textarea id="updateTest" placeholder="업데이트 테스트"> </textarea>
-                <div>
-                <button id ="confirmButton">댓글 수정 등록</button>
-                </div>
+                 
                 
                 
                 <div>
