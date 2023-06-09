@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+.<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -42,6 +42,7 @@
                             <br />
                             <input type="password" id="userPasswordCheck" name="userPasswordCheck" placeholder="PASSWORD CHECK" required />
                         </div>
+                        
                             <ul>
                                 <li>
                                     <label>8자 이상 20자 미만</label>
@@ -51,30 +52,30 @@
                                 </li>
                             </ul>
                         
-                        
                         <div>
                             <label for="userAddress">주소</label>
                             <br />
                             <input type="text" id="userAddress" name="userAddress" placeholder="ADDRESS" required >
                         </div>
-                        <div>
+                        <div> 
                             <label for="userPhone">전화번호</label>
                             <br />
                             <input type="text" id="userPhone" name="userPhone" placeholder="PHONE" required>
+                            <!--  <small id="phoneErrorMessage" style="color: red;"></small> -->
                         </div>
-                        <!-- TODO: 
                         <div>
-                            <label for="userAge">나이</label>
-                            <input type="number" id="userAge" name="userAge" placeholder="AGE" required />
-                        </div> -->
-                        
+                            <label for="userNickname">별명</label>
+                            <br />
+                            <input type="text" id="userNickname" name="userNickname" placeholder="NICKNAME"	 required />
+                            <button id="btnNicknameCheck" >중복체크</button>
+                        </div>  
                     </div>
                     <div>
                         <div>
                             <!-- 체크박스 -->
-                            <input type="radio" name="userGender" value="1" id="userGender" required />
+                            <input type="radio" name="userGender" value="남성" id="userGender" required />
                             <label for="cb1">남성</label>
-                            <input type="radio" name="userGender" value="2" id="userGender" required />
+                            <input type="radio" name="userGender" value="여성" id="userGender" required />
                             <label for="cb2">여성</label>
                         </div>
                     </div>
@@ -103,6 +104,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
             crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../static/js/signup.js"></script>
     </div>
 </body>
