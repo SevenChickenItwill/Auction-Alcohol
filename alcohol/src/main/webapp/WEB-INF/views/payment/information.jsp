@@ -17,38 +17,39 @@
 <body>
 	<div class="container-fluid">
 	   <header class="my-2 p-5 text-center text-bg-dark">
-	       <h1>주문/결제 내역 페이지</h1>
+	       <h1>주문이 완료 되었습니다.</h1>
 	   </header>
 	</div>
-	<caption>주문내역 주문정보/결제 내역</caption>
-	<div class="card">
-		<table>
-			<thead>
-				<tr>
-					<th>상품정보</th>
-					<th>구매자</th>
-					<th>배송비</th>
-					<th>수량</th>
-					<th>총 상품금액</th>
-				</tr>
-			</thead>
-	</div>
-		<div class="card">
-			<tbody>
-				<tr>
-					<th>IPHONE</th>
-					<th>daehan</th>
-					<th>$2.3</th>
-					<th>1</th>
-					<th>$1,100</th>
-				</tr>
-			</tbody>
+	
+	
+	<c:url var="payment" value="/payment/information" />
+    <form id="paymentForm" method="get" action="${ payment }">
+	
+	<nav>
+		<div>
+			<label for="name" >주문자 이름</label>
+			<input type="text" id="name" name="name" value="${ name }" readonly />
+		</div>
+		<div>
+			<label for="productCount">상품 수량</label>
+			<input type="text" id="productCount" name="productCount" value="${ productCount }" readonly />
+		</div>
+		<div>
+			<label for="productPrice">상품 가격</label>
+			<input type="text" id="productPrice" name="productPrice" value="${ productPrice }" readonly />
+		</div>
+		<div>
+			<label for="totalPrice">총 결제금액</label>
+			<input type="text" id="totalPrice" name="totalPrice" value="${ totalPrice }" readonly />
 		</div>	
-	<ul>
-		<li><c:url value="/payment/detail" var="paymentDetail">
-				<c:param name="num" value="0" />
-			</c:url><a href="${paymentDetail}">주문/결제 내역 상세보기</a>
-		</li>
-	</ul>
+	</nav>
+	</form>
+	<div>
+		<button id="btnPaymentDetail">주문 상세목록</button>
+		<button id="btnMainPage">쇼핑 계속하기</button>
+	</div>
+			
+		
+	 <script src="../static/js/productCompletion.js"></script>
 </body>
 </html>
