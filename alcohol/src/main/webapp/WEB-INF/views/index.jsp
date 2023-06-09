@@ -35,7 +35,7 @@
                     <a href="${ tempPage }">임시페이지</a>
                 </li>
                 <li>
-                    <c:url value="/bulletinboard/board/list" var="boardList" >
+                    <c:url value="/bulletinboard/board/list?num=0" var="boardList" >
                         <c:param name="num" value="0" />
                     </c:url>
                     <a href="${boardList}" >거래</a>

@@ -32,14 +32,14 @@
 	<main>
 		<!-- 전체글 ㅣ 공지글 ㅣ 추천순  정렬 -->
 		<div>
-			<c:url value="/bulletinboard/board/list?num=0" var="boardList" >
+			<c:url value="/bulletinboard/board/list" var="boardList" >
                 <c:param name="num" value="0" />
             </c:url>
-			<a href="${ boardList }"><button type="button" class="btn btn-primary btn-lg">전체글</button></a>
+			<a href="${ boardList }"><button type="button" class="btn btn-secondary btn-lg">전체글</button></a>
 			<c:url var="announcement" value="/bulletinboard/board/announcement">
 				<c:param name="num" value="0"></c:param>
 			</c:url>
-			<a href="${ announcement }"><button type="button" class="btn btn-secondary btn-lg">공지 사항</button></a>
+			<a href="${ announcement }"></a><button type="button" class="btn btn-primary btn-lg">공지 사항</button>
 			<c:url var="recommend" value="/bulletinboard/board/recommend">
 				<c:param name="num" value="0"></c:param>
 			</c:url>
@@ -70,7 +70,7 @@
 									<div class="row g-0">
 										<div class="col-md-4">
 											<!-- 이미지 -->
-											<img src="data:image/jpeg;base64,${board.image}"
+											<img src="data:image/jpeg;base64,${ board.image }"
 												class="img-fluid rounded-start" alt="이미지">
 										</div>
 										<div class="col-md-8">
@@ -96,7 +96,7 @@
 					</div>
 
 					<div>
-						<c:url var="nextlist" value="/bulletinboard/board/list">
+						<c:url var="nextlist" value="/bulletinboard/board/announcement">
 							<c:choose>
 								<c:when test="${(nums) * 10 > maxIndex - 10 }">
 									<c:set var="number" value="${nums}" />
@@ -108,7 +108,7 @@
 								</c:otherwise>
 							</c:choose>
 						</c:url>
-						<c:url var="beforelist" value="/bulletinboard/board/list">
+						<c:url var="beforelist" value="/bulletinboard/board/announcement">
 							<c:choose>
 								<c:when test="${(nums - 1) * 10 < 0 }">
 									<c:set var="number" value="${nums}" />
@@ -121,7 +121,7 @@
 							</c:choose>
 
 						</c:url>
-						<c:url var="indexZero" value="/bulletinboard/board/list?num=0" />
+						<c:url var="indexZero" value="/bulletinboard/board/announcement?num=0" />
 						<a href="${ indexZero }"><button>&lt;&lt;</button></a> <a
 							href="${ beforelist }"><button>&lt;</button></a>
 
@@ -130,30 +130,30 @@
 							<c:when test="${ listPageMax < 9 }">
 								<c:forEach begin="${ 1 }" end="${ listPageMax }" var="listFor">
 									<c:url var="listPageNum"
-										value="/bulletinboard/board/list?num=${ listFor - 1 } }" />
+										value="/bulletinboard/board/announcement?num=${ listFor - 1 } }" />
 									<a href="${ listPageNum }">${ listFor }</a>
 								</c:forEach>
 							</c:when>
 
 							<c:when test="${ (num / 10) * 10 - 4 < 0}">
 
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=0" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=0" />
 								<a href="${ listPageNum }">1</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=1" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=1" />
 								<a href="${ listPageNum }">2</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=2" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=2" />
 								<a href="${ listPageNum }">3</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=3" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=3" />
 								<a href="${ listPageNum }">4</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=4" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=4" />
 								<a href="${ listPageNum }">5</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=5" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=5" />
 								<a href="${ listPageNum }">6</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=6" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=6" />
 								<a href="${ listPageNum }">7</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=7" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=7" />
 								<a href="${ listPageNum }">8</a>
-								<c:url var="listPageNum" value="/bulletinboard/board/list?num=8" />
+								<c:url var="listPageNum" value="/bulletinboard/board/announcement?num=8" />
 								<a href="${ listPageNum }">9</a>
 							</c:when>
 
@@ -162,31 +162,31 @@
 							<c:when test="${ (num / 10) * 10 + 5 > listPageMax  }">
 
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 9 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 9 }" />
 								<a href="${ listPageNum }">${ listPageMax - 8 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 8 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 8 }" />
 								<a href="${ listPageNum }">${ listPageMax - 7 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 7 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 7 }" />
 								<a href="${ listPageNum }">${ listPageMax - 6 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 6 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 6 }" />
 								<a href="${ listPageNum }">${ listPageMax - 5 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 5 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 5 }" />
 								<a href="${ listPageNum }">${ listPageMax - 4 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 4 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 4 }" />
 								<a href="${ listPageNum }">${ listPageMax - 3 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 3 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 3 }" />
 								<a href="${ listPageNum }">${ listPageMax - 2 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 2 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 2 }" />
 								<a href="${ listPageNum }">${ listPageMax - 1 }</a>
 								<c:url var="listPageNum"
-									value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
+									value="/bulletinboard/board/announcement?num=${ listPageMax - 1 }" />
 								<a href="${ listPageNum }">${ listPageMax }</a>
 
 							</c:when>
@@ -195,7 +195,7 @@
 								<c:forEach begin="${ (num / 10) * 10 - 3 }"
 									end="${ (num / 10) * 10 + 5 }" var="listFor">
 									<c:url var="listPageNum"
-										value="/bulletinboard/board/list?num=${ listFor - 1 }" />
+										value="/bulletinboard/board/announcement?num=${ listFor - 1 }" />
 									<a href="${ listPageNum }">${ listFor }</a>
 								</c:forEach>
 							</c:otherwise>
@@ -206,7 +206,7 @@
 
 						<a href="${ nextlist }"><button>&gt;</button></a>
 						<c:url var="maxIndex"
-							value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
+							value="/bulletinboard/board/announcement?num=${ listPageMax - 1 }" />
 						<a href="${ maxIndex }"><button>&gt;&gt;</button></a>
 					</div>
 
