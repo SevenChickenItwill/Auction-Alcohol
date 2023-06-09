@@ -53,8 +53,11 @@ public class AuctionProductController {
 	
 	@PostMapping("/createsuccess")
 	public String productCreate(AuctionCreateDto dto) {
+		
 		log.info("dto={}",dto);
 		// 서비스로 product dto 객체 전달 필요.
+		
+		
 		apservice.write(dto);
 		
 		
@@ -99,7 +102,7 @@ public class AuctionProductController {
 		return "redirect:/auction/product";
 	}
 	
-	private static final String UPLOAD_DIR = "classpath:/static/image/";
+	
 	
 
 	

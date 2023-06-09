@@ -25,7 +25,7 @@
 			<div>
 			
 				<c:url var="createsuccess" value="/auction/createsuccess" />
-				<form method="post" action="${ createsuccess }">
+				<form id="subform" method="post" action="${ createsuccess }">
 					<input class="d-none" name="userId" id="userId" value="${ sessionScope.userNickname }"/>
 					<div class="form-control">
 					<label for="productName">상품명</label>
@@ -43,7 +43,7 @@
 					<label for="cost">원가</label>
 						<input class="form-control" type="number" name="cost" id="cost" />
 					</div>
-					<div>
+					<div class="form-control">
 					<label for="category">카테고리</label>
                     <%-- value 는 category 테이블의 코드랑 동일하게 설정함. --%>
 					<select class="form-control" id="category" name="category">
@@ -62,12 +62,25 @@
 					</select>
 					
 					</div>
+					
 					<div class="my-2">
-						<input class="form-control" type="submit" value="등록" class="btn" />
+						<input id="btnsubmit" class="form-control" type="submit" value="등록" class="btn" />
 					</div>
 				</form>
+				<div>
+					<div class="form-control">
+						<input class="form-control" type="file" id="image" name="image" />
+						<button class="btn" id="imgupload">이미지 확정</button>
+					</div>
+					<!-- 이미지 업로드하면 표시해주는 컬럼 -->
+					<div id="imgshow" name="imgshow">
+						
+					</div>
+					</div>
 			</div>
 		</main>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="../static/js/productcreatejs.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
 				integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
 				crossorigin="anonymous">	
