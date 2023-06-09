@@ -17,7 +17,7 @@
     
     <!-- 게시글 상세보기 -->
     <select id="selectById" resultType="com.mid.alcohol.dto.BulletinboardDetailDto">
-        select * from BULLETINBOARD where BOARD_ID = #{board_id}
+        select * from BULLETINBOARD where BOARD_ID = #{boardId}
     </select>
     
     <!-- 글 삭제하기(delete) -->
@@ -29,6 +29,13 @@
     <update id="bulletinboardUpdateById">
         update BULLETINBOARD
         set TITLE= #{title}, IMAGE= #{image}, CONTENT= #{content}, TIME= systimestamp
+        where BOARD_ID= #{board_id}
+    </update>
+    
+    <!-- 이미지가 null일때 업데이트 -->
+    <update id="bulletinboardUpdateByIdImageNull">
+        update BULLETINBOARD
+        set TITLE= #{title}, CONTENT= #{content}, TIME= systimestamp
         where BOARD_ID= #{board_id}
     </update>
     
@@ -59,6 +66,38 @@
     <select id="selectWhereUserId" resultType="com.mid.alcohol.domain.Bulletinboard">
         select * from BULLETINBOARD where lower(USER_ID) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
     </select>
+    
+    <!-- 추천업 버튼 -->
+    <update id="recommendUp">
+    	update BULLETINBOARD
+        set RECOMMEND = RECOMMEND + 1
+        where BOARD_ID= #{boardId}
+    </update>
+    
+    <!-- 추천다운 버튼 -->
+    <update id="recommendDo">
+    	update BULLETINBOARD
+        set RECOMMEND = RECOMMEND - 1
+        where BOARD_ID= #{boardId}
+    </update>
+    
+    <!-- 조회수 기능 -->
+    <update id="viewsUp">
+    	update BULLETINBOARD
+        set VIEWS = VIEWS + 1
+        where BOARD_ID= #{boardId}
+    </update>
+    
+    <!-- 게시판 공지 사항만 보는 기능 -->
+    <select id="selectAnnouncement" resultType="com.mid.alcohol.domain.Bulletinboard">
+    	select * from BULLETINBOARD where CATEGORY = 1 order by BOARD_ID desc
+    </select>
+    
+    <!-- 게시판 추천 높은순으로 나열하는 기능 -->
+    <select id="selectOrderByRecommend" resultType="com.mid.alcohol.domain.Bulletinboard">
+    	select * from BULLETINBOARD order by RECOMMEND desc
+    </select>
+    
     
     
 </mapper>

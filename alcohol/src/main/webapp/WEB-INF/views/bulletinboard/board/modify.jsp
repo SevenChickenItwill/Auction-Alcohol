@@ -22,7 +22,7 @@
         <main>
             <section>
                 <form id="modifyForm">
-                    <input type="hidden" value="${ board.board_id }" id="board_id" name="board_id" />
+                    <input type="number" class="d-none" value="${ board.board_id }" id="board_id" name="board_id" />
                     <div>
                         <input value="${ board.title }" id="title" name="title" />
                     </div>
@@ -32,7 +32,11 @@
                         <span name="time">${ board.time }</span>
                     </div>
                     <div>
-                        <input value="${ board.image }" id="image" name="image" />
+                        <img src="data:image/jpeg;base64,${ board.image }" class="img-fluid rounded-start" alt="이미지">
+                    </div>
+                    <div>
+                    	<label for="file">수정할 이미지</label>
+                    	<input type="file" id="file" name="file" />
                     </div>
                     <div>
                         <textarea id="content" name="content">${ board.content }</textarea>

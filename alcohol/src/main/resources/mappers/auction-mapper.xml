@@ -44,14 +44,10 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
+		ON a.productidn= p.productid
 		WHERE (a.auctionName LIKE #{searchtext}
-		OR p.pname LIKE
-		#{searchtext}
-		OR a.bidder LIKE #{searchtext})
-		AND a.auctioneer =
-		#{userid}
+		OR p.pname LIKE #{searchtext}
+		OR a.bidder LIKE #{searchtext}) AND a.auctioneer = #{userid}
 	</select>
 
 	<select id="readAuctionList"
@@ -59,8 +55,7 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
+		ON a.productid = p.productid
 		WHERE a.auctioneer = #{auctioneer}
 	</select>
 
@@ -69,20 +64,20 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productid
-		= p.productid
+		ON a.productid = p.productid
 		WHERE aid = #{aid}
 	</select>
 
 
 
 	<update id="update">
-		update auction set productid = #{productId}, nowbid =
-		#{nowBid},passbid =
-		#{passBid},auctionName =
-		#{auctionName},auctionStart =
-		#{auctionStart}, auctionEnd =
-		#{auctionEnd}, status = #{status}
+		update auction set productid = #{productId}, 
+		nowbid = #{nowBid},
+		passbid = #{passBid},
+		auctionName = #{auctionName},
+		auctionStart = #{auctionStart},
+		auctionEnd = #{auctionEnd},
+		status = #{status}
 		WHERE aid = #{aid}
 	</update>
 

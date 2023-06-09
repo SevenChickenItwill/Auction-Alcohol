@@ -20,30 +20,29 @@
 	       <h1>주문/결제 내역 페이지</h1>
 	   </header>
 	</div>
-	<caption>주문내역 주문정보/결제 내역</caption>
+	
 	<div class="card">
 		<table>
 			<thead>
 				<tr>
-					<th>상품정보</th>
-					<th>구매자</th>
-					<th>배송비</th>
 					<th>수량</th>
+					<th>상품 정보</th>
+					<th>상품 금액</th>
+					<th>배송비</th>
 					<th>총 상품금액</th>
 				</tr>
 			</thead>
-	</div>
-		<div class="card">
+			
 			<tbody>
-				<tr>
-					<th>IPHONE</th>
-					<th>daehan</th>
-					<th>$2.3</th>
-					<th>1</th>
-					<th>$1,100</th>
-				</tr>
+				<c:forEach items="${ payment }" var="payment">
+					<tr>
+						<td></td>
+					</tr>
+				</c:forEach>
 			</tbody>
-		</div>	
+		</table>
+	</div>	
+			
 	<ul>
 		<li><c:url value="/payment/detail" var="paymentDetail">
 				<c:param name="num" value="0" />

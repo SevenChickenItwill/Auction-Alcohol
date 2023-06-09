@@ -35,7 +35,7 @@
     			AND pname LIKE #{pName}
     		</if>
     		<if test="constructor != ''">
-    			AND constructor = #{constructor}
+    			AND constructor LIKE #{constructor}
     		</if>
     		<if test="brandName != ''">
     			AND brandname LIKE #{brandName}
