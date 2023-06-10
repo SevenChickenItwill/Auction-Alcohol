@@ -22,9 +22,16 @@
 	<nav>
 		<div>
 			<ul>
-				<li><c:url value="/bulletinboard/board/create"
-						var="dealCreated" /> <a href="${ dealCreated }">새글작성</a></li>
-				<li><c:url value="/" var="mainPage" /> <a href="${ mainPage }">메인페이지</a></li>
+				<c:if test="${ sessionScope.userNickname != null }">
+					<li>
+						<c:url value="/bulletinboard/board/create" var="dealCreated" /> 
+						<a href="${ dealCreated }">새글작성</a>
+					</li>
+				</c:if>
+				<li>
+					<c:url value="/" var="mainPage" /> 
+					<a href="${ mainPage }">메인페이지</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -70,7 +77,7 @@
 									<div class="row g-0">
 										<div class="col-md-4">
 											<!-- 이미지 -->
-											<img src="data:image/jpeg;base64,${board.image}"
+											<img src="data:image/jpeg;base64,${ board.image }"
 												class="img-fluid rounded-start" alt="이미지">
 										</div>
 										<div class="col-md-8">
@@ -130,7 +137,7 @@
 							<c:when test="${ listPageMax < 9 }">
 								<c:forEach begin="${ 1 }" end="${ listPageMax }" var="listFor">
 									<c:url var="listPageNum"
-										value="/bulletinboard/board/list?num=${ listFor - 1 } }" />
+										value="/bulletinboard/board/list?num=${ listFor - 1 }" />
 									<a href="${ listPageNum }">${ listFor }</a>
 								</c:forEach>
 							</c:when>

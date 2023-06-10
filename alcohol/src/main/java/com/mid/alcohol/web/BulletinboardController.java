@@ -208,7 +208,7 @@ public class BulletinboardController {
         log.info("result = {}", result);
         
         BulletinboardDetailDto dto = bulletinboardService.selectById(id);
-        log.info("dto= {}", dto);
+        log.info("dto= ({}, {}, {}, {})", dto.getBoard_id(), dto.getNickname(), dto.getTitle(), dto.getContent());
         
         String image = "";
         

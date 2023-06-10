@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		if (loginId == null) {
 			alert('로그인이 필요한 서비스입니다.')
+			console.log('아이디 null');
 			
 		} else {
 			axios.post(`/alcohol/api/recommend/recommendup/${boardId}`)

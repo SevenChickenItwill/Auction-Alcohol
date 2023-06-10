@@ -58,15 +58,15 @@
 			<span> <c:url value="/bulletinboard/board/list?num=0"
 					var="boardList" /> <a href="${ boardList }">목록페이지</a>
 			</span>
-			<!-- if문 넣기 -->
-				<span> 
-				<c:url var="boardModify" value="/bulletinboard/board/modify">
-					<c:param name="id" value="${ board.board_id }"></c:param>
-				</c:url> 
-				<a href="${ boardModify }">수정하기</a> 
-				<a id="deleteBtn">삭제하기</a>
-				</span>
-			
+				<c:if test="${ board.nickname == sessionScope.userNickname }">
+					<span> 
+						<c:url var="boardModify" value="/bulletinboard/board/modify">
+							<c:param name="id" value="${ board.board_id }"></c:param>
+						</c:url> 
+						<a href="${ boardModify }">수정하기</a> 
+						<a id="deleteBtn">삭제하기</a>
+					</span>
+				</c:if>
 			  <div>
                  <!-- 댓글 목록 보여줄 영역 -->
                     <span>댓글</span>

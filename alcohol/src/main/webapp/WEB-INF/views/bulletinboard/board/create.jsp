@@ -32,8 +32,8 @@
 					</div>
 					<div>
 						<label for="nickname">작성자</label> 
-						<input type="text" name="nickname" id="nickname" value="타락파워전사" /> <!-- ${ sessionScope.userNickname } -->
-						<input type="text" name="user_id"  id="userId" value="wooooa" /> <!-- ${ sessionScope.userEmail } -->
+						<input type="text" name="nickname" id="nickname" value="닉네임:${ sessionScope.userNickname }" readonly />
+						<input type="text" name="user_id"  id="userId" value="아이디:${ sessionScope.userEmail }" readonly />
 					</div>
 					<div>
 						<label for="title">제목</label> 

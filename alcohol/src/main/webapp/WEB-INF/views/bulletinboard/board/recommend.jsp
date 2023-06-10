@@ -22,8 +22,12 @@
 	<nav>
 		<div>
 			<ul>
-				<li><c:url value="/bulletinboard/board/create"
-						var="dealCreated" /> <a href="${ dealCreated }">새글작성</a></li>
+				<c:if test="${ sessionScope.userNickname != null }">
+					<li>
+						<c:url value="/bulletinboard/board/create" var="dealCreated" /> 
+						<a href="${ dealCreated }">새글작성</a>
+					</li>
+				</c:if>
 				<li><c:url value="/" var="mainPage" /> <a href="${ mainPage }">메인페이지</a></li>
 			</ul>
 		</div>
