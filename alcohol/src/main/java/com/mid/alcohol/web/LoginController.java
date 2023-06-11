@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mid.alcohol.domain.Login;
+import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.LoginCheckDto;
 import com.mid.alcohol.service.UserService;
 
@@ -51,7 +52,7 @@ public class LoginController {
     @PostMapping("/login")
     public String login(LoginCheckDto dto, HttpSession session) {
     	
-    	Login user = userService.login(dto);
+    	User user = userService.login(dto);
     	
     	session.setAttribute("userEmail", user.getUserEmail());
     	session.setAttribute("userPassword", user.getUserPassword());
