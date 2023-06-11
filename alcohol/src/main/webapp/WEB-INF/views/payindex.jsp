@@ -27,33 +27,35 @@
 			<span class="btnDeleteBasket">삭제</span>
 		</div>
 		<div class="card-boby">
-			<c:forEach var="basket" items="${list}">
-				<div>
-					<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
-					<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
-					<label>${basket.brandname}</label>
-					<hr>
-					<label>${basket.pname}</label>
-					<br> 
-					<label>상품금액 ${ basket.price }</label>
-					<br>
-					<label>주문수량</label>
-					<input
-						style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
-						type="number" value="${basket.quantity}" name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
-					<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }">
-						
-					<br>
-
-					<label>주문금액</label> 
-					<span id="orderAmount-${basket.basketid}" class="mx-2" 
-						  data-value="${(basket.quantity * basket.price)}">
-						${(basket.quantity * basket.price)}원
-					</span>
-
-					<hr>
-				</div>
-			</c:forEach>
+			<form>
+				<c:forEach var="basket" items="${list}">
+					<div>
+						<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
+						<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
+						<label>${basket.brandname}</label>
+						<hr>
+						<label>${basket.pname}</label>
+						<br> 
+						<label>상품금액 ${ basket.price }</label>
+						<br>
+						<label>주문수량</label>
+						<input
+							style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
+							type="number" value="${basket.quantity}" name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
+						<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }">
+							
+						<br>
+	
+						<label>주문금액</label> 
+						<span id="orderAmount-${basket.basketid}" class="mx-2" 
+							  data-value="${(basket.quantity * basket.price)}">
+							${(basket.quantity * basket.price)}원
+						</span>
+	
+						<hr>
+					</div>
+				</c:forEach>
+			</form>
 		</div>
 		
 		<div class="card-footer">
