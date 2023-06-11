@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -255,6 +256,43 @@ public class AuctionService {
 		Auction entity = dto.toAuctionEntity();
 		log.info("{}",entity);
 		return auctionrepository.updatebat(entity);
+	}
+
+	public List<AuctionListDto> readUserEnd(String attribute) {
+		// TODO Auto-generated method stub
+		List<AuctionListDto> list = auctionrepository.readEndAuctionList();
+		
+		List<AuctionListDto> list2 = new ArrayList<>();
+		
+		for(AuctionListDto x : list) {
+			
+			if(attribute.equals(x.getBidder())) {
+				list2.add(x);
+			}
+			
+		}
+		
+		
+		return null;
+	}
+
+	public List<AuctionListDto> readUserIng(String attribute) {
+		// TODO Auto-generated method stub
+		List<Chat> list = auctionrepository.readAllchatData(attribute);
+		HashSet<Long> set = new HashSet<>();
+		for(Chat x : list) {
+			
+			set.add(x.getCid());
+			
+		}
+		List<AuctionListDto> list2 = new ArrayList<>();
+		for(long x : set) {
+			
+			//TODO : AuctionDtoList 호출해서 list2에 넣고 리턴
+			
+		}
+		
+		return null;
 	}
 
 	

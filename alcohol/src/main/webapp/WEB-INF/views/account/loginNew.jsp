@@ -20,6 +20,8 @@
 		<main>
 			<div class="form form-control">
 				<form class="form" id="loginform">
+				<c:set var="userid" value="${ userEmail }"></c:set>
+				<c:if test="${ userid ne '' }"></c:if>
 					<label for="userEmail">아이디</label>
 					<input class="card" type="text" id="userEmail" name="userEmail" required="required"
 					/>

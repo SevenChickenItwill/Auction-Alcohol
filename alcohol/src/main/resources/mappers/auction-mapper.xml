@@ -396,6 +396,9 @@
         update auction set status = 1 WHERE #{now} > auctionstart AND auctionend > #{now} AND status != 1 AND status !=2
     </update>
     
+    <select id="readAllchatData" resultType="com.mid.alcohol.domain.Chat">
+    	select * from Chat Where userid = #{userNickname}
+    </select>
     
     
 </mapper>

@@ -61,6 +61,14 @@ public class LoginController {
     	return "redirect:/auction/auctionlist";
     }
     
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    	session.removeAttribute("userEmail");
+    	session.removeAttribute("userPassword");
+    	session.removeAttribute("userNickname");
+    	return "redirect:/signup/signupEmail";
+    }
+    
     @GetMapping("/loginNew")
     public void loginNew() {
     	

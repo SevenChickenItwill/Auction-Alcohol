@@ -22,6 +22,7 @@ import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -48,6 +49,20 @@ public class AuctionUserController {
 		model.addAttribute("list2",auctiondto);
 		
 		return "/auction/auction-userpage";
+	}
+	
+	@GetMapping("/auctionview")
+	public String userAuction(HttpSession session) {
+		
+		log.info("userAuction()");
+		
+		List<AuctionListDto> list = aucservice.readUserEnd((String)session.getAttribute("userNickname"));
+		List<AuctionListDto> list2 = aucservice.readUserIng((String)session.getAttribute("userNickname"));
+		// service로부터 아이디값에 포함된 경매 리스트만 불러오기
+		
+		return "/Userauction";
+		
+		
 	}
 	
 	
