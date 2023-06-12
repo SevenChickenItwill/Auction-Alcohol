@@ -257,7 +257,7 @@ public class BulletinboardController {
         log.info("fileName= {}", path + file);
         
         try {
-        	dto.setImage(bulletinboardService.listToTagImage(bulletinboardService.resizeImage(path + file)));
+        	dto.setImage(path + file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

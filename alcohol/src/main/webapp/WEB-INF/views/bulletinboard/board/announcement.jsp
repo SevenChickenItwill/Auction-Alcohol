@@ -57,7 +57,9 @@
 						<c:set var="count" value="${ pageCount }" />
 						<c:set var="nums" value="${ param.num }" />
 						<c:set var="maxIndex" value="${ maxIndex }" />
-
+						
+						<c:if test="${ listSize != 0 }">
+						
 						<c:forEach items="${ boards }" var="board" begin="${ count }"
 							end="${ maxIndex - 1 }">
 
@@ -95,8 +97,11 @@
 							</div>
 							</a>
 						</c:forEach>
+						</c:if>
 					</div>
-
+					
+					
+					
 					<div>
 						<c:url var="nextlist" value="/bulletinboard/board/announcement">
 							<c:choose>
@@ -212,7 +217,7 @@
 						<a href="${ maxIndex }"><button>&gt;&gt;</button></a>
 					</div>
 
-
+					
 
 					<!-- 검색 -->
 					<c:url value="/bulletinboard/board/search" var="searchPage">

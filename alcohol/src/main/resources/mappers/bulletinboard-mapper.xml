@@ -10,7 +10,7 @@
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
         group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE
-        order by B.BOARD_ID desc
+        ORDER BY B.CATEGORY DESC, B.BOARD_ID DESC
 	</select>
     
     <!-- 글 작성 -->
