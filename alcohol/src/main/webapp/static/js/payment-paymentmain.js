@@ -20,7 +20,7 @@ const clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq' // 상점을 특정하�
     paymentWidget.requestPayment({
       orderId: 'AD8aZDpbzXs4EQa-UkIX6',
       orderName: '전통주',
-      successUrl: 'http://localhost:8080/alcohol/payment/information',
+      successUrl: 'http://localhost:8081/alcohol/payment/',
       failUrl: 'http://localhost:8081/alcohol/payment/',
       customerEmail: 'customer123@gmail.com', 
       customerName: '대한'
@@ -33,7 +33,8 @@ const clientKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq' // 상점을 특정하�
       })  
   })
 
-  /*할인 쿠폰 적용
+/*
+  할인 쿠폰 적용
 	  document.querySelector("#coupon").addEventListener("click", applyDiscount)
 		
 	  function applyDiscount(e) {

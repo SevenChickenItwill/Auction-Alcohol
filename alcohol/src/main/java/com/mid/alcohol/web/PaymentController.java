@@ -15,6 +15,10 @@ import com.mid.alcohol.dto.PaymentReadDto;
 import com.mid.alcohol.dto.BasketListDto;
 import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
+
 import com.mid.alcohol.dto.BasketListDto;
 
 import lombok.RequiredArgsConstructor;
@@ -25,6 +29,10 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/payment")
 @RequiredArgsConstructor
 public class PaymentController {
+	
+	@Autowired
+	private HttpSession session; 
+	
 	
 	@Autowired
 	private PaymentService paymentService;
@@ -38,9 +46,13 @@ public class PaymentController {
 	public void paymentInfo() {
 		log.info("paymentInfo()");
 		
-	
 	}
 	
+	@PostMapping("/deliveryInfoUpdate")
+	public String deliveryInfoUpdate() {
+		
+		return "redirect:/payment/paymentmain";
+	}
 	@GetMapping("/paymentmain")
 	public void paymentInfoGet(@RequestParam("userid") String userNickName, Model model) {
 		log.info("paymentInfoGet(userNickName={})", userNickName);
@@ -51,17 +63,18 @@ public class PaymentController {
 		
 	}
 	
-	
 	@GetMapping("/information")
 	public void paymentInformation(Model model) {
 		log.info("information()");
 	}
 	
 	@GetMapping("/modify")
-	public void adressModify(Model model, @RequestParam String userNickName) {
+	public void adressModify(Model model) {
 		log.info("modify()");
 		
-		PaymentAdressModifyDto dto = paymentService.read(userNickName);
+		String userNickname = (String) session.getAttribute("userNickname");
+		log.info(userNickname);
+		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		
 		model.addAttribute("user", dto);
 		log.info("run3()");	
@@ -70,8 +83,7 @@ public class PaymentController {
 
 	@GetMapping("/paymain")
 	public void paymentMain(Model model) {
-		
-		
+	
 		log.info("paymentMain()");
 	}
 	
@@ -95,6 +107,5 @@ public class PaymentController {
 		
 		return "redirect:/payment/paymentmain";
 	}
-
 
 }

@@ -38,11 +38,11 @@ public class PaymentService {
 
 	
 	// 결제창에서 회원가입시 DB에 저장되어 있는 기존 회원 정보 불러오기
-	public PaymentAdressModifyDto read(String userNickName) {
-		log.info("read(userNickName={})", userNickName);
+	public PaymentAdressModifyDto read(String userNickname) {
+		log.info("read(userNickName={})", userNickname);
 		
-		User entity = paymentRepository.selectByOrderInfo(userNickName);
-		
+		User entity = paymentRepository.selectByOrderInfo(userNickname);
+		log.info("하이");
 		PaymentAdressModifyDto dto = PaymentAdressModifyDto.fromEntity(entity);
 		log.info("run");
 		return dto;

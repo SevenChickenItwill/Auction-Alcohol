@@ -19,8 +19,8 @@
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
             <ul class="navbar-nav bg-light">
                 <li class="nav-item">
-                    <c:url var="informationPage" value="/payment/information" />
-                    <a class="nav-link" href="${ informationPage }">결제 확인 페이지</a>
+                    <c:url var="paymentsuccess" value="/payment/paymentsuccess" />
+                    <a class="nav-link" href="${ paymentsuccess }">결제 확인 페이지</a>
                 </li>
             </ul>
         </nav>

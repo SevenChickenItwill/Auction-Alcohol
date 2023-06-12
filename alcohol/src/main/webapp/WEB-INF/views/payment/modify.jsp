@@ -20,9 +20,9 @@
 			<h1>배송지 변경/수정 페이지</h1>
 		</header>
 	</div>
-	<!-- 
+	
 	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickName }" readonly="readonly"/>
-	 -->
+	 
 	<div>
 		<main class="my-2">
 			<div class="card">

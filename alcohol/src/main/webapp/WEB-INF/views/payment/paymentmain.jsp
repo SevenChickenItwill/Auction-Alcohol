@@ -11,7 +11,7 @@
 				rel="stylesheet"
 				integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 				crossorigin="anonymous">
-	  <title>결제 위젯</title>
+	  <title>Payment</title>
 	  <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 	  <style>
 	    #payment-button{ width:100%; padding:15px; background-color:#3065AC; color:white; border-radius:3px; font-size:16px; border:none; margin-top:10px}
@@ -47,6 +47,7 @@
 	   -->
 	  
 	  	<div class="title">배송지 정보</div>
+	  	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	  		<li>
 	  			<c:url value="/payment/modify" var="adressModify">
 	  				<c:param name="userNickName" value="대한" />
@@ -73,13 +74,13 @@
 		<div class="title">계산서</div>		
 		<hr>
 	
-	  <!-- 결제 방법 영역-->
+	  <!-- 결제 방법 영역 -->
 	  <div class="title">결제 방법</div>
 	  <img src="../static/img/small.png">
 	  <br>
-	  <c:url value="/payment/information" var="paymentinformation">
+	  <c:url value="/payment/paymentsuccess" var="paymentsuccess">
 			<c:param name="num" value="0" />
-	  </c:url><a href="${paymentinformation}">주문/결제 내역</a>
+	  </c:url><a href="${paymentsuccess}">주문/결제 내역</a>
 	  	
 	<script src="./../static/js/payment-paymentmain.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

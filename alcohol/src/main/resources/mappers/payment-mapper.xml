@@ -8,14 +8,14 @@
 	<!-- 기존 배송지를 변경할 때 -->
  	<update id="updateDeliveryInfo">
  		UPDATE user
- 		SET userNickName = #{userNickName}, userAdress = #{userAdress}, userPhone = #{userPhone}, userEmail = #{userEmail}
- 		WHERE userNickName = #{userNickName}
+ 		SET userNickName = #{userNickname}, userAdress = #{userAdress}, userPhone = #{userPhone}, userEmail = #{userEmail}
+ 		WHERE userNickName = #{userNickname}
  	</update>
  	
 
  	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
  	<select id="selectByOrderInfo" resultType="com.mid.alcohol.domain.User">
- 		SELECT * FROM users WHERE userNickName = #{userNickName}
+ 		SELECT * FROM users WHERE userNickName = #{userNickname}
  	</select>
  	
 
