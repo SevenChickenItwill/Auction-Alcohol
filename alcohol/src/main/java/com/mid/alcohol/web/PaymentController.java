@@ -13,9 +13,11 @@ import com.mid.alcohol.dto.AdressUpdateDto;
 import com.mid.alcohol.dto.PaymentReadDto;
 
 import com.mid.alcohol.dto.BasketListDto;
-
-
+import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.mid.alcohol.dto.BasketListDto;
 
 import lombok.RequiredArgsConstructor;
@@ -27,6 +29,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PaymentController {
 	
+	private HttpSession session;
+	
 	@Autowired
 	private PaymentService paymentService;
 	
@@ -34,6 +38,8 @@ public class PaymentController {
 	public void paymentInfo() {
 		log.info("paymentInfo()");
 		
+		String userNickname = (String)session.getAttribute("userNickname");
+		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 	}
 	
 	@GetMapping("/paymentmain")
@@ -42,21 +48,12 @@ public class PaymentController {
 		
 	}
 	
-	
 	@GetMapping("/information")
 	public void paymentInformation(Model model) {
 		log.info("information()");
 	}
 	
-	@GetMapping("/modify")
-	public void adressModify(Model model, @RequestParam String order_name) {
-		log.info("modify()");
-		
-		PaymentReadDto dto = paymentService.read(order_name);
-		
-		model.addAttribute("payment", dto);
-		log.info("run3()");	
-	}
+	
 	
 
 	@GetMapping("/paymain")

@@ -14,8 +14,8 @@
  	
 
  	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
- 	<select id="selectByOrderInfo" resultType="com.mid.alcohol.domain.Payment">
- 		SELECT * FROM payment WHERE ORDER_NAME = #{order_name}
+ 	<select id="selectByOrderInfo" resultType="com.mid.alcohol.domain.User">
+ 		SELECT * FROM users WHERE userNickName = #{userNickname}
  	</select>
  	
  	
