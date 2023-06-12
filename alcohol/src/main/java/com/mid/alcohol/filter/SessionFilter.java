@@ -33,7 +33,7 @@ public class SessionFilter implements Filter {
 		if(userNickname == null) {
 			log.info("Not SignIn()");
 			if(!httprequest.getRequestURI().contains("/signup") && !httprequest.getRequestURI().contains("/account")
-					&& !httprequest.getRequestURI().contains("/api/login")) {
+					&& !httprequest.getRequestURI().contains("/api/login") && !httprequest.getRequestURI().contains("/static")) {
 				httpResponse.sendRedirect("/alcohol/signup/signupEmail");
 				return;
 			}

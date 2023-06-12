@@ -21,11 +21,12 @@
 	<main>
 	<div>
 		<h2>진행중인 경매</h2>
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>경매명</th>
 					<th>주최자</th>
+					<th>현재 입찰자</th>
 					<th>낙찰상품명</th>
 					<th>상품브랜드</th>
 					<th>상품제조사</th>
@@ -37,8 +38,9 @@
 				<c:forEach items="${myauction}" var="myauction">
 					<c:if test="${myauction.status == 1 }">
 					<tr>
-						<td>${myauction.auctionname}</td>
+						<td>${myauction.auctionName}</td>
 						<td>${myauction.auctioneer}</td>
+						<td>${myauction.bidder }</td>
 						<td>${myauction.pname}</td>
 						<td>${myauction.brandname}</td>
 						<td>${myauction.constructor}</td>
@@ -57,11 +59,12 @@
 		
 		<div>
 			<h2>종료된 경매</h2>
-		<table>
+		<table class="table">
 			<thead>
 				<tr>
 					<th>경매명</th>
 					<th>주최자</th>
+					<th>낙찰자</th>
 					<th>낙찰상품명</th>
 					<th>상품브랜드</th>
 					<th>상품제조사</th>
@@ -73,8 +76,9 @@
 				<c:forEach items="${myauction2}" var="mine">
 					<c:if test="${mine.status == 2 }">
 					<tr>
-						<td>${mine.auctionname}</td>
+						<td>${mine.auctionName}</td>
 						<td>${mine.auctioneer}</td>
+						<td>${mine.bidder }</td>
 						<td>${mine.pname}</td>
 						<td>${mine.brandname}</td>
 						<td>${mine.constructor}</td>

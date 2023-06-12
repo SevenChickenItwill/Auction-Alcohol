@@ -20,8 +20,7 @@
 		<main>
 			<div class="form form-control">
 				<form class="form" id="loginform">
-				<c:set var="userid" value="${ userEmail }"></c:set>
-				<c:if test="${ userid ne '' }"></c:if>
+				
 					<label for="userEmail">아이디</label>
 					<input class="card" type="text" id="userEmail" name="userEmail" required="required"
 					/>
@@ -36,7 +35,7 @@
 			</div>
 		</main>
 
-<script src="../static/js/login.js"></script>
+<script src="../static/js/logins.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

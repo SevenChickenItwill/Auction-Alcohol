@@ -268,12 +268,13 @@ public class AuctionService {
 			
 			if(attribute.equals(x.getBidder())) {
 				list2.add(x);
+				log.info("{}",x);
 			}
 			
 		}
 		
 		
-		return null;
+		return list2;
 	}
 
 	public List<AuctionListDto> readUserIng(String attribute) {
@@ -285,14 +286,23 @@ public class AuctionService {
 			set.add(x.getCid());
 			
 		}
-		List<AuctionListDto> list2 = new ArrayList<>();
-		for(long x : set) {
+		
+		List<AuctionListDto> list2 = auctionrepository.readAllAuctionList();
+		List<AuctionListDto> list3 = new ArrayList<>();
+		for(AuctionListDto x : list2) {
 			
-			//TODO : AuctionDtoList 호출해서 list2에 넣고 리턴
+			for(Long y : set) {
+				
+				if(x.getAid()==y) {
+					list3.add(x);
+				}
+				
+			}
+			
 			
 		}
-		
-		return null;
+		log.info("{}",list3);
+		return list3;
 	}
 
 	

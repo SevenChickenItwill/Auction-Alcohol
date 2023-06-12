@@ -29,7 +29,7 @@ public class AuctionProductService {
 	public int write(AuctionCreateDto dto) {
 		
 		AuctionProducts product = dto.toEntity();
-		product.setUserId("test");
+		
 		
 		log.info("write={}",product);
 		//TODO setUserId 대신 회원가입,로그인 완성되면,
