@@ -44,10 +44,6 @@ public class BulletinboardRestController {
 		
 		RecommendUp up = bulletinboardService.recommendUpSelect(boardId, userId);
 		
-		if (up == null) {
-			return ResponseEntity.ok(-1);
-		}
-		
 		int result = bulletinboardService.recommendUp(boardId);
 		log.info("result= {}", result);
 		
@@ -65,10 +61,6 @@ public class BulletinboardRestController {
 		log.info("recommendDo(id= {})", boardId);
 		
 		RecommendDown down = bulletinboardService.recommendDownSelect(boardId, userId);
-		
-		if (down == null) {
-			return ResponseEntity.ok(-1);
-		}
 		
 		int result = bulletinboardService.recommendDo(boardId);
 		log.info("result= {}", result);

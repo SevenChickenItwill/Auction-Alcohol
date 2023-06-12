@@ -44,6 +44,12 @@
         select count(*) from COMMENTS
         where BOARD_ID = #{boardId}
         </select>
+        
+    <!-- 댓글 board_id로 삭제 -->  
+    <delete id="deleteCommentByBoardId">
+        delete from COMMENTS
+        where BOARD_ID = #{boardId}
+    </delete>
 
 
 </mapper>

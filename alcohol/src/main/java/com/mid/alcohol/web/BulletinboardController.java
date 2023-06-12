@@ -30,6 +30,7 @@ import com.mid.alcohol.dto.BulletinboardImageListDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
+import com.mid.alcohol.service.CommentService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BulletinboardController {
     
     private final BulletinboardService bulletinboardService;
+    private final CommentService commentService;
     
     private int count = 0;
     private int searchCount = 0;
@@ -218,7 +220,7 @@ public class BulletinboardController {
         log.info("fileName= {}", path + file);
         
         try {
-        	dto.setImage(bulletinboardService.listToTagImage(bulletinboardService.resizeImage(path + file)));
+        	dto.setImage(path + file);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -239,6 +241,8 @@ public class BulletinboardController {
         
         int result = bulletinboardService.bulletinboardDelete(board_id);
         log.info("result = {}", result);
+        
+        int commentResult = commentService.deleteCommentByBoardId(board_id);
         
         return "redirect:/bulletinboard/board/list?num=0";
     }
