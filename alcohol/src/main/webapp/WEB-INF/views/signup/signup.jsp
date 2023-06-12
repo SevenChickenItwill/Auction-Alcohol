@@ -55,16 +55,18 @@
 							<li><label>8자 이상 20자 미만</label></li>
 							<li><label>숫자, 특수 기호, 알파벳으로만 구성되어야 합니다.</label></li>
 						</ul>
+						
+						<div>
+						<label>주소</label>
+						<br />
+						<input type="text" id="sample6_postcode" name="userPostalCode" placeholder="POSTALCODE">
+						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+							<br> 
+							<input type="text" id="sample6_address" name="userAddress" placeholder="ADDRESS">
+							<br> 
+							<input type="text" id="sample6_detailAddress" name="userDetailAddress" placeholder="DETAILADDRESS">
+							<input type="text" id="sample6_extraAddress" name="userAddressNotes" placeholder="NOTES">
 
-						<input type="text" id="sample6_postcode" placeholder="우편번호">
-						<input type="button" onclick="sample6_execDaumPostcode()"
-							value="우편번호 찾기"><br> <input type="text"
-							id="sample6_address" placeholder="주소"><br> <input
-							type="text" id="sample6_detailAddress" placeholder="상세주소">
-						<input type="text" id="sample6_extraAddress" placeholder="참고항목">
-
-						<script
-							src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 						<script>
 							function sample6_execDaumPostcode() {
 								new daum.Postcode(
@@ -129,18 +131,18 @@
 										}).open();
 							}
 						</script>
-						<div>
-							<label for="userAddressDetail">상세주소</label> <br /> <input
-								type="text" id="userAddress" name="userAddress"
-								placeholder="ADDRESS" required>
 						</div>
 						<div>
-							<label for="userPhone">전화번호</label> <br /> <input type="text"
+							<label for="userPhone">전화번호</label> 
+							<br /> 
+							<input type="text"
 								id="userPhone" name="userPhone" placeholder="PHONE" required>
 							<!--  <small id="phoneErrorMessage" style="color: red;"></small> -->
 						</div>
 						<div>
-							<label for="userNickname">별명</label> <br /> <input type="text"
+							<label for="userNickname">별명</label> 
+							<br /> 
+							<input type="text"
 								id="userNickname" name="userNickname" placeholder="NICKNAME"
 								required />
 							<button id="btnNicknameCheck">중복체크</button>
@@ -149,15 +151,17 @@
 					<div>
 						<div>
 							<!-- 체크박스 -->
-							<input type="radio" name="userGender" value="남성" id="userGender"
-								required /> <label for="cb1">남성</label> <input type="radio"
-								name="userGender" value="여성" id="userGender" required /> <label
-								for="cb2">여성</label>
+							<input type="radio" name="userGender" value="남성" id="userGender" required /> 
+							<label for="cb1">남성</label> 
+							<input type="radio"	name="userGender" value="여성" id="userGender" required /> 
+							<label for="cb2">여성</label>
 						</div>
 					</div>
 					<div>
 						<div>
-							<label>생년월일</label> <br /> <input type="date" id="userBirthday"
+							<label>생년월일</label> 
+							<br /> 
+							<input type="date" id="userBirthday"
 								name="userBirthday" required />
 						</div>
 						<div>
@@ -183,6 +187,8 @@
 			crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="../static/js/signup.js"></script>
+		<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		
 	</div>
 </body>
 </html>

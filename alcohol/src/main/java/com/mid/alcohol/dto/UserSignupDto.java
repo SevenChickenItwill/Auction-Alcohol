@@ -28,6 +28,8 @@ public class UserSignupDto {
     private String userName;
     private int userAge;
     private String userAddress;
+    private String userDtailAddress;
+    private String userAddressNotes;
     private String userPhone;  
     private String userGender;
     private String userNickname;
@@ -50,6 +52,8 @@ public class UserSignupDto {
                 .userPasswordCheck(userPasswordCheck)
                 .userName(userName)
                 .userAddress(userAddress)
+                .userDtailAddress(userDtailAddress)
+                .userAddressNotes(userAddressNotes)
                 .userPhone(userPhone)
                 .userGender(userGender)
                 .userEmail(userEmail)

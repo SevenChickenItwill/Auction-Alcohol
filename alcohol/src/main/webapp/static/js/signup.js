@@ -41,15 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
 	const btnSignup = document.querySelector('#btnSignup');
 	btnSignup.addEventListener('click', () => {
 
-		if(signupOk == 0){
+		if (signupOk == 0) {
 			alert('중복검사를 진행하세요');
 			return;
 		}
-		
+
 		const userName = document.querySelector('#userName').value;
 		const userPassword = document.querySelector('#userPassword').value;
 		const userPasswordCheck = document.querySelector('#userPasswordCheck').value;
-		const userAddress = document.querySelector('#userAddress').value;
+		const sample6_address = document.querySelector('#sample6_address').value;
+		const sample6_postcode= document.querySelector('#sample6_postcode').value;
+		const sample6_detailAddress = document.querySelector('#sample6_detailAddress').value;
+		const sample6_extraAddress = document.querySelector('#sample6_extraAddress').value;
 		const userPhone = document.querySelector('#userPhone').value;
 		const userNickname = document.querySelector('#userNickname').value;
 		const userGender = document.querySelector('#userGender').value;
@@ -66,7 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			userName === '' ||
 			userPassword === '' ||
 			userPasswordCheck === '' ||
-			userAddress === '' ||
+			sample6_address === '' ||
+			sample6_postcode === '' ||
+			sample6_detailAddress === '' ||
+			sample6_extraAddress === '' ||
 			userPhone === '' ||
 			userNickname === '' ||
 			userGender === '' ||

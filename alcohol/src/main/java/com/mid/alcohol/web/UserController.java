@@ -59,17 +59,25 @@ public class UserController {
 
     // 회원가입 처리
     @PostMapping("/signup")
-    public String signup(UserSignupDto dto, @RequestParam("userEmail") String userEmail) {
+    public String signup(UserSignupDto dto, 
+                         @RequestParam("userEmail") String userEmail,
+                         @RequestParam("userAddress") String userAddress,
+                         @RequestParam("userDetailAddress") String userDetailAddress,
+                         @RequestParam("userAddressNotes") String userAddressNotes) {
         log.info("signup({})", dto);
 
+        // 주소 정보를 합치기
+        String combinedAddress = userAddress + " " + userDetailAddress + " " + userAddressNotes;
+
         dto.setUserEmail(userEmail);
+        dto.setUserAddress(combinedAddress);
 
         int result = userService.signup(dto);
         log.info("회원가입 결과 = {}", result);
 
         // 회원가입 완료 페이지로 넘겨줌
         return "/signup/signupCompletion";
-    }
+    }   
 
     // 회원가입 완료 페이지로 이동
     @GetMapping("/signupCompletion")
@@ -94,9 +102,9 @@ public class UserController {
 
     // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보
     @PostMapping("/userModify")
-    public void userModifyPPP() {
+    public String userModifyPPP() {
 
-        // return"/signup/userPasswordModify";
+         return"/signup/userPasswordModify";
     }
 
     // 비밀번호 수정 페이지로 이동하기 위해
@@ -105,19 +113,26 @@ public class UserController {
 //    	
 //    }
 
-    // 비밀번호를 수정하기위한(미완성)
+    // 비밀번호를 수정하기위한()
     @PostMapping("/userPasswordModify")
     public void userPasswordModify() {
         log.info("userPasswordModify");
 
-        // return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+//         return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
 
     // 전화번호를 수정하기위해
     @PostMapping("/userPhoneModify")
     public void userPhoneModify() {
         // 전화번호 수정 로직 구현
-//      return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+//     return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+    }
+    
+    // 주소를 수정하기위해
+    @PostMapping("/userAddressModify")
+    public void userAddressModify() {
+        
+//        return "/signup/userModify";
     }
 
 }

@@ -18,7 +18,7 @@
 		<h1>회원 정보관리</h1>
 	</header>
 	<c:url var="userModify" value="/signup/userModify"></c:url>
-	<form id="accountPasswordForm" method="post" action="${ userModify }">
+	<form id="accountForm" method="post" action="${ userModify }">
 		<div>
 			<h2>계정</h2>
 		</div>
