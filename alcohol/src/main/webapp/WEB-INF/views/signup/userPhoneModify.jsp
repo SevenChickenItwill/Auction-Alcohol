@@ -16,11 +16,13 @@
 		<h1>휴대폰 번호 변경</h1>
 	</header>
 	
+    <form method="post" id="accountForm">
 	<div>
 		<label>휴대폰 번호</label>
 		<br />
 		<input type="text" id="userAccountPhoneModify" name="userAccountPhoneModify" required />
 	</div>
+    </form>
 	<div>
 		<input type="submit" id="btnPhoneCancel" value="취소" />
 		<input type="submit" id="btnPhoneUpdate" value="수정하기" />

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.domain.User;
-import com.mid.alcohol.dto.UserModifyDto;
+import com.mid.alcohol.dto.UserDetaillDto;
 import com.mid.alcohol.dto.UserSignupDto;
 import com.mid.alcohol.service.UserService;
 
@@ -94,18 +94,20 @@ public class UserController {
     // =============================여기서부터 수정 컨트롤러===================================================================//
     // 계정 페이지 이동
     @GetMapping("/userModify")
-    public String userModify() {
-        log.info("userModify");
-
-        return "/signup/userModify";
+    public void userModify(String userEmail, Model model) {
+        log.info("userModify(userEmail={})", userEmail);
+        
+        UserDetaillDto dto = userService.read(userEmail);
+        
+        model.addAttribute("userEmail", dto);
     }
 
-    // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보
-    @PostMapping("/userModify")
-    public String userModifyPPP() {
-
-         return"/signup/userPasswordModify";
-    }
+//    // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보
+//    @PostMapping("/userModify")
+//    public String userModifyPPP() {
+//
+//         return"/signup/userPasswordModify";
+//    }
 
     // 비밀번호 수정 페이지로 이동하기 위해
 //    @GetMapping("/userPasswordModify")

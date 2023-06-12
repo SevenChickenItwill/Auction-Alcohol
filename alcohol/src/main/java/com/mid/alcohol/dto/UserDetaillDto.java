@@ -11,18 +11,20 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
-public class UserModifyDto {
+public class UserDetaillDto {
     
     private String userEmail;
     private String userPassword;
     private String userPhone;
+    private String userAddress;
     private LocalDate userBirthday;
     
-    public static UserModifyDto fromEntity(User entity) {
-        return UserModifyDto.builder()
+    public static UserDetaillDto fromEntity(User entity) {
+        return UserDetaillDto.builder()
                 .userEmail(entity.getUserEmail())
                 .userPassword(entity.getUserPassword())
                 .userPhone(entity.getUserPhone())
+                .userAddress(entity.getUserAddress())
                 .userBirthday(LocalDate.of(entity.getUserBirthday().getYear(),
                         entity.getUserBirthday().getMonthValue(),
                         entity.getUserBirthday().getDayOfMonth()))

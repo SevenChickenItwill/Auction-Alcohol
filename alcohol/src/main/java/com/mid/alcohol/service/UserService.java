@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.mid.alcohol.domain.Login;
 import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.LoginCheckDto;
-import com.mid.alcohol.dto.UserModifyDto;
+import com.mid.alcohol.dto.UserDetaillDto;
 import com.mid.alcohol.dto.UserSignupDto;
 import com.mid.alcohol.repository.UserRepository;
 
@@ -29,12 +29,12 @@ public class UserService {
     }
     
     // 계정 정보를 수정하기 위해
-    public UserModifyDto read(String userEmail) {
+    public UserDetaillDto read(String userEmail) {
         log.info("read(userEmail={})", userEmail);
 
         User entity = userRepository.findByUserEmail(userEmail);
 
-        UserModifyDto dto = UserModifyDto.fromEntity(entity);
+        UserDetaillDto dto = UserDetaillDto.fromEntity(entity);
 
         return dto; 
     }
@@ -60,5 +60,6 @@ public class UserService {
 
         return userRepository.signInMain(login.toEntity());
     }
+    
     
 }
