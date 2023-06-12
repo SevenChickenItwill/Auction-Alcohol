@@ -14,8 +14,8 @@
   
   <!-- 회원가입 정보  -->
   <insert id="userMainSignup" >
-    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender)
-    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userNickname}, #{userBirthday}, #{userJoindate}, #{userGender})
+    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender, category)
+    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userNickname}, #{userBirthday}, #{userJoindate}, #{userGender}, #{category})
      
   </insert>
 
@@ -29,6 +29,7 @@
     select * from USERS where userNickname = #{userNickname}
   </select>
   
+  <!-- 로그인 정보 -->
    <select id="signInMain" resultType="com.mid.alcohol.domain.User">
   	select * from Users where userEmail = #{userEmail} AND userPassword = #{userPassword}
   </select>

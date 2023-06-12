@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			let response = await axios.get(url);
 			console.log(response);
 
-			if (response.data != null) {
+			if (response.data != null && response.data !== '') {
 				// 이메일이 있는 경우
 				signupEmailForm.action = '/alcohol/account/loginNew';
 				signupEmailForm.method = 'post';
 				signupEmailForm.submit();
 			} else {
 				// 이메일이 없는 경우
-				signupEmailForm.action = './signupEmail	';
+				signupEmailForm.action = '/alcohol/signup/signupEmail';
 				signupEmailForm.method = 'post';
 				signupEmailForm.submit();
 			}

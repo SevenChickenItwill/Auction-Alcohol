@@ -18,7 +18,8 @@ public interface UserRepository {
     
     // 중복된 이메일이 있는지
     User findByUserEmail(String userEmail);
-
+    
+    // 로그인 하기 위해
     User signInMain(Login login);
 
     

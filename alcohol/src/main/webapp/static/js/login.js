@@ -46,11 +46,13 @@
 		 
 	 });
 	 
+	 /*
 	 btnsignUp.addEventListener('click',()=>{
 		 
 		 // 회원가입 연결.
 		 
 	 });
+	 */
 	 
 	 
  })
