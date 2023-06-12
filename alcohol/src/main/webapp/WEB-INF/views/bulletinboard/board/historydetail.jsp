@@ -1,12 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link
@@ -15,11 +12,16 @@
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous" />
 </head>
+</head>
 <body>
-	<header>
-		<h1>ìƒì„¸ë³´ê¸°í˜ì´ì§€</h1>
-	</header>
-
+	<h1>»ó¼¼º¸±â ÆäÀÌÁö</h1>
+	<div>
+		<c:url var="historylist" value="/bulletinboard/board/historylist">
+			<c:param value="${board.nickname}" name="nickname" />
+		</c:url>
+		<a type="button" href= "${historylist}">µÚ·Î°¡±â</a>
+	</div>
+	
 	<main>
 		
 		<input type="text" class="d-none" value="${ sessionScope.userEmail }" id="loginId" />
@@ -37,16 +39,16 @@
 									<p class="card-text">${ board.nickname }(${ board.user_id })
 										${ board.time }</p>
 									<p class="card-text" >
-										<span>ì¡°íšŒìˆ˜ : [${ board.views }]</span>
-										<span id="recommendCnt">ì¶”ì²œìˆ˜ : [${ board.recommend }]</span>
-										<span>ëŒ“ê¸€[ê°œìˆ˜]</span>
+										<span>Á¶È¸¼ö : [${ board.views }]</span>
+										<span id="recommendCnt">ÃßÃµ¼ö : [${ board.recommend }]</span>
+										<span>´ñ±Û[°³¼ö]</span>
 									</p>
-									<img src="data:image/jpeg;base64,${ image }" alt="ì´ë¯¸ì§€" />
+									<img src="data:image/jpeg;base64,${ image }" alt="ÀÌ¹ÌÁö" />
 									<p class="card-text">${ board.content }</p>
 									
 										<div>
-											<input type="button" value="ì¶”ì²œ" id="recommendUp" />
-											<input type="button" value="ë¹„ì¶”ì²œ" id="recommendDo" />
+											<input type="button" value="ÃßÃµ" id="recommendUp" />
+											<input type="button" value="ºñÃßÃµ" id="recommendDo" />
 										</div>
 
 								</div>
@@ -55,28 +57,23 @@
 					</div>
 				</div>
 			</form>
-			<span> <c:url value="/bulletinboard/board/list?num=0"
-					var="boardList" /> <a href="${ boardList }">ëª©ë¡í˜ì´ì§€</a>
-			</span>
-			<!-- ifë¬¸ ë„£ê¸° -->
 				<span> 
 				<c:url var="boardModify" value="/bulletinboard/board/modify">
 					<c:param name="id" value="${ board.board_id }"></c:param>
 				</c:url> 
-				<a href="${ boardModify }">ìˆ˜ì •í•˜ê¸°</a> 
-				<a id="deleteBtn">ì‚­ì œí•˜ê¸°</a>
+				<a href="${ boardModify }">¼öÁ¤ÇÏ±â</a> 
+				<a id="deleteBtn">»èÁ¦ÇÏ±â</a>
 				</span>
-			
 			  <div>
-                 <!-- ëŒ“ê¸€ ëª©ë¡ ë³´ì—¬ì¤„ ì˜ì—­ -->
-                    <span>ëŒ“ê¸€</span>
+                 <!-- ´ñ±Û ¸ñ·Ï º¸¿©ÁÙ ¿µ¿ª -->
+                    <span>´ñ±Û</span>
                     <span id="commentCount"></span>
                 </div>
                 
                 
                 
                 <div>
-                ëŒ“ê¸€ ìˆ˜ì • í…ŒìŠ¤íŠ¸
+                ´ñ±Û ¼öÁ¤ Å×½ºÆ®
                 </div>
                 <div>
                 <input id="updateCommentId" type="hidden"/>
@@ -85,33 +82,31 @@
                 
                 
                 <div>
-                    <input value="${ sessionScope.userNickname }" id="userNickname" readonly/>
+                    <input value="test33" id="userNickname" readonly/>
                 </div>
                 <div>
-                    <textarea class= "col-5" placeholder="ëŒ“ê¸€ ì“°ê¸°" id="content"></textarea>
+                    <textarea class= "col-5" placeholder="´ñ±Û ¾²±â" id="content"></textarea>
                 </div>
                 <div>
-                	<button id="commentReg" >ë“±ë¡</button>
+                	<button id="commentReg" >µî·Ï</button>
                 </div>
                 
                 
                 <div id="replies"></div>
 
-
+				
+			
 		</section>
-
+		
 
 	</main>
-
+	
 	<div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="../../static/js/board-details.js"></script>
-	</div>
-
+    <script src="../../static/js/board-history.js"></script>
 </body>
-
 </html>

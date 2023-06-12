@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mid.alcohol.domain.Login;
+import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.LoginCheckDto;
 import com.mid.alcohol.service.UserService;
 
@@ -25,39 +26,31 @@ public class LoginController {
     // 컨트롤러에서 요청주소들을 처리한다
     // 디스패처 서블릿에서 요청주소 분석해서 처리하는 해당 컨트롤러를 호출한다
  
-    @GetMapping("/login")
-    public void login() {
-        log.info("login()");    
-     }
     
-    
-    
-    // 가입 완료한 회원정보를 DB에 삽입하기 위해서 설정한 경로
-    @PostMapping("/path")
-    public String path() {
-        log.info("path()");
-        
-        return "redirect:/account/login";
-    }
     
      
     
     
-    @GetMapping("/enroll")
-    public void enroll() {
-        log.info("enroll()");  
-    }
+    
     
     @PostMapping("/login")
     public String login(LoginCheckDto dto, HttpSession session) {
     	
-    	Login user = userService.login(dto);
+    	User user = userService.login(dto);
     	
     	session.setAttribute("userEmail", user.getUserEmail());
     	session.setAttribute("userPassword", user.getUserPassword());
     	session.setAttribute("userNickname", user.getUserNickname());
     	
     	return "redirect:/auction/auctionlist";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+    	session.removeAttribute("userEmail");
+    	session.removeAttribute("userPassword");
+    	session.removeAttribute("userNickname");
+    	return "redirect:/signup/signupEmail";
     }
     
     @GetMapping("/loginNew")

@@ -22,7 +22,7 @@ public class BulletinboardCreateDto {
     private String nickname;
     private String user_id;
     private String title;
-    private byte[] image;
+    private String image;
     private String content;
     
     public Bulletinboard toEntity(Bulletinboard bulletinboard) throws Exception {

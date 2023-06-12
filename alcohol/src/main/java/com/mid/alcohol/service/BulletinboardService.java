@@ -5,9 +5,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
 
@@ -16,8 +19,11 @@ import javax.imageio.ImageIO;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.domain.RecommendDown;
+import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardHistoryDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
@@ -35,9 +41,14 @@ public class BulletinboardService {
     public List<BulletinboardListDto> selectAll() {
         log.info("selectAll");
         
-        List<Bulletinboard> list = bulletinboardRepository.selectAllOrderByIdDesc();
+//        List<BulletinboardListDto> listImage = bulletinboardRepository.selectImageOrderByIdDesc();
+        List<BulletinboardListDto> list = bulletinboardRepository.selectOrderByIdDesc();
         
-        return list.stream().map(BulletinboardListDto::fromEntity).toList();
+//        for (int i = 0; i < list.size(); i++) {
+//        	list.get(i).setImage(listImage.get(i).getImage());
+//        }
+//        
+        return list;
     }
 
     public BulletinboardDetailDto selectById(long id) {
@@ -74,17 +85,57 @@ public class BulletinboardService {
         log.info("searech(category= {}, keyword= {})", category, keyword);
         
         if (category.equals("t")) {
-            return bulletinboardRepository.selectWhereTitle(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	 List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitle(keyword);
+//             List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitle(keyword);
+//             
+//             for (int i = 0; i < list.size(); i++) {
+//             	list.get(i).setImage(listImage.get(i).getImage());
+//             }
+             
+             return list;
         } else if (category.equals("c")) {
-            return bulletinboardRepository.selectWhereContent(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereContent(keyword);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereContent(keyword);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
+            
+            return list;
         } else if (category.equals("tc")) {
             String keywordT = keyword;
             String keywordC = keywordT;
-            return bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC).stream().map(BulletinboardListDto::fromEntity).toList();
+            
+            List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitleAndContent(keywordT, keywordC);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
+            
+            return list;
         } else if (category.equals("n")) {
-            return bulletinboardRepository.selectWhereNickname(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereNickname(keyword);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereNickname(keyword);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
+            
+            return list;
         } else if (category.equals("i")) {
-            return bulletinboardRepository.selectWhereUserId(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereUserId(keyword);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereUserId(keyword);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
+            
+            return list;
         }
         
         return null;
@@ -137,8 +188,25 @@ public class BulletinboardService {
     	
 		BulletinboardDetailDto board = selectById(id);
 		
-		byte[] bytes = board.getImage();
+		String boardImages = board.getImage();
+		byte[] bytes = boardImages.getBytes();
+		InputStream inputStream = new ByteArrayInputStream(bytes);
+		BufferedImage image = ImageIO.read(inputStream);
 		
+		// 이미지를 Base64로 인코딩
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		ImageIO.write(image, "jpg", outputStream);
+		String base64Image = Base64.getEncoder().encodeToString(outputStream.toByteArray());
+		
+		
+		return base64Image;
+	}
+    
+    // String으로 사진 경로 값을 인코딩하는 메서드
+    public String stringToIncoding(String getImage) throws Exception {
+    	log.info("stringToIncoding={}", getImage);
+    	
+		byte[] bytes = getImage.getBytes();
 		InputStream inputStream = new ByteArrayInputStream(bytes);
 		BufferedImage image = ImageIO.read(inputStream);
 		
@@ -152,25 +220,27 @@ public class BulletinboardService {
 	}
     
     // 이미지 크기를 조정하는 메서드
-    public BufferedImage resizeImage(byte[] image) throws IOException {
+    public BufferedImage resizeImage(String image) throws IOException {
     	int maxWidth = 540;
     	int maxHeight = 540;
     	
-    	// 바이트 배열을 이미지로 변환
-        ByteArrayInputStream bais = new ByteArrayInputStream(image);
-        BufferedImage originalImage = ImageIO.read(bais);
-        bais.close();
+    	Path path = Paths.get(image);
+    	File imageFile = path.toFile();
+        BufferedImage originalImage = ImageIO.read(imageFile);
 
         // 이미지 크기 조정
         int originalWidth = originalImage.getWidth();
         int originalHeight = originalImage.getHeight();
         double ratio = 1.0;
+        
         if (originalWidth > maxWidth) {
             ratio = (double) maxWidth / originalWidth;
         }
+        
         if (originalHeight * ratio > maxHeight) {
             ratio = (double) maxHeight / originalHeight;
         }
+        
         int newWidth = (int) (originalWidth * ratio);
         int newHeight = (int) (originalHeight * ratio);
         Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
@@ -217,22 +287,40 @@ public class BulletinboardService {
 	}
     
 	// 추천 시 중복검사를 위해 COMMENDUP 테이블에 객체 생성
-//    public int recommendListInsert(long boardId, String userId) {
-//    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
-//    	
-//    	int result = bulletinboardRepository.recommendList(boardId, userId);
-//    	
-//    	return result;
-//    }
-//    
-//    // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
-//    public int recommendDelete(long boardId, String userId) {
-//    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
-//    	
-//    	int result = bulletinboardRepository.recommendDelete(boardId, userId);
-//    	
-//    	return result;
-//    }
+    public int recommendUpInsert(long boardId, String userId) {
+    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
+    	
+    	int result = bulletinboardRepository.commendupInsert(boardId, userId);
+    	
+    	return result;
+    }
+    
+    // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
+    public int recommendDelete(long boardId, String userId) {
+    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
+    	
+    	int result = bulletinboardRepository.commenddownInsert(boardId, userId);
+    	
+    	return result;
+    }
+    
+    // 추천시 중복검사하기
+    public RecommendUp recommendUpSelect(long boardId, String userId) {
+    	log.info("recommendUpSelect(baordId= {}, userId= {})", boardId, userId);
+    	
+    	RecommendUp up = bulletinboardRepository.recommendUpSelect(boardId, userId);
+    	
+    	return up;
+    }
+    
+    // 추천다운시 중복검사하기
+    public RecommendDown recommendDownSelect(long boardId, String userId) {
+    	log.info("recommendDownSelect(baordId= {}, userId= {})", boardId, userId);
+    	
+    	RecommendDown down = bulletinboardRepository.recommendDownSelect(boardId, userId);
+    	
+    	return down;
+    }
 	
 	// 조회수 증가하는 service
 	public int viewsUp(long boardId) {
@@ -259,6 +347,18 @@ public class BulletinboardService {
 		List<Bulletinboard> list = bulletinboardRepository.selectOrderByRecommend();
 		
 		return list.stream().map(BulletinboardListDto::fromEntity).toList();
+	}
+	
+
+	public List<BulletinboardHistoryDto> historyReadByBoardId(String nickname) {
+		log.info("historyReadByBoardId()");
+		
+		// entity를 초기화해주는 작업. BulletinBoard 타입으로 엔티티를 만들어주기 때문에 모델명을 따라서 아규먼트 값 설정
+		List<Bulletinboard> entity = bulletinboardRepository.readHistoryByNickname(nickname);
+		// dto를 entity(db타입으로 변환)
+		
+		
+		return entity.stream().map(BulletinboardHistoryDto::fromEntity).toList();
 	}
 	
 	

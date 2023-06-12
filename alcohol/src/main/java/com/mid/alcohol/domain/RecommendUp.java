@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RecommendUP {
+public class RecommendUp {
 	
-	private long board_id;
-	private String recommender_id;
+	private long boardId;
+	private String recommenderId;
 	
 }

@@ -130,7 +130,7 @@
 							<c:when test="${ listPageMax < 9 }">
 								<c:forEach begin="${ 1 }" end="${ listPageMax }" var="listFor">
 									<c:url var="listPageNum"
-										value="/bulletinboard/board/announcement?num=${ listFor - 1 } }" />
+										value="/bulletinboard/board/announcement?num=${ listFor - 1 }" />
 									<a href="${ listPageNum }">${ listFor }</a>
 								</c:forEach>
 							</c:when>
