@@ -66,16 +66,10 @@
 					<div class="my-2">
 						<input id="btnsubmit" class="form-control" type="submit" value="등록" class="btn" />
 					</div>
+					
 				</form>
 				<div>
-					<div class="form-control">
-						<input class="form-control" type="file" id="image" name="image" />
-						<button class="btn" id="imgupload">이미지 확정</button>
-					</div>
-					<!-- 이미지 업로드하면 표시해주는 컬럼 -->
-					<div id="imgshow" name="imgshow">
-						
-					</div>
+					
 					</div>
 			</div>
 		</main>

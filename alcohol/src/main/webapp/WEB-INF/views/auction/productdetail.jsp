@@ -36,33 +36,33 @@
 		<main>
 			<section>
 				<c:url var="productmodify" value="/auction/productmodify" />
-				<form id="detailform" action="${ productmodify }" method="post">
+				<form class="form" id="detailform" action="${ productmodify }" method="post">
 					<input type="text" value="${ product.productid }" name="productid" class="d-none">
 					<div>
 						<label>상품명</label>
-						<input type="text" name="pname" value="${ product.pname }" readonly>
+						<input class="form-control" type="text" name="pname" value="${ product.pname }" readonly>
 					</div>
 					<div>
 						<label>제조사(생산자)</label>
-						<input type="text" name="constructor" value="${ product.constructor }" readonly>
+						<input class="form-control" type="text" name="constructor" value="${ product.constructor }" readonly>
 					</div>
 					<div>
 						<label>브랜드</label>
-						<input type="text" name="brandname" value="${ product.brandname }" readonly>
+						<input class="form-control" type="text" name="brandname" value="${ product.brandname }" readonly>
 					</div>
 					<div>
 						<label>종류</label>
-						<input id="category" type="text" value="${ product.category }" readonly>
+						<input class="form-control" id="category" type="text" value="${ product.category }" readonly>
 						<input class="d-none" name="category" value="${ product.category }">
 					</div>
 					<div>
 						<label>원가</label>
-						<input type="number" name="cost" value="${ product.cost }" readonly>
+						<input class="form-control" type="number" name="cost" value="${ product.cost }" readonly>
 					</div>
 				<div>
-					<input type="submit" value="수정" />
+					<input class="form-control" type="submit" value="수정" />
 					
-					<button id="btndelete">삭제</button>
+					<button class="form-control" id="btndelete">삭제</button>
 				</div>
 				</form>
 			</section>

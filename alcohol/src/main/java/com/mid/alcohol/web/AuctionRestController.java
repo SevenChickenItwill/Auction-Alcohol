@@ -1,15 +1,21 @@
 package com.mid.alcohol.web;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.dto.AuctionDetailSearchDto;
@@ -103,6 +109,30 @@ public class AuctionRestController {
 		return ResponseEntity.ok(list);
 	}
 	
+	private static String path = "C:/image/";
+	@PostMapping("/upload/{productid}")
+	public ResponseEntity<String> uploadimg(@RequestBody MultipartFile file, @PathVariable int productid){
+		log.info("uploadimg()");
+		
+		UUID uid = UUID.randomUUID();
+		String name = uid+file.getOriginalFilename();
+		String photopath = path+name;
+		log.info(photopath);
+		try {
+			File files = new File(photopath);
+			file.transferTo(files);
+			
+			log.info("file upload complete");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return ResponseEntity.ok(photopath);
+		
+	}
 
 	
 	

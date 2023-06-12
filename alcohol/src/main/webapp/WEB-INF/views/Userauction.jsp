@@ -20,7 +20,7 @@
 	</header>
 	<main>
 	<div>
-		<h2>진행중인 경매</h2>
+		<h2>관심 경매</h2>
 		<table class="table">
 			<thead>
 				<tr>
