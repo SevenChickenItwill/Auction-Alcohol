@@ -58,7 +58,7 @@
 			<span> <c:url value="/bulletinboard/board/list?num=0"
 					var="boardList" /> <a href="${ boardList }">목록페이지</a>
 			</span>
-				<c:if test="${ board.nickname == sessionScope.userNickname }">
+				<c:if test="${ board.nickname eq sessionScope.userNickname }">
 					<span> 
 						<c:url var="boardModify" value="/bulletinboard/board/modify">
 							<c:param name="id" value="${ board.board_id }"></c:param>

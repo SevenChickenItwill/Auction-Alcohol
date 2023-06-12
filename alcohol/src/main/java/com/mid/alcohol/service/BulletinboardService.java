@@ -5,9 +5,12 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
 
@@ -37,13 +40,13 @@ public class BulletinboardService {
     public List<BulletinboardListDto> selectAll() {
         log.info("selectAll");
         
-        List<BulletinboardListDto> listImage = bulletinboardRepository.selectImageOrderByIdDesc();
-        List<BulletinboardListDto> list = bulletinboardRepository.selectNotImageOrderByIdDesc();
+//        List<BulletinboardListDto> listImage = bulletinboardRepository.selectImageOrderByIdDesc();
+        List<BulletinboardListDto> list = bulletinboardRepository.selectOrderByIdDesc();
         
-        for (int i = 0; i < list.size(); i++) {
-        	list.get(i).setImage(listImage.get(i).getImage());
-        }
-        
+//        for (int i = 0; i < list.size(); i++) {
+//        	list.get(i).setImage(listImage.get(i).getImage());
+//        }
+//        
         return list;
     }
 
@@ -82,54 +85,54 @@ public class BulletinboardService {
         
         if (category.equals("t")) {
         	
-        	 List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereTitle(keyword);
-             List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitle(keyword);
-             
-             for (int i = 0; i < list.size(); i++) {
-             	list.get(i).setImage(listImage.get(i).getImage());
-             }
+        	 List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitle(keyword);
+//             List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitle(keyword);
+//             
+//             for (int i = 0; i < list.size(); i++) {
+//             	list.get(i).setImage(listImage.get(i).getImage());
+//             }
              
              return list;
         } else if (category.equals("c")) {
         	
-        	List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereContent(keyword);
-            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereContent(keyword);
-            
-            for (int i = 0; i < list.size(); i++) {
-            	list.get(i).setImage(listImage.get(i).getImage());
-            }
+        	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereContent(keyword);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereContent(keyword);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
             
             return list;
         } else if (category.equals("tc")) {
             String keywordT = keyword;
             String keywordC = keywordT;
             
-            List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC);
-            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitleAndContent(keywordT, keywordC);
-            
-            for (int i = 0; i < list.size(); i++) {
-            	list.get(i).setImage(listImage.get(i).getImage());
-            }
+            List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitleAndContent(keywordT, keywordC);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
             
             return list;
         } else if (category.equals("n")) {
         	
-        	List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereNickname(keyword);
-            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereNickname(keyword);
-            
-            for (int i = 0; i < list.size(); i++) {
-            	list.get(i).setImage(listImage.get(i).getImage());
-            }
+        	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereNickname(keyword);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereNickname(keyword);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
             
             return list;
         } else if (category.equals("i")) {
         	
-        	List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereUserId(keyword);
-            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereUserId(keyword);
-            
-            for (int i = 0; i < list.size(); i++) {
-            	list.get(i).setImage(listImage.get(i).getImage());
-            }
+        	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereUserId(keyword);
+//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereUserId(keyword);
+//            
+//            for (int i = 0; i < list.size(); i++) {
+//            	list.get(i).setImage(listImage.get(i).getImage());
+//            }
             
             return list;
         }
@@ -184,8 +187,25 @@ public class BulletinboardService {
     	
 		BulletinboardDetailDto board = selectById(id);
 		
-		byte[] bytes = board.getImage();
+		String boardImages = board.getImage();
+		byte[] bytes = boardImages.getBytes();
+		InputStream inputStream = new ByteArrayInputStream(bytes);
+		BufferedImage image = ImageIO.read(inputStream);
 		
+		// 이미지를 Base64로 인코딩
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		ImageIO.write(image, "jpg", outputStream);
+		String base64Image = Base64.getEncoder().encodeToString(outputStream.toByteArray());
+		
+		
+		return base64Image;
+	}
+    
+    // String으로 사진 경로 값을 인코딩하는 메서드
+    public String stringToIncoding(String getImage) throws Exception {
+    	log.info("stringToIncoding={}", getImage);
+    	
+		byte[] bytes = getImage.getBytes();
 		InputStream inputStream = new ByteArrayInputStream(bytes);
 		BufferedImage image = ImageIO.read(inputStream);
 		
@@ -199,25 +219,27 @@ public class BulletinboardService {
 	}
     
     // 이미지 크기를 조정하는 메서드
-    public BufferedImage resizeImage(byte[] image) throws IOException {
+    public BufferedImage resizeImage(String image) throws IOException {
     	int maxWidth = 540;
     	int maxHeight = 540;
     	
-    	// 바이트 배열을 이미지로 변환
-        ByteArrayInputStream bais = new ByteArrayInputStream(image);
-        BufferedImage originalImage = ImageIO.read(bais);
-        bais.close();
+    	Path path = Paths.get(image);
+    	File imageFile = path.toFile();
+        BufferedImage originalImage = ImageIO.read(imageFile);
 
         // 이미지 크기 조정
         int originalWidth = originalImage.getWidth();
         int originalHeight = originalImage.getHeight();
         double ratio = 1.0;
+        
         if (originalWidth > maxWidth) {
             ratio = (double) maxWidth / originalWidth;
         }
+        
         if (originalHeight * ratio > maxHeight) {
             ratio = (double) maxHeight / originalHeight;
         }
+        
         int newWidth = (int) (originalWidth * ratio);
         int newHeight = (int) (originalHeight * ratio);
         Image resizedImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);

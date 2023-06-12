@@ -17,7 +17,7 @@ public interface BulletinboardRepository {
     
     List<BulletinboardListDto> selectImageOrderByIdDesc();
     
-    List<BulletinboardListDto> selectNotImageOrderByIdDesc();
+    List<BulletinboardListDto> selectOrderByIdDesc();
     
     BulletinboardDetailDto selectById(long board_id);
     

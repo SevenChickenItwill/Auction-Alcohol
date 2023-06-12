@@ -22,7 +22,7 @@
     <nav>
         <div>
             <ul>
-                <c:if test="${ sessionScope.userNickname != null }">
+                <c:if test="${ sessionScope.userNickname ne null }">
 					<li>
 						<c:url value="/bulletinboard/board/create" var="dealCreated" /> 
 						<a href="${ dealCreated }">새글작성</a>

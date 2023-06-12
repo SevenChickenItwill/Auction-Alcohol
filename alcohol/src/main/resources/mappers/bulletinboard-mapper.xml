@@ -10,11 +10,11 @@
     </select>
     
     <!-- 이미지를 제외한 전체 게시글 보기 -->
-     <select id="selectNotImageOrderByIdDesc" resultType="com.mid.alcohol.dto.BulletinboardListDto">
-        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+     <select id="selectOrderByIdDesc" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
-        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE
         order by B.BOARD_ID desc
 	</select>
     
@@ -56,11 +56,11 @@
     </select>
     
     <select id="selectWhereTitle" resultType="com.mid.alcohol.dto.BulletinboardListDto">
-        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
         where lower(B.TITLE) like lower('%' || #{keyword} || '%')
-        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE,
         order by B.BOARD_ID desc
 	</select>
     
@@ -70,11 +70,11 @@
     </select>
     
     <select id="selectWhereContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
-        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
         where lower(B.CONTENT) like lower('%' || #{keyword} || '%')
-        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE
         order by B.BOARD_ID desc
 	</select>
     
@@ -86,11 +86,11 @@
     </select>
     
     <select id="selectWhereTitleAndContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
-        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
         where lower(B.TITLE) like lower('%' || #{keywordT} || '%') or lower(B.CONTENT) like lower('%' || #{keywordC} || '%')
-        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE
         order by B.BOARD_ID desc
 	</select>
     
@@ -100,11 +100,11 @@
     </select>
     
     <select id="selectWhereNickname" resultType="com.mid.alcohol.dto.BulletinboardListDto">
-        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.IMAGE, B.CATEGORY, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
         where lower(B.NICKNAME) like lower('%' || #{keyword} || '%')    
-        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE
         order by B.BOARD_ID desc
 	</select>
     
@@ -114,11 +114,11 @@
     </select>
     
     <select id="selectWhereUserId" resultType="com.mid.alcohol.dto.BulletinboardListDto">
-        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.IMAGE, B.CATEGORY, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
         where lower(B.USER_ID) like lower('%' || #{keyword} || '%')
-        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE
         order by B.BOARD_ID desc
 	</select>
     
