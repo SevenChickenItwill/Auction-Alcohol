@@ -19,7 +19,7 @@ public interface UserRepository {
     // 중복된 이메일이 있는지
     User findByUserEmail(String userEmail);
 
-    Login signInMain(Login login);
+    User signInMain(Login login);
 
     
 }

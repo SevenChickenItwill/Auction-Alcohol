@@ -16,6 +16,8 @@ import javax.imageio.ImageIO;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.domain.RecommendDown;
+import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
@@ -35,9 +37,14 @@ public class BulletinboardService {
     public List<BulletinboardListDto> selectAll() {
         log.info("selectAll");
         
-        List<Bulletinboard> list = bulletinboardRepository.selectAllOrderByIdDesc();
+        List<BulletinboardListDto> listImage = bulletinboardRepository.selectImageOrderByIdDesc();
+        List<BulletinboardListDto> list = bulletinboardRepository.selectNotImageOrderByIdDesc();
         
-        return list.stream().map(BulletinboardListDto::fromEntity).toList();
+        for (int i = 0; i < list.size(); i++) {
+        	list.get(i).setImage(listImage.get(i).getImage());
+        }
+        
+        return list;
     }
 
     public BulletinboardDetailDto selectById(long id) {
@@ -74,17 +81,57 @@ public class BulletinboardService {
         log.info("searech(category= {}, keyword= {})", category, keyword);
         
         if (category.equals("t")) {
-            return bulletinboardRepository.selectWhereTitle(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	 List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereTitle(keyword);
+             List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitle(keyword);
+             
+             for (int i = 0; i < list.size(); i++) {
+             	list.get(i).setImage(listImage.get(i).getImage());
+             }
+             
+             return list;
         } else if (category.equals("c")) {
-            return bulletinboardRepository.selectWhereContent(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereContent(keyword);
+            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereContent(keyword);
+            
+            for (int i = 0; i < list.size(); i++) {
+            	list.get(i).setImage(listImage.get(i).getImage());
+            }
+            
+            return list;
         } else if (category.equals("tc")) {
             String keywordT = keyword;
             String keywordC = keywordT;
-            return bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC).stream().map(BulletinboardListDto::fromEntity).toList();
+            
+            List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC);
+            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitleAndContent(keywordT, keywordC);
+            
+            for (int i = 0; i < list.size(); i++) {
+            	list.get(i).setImage(listImage.get(i).getImage());
+            }
+            
+            return list;
         } else if (category.equals("n")) {
-            return bulletinboardRepository.selectWhereNickname(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereNickname(keyword);
+            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereNickname(keyword);
+            
+            for (int i = 0; i < list.size(); i++) {
+            	list.get(i).setImage(listImage.get(i).getImage());
+            }
+            
+            return list;
         } else if (category.equals("i")) {
-            return bulletinboardRepository.selectWhereUserId(keyword).stream().map(BulletinboardListDto::fromEntity).toList();
+        	
+        	List<BulletinboardListDto> listImage = bulletinboardRepository.selectWhereUserId(keyword);
+            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereUserId(keyword);
+            
+            for (int i = 0; i < list.size(); i++) {
+            	list.get(i).setImage(listImage.get(i).getImage());
+            }
+            
+            return list;
         }
         
         return null;
@@ -217,22 +264,40 @@ public class BulletinboardService {
 	}
     
 	// 추천 시 중복검사를 위해 COMMENDUP 테이블에 객체 생성
-//    public int recommendListInsert(long boardId, String userId) {
-//    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
-//    	
-//    	int result = bulletinboardRepository.recommendList(boardId, userId);
-//    	
-//    	return result;
-//    }
-//    
-//    // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
-//    public int recommendDelete(long boardId, String userId) {
-//    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
-//    	
-//    	int result = bulletinboardRepository.recommendDelete(boardId, userId);
-//    	
-//    	return result;
-//    }
+    public int recommendUpInsert(long boardId, String userId) {
+    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
+    	
+    	int result = bulletinboardRepository.commendupInsert(boardId, userId);
+    	
+    	return result;
+    }
+    
+    // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
+    public int recommendDelete(long boardId, String userId) {
+    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
+    	
+    	int result = bulletinboardRepository.commenddownInsert(boardId, userId);
+    	
+    	return result;
+    }
+    
+    // 추천시 중복검사하기
+    public RecommendUp recommendUpSelect(long boardId, String userId) {
+    	log.info("recommendUpSelect(baordId= {}, userId= {})", boardId, userId);
+    	
+    	RecommendUp up = bulletinboardRepository.recommendUpSelect(boardId, userId);
+    	
+    	return up;
+    }
+    
+    // 추천다운시 중복검사하기
+    public RecommendDown recommendDownSelect(long boardId, String userId) {
+    	log.info("recommendDownSelect(baordId= {}, userId= {})", boardId, userId);
+    	
+    	RecommendDown down = bulletinboardRepository.recommendDownSelect(boardId, userId);
+    	
+    	return down;
+    }
 	
 	// 조회수 증가하는 service
 	public int viewsUp(long boardId) {

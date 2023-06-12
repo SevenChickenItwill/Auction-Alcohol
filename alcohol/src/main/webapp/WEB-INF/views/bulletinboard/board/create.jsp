@@ -26,7 +26,7 @@
 				<div>
 					<div>
 						<select name="category" id="category">
-							<option value="1">공지사항</option>
+							<option value="1">공지사항</option> <!-- if문으로 운영자만 보이게 하기 -->
 							<option value="0">글작성</option>
 						</select>
 					</div>

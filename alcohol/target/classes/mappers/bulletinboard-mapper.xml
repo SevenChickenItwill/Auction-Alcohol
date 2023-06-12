@@ -5,9 +5,18 @@
 <mapper namespace="com.mid.alcohol.repository.BulletinboardRepository">
     
     <!-- 전체 게시글 보기 -->
-    <select id="selectAllOrderByIdDesc" resultType="com.mid.alcohol.domain.Bulletinboard">
-        select * from BULLETINBOARD order by BOARD_ID desc
+    <select id="selectImageOrderByIdDesc" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select IMAGE, BOARD_ID from BULLETINBOARD order by BOARD_ID desc
     </select>
+    
+    <!-- 이미지를 제외한 전체 게시글 보기 -->
+     <select id="selectNotImageOrderByIdDesc" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        from BULLETINBOARD B left join COMMENTS C
+            on B.BOARD_ID = C.BOARD_ID
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        order by B.BOARD_ID desc
+	</select>
     
     <!-- 글 작성 -->
     <insert id="bulletinboardInsert">
@@ -40,32 +49,78 @@
     </update>
     
     <!-- 검색하기 (title, content, title and content, nickname, user_id) -->
+    
     <!-- 글 제목으로 검색하기 -->
-    <select id="selectWhereTitle" resultType="com.mid.alcohol.domain.Bulletinboard">
-        select * from BULLETINBOARD where lower(TITLE) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    <select id="selectImageWhereTitle" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select IMAGE from BULLETINBOARD where lower(TITLE) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
     </select>
+    
+    <select id="selectWhereTitle" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        from BULLETINBOARD B left join COMMENTS C
+            on B.BOARD_ID = C.BOARD_ID
+        where lower(B.TITLE) like lower('%' || #{keyword} || '%')
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        order by B.BOARD_ID desc
+	</select>
     
     <!-- 글 내용으로 검색하기 -->
-    <select id="selectWhereContent" resultType="com.mid.alcohol.domain.Bulletinboard">
-        select * from BULLETINBOARD where lower(CONTENT) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    <select id="selectImageWhereContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select IMAGE from BULLETINBOARD where lower(CONTENT) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
     </select>
     
+    <select id="selectWhereContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        from BULLETINBOARD B left join COMMENTS C
+            on B.BOARD_ID = C.BOARD_ID
+        where lower(B.CONTENT) like lower('%' || #{keyword} || '%')
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        order by B.BOARD_ID desc
+	</select>
+    
     <!-- 제목과 내용으로 검색하기 -->
-    <select id="selectWhereTitleAndContent" resultType="com.mid.alcohol.domain.Bulletinboard">
-        select * from BULLETINBOARD 
-        where lower(TITLE) like lower('%' || #{keywordT} || '%') or lower(CONTENT) like lower('%' || #{keywordC} || '%') 
+    <select id="selectImageWhereTitleAndContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select IMAGE from BULLETINBOARD 
+        where lower(B.TITLE) like lower('%' || #{keywordT} || '%') or lower(B.CONTENT) like lower('%' || #{keywordC} || '%') 
         order by BOARD_ID desc
     </select>
     
+    <select id="selectWhereTitleAndContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        from BULLETINBOARD B left join COMMENTS C
+            on B.BOARD_ID = C.BOARD_ID
+        where lower(B.TITLE) like lower('%' || #{keywordT} || '%') or lower(B.CONTENT) like lower('%' || #{keywordC} || '%')
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        order by B.BOARD_ID desc
+	</select>
+    
     <!-- 닉네임으로 검색하기 -->
-    <select id="selectWhereNickname" resultType="com.mid.alcohol.domain.Bulletinboard">
-        select * from BULLETINBOARD where lower(NICKNAME) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    <select id="selectImageWhereNickname" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select IMAGE from BULLETINBOARD where lower(NICKNAME) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
     </select>
     
+    <select id="selectWhereNickname" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        from BULLETINBOARD B left join COMMENTS C
+            on B.BOARD_ID = C.BOARD_ID
+        where lower(B.NICKNAME) like lower('%' || #{keyword} || '%')    
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        order by B.BOARD_ID desc
+	</select>
+    
     <!-- 유저 아이디로 검색하기 -->
-    <select id="selectWhereUserId" resultType="com.mid.alcohol.domain.Bulletinboard">
-        select * from BULLETINBOARD where lower(USER_ID) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
+    <select id="selectImageWhereUserId" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select IMAGE from BULLETINBOARD where lower(USER_ID) like lower('%' || #{keyword} || '%') order by BOARD_ID desc
     </select>
+    
+    <select id="selectWhereUserId" resultType="com.mid.alcohol.dto.BulletinboardListDto">
+        select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, count(C.COMMENT_ID) as RCNT
+        from BULLETINBOARD B left join COMMENTS C
+            on B.BOARD_ID = C.BOARD_ID
+        where lower(B.USER_ID) like lower('%' || #{keyword} || '%')
+        group by B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY
+        order by B.BOARD_ID desc
+	</select>
     
     <!-- 추천업 버튼 -->
     <update id="recommendUp">
@@ -74,12 +129,34 @@
         where BOARD_ID= #{boardId}
     </update>
     
+    <!-- 추천업하면 COMMENDUP테이블 정보 생성 -->
+    <insert id="commendupInsert">
+    	insert into COMMENDUP (BOARD_ID, RECOMMENDER_ID)
+        values (#{boardId}, #{recommenderId})
+    </insert>
+    
+    <!-- 추천업 중복확인을 위한 리스트 읽기 -->
+    <select id="recommendUpSelect" resultType="com.mid.alcohol.domain.RecommendUp">
+    	select * from COMMENDUP where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
+    </select>
+    
     <!-- 추천다운 버튼 -->
     <update id="recommendDo">
     	update BULLETINBOARD
         set RECOMMEND = RECOMMEND - 1
         where BOARD_ID= #{boardId}
     </update>
+    
+    <!-- 추천다운하면 COMMENDDOWN테이블 정보 생성 -->
+    <insert id="commenddownInsert">
+    	insert into COMMENDDOWN (BOARD_ID, RECOMMENDER_ID)
+        values (#{boardId}, #{recommenderId})
+    </insert>
+    
+    <!-- 추천다운 중복확인을 위한 리스트 읽기 -->
+    <select id="recommendDownSelect" resultType="com.mid.alcohol.domain.RecommendDown">
+    	select * from COMMENDDOWN where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
+    </select>
     
     <!-- 조회수 기능 -->
     <update id="viewsUp">
@@ -97,6 +174,7 @@
     <select id="selectOrderByRecommend" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD order by RECOMMEND desc
     </select>
+    
     
     
     

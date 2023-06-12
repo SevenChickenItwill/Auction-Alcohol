@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mid.alcohol.domain.RecommendDown;
+import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.service.BulletinboardService;
@@ -35,21 +37,45 @@ public class BulletinboardRestController {
 	}
 	
 	@PostMapping("/recommendup/{boardId}")
-	public ResponseEntity<Integer> recommendUp(@PathVariable long boardId) {
+	public ResponseEntity<Integer> recommendUp(
+			@PathVariable long boardId,
+			@PathVariable("loginId") String userId) {
 		log.info("recommentUp(id= {})", boardId);
+		
+		RecommendUp up = bulletinboardService.recommendUpSelect(boardId, userId);
+		
+		if (up == null) {
+			return ResponseEntity.ok(-1);
+		}
 		
 		int result = bulletinboardService.recommendUp(boardId);
 		log.info("result= {}", result);
+		
+		// 추천업 테이블에 board_id, user_nickname 넣기
+		int upResult = bulletinboardService.recommendUpInsert(boardId, userId);
+		log.info("upResult= {}", upResult);
 		
 		return ResponseEntity.ok(result);
 	}
 	
 	@PostMapping("/recommenddo/{boardId}")
-	public ResponseEntity<Integer> recommendDo(@PathVariable long boardId) {
+	public ResponseEntity<Integer> recommendDo(
+			@PathVariable long boardId,
+			@PathVariable("loginId") String userId) {
 		log.info("recommendDo(id= {})", boardId);
+		
+		RecommendDown down = bulletinboardService.recommendDownSelect(boardId, userId);
+		
+		if (down == null) {
+			return ResponseEntity.ok(-1);
+		}
 		
 		int result = bulletinboardService.recommendDo(boardId);
 		log.info("result= {}", result);
+		
+		// 추천다운 테이블에 board_id, user_nickname 넣기
+		int upResult = bulletinboardService.recommendDelete(boardId, userId);
+		log.info("upResult= {}", upResult);
 		
 		return ResponseEntity.ok(result);
 	}

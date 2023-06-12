@@ -22,7 +22,7 @@
 
 	<main>
 		
-		<input type="text" class="d-none" value="${ sessionScope.userEmail }" id="loginId" />
+		<input type="text" class="d-none" value="${ sessionScope.userNickname }" id="loginId" />
 		
 		<section>
 			<form id="boardForm">
@@ -63,8 +63,8 @@
 						<c:url var="boardModify" value="/bulletinboard/board/modify">
 							<c:param name="id" value="${ board.board_id }"></c:param>
 						</c:url> 
-						<a href="${ boardModify }">수정하기</a> 
-						<a id="deleteBtn">삭제하기</a>
+						<a href="${ boardModify }">수정하기</a>
+						<button id="deleteBoardBtn">삭제하기</button>
 					</span>
 				</c:if>
 			  <div>

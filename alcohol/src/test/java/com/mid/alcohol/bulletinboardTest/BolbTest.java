@@ -94,15 +94,15 @@ public class BolbTest {
 	public void createTest() throws Exception {
 		log.info("createTest()");
 		
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 100; i++) {
 			
-			byte[] image = imageToByteArray("C:\\team\\middlePj\\alcohol\\src\\main\\webapp\\static\\images\\ioio.jpg");
+			byte[] image = imageToByteArray("C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/ioio.jpg");
 			
 			HashMap<String, byte[]> param = new HashMap<>();
 			
 			param.put("IMAGE", image); // String이 mapper에서 sql문장에 들어가는 param 역할을 하게된다.
 			
-			BulletinboardCreateDto dto = new BulletinboardCreateDto(0, "test" + i, "test" + i, "test" + i, image, "test" + i);
+			BulletinboardCreateDto dto = new BulletinboardCreateDto(0, "화성가야지", "test" + i, "test" + i, image, "test" + i);
 			
 			int result = bulletinboardServie.create(dto);
 			
