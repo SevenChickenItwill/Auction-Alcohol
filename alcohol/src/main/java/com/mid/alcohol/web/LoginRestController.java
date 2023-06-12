@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mid.alcohol.domain.Login;
+import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.LoginCheckDto;
 import com.mid.alcohol.service.UserService;
 
@@ -24,7 +25,7 @@ public class LoginRestController {
 	@PostMapping("/check")
 	public ResponseEntity<Integer> check(@RequestBody LoginCheckDto dto){
 		log.info("check({})",dto);
-		Login login = service.login(dto);
+		User login = service.login(dto);
 		int result = 1;
 		if(login==null) {
 			result = 0;
