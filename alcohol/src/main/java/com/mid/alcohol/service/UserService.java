@@ -54,7 +54,7 @@ public class UserService {
         return userRepository.findByUserEmail(userEmail);
     }
     
-    public Login login(LoginCheckDto login) {
+    public User login(LoginCheckDto login) {
 
     	log.info("login()");
 

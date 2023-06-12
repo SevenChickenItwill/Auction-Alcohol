@@ -49,24 +49,24 @@
 	  	<div class="title">배송지 정보</div>
 	  		<li>
 	  			<c:url value="/payment/modify" var="adressModify">
-	  				<c:param name="order_name" value="admin" />
+	  				<c:param name="userNickName" value="대한" />
 				</c:url><a href="${adressModify}">배송지 수정</a>
 			</li>
 		<div class="my-2">
-			<label class="form-label" for="order_name">이름</label>
-			<input class="form-control" id="order_name" value="${ payment.order_name }" readonly />
+			<label class="form-label" for="userNickName">이름</label>
+			<input class="form-control" id="userNickName" value="${ user.userNickName }" readonly />
 		</div>
 		<div class="my-2">
-			<label class="form-label" for="order_adress">주소</label>
-			<textarea class="form-control" id="order_adress" readonly>${ payment.order_adress }</textarea>
+			<label class="form-label" for="userAddress">주소</label>
+			<textarea class="form-control" id="userAddress" readonly>${ user.userAddress }</textarea>
 		</div>
 		<div class="my-2">	
-			<label class="form-label" for="order_phone">핸드폰 번호</label>
-			<input class="form-control" id="order_phone" value="${ payment.order_phone }" readonly />
+			<label class="form-label" for="userPhone">핸드폰 번호</label>
+			<input class="form-control" id="userPhone" value="${ user.userPhone }" readonly />
 		</div>
 		<div class="my-2">
-			<label class="form-label" for="order_email">이메일</label>
-			<input class="form-control" id="order_email" value="${ payment.order_email }" readonly />
+			<label class="form-label" for="userEmail">이메일</label>
+			<input class="form-control" id="userEmail" value="${ user.userEmail }" readonly />
 		</div>
 		<hr>	
 		

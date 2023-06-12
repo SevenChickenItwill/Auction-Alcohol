@@ -13,8 +13,7 @@ import com.mid.alcohol.dto.AdressUpdateDto;
 import com.mid.alcohol.dto.PaymentReadDto;
 
 import com.mid.alcohol.dto.BasketListDto;
-
-
+import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
 import com.mid.alcohol.dto.BasketListDto;
 
@@ -30,6 +29,11 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
+	@GetMapping("/payindex")
+	public void payindex() {
+		log.info("payindex()");
+	}
+	
 	@PostMapping("/paymentmain")
 	public void paymentInfo() {
 		log.info("paymentInfo()");
@@ -38,8 +42,12 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/paymentmain")
-	public void paymentInfoGet() {
-		log.info("paymentInfoGet()");
+	public void paymentInfoGet(@RequestParam("userid") String userNickName, Model model) {
+		log.info("paymentInfoGet(userNickName={})", userNickName);
+		
+		PaymentAdressModifyDto dto = paymentService.read(userNickName);
+		
+		model.addAttribute("user", dto);
 		
 	}
 	
@@ -50,12 +58,12 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/modify")
-	public void adressModify(Model model, @RequestParam String order_name) {
+	public void adressModify(Model model, @RequestParam String userNickName) {
 		log.info("modify()");
 		
-		PaymentReadDto dto = paymentService.read(order_name);
+		PaymentAdressModifyDto dto = paymentService.read(userNickName);
 		
-		model.addAttribute("payment", dto);
+		model.addAttribute("user", dto);
 		log.info("run3()");	
 	}
 	
@@ -68,8 +76,8 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/detail")
-	public void paymentDetail(String order_id, Model model) {
-		log.info("paymentDetail(order_id={})", order_id);
+	public void paymentDetail(String userNickName, Model model) {
+		log.info("paymentDetail(order_id={})", userNickName);
 		
 	}
 	
