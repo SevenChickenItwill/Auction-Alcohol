@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,51 +15,61 @@
 </head>
 <body>
 	<header>
-		<h1>È¸¿ø Á¤º¸°ü¸®</h1>
+		<h1>íšŒì› ì •ë³´ê´€ë¦¬</h1>
 	</header>
 	<c:url var="userModify" value="/signup/userModify"></c:url>
 	<form id="accountPasswordForm" method="post" action="${ userModify }">
-	<div>
-		<h2>°èÁ¤</h2>
-	</div>
-	<div>
-		<label>ÀÌ¸ÞÀÏ</label> 
-		<br /> 
-		<input type="email" id="userAccountEmail"
-			name="userAccountEmail" readonly value="${ userEmail }"/>
-	</div>
-	<div>
-		<label>ºñ¹Ð¹øÈ£</label> 
-		<br /> 
-		<input type="password"
-			id="userAccountPassword" name="userAccountPassword" value="${ userPassword }" />
-		<button id="btnAccountPassword">¼öÁ¤</button>
-	</div>
-	
-	<!-- 
+		<div>
+			<h2>ê³„ì •</h2>
+		</div>
+		<div>
+			<label>ì´ë©”ì¼</label> 
+			<br /> 
+			<input type="email" id="userAccountEmail"
+				name="userAccountEmail" readonly value="${ userEmail }" />
+		</div>
+		<div>
+			<label>ë¹„ë°€ë²ˆí˜¸</label> 
+			<br /> 
+			<input type="password"
+				id="userAccountPassword" name="userAccountPassword"
+				value="${ userPassword }" readonly />
+			<button id="btnAccountPassword">ìˆ˜ì •</button>
+		</div>
+
+		<!-- 
 	<c:url var="userModify" value="/signup/userModify"></c:url>
 	<form id="AccountPhoneForm" method="post" action="userModify">
 	 -->
-	<div>
-		<label>ÀüÈ­¹øÈ£</label> 
-		<br /> 
-		<input type="text" id="userAccountPhone"
-			name="userAccountPhone" value="${ userPhone }"/>
-		<button id="btnAccountPhone">¼öÁ¤</button>
-	</div>
-	<div>
-		<label>»ý³â¿ùÀÏ</label> 
-		<br /> 	
-		<input type="date"
-			id="userAccountBirthday" name="userAccountBirthday" value="${ userBirthday }" readonly>
-	</div>
+		<div>
+			<label>ì „í™”ë²ˆí˜¸</label> 
+			<br /> 
+			<input type="text" id="userAccountPhone"
+				name="userAccountPhone" value="${ userPhone }" readonly />
+			<button id="btnAccountPhone">ìˆ˜ì •</button>
+		</div>
+		<div>
+			<label>ì£¼ì†Œ</label>
+			<br />
+			<input type="text" id="userAccountAddress" name="userAccountAddress" 
+				value="${ userAddress }" readonly />
+			<button id="btnAccountAddress">ìˆ˜ì •</button>
+		</div>
+		
+		<div>
+			<label>ìƒë…„ì›”ì¼</label> 
+			<br /> 
+			<input type="date"
+				id="userAccountBirthday" name="userAccountBirthday"
+				value="${ userBirthday }" readonly>
+		</div>
 	</form>
 	<br />
 	<div>
-		<label>°èÁ¤ »èÁ¦</label>
-		<button id="btnAccountDelete">»èÁ¦</button>
+		<label>ê³„ì • ì‚­ì œ</label>
+		<button id="btnAccountDelete">ì‚­ì œ</button>
 	</div>
-	
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

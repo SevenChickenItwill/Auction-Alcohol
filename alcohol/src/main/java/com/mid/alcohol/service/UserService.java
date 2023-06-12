@@ -24,7 +24,7 @@ public class UserService {
     public int signup(UserSignupDto dto) {
         log.info("signup({})", dto);
        
-        
+       
         return userRepository.userMainSignup(dto.toEntity());
     }
     
@@ -54,11 +54,11 @@ public class UserService {
         return userRepository.findByUserEmail(userEmail);
     }
     
-    public Login login(LoginCheckDto login) {
+    public User login(LoginCheckDto login) {
 
-    	log.info("login()");
+        log.info("login()");
 
-    	return userRepository.signInMain(login.toEntity());
+        return userRepository.signInMain(login.toEntity());
     }
     
 }

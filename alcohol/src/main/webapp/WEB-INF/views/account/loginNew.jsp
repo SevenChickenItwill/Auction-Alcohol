@@ -15,13 +15,12 @@
 	</head>
 	<body class="bg-color-blue">
 		<header>
-			<h1>로그인 및 회원 가입을 진행해주세요.</h1>
+			<h1>비밀번호를 입력하세요.</h1>
 		</header>
 		<main>
 			<div class="form form-control">
 				<form class="form" id="loginform">
-					<label for="userEmail">아이디</label>
-					<input class="card" type="text" id="userEmail" name="userEmail" required="required"
+					<input class="card d-none" type="text" id="userEmail" name="userEmail" value="${ userEmail }" required="required"
 					/>
 					<label for="userPassword">비밀번호</label>
 					<input class="card" type="password" id="userPassword" name="userPassword" required="required" />
@@ -30,7 +29,6 @@
 			</div>
 			<div class="form form-control">
 				<button class="btn" id="btnSubmit">로그인</button>
-				<button class="btn" id="btnSignUp">회원가입</button>
 			</div>
 		</main>
 

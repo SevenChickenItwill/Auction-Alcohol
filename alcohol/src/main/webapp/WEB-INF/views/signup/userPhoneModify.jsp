@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +13,17 @@
 </head>
 <body>
 	<header>
-		<h1>ÈÞ´ëÆù ¹øÈ£ º¯°æ</h1>
+		<h1>íœ´ëŒ€í° ë²ˆí˜¸ ë³€ê²½</h1>
 	</header>
 	
 	<div>
-		<label>ÈÞ´ëÆù ¹øÈ£</label>
+		<label>íœ´ëŒ€í° ë²ˆí˜¸</label>
 		<br />
 		<input type="text" id="userAccountPhoneModify" name="userAccountPhoneModify" required />
 	</div>
 	<div>
-		<input type="submit" id="btnPhoneCancel" value="Ãë¼Ò" />
-		<input type="submit" id="btnPhoneUpdate" value="¼öÁ¤ÇÏ±â" />
+		<input type="submit" id="btnPhoneCancel" value="ì·¨ì†Œ" />
+		<input type="submit" id="btnPhoneUpdate" value="ìˆ˜ì •í•˜ê¸°" />
 	</div>
 	
 	<script

@@ -28,4 +28,9 @@
   <select id="findByUserNickname" resultType="com.mid.alcohol.domain.User">
     select * from USERS where userNickname = #{userNickname}
   </select>
+  
+   <select id="signInMain" resultType="com.mid.alcohol.domain.User">
+  	select * from Users where userEmail = #{userEmail} AND userPassword = #{userPassword}
+  </select>
+  
 </mapper>

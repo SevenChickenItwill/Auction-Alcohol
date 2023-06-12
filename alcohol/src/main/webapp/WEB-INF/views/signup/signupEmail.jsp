@@ -26,7 +26,6 @@
 				<input type="text"
 					id="userEmail" name="userEmail" placeholder="EMAIL" required
 					autofocus />
-				<button id="btnEmailCheck">중복확인</button>
 			</div>
 		</form>
 	<div>

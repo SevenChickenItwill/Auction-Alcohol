@@ -44,6 +44,9 @@
                         </div>
                         
                             <ul>
+                           		<li>
+                           			<label>비밀번호 설정 요건:</label>
+                           		</li>
                                 <li>
                                     <label>8자 이상 20자 미만</label>
                                 </li>
@@ -53,7 +56,21 @@
                             </ul>
                         
                         <div>
-                            <label for="userAddress">주소</label>
+                        	<label for="userAddress">주소</label>
+                        	<br />
+                        	<select>
+                        		<option>서울</option>
+                        		<option>인천</option>
+                        		<option>경기</option>
+                        		<option>강원</option>
+                        		<option>부산</option>
+                        		<option>울산</option>
+                        		<option>전북</option>
+                        		<option></option>
+                        	</select>
+                        </div>
+                        <div>
+                            <label for="userAddressDetail">상세주소</label>
                             <br />
                             <input type="text" id="userAddress" name="userAddress" placeholder="ADDRESS" required >
                         </div>
