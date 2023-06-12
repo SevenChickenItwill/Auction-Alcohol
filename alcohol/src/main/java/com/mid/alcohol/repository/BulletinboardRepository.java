@@ -15,8 +15,6 @@ public interface BulletinboardRepository {
     
     int bulletinboardInsert(BulletinboardCreateDto dto);
     
-    List<BulletinboardListDto> selectImageOrderByIdDesc();
-    
     List<BulletinboardListDto> selectOrderByIdDesc();
     
     BulletinboardDetailDto selectById(long board_id);
@@ -28,24 +26,14 @@ public interface BulletinboardRepository {
     int bulletinboardUpdateByIdImageNull(BulletinboardUpdateDto dto);
     
     List<BulletinboardListDto> selectWhereTitle(String keyword);
-
-    List<BulletinboardListDto> selectImageWhereTitle(String keyword); // 이미지
     
     List<BulletinboardListDto> selectWhereContent(String keyword);
     
-    List<BulletinboardListDto> selectImageWhereContent(String keyword); // 이미지
-    
     List<BulletinboardListDto> selectWhereTitleAndContent(String keywordT, String keywordC);
-    
-    List<BulletinboardListDto> selectImageWhereTitleAndContent(String keywordT, String keywordC); // 이미지
     
     List<BulletinboardListDto> selectWhereNickname(String keyword);
     
-    List<BulletinboardListDto> selectImageWhereNickname(String keyword); // 이미지
-
     List<BulletinboardListDto> selectWhereUserId(String keyword);
-    
-    List<BulletinboardListDto> selectImageWhereUserId(String keyword); // 이미지
 
 	int recommendUp(long boardId);
 
