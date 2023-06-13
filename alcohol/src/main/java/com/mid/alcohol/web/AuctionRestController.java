@@ -9,6 +9,8 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.AuctionProducts;
+import com.mid.alcohol.domain.Photo;
 import com.mid.alcohol.dto.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.AuctionReadDto;
@@ -26,9 +29,11 @@ import com.mid.alcohol.dto.ChatListDto;
 import com.mid.alcohol.dto.ChatRoomDto;
 
 import com.mid.alcohol.dto.ProductSearchDto;
+import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +48,9 @@ public class AuctionRestController {
 	
 	@Autowired
 	private AuctionService acservice;
+
+	@Autowired
+	private AuctionProductService productservice;
 	
 	@PostMapping("/product/{userid}")
 	public ResponseEntity<List<AuctionProducts>> searchProduct(@RequestBody ProductSearchDto dto, @PathVariable String userid ) {
@@ -98,6 +106,7 @@ public class AuctionRestController {
 		
 		log.info("refreshChat()");
 		List<AuctionListDto> list;
+		
 		if(status == 1) {
 			list = acservice.readInglist();
 		} else if(status == 2) {
@@ -109,14 +118,17 @@ public class AuctionRestController {
 		return ResponseEntity.ok(list);
 	}
 	
-	private static String path = "C:/image/";
+	
+	
+	private static String path = "C:\\mid-pj\\middlePj\\alcohol\\src\\main\\webapp\\static\\image\\";
 	@PostMapping("/upload/{productid}")
 	public ResponseEntity<String> uploadimg(@RequestBody MultipartFile file, @PathVariable int productid){
 		log.info("uploadimg()");
-		
+		int result = 0;
 		UUID uid = UUID.randomUUID();
 		String name = uid+file.getOriginalFilename();
 		String photopath = path+name;
+		String base64 = "";
 		log.info(photopath);
 		try {
 			File files = new File(photopath);
@@ -124,16 +136,28 @@ public class AuctionRestController {
 			
 			log.info("file upload complete");
 			
+			Photo photo = Photo.builder().productid(productid).photopath(photopath).build();
+			int result2 = productservice.deleteBeforePhoto(productid);
+			log.info("{} 개 사진이 삭제되었습니다.",result2);
+			
+			result = productservice.uploadPhoto(photo);
+			
+			base64 = productservice.listToTagImage(productservice.resizeImage(photopath));
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		return ResponseEntity.ok(photopath);
+		
+		return ResponseEntity.ok(base64);
 		
 	}
 
+
+	
 	
 	
 }

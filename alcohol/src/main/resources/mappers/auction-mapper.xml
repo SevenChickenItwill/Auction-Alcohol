@@ -44,7 +44,7 @@
 		select *
 		from auction a
 		JOIN auctionProducts p
-		ON a.productidn= p.productid
+		ON a.productid = p.productid
 		WHERE (a.auctionName LIKE #{searchtext}
 		OR p.pname LIKE #{searchtext}
 		OR a.bidder LIKE #{searchtext}) AND a.auctioneer = #{userid}

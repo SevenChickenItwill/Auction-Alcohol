@@ -13,8 +13,56 @@
 
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
+<style>
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    
+
+}
+.mains{
+    margin-left: 220px;
+}
+
+.headers{
+    margin-left:220px;
+}
+</style>
 </head>
 <body>
+
+<div class="flex-shrink-0 p-3 bg-light sidebar" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark">
+          관리자 메인
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionRegistration" value="/auction/registration" />
+        <a href="${ auctionRegistration }" class="nav-link link-dark">
+          경매등록
+        </a>
+      </li>
+    </ul>
+  </div>
 	<div>
 		<header>
 			<h1>상품 상세보기</h1>
@@ -67,6 +115,9 @@
 				</form>
 			</section>
 		</main>
+	</div>
+	<div id="imgshow">
+						
 	</div>
 
 	<script

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.mid.alcohol.domain.Auction;
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.domain.Chat;
+import com.mid.alcohol.domain.Photo;
 import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.AuctionListDto;
@@ -246,7 +247,7 @@ public class AuctionService {
 	public List<AuctionListDto> readEndlist() {
 		// TODO Auto-generated method stub
 		log.info("readlist()");
-
+		
 		return auctionrepository.readEndAuctionList();
 	}
 
@@ -304,6 +305,8 @@ public class AuctionService {
 		log.info("{}",list3);
 		return list3;
 	}
+
+	
 
 	
 

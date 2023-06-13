@@ -37,8 +37,12 @@
 			<tbody id="tablebody">
 				<c:forEach items="${myauction}" var="myauction">
 					<c:if test="${myauction.status == 1 }">
+					<c:url var="quickgoing" value="/auction/mainsite">
+						<c:param name="auctionname" value="${myauction.auctionName}"></c:param>
+						<c:param name="aid" value="${myauction.aid }"></c:param>
+					</c:url>
 					<tr>
-						<td>${myauction.auctionName}</td>
+						<td><a href="${ quickgoing }">${myauction.auctionName}</a></td>
 						<td>${myauction.auctioneer}</td>
 						<td>${myauction.bidder }</td>
 						<td>${myauction.pname}</td>
@@ -76,7 +80,11 @@
 				<c:forEach items="${myauction2}" var="mine">
 					<c:if test="${mine.status == 2 }">
 					<tr>
-						<td>${mine.auctionName}</td>
+					<c:url var="quickgo" value="/auction/mainsite">
+						<c:param name="auctionname" value="${mine.auctionName}"></c:param>
+						<c:param name="aid" value="${mine.aid }"></c:param>
+					</c:url>
+						<td><a href="${ quickgo }">${mine.auctionName}</a></td>
 						<td>${mine.auctioneer}</td>
 						<td>${mine.bidder }</td>
 						<td>${mine.pname}</td>

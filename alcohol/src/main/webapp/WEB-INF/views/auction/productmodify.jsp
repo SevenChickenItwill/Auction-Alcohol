@@ -13,10 +13,58 @@
 
 <meta charset="UTF-8">
 <title>상품 수정 페이지</title>
+<style>
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    
+
+}
+.mains{
+    margin-left: 220px;
+}
+
+.headers{
+    margin-left:220px;
+}
+</style>
 </head>
 <body>
+<div class="flex-shrink-0 p-3 bg-light sidebar" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark">
+          관리자 메인
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionRegistration" value="/auction/registration" />
+        <a href="${ auctionRegistration }" class="nav-link link-dark">
+          경매등록
+        </a>
+      </li>
+    </ul>
+  </div>
+
 	<div>
-		<header>
+		<header class="headers">
 			<h1>상품 수정하기</h1>
 		</header>
 		
@@ -33,7 +81,7 @@
 			</ul>
 		</nav>
 		
-		<main>
+		<main class="mains">
 			<section>
 				<c:url var="productupdate" value="/auction/productupdate" />
 				<form class="form" id="modifyform" action="${ productupdate }" method="post">
@@ -90,7 +138,7 @@
 		</main>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="../static/js/product-uploadimg.js"></script>
+	<script src="../static/js/product-uploadimgs.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

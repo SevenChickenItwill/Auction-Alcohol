@@ -99,14 +99,31 @@ public class AuctionProductService {
 		return auctionpdrepository.readDetail(entity);
 	}
 
-	public int savePhotoPath(String filepath, int productid) {
+	
+	
+	public int uploadPhoto(Photo photo) {
 		// TODO Auto-generated method stub
+		log.info("uploadPhoto({})",photo);
 		
-		log.info("savePhotoPath({})",filepath);
+		int result = auctionpdrepository.uploadPhoto(photo);
 		
-		Photo photo = Photo.builder().productid(productid).filepath(filepath).build();
+		return result;
+	}
+	
+	public int deleteBeforePhoto(int productid) {
 		
-		return auctionpdrepository.savePhotoPath(photo);
+		log.info("productid={} photo delete",productid);
+		
+		return auctionpdrepository.deleteBeforePhoto(productid);
+		
+	}
+	
+	public Photo selectPhoto(int productid) {
+		log.info("selectPhoto()");
+		
+		return auctionpdrepository.selectPhoto(productid);
+		
+		
 	}
 	
 	/// 
@@ -135,6 +152,8 @@ public class AuctionProductService {
     public BufferedImage resizeImage(String image) throws Exception {
     	int maxWidth = 540;
     	int maxHeight = 540;
+    	
+    	log.info("image = {}", image);
     	
     	Path path = Paths.get(image);
     	File imageFile = path.toFile();
@@ -167,9 +186,9 @@ public class AuctionProductService {
     }
     
     public String listToTagImage(BufferedImage bufImage) throws Exception {
-    	log.info("listToTagImage()");
+    	log.info("listToTagImage(bufImage={})",bufImage);
 		
-		BufferedImage image = bufImage;
+		BufferedImage image = bufImage;	
 		
 		// 이미지를 Base64로 인코딩
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
