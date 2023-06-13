@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				basketid: basketid,
 				productId: productid,
 				quantity: quantity,
+				price: price,
 				totalAmount: totalAmount
 			};
 

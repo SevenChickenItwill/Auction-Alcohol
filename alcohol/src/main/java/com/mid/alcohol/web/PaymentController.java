@@ -38,19 +38,22 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@PostMapping("/paymentmain")
-	public void paymentInfo(Model model) {
-		log.info("paymentInfo()");
+	public void paymentInfo(Model model, ) {
+		log.info("paymentInfoPost()");
 		
 		String userNickname = (String)session.getAttribute("userNickname");
 		log.info(userNickname);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
-		log.info("읭?");
 		model.addAttribute("userinfo", dto);
 	}
 	
 	@GetMapping("/paymentmain")
-	public void paymentInfoGet() {
+	public void paymentInfoGet(Model model) {
 		log.info("paymentInfoGet()");
+		String userNickname = (String)session.getAttribute("userNickname");
+		log.info(userNickname);
+		PaymentAdressModifyDto dto = paymentService.read(userNickname);
+		model.addAttribute("userinfo", dto);
 		
 	}
 	
@@ -92,7 +95,7 @@ public class PaymentController {
 				connection.setRequestProperty("Authorization", "KakaoAK 57e7976b8b01733b8d39b2e982361037");
 				connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 				connection.setDoOutput(true);
-				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0&approval_url=https://http://localhost:8081/alcohol/payment/paysuccess&fail_url=//http://localhost:8081/alcohol/payment/payfail&cancel_url=//http://localhost:8081/alcohol/payment/paycancel";
+				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount=2200&tax_free_amount=0&approval_url=http://localhost:8081/alcohol/payment/paysuccess&fail_url=http://localhost:8081/alcohol/payment/payfail&cancel_url=http://localhost:8081/alcohol/payment/paycancel";
 				OutputStream ops = connection.getOutputStream();
 				DataOutputStream dops = new DataOutputStream(ops);
 				dops.writeBytes(param);
@@ -106,6 +109,7 @@ public class PaymentController {
 				} else {
 					inputStream = connection.getErrorStream();
 				}
+				log.info("코드"+result);
 				InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 				BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 				return bufferedReader.readLine();

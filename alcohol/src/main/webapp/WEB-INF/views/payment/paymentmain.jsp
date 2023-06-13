@@ -78,6 +78,7 @@
 	  <img src="../static/img/small.png">
 	  <br>
 	  <div class="btn" id="btnkakaopay">결제하기</div>
+	  <script type="text/javascript" src="../static/js/jquery-3.7.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 	
 	<script src="./../static/js/payment-paymentmain.js"></script>
 	<script src="./../static/js/jq.js"></script>
