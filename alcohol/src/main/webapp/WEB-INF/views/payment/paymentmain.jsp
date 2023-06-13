@@ -54,19 +54,19 @@
 			</li>
 		<div class="my-2">
 			<label class="form-label" for="order_name">이름</label>
-			<input class="form-control" id="order_name" value="${ payment.order_name }" readonly />
+			<input class="form-control" id="order_name" value="${ userinfo.userNickName }" readonly />
 		</div>
 		<div class="my-2">
 			<label class="form-label" for="order_adress">주소</label>
-			<textarea class="form-control" id="order_adress" readonly>${ payment.order_adress }</textarea>
+			<textarea class="form-control" id="order_adress" readonly>${ userinfo.userAddress }</textarea>
 		</div>
 		<div class="my-2">	
 			<label class="form-label" for="order_phone">핸드폰 번호</label>
-			<input class="form-control" id="order_phone" value="${ payment.order_phone }" readonly />
+			<input class="form-control" id="order_phone" value="${ userinfo.userPhone }" readonly />
 		</div>
 		<div class="my-2">
 			<label class="form-label" for="order_email">이메일</label>
-			<input class="form-control" id="order_email" value="${ payment.order_email }" readonly />
+			<input class="form-control" id="order_email" value="${ userinfo.userEmail }" readonly />
 		</div>
 		<hr>	
 		
@@ -77,11 +77,10 @@
 	  <div class="title">결제 방법</div>
 	  <img src="../static/img/small.png">
 	  <br>
-	  <c:url value="/payment/information" var="paymentinformation">
-			<c:param name="num" value="0" />
-	  </c:url><a href="${paymentinformation}">주문/결제 내역</a>
-	  	
+	  <div class="btn" id="btnkakaopay">결제하기</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 	
 	<script src="./../static/js/payment-paymentmain.js"></script>
+	<script src="./../static/js/jq.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 				crossorigin="anonymous">

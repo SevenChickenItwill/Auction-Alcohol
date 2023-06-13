@@ -1,25 +1,27 @@
 package com.mid.alcohol.web;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mid.alcohol.dto.AdressUpdateDto;
-
-import com.mid.alcohol.dto.PaymentReadDto;
-
-import com.mid.alcohol.dto.BasketListDto;
 import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
 
 import jakarta.servlet.http.HttpSession;
-
-import com.mid.alcohol.dto.BasketListDto;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,17 +31,21 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class PaymentController {
 	
+	@Autowired
 	private HttpSession session;
 	
 	@Autowired
 	private PaymentService paymentService;
 	
 	@PostMapping("/paymentmain")
-	public void paymentInfo() {
+	public void paymentInfo(Model model) {
 		log.info("paymentInfo()");
 		
 		String userNickname = (String)session.getAttribute("userNickname");
+		log.info(userNickname);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
+		log.info("읭?");
+		model.addAttribute("userinfo", dto);
 	}
 	
 	@GetMapping("/paymentmain")
@@ -74,15 +80,52 @@ public class PaymentController {
 		log.info("update()");
 	}
 	
-	@PostMapping("/update")
-	public String update(AdressUpdateDto dto) {
-		log.info("update(dto={})", dto);
-		
-		int result = paymentService.update(dto);
-		log.info("update = {}", result);
-		
-		return "redirect:/payment/paymentmain";
+	
+	@RequestMapping("/kakaopay.cls")
+	@ResponseBody
+	public String kakaopay() {
+		try {
+			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
+			try {
+				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+				connection.setRequestMethod("POST");
+				connection.setRequestProperty("Authorization", "KakaoAK 57e7976b8b01733b8d39b2e982361037");
+				connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+				connection.setDoOutput(true);
+				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0&approval_url=https://http://localhost:8081/alcohol/payment/paysuccess&fail_url=//http://localhost:8081/alcohol/payment/payfail&cancel_url=//http://localhost:8081/alcohol/payment/paycancel";
+				OutputStream ops = connection.getOutputStream();
+				DataOutputStream dops = new DataOutputStream(ops);
+				dops.writeBytes(param);
+				dops.close();
+				
+				int result = connection.getResponseCode();
+				
+				InputStream inputStream;
+				if (result == 200) {
+					inputStream = connection.getInputStream();
+				} else {
+					inputStream = connection.getErrorStream();
+				}
+				InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+				return bufferedReader.readLine();
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+		return "{\"result\":\"NO\"}";
 	}
+	
+	@GetMapping("/paysuccess")
+	public void paysuccess() {}
 
+	@GetMapping("/paycancel")
+	public void paycancel() {}
+	
+	@GetMapping("/payfail")
+	public void payfail() {}
 
 }
