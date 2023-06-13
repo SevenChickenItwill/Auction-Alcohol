@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.imageio.ImageIO;
 
@@ -16,6 +17,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -212,28 +214,28 @@ public class BulletinboardController {
         model.addAttribute("board", dto);
     }
     
-    @PostMapping("/update")
-    public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
-        log.info("update(dto={})", dto);
-        
-        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
-        log.info("fileName= {}", path + file);
-        
-        try {
-        	dto.setImage(path + file);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        
-        int result = bulletinboardService.readByIdUpdate(dto);
-        log.info("result= {}", result);
-        
-        BulletinboardDetailDto Detaildto = bulletinboardService.selectById(dto.getBoard_id());
-        
-        model.addAttribute("deal", Detaildto);
-        
-        return "redirect:/bulletinboard/board/detail?id=" + Detaildto.getBoard_id();
-    }
+//    @PostMapping("/update")
+//    public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
+//        log.info("update(dto={})", dto);
+//        
+//        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+//        log.info("fileName= {}", path + file);
+//        
+//        try {
+//        	dto.setImage(path + file);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//        
+//        int result = bulletinboardService.readByIdUpdate(dto);
+//        log.info("result= {}", result);
+//        
+//        BulletinboardDetailDto Detaildto = bulletinboardService.selectById(dto.getBoard_id());
+//        
+//        model.addAttribute("deal", Detaildto);
+//        
+//        return "redirect:/bulletinboard/board/detail?id=" + Detaildto.getBoard_id();
+//    }
     
     @PostMapping("/delete")
     public String dealDelete(long board_id) {
@@ -251,59 +253,6 @@ public class BulletinboardController {
     public void create() {
         log.info("create()");
     }
-    
-    @PostMapping("/create")
-    public String boardCreate(BulletinboardCreateDto dto, String file) {
-        log.info("boardCreate()");
-        
-        
-        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
-        log.info("fileName= {}", path + file);
-        
-        try {
-        	dto.setImage(path + file);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        
-        int result = bulletinboardService.create(dto);
-        log.info("생성 수 = {}", result);
-        
-        
-        
-        return "redirect:/bulletinboard/board/list?num=0";
-    }
-    
-//    @PostMapping("")
-//    public String boardCreate(
-//    		MultipartFile file,
-//    		@RequestParam("category") String category,
-//    		@RequestParam("nickname")  String nickname,
-//    		@RequestParam("userId")  String user_id,
-//    		@RequestParam("title")  String title,
-//    		@RequestParam("content") String content
-//    ) {
-//    	
-//        log.info("boardCreate()");
-//        
-//        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
-//        log.info("fileName= {}", path + file);
-//        byte[] image = new byte[1024];
-//        
-//        try {
-//			image = bulletinboardService.imageToByteArray(path + file);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//        
-//        BulletinboardCreateDto dto = new BulletinboardCreateDto(Integer.parseInt(category), nickname, user_id, title, image, content);
-//        log.info("dto= {}", dto);
-//        
-//        int result = bulletinboardService.create(dto);
-//        log.info("생성 수 = {}", result);
-//        
-//        return "redirect:/bulletinboard/board/list?num=0";
-//    }
     
     @GetMapping("/announcement")
     public void announcementList(Model model, @RequestParam("num") int num) {
@@ -424,4 +373,52 @@ public class BulletinboardController {
         model.addAttribute("listPageMax", listPageMax);
     }
     
+    private static String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+	
+	@PostMapping("/create/{boardId}")
+    public String boardCreate(@PathVariable("boardId") long boardId, @RequestBody MultipartFile file) {
+        log.info("RESTCOTROLLER: boardCreate()");
+        
+        UUID uid = UUID.randomUUID();
+		String name = uid+file.getOriginalFilename();
+		String photopath = path+name;
+		log.info(photopath);
+		try {
+			File files = new File(photopath);
+			file.transferTo(files);
+			
+			log.info("file upload complete");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		int result = bulletinboardService.imageUpdate(boardId, photopath);
+		
+        return "redirect:/bulletinboard/board/list?num=0";
+    }
+    
+	@PostMapping("/update/{boardId}")
+    public String readByIdUpdate(@PathVariable("boardId") long boardId, @RequestBody MultipartFile file) {
+        log.info("RESTCOTROLLER: readByIdUpdate()");
+        
+        UUID uid = UUID.randomUUID();
+		String name = uid+file.getOriginalFilename();
+		String photopath = path+name;
+		log.info(photopath);
+		try {
+			File files = new File(photopath);
+			file.transferTo(files);
+			
+			log.info("file upload complete");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+		int result = bulletinboardService.imageUpdate(boardId, photopath);
+		
+        return "redirect:/bulletinboard/board/detail?id=" + boardId;
+    }
+	
 }

@@ -22,7 +22,6 @@
 
 	<main>
 		<div>
-			<form id="createForm">
 				<div>
 					<div>
 						<select name="category" id="category">
@@ -32,29 +31,30 @@
 					</div>
 					<div>
 						<label for="nickname">작성자</label> 
-						<input type="text" name="nickname" id="nickname" value="닉네임:${ sessionScope.userNickname }" readonly />
-						<input type="text" name="user_id"  id="userId" value="아이디:${ sessionScope.userEmail }" readonly />
+						<input type="text" name="nickname" id="nickname" value="${ sessionScope.userNickname }" readonly />
+						<input type="text" name="user_id"  id="userId" value="${ sessionScope.userEmail }" readonly />
 					</div>
 					<div>
 						<label for="title">제목</label> 
 						<input type="text" name="title" id="title" autofocus required />
 					</div>
 					<div>
-						<label for="image">이미지</label> 
-						<input type="file" name="file" id="file" />
 					</div>
 					<div>
 						<label for="content">내용</label>
 						<textarea name="content" id="content" required></textarea>
 					</div>
 				</div>
-	
+				<form id="createForm">
+					<label for="image">이미지</label> 
+					<input type="file" name="file" id="file" />
+				</form>
 				<div>
 					<input type="submit" id="createBtn" value="작성완료" />
 				</div>
-			</form>
-
-
+				
+				
+				
 		</div>
 	</main>
 

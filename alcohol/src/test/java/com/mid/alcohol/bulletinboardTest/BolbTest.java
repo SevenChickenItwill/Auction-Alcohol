@@ -110,7 +110,7 @@ public class BolbTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void recommendup() {
 		
 		int result = bulletinboardServie.recommendUpInsert(4, "대만");

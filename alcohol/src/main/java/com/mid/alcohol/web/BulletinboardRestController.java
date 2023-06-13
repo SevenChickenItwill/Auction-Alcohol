@@ -1,5 +1,8 @@
 package com.mid.alcohol.web;
 
+import java.io.File;
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mid.alcohol.domain.Bulletinboard;
 import com.mid.alcohol.domain.RecommendDown;
 import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardListDto;
+import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
 
 import lombok.RequiredArgsConstructor;
@@ -82,5 +88,38 @@ public class BulletinboardRestController {
 		return ResponseEntity.ok(selectResult);
 	}
 	
+	@PostMapping("/create/{category}/{nickname}/{user_id}/{title}/{content}")
+	public ResponseEntity<Bulletinboard> boardDtoCreate(
+			@PathVariable int category,
+			@PathVariable String nickname,
+			@PathVariable String user_id,
+			@PathVariable String title,
+			@PathVariable String content
+		) {
+		BulletinboardCreateDto dto = new BulletinboardCreateDto(category, nickname, user_id, title, content);
+		log.info("boardCreate(dto= {})", dto);
+		
+		int result = bulletinboardService.create(dto);
+		log.info("생성 수 = {}", result);
+		
+		Bulletinboard board = bulletinboardService.selectNicknameOrderByboardId(dto.getNickname());
+		
+		return ResponseEntity.ok(board);
+	}
+	
+	@PostMapping("/update/{board_id}/{title}/{content}")
+	public ResponseEntity<Long> boardDtoCreate(
+			@PathVariable long board_id,
+			@PathVariable String title,
+			@PathVariable String content
+		) {
+		BulletinboardUpdateDto dto = new BulletinboardUpdateDto(board_id, title, content);
+		log.info("boardCreate(dto= {})", dto);
+		
+		int result = bulletinboardService.readByIdUpdate(dto);
+		log.info("생성 수 = {}", result);
+		
+		return ResponseEntity.ok(board_id);
+	}
 	
 }

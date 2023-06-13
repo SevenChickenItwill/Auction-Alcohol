@@ -15,8 +15,8 @@
     
     <!-- 글 작성 -->
     <insert id="bulletinboardInsert">
-        insert into BULLETINBOARD (CATEGORY, TITLE, IMAGE, NICKNAME, USER_ID, CONTENT)
-        values (#{category}, #{title}, #{image}, #{nickname}, #{user_id}, #{content})
+        insert into BULLETINBOARD (CATEGORY, TITLE, NICKNAME, USER_ID, CONTENT)
+        values (#{category}, #{title}, #{nickname}, #{user_id}, #{content})
     </insert>
     
     <!-- 게시글 상세보기 -->
@@ -31,13 +31,6 @@
     
     <!-- 게시글 수정하기(업데이트) -->
     <update id="bulletinboardUpdateById">
-        update BULLETINBOARD
-        set TITLE= #{title}, IMAGE= #{image}, CONTENT= #{content}, TIME= systimestamp
-        where BOARD_ID= #{board_id}
-    </update>
-    
-    <!-- 이미지가 null일때 업데이트 -->
-    <update id="bulletinboardUpdateByIdImageNull">
         update BULLETINBOARD
         set TITLE= #{title}, CONTENT= #{content}, TIME= systimestamp
         where BOARD_ID= #{board_id}
@@ -148,7 +141,17 @@
     	select * from BULLETINBOARD order by RECOMMEND desc
     </select>
     
+    <!-- 닉네임으로 게시글 찾기 -->
+    <select id="selectNicknameOrderByboardId" resultType="com.mid.alcohol.domain.Bulletinboard">
+    	select * from BULLETINBOARD where NICKNAME = #{ nickname } order by BOARD_ID desc
+    </select>
     
+    <!-- 이미지 업데이트 -->
+    <update id="imageUpdate">
+    	update BULLETINBOARD
+        set IMAGE = #{ image }
+        where BOARD_ID= #{ boardId }
+    </update>
     
     
 </mapper>

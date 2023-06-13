@@ -23,6 +23,7 @@ import com.mid.alcohol.domain.RecommendDown;
 import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageUpdateDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
@@ -59,12 +60,7 @@ public class BulletinboardService {
     public int readByIdUpdate(BulletinboardUpdateDto dto) {
         log.info("readByIdUpdate()");
         
-        if (dto.getImage() != null) {
-        	return bulletinboardRepository.bulletinboardUpdateById(dto);
-        } else {
-        	return bulletinboardRepository.bulletinboardUpdateByIdImageNull(dto);
-        }
-        
+        return bulletinboardRepository.bulletinboardUpdateById(dto);
     }
 
     public int bulletinboardDelete(long board_id) {
@@ -354,6 +350,27 @@ public class BulletinboardService {
 		List<Bulletinboard> list = bulletinboardRepository.selectOrderByRecommend();
 		
 		return list.stream().map(BulletinboardListDto::fromEntity).toList();
+	}
+	
+	// 닉네임으로 게시글 찾기
+	public Bulletinboard selectNicknameOrderByboardId(String nickname) {
+		log.info("selectNicknameOrderByboardId()");
+		
+		List<Bulletinboard> board = bulletinboardRepository.selectNicknameOrderByboardId(nickname);
+		log.info("닉네임으로 찾는거 들어왔다. -> {}", board.get(0));
+		
+		return board.get(0);
+	}
+	
+	// create에서 이미지 저장하는 메서드
+	public int imageUpdate(long boardId, String image) {
+		log.info("imageUpdate(boardId= {}, image= {})", boardId, image);
+		
+		BulletinboardImageUpdateDto dto = new BulletinboardImageUpdateDto(boardId, image);
+		
+		int result = bulletinboardRepository.imageUpdate(dto);
+		
+		return result;
 	}
 	
 	

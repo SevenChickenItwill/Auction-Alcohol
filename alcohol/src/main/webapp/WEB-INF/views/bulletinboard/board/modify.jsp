@@ -21,8 +21,8 @@
         
         <main>
             <section>
-                <form id="modifyForm">
-                    <input type="number" class="d-none" value="${ board.board_id }" id="board_id" name="board_id" />
+                	<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" name="loginId"/>
+                    <input type="number" class="d-none" value="${ board.board_id }" id="boardId" name="boardId" />
                     <div>
                         <input value="${ board.title }" id="title" name="title" />
                     </div>
@@ -35,13 +35,14 @@
                         <img src="data:image/jpeg;base64,${ board.image }" class="img-fluid rounded-start" alt="이미지">
                     </div>
                     <div>
-                    	<label for="file">수정할 이미지</label>
-                    	<input type="file" id="file" name="file" />
-                    </div>
-                    <div>
                         <textarea id="content" name="content">${ board.content }</textarea>
                     </div>
-                </form>
+                	<form id="modifyForm">
+	                    <div>
+	                    	<label for="file">수정할 이미지</label>
+	                    	<input type="file" id="file" name="file" />
+	                    </div>
+                    </form>
                 
                 <span>
                     <button id="updateBtn">수정완료</button>
@@ -58,7 +59,7 @@
                 integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
                 crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-            <script src="../../static/js/board-modify.js"></script>
+            <script src="../../static/js/board-modifys.js"></script>
         </div>
     </body>
 </html>

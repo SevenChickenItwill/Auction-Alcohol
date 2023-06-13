@@ -23,46 +23,60 @@ document.addEventListener('DOMContentLoaded', () => {
 	const textareaContent = document.querySelector('textarea#content');
 
 	// 이미지를 전달할 form
-	const createForm = document.querySelector('form#createForm');
+	const form = document.querySelector('form#createForm');
 	
-	// 이미지 파일 이름
-	let filename = '';
-	
-	file.addEventListener('handleFileChange', (e) => {
-		const fileInput = event.target;
-		const file = fileInput.files[0];
-		const fileName = file.name;
+	const createPost = async (e) => {
+		// 폼데이터 객체 생성
+		e.preventDefault();
 		
-		filename = fileName;
+		console.log('들어옴');
+		
+		let formData = new FormData();
+		const image = document.querySelector('input#file');
 
-		// 이미지 파일 이름으로 수행할 작업 수행
-		console.log(fileName); // 예시: 콘솔에 파일 이름 출력
-	})
-	
-	
-	
-	const createPost = (e) => {
-		console.log(filename);
-		const fileName = filename;
+		let filePath = image.value;
+		const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
 		const category = selectCategory.value;
 		const nickname = inputNickname.value;
 		const user_id = inputUserId.value;
-		const tilte = inputTitle.value;
+		const title = inputTitle.value;
 		const content = textareaContent.value;
-		
-		const data = { fileName, category, nickname, user_id, tilte, content };
-		
-		const result = confirm('생성하시겠습니까?');
-		
-		if (result) {
-			createForm.method = 'post';
-			createForm.action = './create';
-			createForm.sumit(data);
+
+		if (!allowedExtensions.exec(filePath)) {
+			alert('이미지 파일만 업로드가 가능합니다.');
+			image.value = '';
+			return;
 		}
 		
+		let dtoUrl = `/alcohol/api/recommend/create/${category}/${nickname}/${user_id}/${title}/${content}`;
+		
+		try {
+			let responses = await axios.post(dtoUrl);
+			
+			const boardId = responses.data.board_id;
+			console.log(boardId);
+			
+			const result = confirm('생성하시겠습니까?');
+			
+			form.append('file', image.files[0]);
+			
+			if(result) {
+				form.enctype = 'multipart/form-data';
+				form.action = `/alcohol/bulletinboard/board/create/${boardId}`;
+				form.method = 'post';
+				form.submit();
+				
+			}
+			
+		} catch (error) {
+			console.log(error);
+		}
+
+
 	};
-	
+
 	createBtn.addEventListener('click', createPost);
-	
+
 
 });

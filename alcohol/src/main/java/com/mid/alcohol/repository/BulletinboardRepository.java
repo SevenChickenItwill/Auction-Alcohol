@@ -7,6 +7,7 @@ import com.mid.alcohol.domain.RecommendDown;
 import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageUpdateDto;
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.dto.BulletinboardUpdateDto;
 
@@ -22,8 +23,6 @@ public interface BulletinboardRepository {
     int bulletinboardDeleteById(long board_id);
     
     int bulletinboardUpdateById(BulletinboardUpdateDto dto);
-    
-    int bulletinboardUpdateByIdImageNull(BulletinboardUpdateDto dto);
     
     List<BulletinboardListDto> selectWhereTitle(String keyword);
     
@@ -52,5 +51,9 @@ public interface BulletinboardRepository {
 	List<Bulletinboard> selectAnnouncement();
 	
 	List<Bulletinboard> selectOrderByRecommend();
+	
+	List<Bulletinboard> selectNicknameOrderByboardId(String nickname);
+	
+	int imageUpdate(BulletinboardImageUpdateDto dto);
 	
 }

@@ -247,13 +247,13 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	// 댓글 수정 핸들러
-
+	let btnSave;
 
 	const showComment = (e) => {
 		const btn = e.target;
 		const card = btn.closest('.card');
 		const textarea = card.querySelector('textarea');
-		const btnSave = document.createElement('button');
+		btnSave = document.createElement('button');
 		btnSave.textContent = '수정 완료';
 		btnSave.classList.add('btnSave');
 		btnSave.dataset.id = btn.dataset.id;
@@ -274,7 +274,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	function cancelComment(event) {
-		const btnSave = document.createElement('button');
 		const btnCancel = event.target;
 		const card = btnCancel.closest('.card');
 		const textarea = card.querySelector('.editable');
@@ -356,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	commentReg.addEventListener('click', createComment);
 
 	getCommentWithBoardId();
-
+    
 
 
 
