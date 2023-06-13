@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,16 +17,18 @@
 		<h1>휴대폰 번호 변경</h1>
 	</header>
 	
-    <form method="post" id="accountForm">
-	<div>
+    <c:url var="userPhoneModify" value="/signup/userPhoneModify" ></c:url>
+    <form id="accountForm" method="post" action="${ userPhoneModify }">
+    <div>
+    <input class="d-none" type="text" id="userEmail" name="userEmail" value="${ sessionScope.userEmail }">    
 		<label>휴대폰 번호</label>
 		<br />
-		<input type="text" id="userAccountPhoneModify" name="userAccountPhoneModify" required />
+		<input type="text" id="userAccountPhoneModify" name="userAccountPhoneModify" placeholder="PHONE" required />
 	</div>
     </form>
 	<div>
-		<input type="submit" id="btnPhoneCancel" value="취소" />
-		<input type="submit" id="btnPhoneUpdate" value="수정하기" />
+        <button id="btnPhoneCancel">취소</button>
+        <button id="btnPhoneUpdate">수정하기</button>
 	</div>
 	
 	<script

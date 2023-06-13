@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,18 +24,23 @@
 			<h2>계정</h2>
 		</div>
 		<div>
-			<label>이메일</label> 
+			<label for="userEmail">이메일</label> 
 			<br /> 
 			<input type="email" id="userAccountEmail"
-				name="userAccountEmail" readonly value="${ userEmail }" />
+				name="userAccountEmail" readonly value="${ dto.userEmail }" />
 		</div>
 		<div>
-			<label>비밀번호</label> 
-			<br /> 
+			<label for="userPassword">비밀번호</label> 
+			<br />
+            
 			<input type="password"
 				id="userAccountPassword" name="userAccountPassword"
-				value="${ userPassword }" readonly />
-			<button id="btnAccountPassword">수정</button>
+				value="${ dto.userPassword }" readonly />
+            <c:url var="userPasswordModify" value="userPasswordModify">
+                 <c:param name="userEmail" value="${ dto.userEmail }"></c:param>
+            </c:url>        
+			<a class="btn btn-outline-primary" 
+               href="${ userPasswordModify }">수정</a>
 		</div>
 
 		<!-- 
@@ -42,29 +48,38 @@
 	<form id="AccountPhoneForm" method="post" action="userModify">
 	 -->
 		<div>
-			<label>전화번호</label> 
+			<label for="userPhone">전화번호</label> 
 			<br /> 
 			<input type="text" id="userAccountPhone"
-				name="userAccountPhone" value="${ userPhone }" readonly />
-			<button id="btnAccountPhone">수정</button>
+				name="userAccountPhone" value="${ dto.userPhone }" readonly />
+            <c:url var="userPhoneModify" value="userPhoneModify">
+                 <c:param name="userEmail" value="${ dto.userEmail }"></c:param>
+            </c:url>
+            <a class="btn btn-outline-primary" 
+               href="${ userPhoneModify }">수정</a>
 		</div>
 		<div>
-			<label>주소</label>
+			<label for="userAddress">주소</label>
 			<br />
-			<input type="text" id="userAccountAddress" name="userAccountAddress" 
-				value="${ userAddress }" readonly />
-			<button id="btnAccountAddress">수정</button>
+			<input type="text" id="userAccountAddress" 
+                name="userAccountAddress" value="${ dto.userAddress }" readonly />
+                <c:url var="userAddressModify" value="userAddressModify">
+                 <c:param name="userEmail" value="${ dto.userEmail }"></c:param>
+                </c:url>
+			<a class="btn btn-outline-primary"
+               href="${ userAddressModify }">수정</a>
 		</div>
 		
 		<div>
-			<label>생년월일</label> 
+			<label for="">생년월일</label> 
 			<br /> 
 			<input type="date"
 				id="userAccountBirthday" name="userAccountBirthday"
-				value="${ userBirthday }" readonly>
+				value="${ dto.userBirthday }" readonly>
 		</div>
 	</form>
 	<br />
+ 
 	<div>
 		<label>계정 삭제</label>
 		<button id="btnAccountDelete">삭제</button>

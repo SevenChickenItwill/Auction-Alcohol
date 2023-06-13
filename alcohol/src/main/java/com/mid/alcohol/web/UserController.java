@@ -1,8 +1,5 @@
 package com.mid.alcohol.web;
 
-import com.mid.alcohol.domain.Login;
-import oracle.jdbc.proxy.annotation.Post;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,15 +7,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.UserDetaillDto;
 import com.mid.alcohol.dto.UserSignupDto;
+import com.mid.alcohol.dto.UserPasswordUpdateDto;
+import com.mid.alcohol.dto.UserPhoneUpdateDto;
 import com.mid.alcohol.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import jakarta.security.auth.message.callback.PrivateKeyCallback.Request;
-import jakarta.servlet.http.HttpSession;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -43,8 +40,6 @@ public class UserController {
 
         model.addAttribute("userEmail", userEmail);
         
-        
-       
             return "/signup/signup";
         }
     
@@ -92,49 +87,71 @@ public class UserController {
     }
 
     // =============================여기서부터 수정 컨트롤러===================================================================//
+    
     // 계정 페이지 이동
     @GetMapping("/userModify")
-    public void userModify(String userEmail, Model model) {
-        log.info("userModify(userEmail={})", userEmail);
+    public void userModify(HttpSession session, Model model) {
+        String userEmail = (String) session.getAttribute("userEmail"); // 케스팅: 오브젝트 타입의 이메일을 문자열 타입으로 바꾼다((String))
+    	
+    	log.info("userModify(userEmail={})", userEmail);
         
         UserDetaillDto dto = userService.read(userEmail);
         
-        model.addAttribute("userEmail", dto);
+        model.addAttribute("dto", dto);
     }
 
-//    // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보
-//    @PostMapping("/userModify")
-//    public String userModifyPPP() {
-//
-//         return"/signup/userPasswordModify";
-//    }
+    // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보
+    @PostMapping("/userModify")
+    public void userModify() {
+
+    	
+    }
 
     // 비밀번호 수정 페이지로 이동하기 위해
-//    @GetMapping("/userPasswordModify")
-//    public void userPasswordModify() {
-//    	
-//    }
-
-    // 비밀번호를 수정하기위한()
-    @PostMapping("/userPasswordModify")
+    @GetMapping("/userPasswordModify")
     public void userPasswordModify() {
-        log.info("userPasswordModify");
-
-//         return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+    	
     }
 
-    // 전화번호를 수정하기위해
+    // 비밀번호 수정
+    @PostMapping("/userPasswordModify")
+    public String userPasswordModify(UserPasswordUpdateDto dto) {
+        log.info("userPasswordModify");
+        
+        int result = userService.PasswordUpdate(dto);
+        log.info("업데이트 결과={}", result);
+
+         return "redirect:/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+    }
+
+    // 전화번호를 수정
     @PostMapping("/userPhoneModify")
-    public void userPhoneModify() {
-        // 전화번호 수정 로직 구현
-//     return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+    public String userPhoneModify(UserPhoneUpdateDto dto) {
+    	log.info("userPhoneModify()", dto);
+    	
+    	int result = userService.PhoneUpdate(dto);
+        log.info("업데이트 결과={}", result);
+     
+        return "redirect:/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
     
-    // 주소를 수정하기위해
+    // 전화번호 수정
+    @GetMapping("/userPhoneModify")
+    public void userPhoneModify() {
+    	
+    }
+    
+    // 주소 수정
     @PostMapping("/userAddressModify")
     public void userAddressModify() {
         
 //        return "/signup/userModify";
+    }
+    
+    // 주소 수정
+    @GetMapping("/userAddressModify")
+    public void userAddressModifyy() {
+    	
     }
 
 }

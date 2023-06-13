@@ -23,11 +23,14 @@
 			<ul>
 				<li>
 					<div>
-						<a href="/alcohol/signup/userModify">계정</a>
-					</div>
+                        <a href="/alcohol/signup/signupEmail">로그인</a>
+                        <a href="/alcohol/signup/signupEmail">회원가입</a>      
+   				        <a href="/alcohol/signup/userModify">계정</a>
+                    </div>
 				</li>
 			</ul>
 		</div>
+        
 		
 
 		<script

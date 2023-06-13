@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mid.alcohol.domain.User;
+import com.mid.alcohol.dto.UserPasswordUpdateDto;
 import com.mid.alcohol.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -51,5 +52,29 @@ public class UserListController {
             return ResponseEntity.ok(null);
         }
     }
+    
+    // 해당 이메일의 비밀번호가 맞는지 확인
+    @GetMapping("/passwordModify/{userEmail}/{userPassword}/{newPassword}")
+    public ResponseEntity<String> userPasswordCheck(
+            @PathVariable String userEmail,
+            @PathVariable String userPassword,
+            @PathVariable String newPassword) {
+
+        User user = userService.signupEmailCheck(userEmail);
+        log.info("user={}",user);
+        
+        if (user != null && user.getUserPassword().equals(userPassword)) {
+            // 비밀번호가 일치하는 경우
+        	UserPasswordUpdateDto dto = UserPasswordUpdateDto.builder().userEmail(userEmail).userPassword(newPassword).build();
+        	userService.PasswordUpdate(dto);
+            return ResponseEntity.ok("valid"); // 비밀번호가 일치함을 알리는 응답 반환
+        } else {
+            // 비밀번호가 일치하지 않는 경우
+            return ResponseEntity.ok("invalid"); // 비밀번호가 일치하지 않음을 알리는 응답 반환
+        }
+    }
+
+
+
     
 }

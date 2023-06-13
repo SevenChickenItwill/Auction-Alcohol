@@ -19,7 +19,8 @@
 	
 	<c:url var="userPasswordModify" value="/signup/userPasswordModify"></c:url>
 	<form id="userAccountModifyForm" method="post" action="${ userPasswordModify }">
-	<div>
+    <div>
+    <input class="d-none" type="text" id="userEmail" name="userEmail"  value="${ sessionScope.userEmail }">
 		<label>현재 비밀번호</label>
 		<br />
 		<input type="password" id="userAccountPasswordModify" name="userAccountPasswordModivy" placeholder="CURRENTPASSWORD"/>
@@ -36,9 +37,10 @@
 	</div>
 	</form>
 	<div>
-		<input type="submit" id="btnPasswordCancel" value="취소"/>
-		<input type="submit" id="btnPasswordUpdate" value="수정하기"/>
+        <button id="btnPasswordCancel">취소</button>
+        <button id="btnPasswordUpdate">수정하기</button>
 	</div>
+ 
 	<div>
 		
 	<ul>
@@ -60,5 +62,6 @@
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
 		<script src="../static/js/userAccountPasswordUpdate.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
