@@ -36,40 +36,50 @@ public class BulletinboardRestController {
 		return ResponseEntity.ok(dto);
 	}
 	
-	@PostMapping("/recommendup/{boardId}")
+	@PostMapping("/recommendup/boardId={boardId},loginId={loginId}")
 	public ResponseEntity<Integer> recommendUp(
 			@PathVariable long boardId,
-			@PathVariable("loginId") String userId) {
+			@PathVariable String loginId) {
 		log.info("recommentUp(id= {})", boardId);
 		
-		RecommendUp up = bulletinboardService.recommendUpSelect(boardId, userId);
+		RecommendUp recommend = new RecommendUp(boardId, loginId);
+		
+		int selectResult = bulletinboardService.recommendUpSelect(recommend);
+		
+		if (selectResult == 1) {
+			return ResponseEntity.ok(selectResult);
+		}
 		
 		int result = bulletinboardService.recommendUp(boardId);
 		log.info("result= {}", result);
 		
-		// 추천업 테이블에 board_id, user_nickname 넣기
-		int upResult = bulletinboardService.recommendUpInsert(boardId, userId);
-		log.info("upResult= {}", upResult);
+		int insertResult = bulletinboardService.recommendUpInsert(recommend);
+		log.info("insertResult= {}", insertResult);
 		
-		return ResponseEntity.ok(result);
+		return ResponseEntity.ok(selectResult);
 	}
 	
-	@PostMapping("/recommenddo/{boardId}")
+	@PostMapping("/recommenddo/{boardId},{loginId}")
 	public ResponseEntity<Integer> recommendDo(
 			@PathVariable long boardId,
-			@PathVariable("loginId") String userId) {
+			@PathVariable String loginId) {
 		log.info("recommendDo(id= {})", boardId);
 		
-		RecommendDown down = bulletinboardService.recommendDownSelect(boardId, userId);
+		RecommendDown recommend = new RecommendDown(boardId, loginId);
+		
+		int selectResult = bulletinboardService.recommendDownSelect(recommend);
+		
+		if (selectResult == 1) {
+			return ResponseEntity.ok(selectResult);
+		}
 		
 		int result = bulletinboardService.recommendDo(boardId);
 		log.info("result= {}", result);
 		
-		// 추천다운 테이블에 board_id, user_nickname 넣기
-		int upResult = bulletinboardService.recommendDelete(boardId, userId);
-		log.info("upResult= {}", upResult);
+		int insertRresult = bulletinboardService.recommendDownInsert(recommend);
+		log.info("insertRresult= {}", insertRresult);
 		
-		return ResponseEntity.ok(result);
+		return ResponseEntity.ok(selectResult);
 	}
 	
 	

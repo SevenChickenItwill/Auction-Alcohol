@@ -68,13 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const recommendClickUp = (e) => {
 
-		const boardId = document.querySelector('input#boardId').value;
-		const data = { boardId };
-
-
-		axios.post(`/alcohol/api/recommend/recommendup/${boardId}`)
+		const boardId = inputId.value;
+		const loginId = document.querySelector('input#loginId').value;
+		
+		axios.post(`/alcohol/api/recommend/recommendup/boardId=${boardId},loginId=${loginId}`)
 			.then((response) => {
-				console.log(response);
+				console.log(response.data);
+				
+				if (response.data == 1) {
+					alert('추천은 계정당 한번만 가능합니다.');
+					console.log(response.data);
+				}
+				
 				getRecommendWithBoardId(); // 갱신
 			})
 			.catch((error) => console.log(error));
@@ -92,13 +97,19 @@ document.addEventListener('DOMContentLoaded', () => {
 	const recommendClickDo = (e) => {
 
 		const boardId = document.querySelector('input#boardId').value;
-		const data = { boardId };
+		const loginId = document.querySelector('input#loginId').value;
 
-
-		axios.post(`/alcohol/api/recommend/recommenddo/${boardId}`)
+		axios.post(`/alcohol/api/recommend/recommenddo/${boardId},${loginId}`)
 			.then((response) => {
 				console.log(response);
+				
+				if (response.data == 1) {
+					alert('비추천은 계정당 한번만 가능합니다.');
+					console.log(response.data);
+				}
+				
 				getRecommendWithBoardId();
+				
 			})
 			.catch((error) => console.log(error));
 
@@ -172,9 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// 댓글 목록 표시
 	const replies = document.querySelector('div#replies');
-
+	
 	// comment domain 데이터를 받아서 String 형식을 html에 저장, 추가.
 	const makeCommentElements = (data) => {
+		const userNickname = document.querySelector('input#userNickname').value;
+		
 		// 댓글 개수 업데이트
 		commentCount.innerHTML = data.length; // 배열 길이(원소 개수)
 		boardCommendCount.innerHTML = data.length;
@@ -191,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const time = new Date(comment.time).toLocaleString();
 
 			let userCheckHTML = '';
-			if (comment.nickname === 'ada') {
+			if (comment.nickname === userNickname) {
 				userCheckHTML = `
         <div id="userCheck">
           <button class="btnDelete" data-id="${comment.commentId}">
@@ -261,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	function cancelComment(event) {
+		const btnSave = document.createElement('button');
 		const btnCancel = event.target;
 		const card = btnCancel.closest('.card');
 		const textarea = card.querySelector('.editable');

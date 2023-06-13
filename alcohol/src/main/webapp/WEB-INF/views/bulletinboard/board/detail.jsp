@@ -22,7 +22,7 @@
 
 	<main>
 		
-		<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" />
+		<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" name="loginId"/>
 		
 		<section>
 			<form id="boardForm">
@@ -88,7 +88,7 @@
                 
                 
                 <div>
-                    <input value="test33" id="userNickname" readonly/>
+                    <input value="${ sessionScope.userNickname }" id="userNickname" readonly/>
                 </div>
                 <div>
                     <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
@@ -112,7 +112,7 @@
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-		<script src="../../static/js/board-detail.js"></script>
+		<script src="../../static/js/board-detailss.js"></script>
 	</div>
 
 </body>

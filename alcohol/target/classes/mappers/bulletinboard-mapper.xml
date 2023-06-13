@@ -103,7 +103,7 @@
     </update>
     
     <!-- 추천업하면 COMMENDUP테이블 정보 생성 -->
-    <insert id="commendupInsert">
+    <insert id="recommendupInsert">
     	insert into COMMENDUP (BOARD_ID, RECOMMENDER_ID)
         values (#{boardId}, #{recommenderId})
     </insert>
@@ -121,7 +121,7 @@
     </update>
     
     <!-- 추천다운하면 COMMENDDOWN테이블 정보 생성 -->
-    <insert id="commenddownInsert">
+    <insert id="recommenddownInsert">
     	insert into COMMENDDOWN (BOARD_ID, RECOMMENDER_ID)
         values (#{boardId}, #{recommenderId})
     </insert>

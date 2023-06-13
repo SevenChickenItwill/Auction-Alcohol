@@ -90,7 +90,7 @@ public class BolbTest {
 		log.info("base64Image ={}", base64Image);
 	}
 	
-	@Test
+	//@Test
 	public void createTest() throws Exception {
 		log.info("createTest()");
 		
@@ -107,6 +107,14 @@ public class BolbTest {
 		}
 		
 		log.info("성공");
+		
+	}
+	
+	@Test
+	public void recommendup() {
+		
+		int result = bulletinboardServie.recommendUpInsert(4, "대만");
+		log.info("result = {}", result);
 		
 	}
 	

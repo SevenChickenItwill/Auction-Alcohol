@@ -286,39 +286,47 @@ public class BulletinboardService {
 	}
     
 	// 추천 시 중복검사를 위해 COMMENDUP 테이블에 객체 생성
-    public int recommendUpInsert(long boardId, String userId) {
-    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
+    public int recommendUpInsert(RecommendUp recommend) {
+    	log.info("recommendListInsert(recommend= {})", recommend);
     	
-    	int result = bulletinboardRepository.commendupInsert(boardId, userId);
+    	int result = bulletinboardRepository.recommendupInsert(recommend);
     	
     	return result;
     }
     
     // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
-    public int recommendDelete(long boardId, String userId) {
-    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
+    public int recommendDownInsert(RecommendDown recommend) {
+    	log.info("recommendDelete(recommend= {})", recommend);
     	
-    	int result = bulletinboardRepository.commenddownInsert(boardId, userId);
+    	int result = bulletinboardRepository.recommenddownInsert(recommend);
     	
     	return result;
     }
     
     // 추천시 중복검사하기
-    public RecommendUp recommendUpSelect(long boardId, String userId) {
-    	log.info("recommendUpSelect(baordId= {}, userId= {})", boardId, userId);
+    public int recommendUpSelect(RecommendUp recommend) {
+    	log.info("recommendUpSelect(RecommendUp= {})", recommend);
     	
-    	RecommendUp up = bulletinboardRepository.recommendUpSelect(boardId, userId);
+    	RecommendUp result = bulletinboardRepository.recommendUpSelect(recommend);
     	
-    	return up;
+    	if (result != null) {
+    		return 0;
+    	} else {
+    		return 1;
+    	}
     }
     
     // 추천다운시 중복검사하기
-    public RecommendDown recommendDownSelect(long boardId, String userId) {
-    	log.info("recommendDownSelect(baordId= {}, userId= {})", boardId, userId);
+    public int recommendDownSelect(RecommendDown recommend) {
+    	log.info("recommendDownSelect(recommend= {})", recommend);
     	
-    	RecommendDown down = bulletinboardRepository.recommendDownSelect(boardId, userId);
+    	RecommendDown down = bulletinboardRepository.recommendDownSelect(recommend);
     	
-    	return down;
+    	if (down != null) {
+    		return 0;
+    	} else {
+    		return 1;
+    	}
     }
 	
 	// 조회수 증가하는 service

@@ -39,13 +39,13 @@ public interface BulletinboardRepository {
 
 	int recommendDo(long boardId);
 	
-	int commendupInsert(long boardId, String recommenderId);
+	int recommendupInsert(RecommendUp recommend);
 	
-	int commenddownInsert(long boardId, String recommenderId);
+	int recommenddownInsert(RecommendDown recommend);
 	
-	RecommendUp recommendUpSelect(long boardId, String recommenderId);
+	RecommendUp recommendUpSelect(RecommendUp recommend);
 	
-	RecommendDown recommendDownSelect(long boardId, String recommenderId);
+	RecommendDown recommendDownSelect(RecommendDown recommend);
 	
 	int viewsUp(long boardId);
 
