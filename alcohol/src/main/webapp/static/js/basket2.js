@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 결제 정보 넘기기
 	// formSubmit.js 파일의 내용
 
-	document.getElementById("paymentSubmit").addEventListener("click", function(event) {
+	/*document.getElementById("paymentSubmit").addEventListener("click", function(event) {
 		event.preventDefault(); // 폼 제출 기본 동작 막기
 
 		// 체크된 항목 가져오기
 		var checkboxes = document.querySelectorAll('input[name="checkbox"]:checked');
 
 		// 체크된 항목을 담을 객체 배열
-		var list = [];
+		var OrderProductDto = [];
 
 		checkboxes.forEach(function(checkbox) {
 			const basketid = checkbox.getAttribute("data-id");
@@ -97,23 +97,29 @@ document.addEventListener('DOMContentLoaded', () => {
 				totalAmount: totalAmount
 			};
 
-			list.push(item);
+			OrderProductDto.push(item);
 		});
-		list.forEach((item) => {
+		OrderProductDto.forEach((item) => {
 			console.log(item);
 		});
 
 		// 선택된 항목 리스트를 폼에 추가
 		var hiddenInput = document.createElement("input");
 		hiddenInput.type = "hidden";
-		hiddenInput.name = "list";
-		hiddenInput.value = JSON.stringify(list);
+		hiddenInput.name = "OrderProductDto";
+		hiddenInput.value = JSON.stringify(OrderProductDto);
+		
+		const formData = new FormData();
+		formData.append('orderProductDto', OrderProductDto);
+		const request = new XMLHttpRequest();
+		request.open('POST', '/alcohol/payment/paymentmain');
+		request.send(formData);
 
-		document.getElementById("myForm").appendChild(hiddenInput);
+		//document.getElementById("myForm").appendChild(hiddenInput);
 
 		// 폼 제출
-		document.getElementById("myForm").submit();
-	});
+		//document.getElementById("myForm").submit();
+	});*/
 
 	/*const btnPayment = document.querySelector('span#btnPayment');
 	btnPayment.addEventListener('click', () => {

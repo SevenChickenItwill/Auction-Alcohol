@@ -6,44 +6,52 @@
 <!-- namespace의 값은 PostRepository 인터페이스가 있는 패키지 이름과 인터페이스 이름. -->
 <mapper namespace="com.mid.alcohol.repository.PaymentRepository">
 	<!-- 기존 배송지를 변경할 때 -->
- 	<update id="updateDeliveryInfo">
- 		UPDATE payment
- 		SET ORDER_NAME = #{order_name}, ORDER_ADRESS = #{order_adress}, ORDER_PHONE = #{order_phone}, ORDER_EMAIL = #{order_email}
- 		WHERE ORDER_ID = #{order_id}
- 	</update>
- 	
+	<update id="updateDeliveryInfo">
+		UPDATE payment
+		SET ORDER_NAME = #{order_name}, ORDER_ADRESS = #{order_adress},
+		ORDER_PHONE = #{order_phone}, ORDER_EMAIL = #{order_email}
+		WHERE ORDER_ID = #{order_id}
+	</update>
 
- 	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
- 	<select id="selectByOrderInfo" resultType="com.mid.alcohol.domain.User">
- 		SELECT * FROM users WHERE userNickName = #{userNickname}
- 	</select>
- 	
- 	
- 	<insert id="insertPayment">
- 		INSERT INTO payment_list (userNickname)
- 		VALUES (#{userNickname})
- 	</insert>
- 	
 
- 	<!-- userid의 장바구니 목록을 가져온다. -->
- 	<select id="readBasketByUserid" resultType="com.mid.alcohol.dto.BasketListDto">
- 		SELECT b.basketid, b.productid, b.price, b.quantity, p.brandname, p.pname
- 		FROM basket b
- 		JOIN auctionproducts p
- 		ON b.productid = p.productid
- 		WHERE b.userid = #{userid}
- 	</select>
- 	
- 	<select id="readPaymentList" resultType="com.mid.alcohol.domain.PaymentList">
- 		SELECT paymentid
- 		FROM payment_list
- 		where rownum = 1
- 		ORDER BY paymentid desc
- 	</select>
- 	
- 	<insert id="insertOrder">
- 		INSERT INTO orders
- 		values (#{paymentid}, #{productid}, #{quantity}, #{price}, #{totalAmount}, #{userNickname}, #{basketid}) 
- 	</insert>
+	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
+	<select id="selectByOrderInfo"
+		resultType="com.mid.alcohol.domain.User">
+		SELECT * FROM users WHERE userNickName = #{userNickname}
+	</select>
+
+
+	<insert id="insertPayment">
+		INSERT INTO payment_list (userNickname)
+		VALUES (#{userNickname})
+	</insert>
+
+
+	<!-- userid의 장바구니 목록을 가져온다. -->
+	<select id="readBasketByUserid"
+		resultType="com.mid.alcohol.dto.BasketListDto">
+		SELECT b.basketid, b.productid, b.price, b.quantity, p.brandname, p.pname
+		FROM basket b
+		JOIN auctionproducts p
+		ON b.productid = p.productid
+		WHERE b.userid = #{userid}
+	</select>
+
+	<select id="readPaymentList" resultType="java.lang.Integer">
+		SELECT *
+		FROM payment_list
+		WHERE userNickname = #{userNickname}
+		AND paymentid = (
+			SELECT MAX(paymentid)
+			FROM payment_list
+			WHERE userNickname = #{userNickname}
+		)
+	</select>
+
+	<insert id="insertOrder">
+		INSERT INTO orders
+		values (#{paymentid}, #{productid}, #{quantity}, #{price}, #{totalAmount},
+		#{userNickname}, #{basketid})
+	</insert>
 
 </mapper>

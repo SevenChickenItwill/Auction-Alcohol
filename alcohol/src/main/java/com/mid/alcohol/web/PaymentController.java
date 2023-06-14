@@ -46,31 +46,38 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@PostMapping("/paymentmain")
-	public void paymentInfo(Model model, @RequestParam("list") String listJson) {
+	public void paymentInfo(Model model, @RequestParam(name = "OrderProductDto") List<OrderProductDto> orderProductDto) {
 		log.info("paymentInfoPost()");
+		log.info(orderProductDto.toString());
+		
+		/*
 		String userNickname = (String)session.getAttribute("userNickname");
 		paymentService.insertPayment(userNickname);
 		int paymentid = paymentService.readPaymentList(userNickname);
 		log.info(userNickname);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		List<OrderProductDto> list = null;
+		List<OrderProductDto> orderProductDtoList = null;
 		try {
-			list = objectMapper.readValue(listJson, new TypeReference<List<OrderProductDto>>() {});
+			orderProductDtoList = objectMapper.readValue(orderProductDtoJson, new TypeReference<List<OrderProductDto>>() {});
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
+		for (OrderProductDto x : orderProductDtoList) {
+			log.info(""+x);
+		}
 		
-		for (OrderProductDto opdto : list) {
+		for (OrderProductDto opdto : orderProductDtoList) {
 			opdto.setUserNickname(userNickname);
 			opdto.setPaymentid(paymentid);
 			
 		}
-		paymentService.insertOrder(list);
+		paymentService.insertOrder(orderProductDtoList);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
+		*/
 	}
 	
 	@GetMapping("/paymentmain")
