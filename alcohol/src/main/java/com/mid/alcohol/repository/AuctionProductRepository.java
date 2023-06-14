@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.mid.alcohol.domain.AuctionProducts;
-import com.mid.alcohol.domain.Photo;
-import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.domain.auction.Photo;
+import com.mid.alcohol.dto.auction.AuctionReadDto;
 
 @Repository
 public interface AuctionProductRepository {

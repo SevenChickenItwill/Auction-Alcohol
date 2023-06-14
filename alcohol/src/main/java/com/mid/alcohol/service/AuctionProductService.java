@@ -19,10 +19,10 @@ import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mid.alcohol.domain.AuctionProducts;
-import com.mid.alcohol.domain.Photo;
-import com.mid.alcohol.dto.AuctionCreateDto;
-import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.domain.auction.Photo;
+import com.mid.alcohol.dto.auction.AuctionCreateDto;
+import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
 

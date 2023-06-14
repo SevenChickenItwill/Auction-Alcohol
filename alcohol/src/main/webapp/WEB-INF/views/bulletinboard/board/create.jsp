@@ -31,13 +31,8 @@
 					</div>
 					<div>
 						<label for="nickname">작성자</label> 
-<<<<<<< HEAD
 						<input type="text" name="nickname" id="nickname" value="${ sessionScope.userNickname }" readonly />
 						<input type="text" name="user_id"  id="userId" value="${ sessionScope.userEmail }" readonly />
-=======
-						<input type="text" name="nickname" id="nickname" value="닉네임:${ sessionScope.userNickname }" readonly />
-						<input type="text" name="user_id"  id="userId" value="아이디:${ sessionScope.userEmail }" readonly />
->>>>>>> origin/Taewook5
 					</div>
 					<div>
 						<label for="title">제목</label> 
