@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.mid.alcohol.dto.BasketListDto;
+import com.mid.alcohol.dto.payment.BasketListDto;
 import com.mid.alcohol.service.PaymentService;
 
 import lombok.RequiredArgsConstructor;

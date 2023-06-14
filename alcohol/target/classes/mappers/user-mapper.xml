@@ -6,21 +6,6 @@
 <!-- UserMapper.xml -->
 <mapper namespace="com.mid.alcohol.repository.UserRepository">
 
-<<<<<<< HEAD
-  <!-- 이메일 중복체크 -->
-  <select id="findByUserEmail" resultType="com.mid.alcohol.domain.User">
-    select * from USERS where userEmail = #{userEmail}
-  </select>
-  
-  <!-- 별명 중복체크 -->
-  <select id="findByUserNickname" resultType="com.mid.alcohol.domain.User">
-    select * from USERS where userNickname = #{userNickname}
-  </select>
-  
-  <select id="signInMain" resultType="com.mid.alcohol.domain.User">
-  	select * from Users where userEmail = #{userEmail} AND userPassword = #{userPassword}
-  </select>
-=======
  <!-- 회원가입 (이메일) -->
  <insert id="userEmailSignup">
   INSERT INTO USERS (userEmail)
@@ -79,5 +64,5 @@
   userPassword = #{userPassword}
  </select>
 
->>>>>>> origin/Dohyun4
+
 </mapper>

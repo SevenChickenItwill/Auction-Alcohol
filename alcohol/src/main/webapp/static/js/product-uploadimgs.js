@@ -20,10 +20,10 @@
 		 // Form 데이터에 객체 추가
 		 
 		 
-		 let filePath = image.value;
+		 let photopath = image.value;
          const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 		 
-		 if(!allowedExtensions.exec(filePath)){
+		 if(!allowedExtensions.exec(photopath)){
 			 alert('이미지 파일만 업로드가 가능합니다.');
 			 image.value='';
 			 return;

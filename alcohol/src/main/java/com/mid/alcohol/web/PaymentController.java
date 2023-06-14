@@ -26,9 +26,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mid.alcohol.dto.AdressUpdateDto;
-import com.mid.alcohol.dto.OrderProductDto;
-import com.mid.alcohol.dto.PaymentAdressModifyDto;
+import com.mid.alcohol.dto.payment.AdressUpdateDto;
+import com.mid.alcohol.dto.payment.OrderProductDto;
+import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
 
 

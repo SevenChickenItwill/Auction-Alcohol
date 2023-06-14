@@ -109,16 +109,16 @@ document.addEventListener('DOMContentLoaded', () => {
 		hiddenInput.name = "OrderProductDto";
 		hiddenInput.value = JSON.stringify(OrderProductDto);
 		
-		const formData = new FormData();
-		formData.append('orderProductDto', OrderProductDto);
-		const request = new XMLHttpRequest();
+		/*const formData = new FormData();
+		formData.append('orderProductDto', OrderProductDto);*/
+		/*const request = new XMLHttpRequest();
 		request.open('POST', '/alcohol/payment/paymentmain');
-		request.send(formData);
+		request.send(formData);*/
 
-		//document.getElementById("myForm").appendChild(hiddenInput);
+		document.getElementById("myForm").appendChild(hiddenInput);
 
 		// 폼 제출
-		//document.getElementById("myForm").submit();
+		document.getElementById("myForm").submit();
 	});
 
 	/*const btnPayment = document.querySelector('span#btnPayment');

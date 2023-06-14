@@ -4,7 +4,7 @@ import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.user.UserAddressUpdateDto;
 import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
 import com.mid.alcohol.dto.user.UserPhoneUpdateDto;
-import com.mid.alcohol.domain.Login;
+
 public interface UserRepository {
     
 	// 이메일을 DB에 넣기위해
@@ -18,13 +18,10 @@ public interface UserRepository {
     
     // 중복된 이메일이 있는지, 계정 페이지에서 상세보기
     User findByUserEmail(String userEmail);
-<<<<<<< HEAD
 
-    User signInMain(Login login);
-=======
     
     // 로그인 하기 위해
-    User signInMain(Login login);
+    User signInMain(User login);
     
     // 비밀번호 수정
     int PasswordUpdate(UserPasswordUpdateDto user);
@@ -37,7 +34,7 @@ public interface UserRepository {
     
     // 주소 수정
     int AddressUpdate(UserAddressUpdateDto user);
->>>>>>> origin/Dohyun4
+
 
     
     

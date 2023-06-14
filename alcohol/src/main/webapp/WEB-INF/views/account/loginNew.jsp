@@ -20,13 +20,9 @@
 		<main>
 			<div class="form form-control">
 				<form class="form" id="loginform">
-<<<<<<< HEAD
-				
-					<label for="userEmail">아이디</label>
-					<input class="card" type="text" id="userEmail" name="userEmail" required="required"
-=======
+
 					<input class="card d-none" type="text" id="userEmail" name="userEmail" value="${ userEmail }" required="required"
->>>>>>> origin/Dohyun4
+
 					/>
 					<label for="userPassword">비밀번호</label>
 					<input class="card" type="password" id="userPassword" name="userPassword" required="required" />

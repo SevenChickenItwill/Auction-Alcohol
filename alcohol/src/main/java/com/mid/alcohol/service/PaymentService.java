@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mid.alcohol.domain.User;
-import com.mid.alcohol.dto.AdressUpdateDto;
-import com.mid.alcohol.dto.BasketListDto;
-import com.mid.alcohol.dto.OrderProductDto;
-import com.mid.alcohol.dto.PaymentAdressModifyDto;
+import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.payment.AdressUpdateDto;
+import com.mid.alcohol.dto.payment.BasketListDto;
+import com.mid.alcohol.dto.payment.OrderProductDto;
+import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
 import com.mid.alcohol.repository.PaymentRepository;
 
 import lombok.extern.slf4j.Slf4j;

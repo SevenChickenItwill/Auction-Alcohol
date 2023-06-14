@@ -48,7 +48,7 @@
     </delete>
     
     <insert id="uploadPhoto">
-    	INSERT INTO productphoto VALUES (#{productid}, #{filepath})
+    	INSERT INTO productphoto VALUES (#{productid}, #{photopath})
     </insert>
     
     <select id="selectPhoto" resultType="com.mid.alcohol.domain.auction.Photo">

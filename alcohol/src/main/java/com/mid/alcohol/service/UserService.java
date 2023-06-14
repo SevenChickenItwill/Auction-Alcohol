@@ -2,9 +2,9 @@ package com.mid.alcohol.service;
 
 import org.springframework.stereotype.Repository;
 
-import com.mid.alcohol.domain.Login;
+
 import com.mid.alcohol.domain.user.User;
-import com.mid.alcohol.dto.LoginCheckDto;
+import com.mid.alcohol.dto.user.LoginCheckDto;
 import com.mid.alcohol.dto.user.UserDetaillDto;
 import com.mid.alcohol.dto.user.UserSignupDto;
 import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
@@ -34,18 +34,8 @@ public class UserService {
 
 		return userRepository.findByUserNickname(userNickname);
 	}
-<<<<<<< HEAD
-    
-    // 중복된 이메일이 있는지
-    public User signupEmailCheck(String userEmail) {
-        log.info("signupEmailCheck()");
-        
-        return userRepository.findByUserEmail(userEmail);
-    }
-    
-    public User login(LoginCheckDto login) {
-=======
->>>>>>> origin/Dohyun4
+
+
 
 	// 중복된 이메일이 있는지
 	public User signupEmailCheck(String userEmail) {
@@ -96,11 +86,6 @@ public class UserService {
 	}
 
 
-<<<<<<< HEAD
-    	return userRepository.signInMain(login.toEntity());
-    }
-    
+
 }
-=======
-}
->>>>>>> origin/Dohyun4
+

@@ -43,14 +43,11 @@
 		</form>
 		<div>
 			<input type="submit" id="btnNext" value="다음" />
-			<div class="btn-group-vertical" role="group"
-				aria-label="Vertical button group">
-				    <button type="button" class="btn btn-outline-secondary">1</button>
-		<a href="none" onclick="memberJoinAction()" class="btn s-btn role-button role-button-2 btn-white">
-			<span>버튼</span>
-		</a>
 			
-			</div>
+				    
+		
+			
+			
 		</div>
 
 

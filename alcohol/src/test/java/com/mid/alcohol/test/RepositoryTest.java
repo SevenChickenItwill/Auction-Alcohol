@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.mid.alcohol.dto.AuctionCreateDto;
-import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.dto.auction.AuctionCreateDto;
+import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
 import com.mid.alcohol.service.AuctionProductService;
 

@@ -1,3 +1,4 @@
+package com.mid.alcohol.web;
 //package com.mid.alcohol.web;
 //
 //import org.springframework.stereotype.Controller;

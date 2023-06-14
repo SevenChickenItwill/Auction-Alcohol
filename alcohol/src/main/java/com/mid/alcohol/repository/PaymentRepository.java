@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.mid.alcohol.domain.User;
-import com.mid.alcohol.dto.BasketListDto;
-import com.mid.alcohol.dto.OrderProductDto;
+import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.payment.BasketListDto;
+import com.mid.alcohol.dto.payment.OrderProductDto;
 
 
 @Repository

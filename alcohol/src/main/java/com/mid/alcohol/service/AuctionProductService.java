@@ -23,7 +23,7 @@ import com.mid.alcohol.domain.auction.AuctionProducts;
 import com.mid.alcohol.domain.auction.Photo;
 import com.mid.alcohol.dto.auction.AuctionCreateDto;
 import com.mid.alcohol.dto.auction.AuctionReadDto;
-import com.mid.alcohol.dto.BulletinboardDetailDto;
+
 import com.mid.alcohol.repository.AuctionProductRepository;
 
 import lombok.AllArgsConstructor;

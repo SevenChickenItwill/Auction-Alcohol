@@ -54,24 +54,9 @@
 				</c:url><a href="${adressModify}">배송지 수정</a>
 			</li>
 		<div class="my-2">
-<<<<<<< HEAD
-			<label class="form-label" for="userNickname">이름</label>
-			<input class="form-control" id="userNickname" value="${ user.userNickname }" readonly />
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="userAddress">주소</label>
-			<textarea class="form-control" id="userAddress" readonly>${ user.userAddress }</textarea>
-		</div>
-		<div class="my-2">	
-			<label class="form-label" for="userPhone">핸드폰 번호</label>
-			<input class="form-control" id="userPhone" value="${ user.userPhone }" readonly />
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="userEmail">이메일</label>
-			<input class="form-control" id="userEmail" value="${ user.userEmail }" readonly />
-=======
+
 			<label class="form-label" for="order_name">이름</label>
-			<input class="form-control" id="order_name" value="${ userinfo.userNickName }" readonly />
+			<input class="form-control" id="order_name" value="${ userinfo.userNickname }" readonly />
 		</div>
 		<div class="my-2">
 			<label class="form-label" for="order_adress">주소</label>
@@ -84,7 +69,7 @@
 		<div class="my-2">
 			<label class="form-label" for="order_email">이메일</label>
 			<input class="form-control" id="order_email" value="${ userinfo.userEmail }" readonly />
->>>>>>> Dahan12
+
 		</div>
 		<hr>	
 		
@@ -95,18 +80,12 @@
 	  <div class="title">결제 방법</div>
 	  <img src="../static/img/small.png">
 	  <br>
-<<<<<<< HEAD
-	  <c:url value="/payment/paymentsuccess" var="paymentsuccess">
-			<c:param name="num" value="0" />
-	  </c:url><a href="${paymentsuccess}">주문/결제 내역</a>
-	  	
-	<script src="./../static/js/payment-paymentmain.js"></script>
-=======
+
 	  <div class="btn" id="btnkakaopay">결제하기</div>
 	  <script type="text/javascript" src="../static/js/jquery-3.7.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 	
 	<script src="./../static/js/jq.js"></script>
->>>>>>> Dahan12
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 				crossorigin="anonymous">

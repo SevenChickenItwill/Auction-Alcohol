@@ -13,18 +13,13 @@
  		WHERE userNickname = #{userNickname}
  	</update>
  	
-
- 	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
- 	<select id="selectByOrderInfo" resultType="com.mid.alcohol.domain.User">
- 		SELECT * FROM users WHERE userNickname = #{userNickname}
- 	</select>
  	
 
 
 	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
 	<select id="selectByOrderInfo"
-		resultType="com.mid.alcohol.domain.User">
-		SELECT * FROM users WHERE userNickName = #{userNickname}
+		resultType="com.mid.alcohol.domain.user.User">
+		SELECT * FROM users WHERE userNickname = #{userNickname}
 	</select>
 
 
@@ -36,7 +31,7 @@
 
 	<!-- userid의 장바구니 목록을 가져온다. -->
 	<select id="readBasketByUserid"
-		resultType="com.mid.alcohol.dto.BasketListDto">
+		resultType="com.mid.alcohol.dto.payment.BasketListDto">
 		SELECT b.basketid, b.productid, b.price, b.quantity, p.brandname, p.pname
 		FROM basket b
 		JOIN auctionproducts p
