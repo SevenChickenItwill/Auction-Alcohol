@@ -21,6 +21,8 @@
 	<hr />
 	<h4 class="mx-2 text-center">장바구니</h4>
 	<div class="card">
+		<c:url var="paymentmain" value="/payment/paymentmain"/>
+		<form id="myForm" action="${ paymentmain }" method="post">
 		<div class="card-header">
 			<input type="checkbox" id="allCheckbox" /> 
 			<label class="py-6" for="allCheckbox">전체선택</label> 
@@ -28,41 +30,39 @@
 		</div>
 		
 		<div class="card-boby">
-			<c:forEach var="basket" items="${list}">
-				<div>
-					<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
-					<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
-					<label>${basket.brandname}</label>
-					<hr>
-					<label>${basket.pname}</label>
-					<br> 
-					<label>상품금액 ${ basket.price }</label>
-					<br>
-					<label>주문수량</label>
-					<input
-						style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
-						type="number" value="${basket.quantity}" name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
-					<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }">
-						
-					<br>
-
-					<label>주문금액</label> 
-					<span id="orderAmount-${basket.basketid}" class="mx-2" 
-						  data-value="${(basket.quantity * basket.price)}">
-						${(basket.quantity * basket.price)}원
-					</span>
-
-					<hr>
-				</div>
-			</c:forEach>
+				<c:forEach var="basket" items="${list}">
+					<div>
+						<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
+						<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
+						<label>${basket.brandname}</label>
+						<hr>
+						<label>${basket.pname}</label>
+						<br> 
+						<label>상품금액 ${ basket.price }</label>
+						<br>
+						<label>주문수량</label>
+						<input
+							style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
+							type="number" value="${basket.quantity}" name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
+						<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }">
+						<br>
+						<label>주문금액</label> 
+						<span id="orderAmount-${basket.basketid}" class="mx-2" 
+							  data-value="${(basket.quantity * basket.price)}">
+							${(basket.quantity * basket.price)}원
+						</span>
+						<hr>
+					</div>
+				</c:forEach>
 		</div>
 		
 		<div class="card-footer">
 			<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> 
 			<br>
-			<span id="btnPayment" class="btn">결제하기</span>
+			<input id="paymentSubmit" class="btn" type="submit" value="결제하기">
 		</div>
+			</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="../static/js/basket2.js"></script>

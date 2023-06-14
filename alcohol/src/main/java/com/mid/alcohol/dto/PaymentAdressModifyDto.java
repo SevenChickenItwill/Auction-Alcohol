@@ -16,7 +16,11 @@ import lombok.NoArgsConstructor;
 public class PaymentAdressModifyDto {
 
 	private String userName;
+<<<<<<< HEAD
 	private String userNickname;
+=======
+	private String userNickName;
+>>>>>>> Dahan12
 	private LocalDateTime userBirthday;
 	private int userAge;
 	private String userGender;
@@ -30,7 +34,11 @@ public class PaymentAdressModifyDto {
 	public static PaymentAdressModifyDto fromEntity(User entity) {
 		return PaymentAdressModifyDto.builder()
 				.userName(entity.getUserName())
+<<<<<<< HEAD
 				.userNickname(entity.getUserNickname())
+=======
+				.userNickName(entity.getUserNickname())
+>>>>>>> Dahan12
 				.userBirthday(entity.getUserBirthday())
 				.userAge(entity.getUserAge())
 				.userGender(entity.getUserGender())
@@ -42,4 +50,8 @@ public class PaymentAdressModifyDto {
 				.userJoindate(entity.getUserJoindate())
 				.build();
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Dahan12
