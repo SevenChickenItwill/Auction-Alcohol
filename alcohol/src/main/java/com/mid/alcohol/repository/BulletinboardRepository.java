@@ -2,14 +2,14 @@ package com.mid.alcohol.repository;
 
 import java.util.List;
 
-import com.mid.alcohol.domain.board.Bulletinboard;
-import com.mid.alcohol.domain.board.RecommendDown;
-import com.mid.alcohol.domain.board.RecommendUp;
-import com.mid.alcohol.dto.board.BulletinboardCreateDto;
-import com.mid.alcohol.dto.board.BulletinboardDetailDto;
-import com.mid.alcohol.dto.board.BulletinboardImageUpdateDto;
-import com.mid.alcohol.dto.board.BulletinboardListDto;
-import com.mid.alcohol.dto.board.BulletinboardUpdateDto;
+import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.domain.RecommendDown;
+import com.mid.alcohol.domain.RecommendUp;
+import com.mid.alcohol.dto.BulletinboardCreateDto;
+import com.mid.alcohol.dto.BulletinboardDetailDto;
+import com.mid.alcohol.dto.BulletinboardImageUpdateDto;
+import com.mid.alcohol.dto.BulletinboardListDto;
+import com.mid.alcohol.dto.BulletinboardUpdateDto;
 
 // bulletinboard-mapper
 public interface BulletinboardRepository {
@@ -26,18 +26,30 @@ public interface BulletinboardRepository {
     
     List<BulletinboardListDto> selectWhereTitle(String keyword);
     
+<<<<<<< HEAD
     List<BulletinboardListDto> selectWhereContent(String keyword);
     
     List<BulletinboardListDto> selectWhereTitleAndContent(String keywordT, String keywordC);
     
     List<BulletinboardListDto> selectWhereNickname(String keyword);
     
+=======
+    List<BulletinboardListDto> selectWhereTitle(String keyword);
+    
+    List<BulletinboardListDto> selectWhereContent(String keyword);
+    
+    List<BulletinboardListDto> selectWhereTitleAndContent(String keywordT, String keywordC);
+    
+    List<BulletinboardListDto> selectWhereNickname(String keyword);
+    
+>>>>>>> origin/Taewook5
     List<BulletinboardListDto> selectWhereUserId(String keyword);
 
 	int recommendUp(long boardId);
 
 	int recommendDo(long boardId);
 	
+<<<<<<< HEAD
 	int recommendupInsert(RecommendUp recommend);
 	
 	int recommenddownInsert(RecommendDown recommend);
@@ -45,6 +57,15 @@ public interface BulletinboardRepository {
 	RecommendUp recommendUpSelect(RecommendUp recommend);
 	
 	RecommendDown recommendDownSelect(RecommendDown recommend);
+=======
+	int commendupInsert(long boardId, String recommenderId);
+	
+	int commenddownInsert(long boardId, String recommenderId);
+	
+	RecommendUp recommendUpSelect(long boardId, String recommenderId);
+	
+	RecommendDown recommendDownSelect(long boardId, String recommenderId);
+>>>>>>> origin/Taewook5
 	
 	int viewsUp(long boardId);
 

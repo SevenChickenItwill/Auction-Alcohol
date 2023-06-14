@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> f9ea687602826f79f9c7e8fa7ce4fac29be79082
 package com.mid.alcohol.dto;
 
 import com.mid.alcohol.domain.User;

@@ -40,18 +40,18 @@
 
  <!-- 이메일 중복체크 -->
  <select id="findByUserEmail"
-  resultType="com.mid.alcohol.domain.user.User">
+  resultType="com.mid.alcohol.domain.User">
   select * from USERS where userEmail = #{userEmail}
  </select>
 
  <!-- 별명 중복체크, 계정 상세정보 보여주기 -->
  <select id="findByUserNickname"
-  resultType="com.mid.alcohol.domain.user.User">
+  resultType="com.mid.alcohol.domain.User">
   select * from USERS where userNickname = #{userNickname}
  </select>
 
  <!-- 로그인 정보 -->
- <select id="signInMain" resultType="com.mid.alcohol.domain.user.User">
+ <select id="signInMain" resultType="com.mid.alcohol.domain.User">
   select * from Users where userEmail = #{userEmail} AND userPassword =
   #{userPassword}
  </select>
@@ -72,7 +72,7 @@
 
  <!-- 수정할 때 해당 이메일의 비밀번호인지 확인-->
  <select id="findUserByEmailAndPassword"
-  resultType="com.mid.alcohol.domain.user.User">
+  resultType="com.mid.alcohol.domain.User">
   SELECT *
   FROM USERS
   WHERE userEmail = #{userEmail} AND

@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.mid.alcohol.domain.board.Comment;
-import com.mid.alcohol.dto.board.CommentCreateDto;
-import com.mid.alcohol.dto.board.CommentListDto;
-import com.mid.alcohol.dto.board.CommentReadDto;
-import com.mid.alcohol.dto.board.CommentUpdateDto;
+import com.mid.alcohol.domain.Comment;
+import com.mid.alcohol.dto.CommentCreateDto;
+import com.mid.alcohol.dto.CommentListDto;
+import com.mid.alcohol.dto.CommentReadDto;
+import com.mid.alcohol.dto.CommentUpdateDto;
 import com.mid.alcohol.repository.CommentRepository;
 
 import lombok.RequiredArgsConstructor;

@@ -16,7 +16,7 @@
 	</insert>
 
 	<select id="selectByPName"
-		resultType="com.mid.alcohol.domain.auction.AuctionProducts">
+		resultType="com.mid.alcohol.domain.AuctionProducts">
 		select * from AuctionProducts WHERE pName LIKE #{pName} AND
 		userId =
 		#{userId}
@@ -24,7 +24,7 @@
 
 
 	<select id="selectByPNameOne"
-		resultType="com.mid.alcohol.domain.auction.AuctionProducts">
+		resultType="com.mid.alcohol.domain.AuctionProducts">
 		select * from AuctionProducts WHERE pName = #{pName} AND
 		userId = #{userId}
 		AND productId = #{productId}
@@ -40,7 +40,7 @@
 	</insert>
 
 	<select id="searchText"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -51,7 +51,7 @@
 	</select>
 
 	<select id="readAuctionList"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -60,7 +60,7 @@
 	</select>
 
 	<select id="selectModifyOne"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -86,7 +86,7 @@
 	</delete>
 
 	<select id="detailreadfirst1"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -105,7 +105,7 @@
 	</select>
 
 	<select id="detailreadsecond1"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -124,7 +124,7 @@
 	</select>
 
 	<select id="detailreadthird1"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -140,7 +140,7 @@
 	</select>
 
 	<select id="detailreadfourth1"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -160,7 +160,7 @@
 	</select>
 
 	<select id="detailreadfirst2"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -178,7 +178,7 @@
 	</select>
 
 	<select id="detailreadfirst3"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -198,7 +198,7 @@
 	</select>
 
 	<select id="detailreadsecond2"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -217,7 +217,7 @@
 	</select>
 
 	<select id="detailreadsecond3"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -237,7 +237,7 @@
 	</select>
 
 	<select id="detailreadthird2"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -254,7 +254,7 @@
 	</select>
 
 	<select id="detailreadthird3"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -273,7 +273,7 @@
 	</select>
 
 	<select id="detailreadfourth2"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -292,7 +292,7 @@
 	</select>
 
 	<select id="detailreadfourth3"
-		resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+		resultType="com.mid.alcohol.dto.AuctionListDto">
 		select *
 		from auction a
 		JOIN auctionProducts p
@@ -314,7 +314,7 @@
 
 
 
-	<select id="readAllAuctionList" resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+	<select id="readAllAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
 
         select *
         from auction a
@@ -324,7 +324,7 @@
         ORDER BY a.aid desc
     </select>
     
-    <select id="readIngAuctionList" resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+    <select id="readIngAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
         select *
         from auction a
         JOIN auctionProducts p
@@ -333,7 +333,7 @@
         ORDER BY a.aid desc
     </select>
     
-    <select id="readEndAuctionList" resultType="com.mid.alcohol.dto.auction.AuctionListDto">
+    <select id="readEndAuctionList" resultType="com.mid.alcohol.dto.AuctionListDto">
         select *
         from auction a
         JOIN auctionProducts p
@@ -348,19 +348,19 @@
 
 
 	<select id="selectAllRoom"
-		resultType="com.mid.alcohol.domain.auction.UserAuction">
+		resultType="com.mid.alcohol.domain.UserAuction">
 		SELECT * FROM UserAuction
 	</select>
 
 	<select id="selectByChatContents"
-		resultType="com.mid.alcohol.dto.auction.ChatListDto">
+		resultType="com.mid.alcohol.dto.ChatListDto">
 		Select * FROM chat c JOIN userAuction u ON c.cid = u.cid
 		WHERE c.cid =
 		#{cid} ORDER BY c.createdtime
 	</select>
 
 	<select id="readChatMember"
-		resultType="com.mid.alcohol.domain.auction.Chat">
+		resultType="com.mid.alcohol.domain.Chat">
 		select * from chat
 	</select>
 
@@ -396,7 +396,7 @@
         update auction set status = 1 WHERE #{now} > auctionstart AND auctionend > #{now} AND status != 1 AND status !=2
     </update>
     
-    <select id="readAllchatData" resultType="com.mid.alcohol.domain.auction.Chat">
+    <select id="readAllchatData" resultType="com.mid.alcohol.domain.Chat">
     	select * from Chat Where userid = #{userNickname}
     </select>
     

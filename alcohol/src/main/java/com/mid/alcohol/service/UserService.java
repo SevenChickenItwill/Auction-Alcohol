@@ -3,12 +3,12 @@ package com.mid.alcohol.service;
 import org.springframework.stereotype.Repository;
 
 import com.mid.alcohol.domain.Login;
-import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.LoginCheckDto;
-import com.mid.alcohol.dto.user.UserDetaillDto;
-import com.mid.alcohol.dto.user.UserSignupDto;
-import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
-import com.mid.alcohol.dto.user.UserPhoneUpdateDto;
+import com.mid.alcohol.dto.UserDetaillDto;
+import com.mid.alcohol.dto.UserSignupDto;
+import com.mid.alcohol.dto.UserPasswordUpdateDto;
+import com.mid.alcohol.dto.UserPhoneUpdateDto;
 import com.mid.alcohol.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -89,10 +89,21 @@ public class UserService {
 	
 	// 전화번호 수정
 	public int PhoneUpdate(UserPhoneUpdateDto user) {
-		log.info("update({})", user);	
+<<<<<<< Updated upstream
+		log.info("update({})", user);
+		
+		
 		
 		return userRepository.PhoneUpdate(user);
+=======
+	    log.info("update({})", user);
 
+	    User entity = userRepository.findByUserEmail(user.getUserEmail());
+	    entity.setUserPhone(user.getUserPhone()); // 변경된 전화번호로 엔티티 수정
+	    userRepository.PhoneUpdate(entity); // 엔티티 저장
+
+	    return 1; // 성공적으로 수정되었을 경우 1 반환
+>>>>>>> Stashed changes
 	}
 
 

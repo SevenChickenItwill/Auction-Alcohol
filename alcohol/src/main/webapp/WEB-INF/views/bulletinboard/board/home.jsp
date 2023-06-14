@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
+   pageEncoding="UTF-8"%>
+=======
 	pageEncoding="UTF-8"%>
+>>>>>>> origin/Taewook5
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,10 +73,17 @@
         }
         
         /* welcome 문구 */
+        
+<<<<<<< HEAD
        .welcome {
           text-align: left;
        }
-
+=======
+ 		.welcome {
+ 			text-align: left;
+ 		}
+>>>>>>> origin/Taewook5
+        
         /* Right section styles */
         .right-section {
             flex: 1;
@@ -80,14 +91,25 @@
             background-color: rgba(255, 255, 255, 0.5);
             background-size: cover;
             padding: 20px;
+            
+            
         }
         
+        
         .navi {
+<<<<<<< HEAD
            align-items: center;
         }
         
         .left-box {
              margin: 10px;
+=======
+        	align-items: center;
+        }
+        
+        .left-box {
+       		margin: 10px;
+>>>>>>> origin/Taewook5
             transition: transform 0.1s ease;
             text-decoration: none;
             padding: 20px;
@@ -117,14 +139,21 @@
             text-align: center;
             color: white;
             font: 35px "Nunito Sans", "Noto Sans KR";
-            transform: matrix(1, 0, 0, 1, 0, 0);
+<<<<<<< HEAD
+             transform: matrix(1, 0, 0, 1, 0, 0);
+=======
+          	transform: matrix(1, 0, 0, 1, 0, 0);
+>>>>>>> origin/Taewook5
             opacity: 1;
             text-decoration: none;
+            
         }
         
          .right-box:hover {
             transform: scale(1.05);
         }
+        
+        
         
     </style>
 </head>

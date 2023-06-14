@@ -12,11 +12,11 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mid.alcohol.domain.auction.Chat;
-import com.mid.alcohol.domain.auction.UserAuction;
-import com.mid.alcohol.dto.auction.ChatInputDto;
-import com.mid.alcohol.dto.auction.ChatListDto;
-import com.mid.alcohol.dto.auction.ChatRoomDto;
+import com.mid.alcohol.domain.Chat;
+import com.mid.alcohol.domain.UserAuction;
+import com.mid.alcohol.dto.ChatInputDto;
+import com.mid.alcohol.dto.ChatListDto;
+import com.mid.alcohol.dto.ChatRoomDto;
 import com.mid.alcohol.repository.AuctionRepository;
 
 

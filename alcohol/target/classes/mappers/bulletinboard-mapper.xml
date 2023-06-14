@@ -5,7 +5,7 @@
 <mapper namespace="com.mid.alcohol.repository.BulletinboardRepository">
     
     <!-- 전체 게시글 보기 -->
-     <select id="selectOrderByIdDesc" resultType="com.mid.alcohol.dto.board.BulletinboardListDto">
+     <select id="selectOrderByIdDesc" resultType="com.mid.alcohol.dto.BulletinboardListDto">
         select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
@@ -20,7 +20,7 @@
     </insert>
     
     <!-- 게시글 상세보기 -->
-    <select id="selectById" resultType="com.mid.alcohol.dto.board.BulletinboardDetailDto">
+    <select id="selectById" resultType="com.mid.alcohol.dto.BulletinboardDetailDto">
         select * from BULLETINBOARD where BOARD_ID = #{boardId}
     </select>
     
@@ -39,7 +39,7 @@
     <!-- 검색하기 (title, content, title and content, nickname, user_id) -->
     
     <!-- 글 제목으로 검색하기 -->
-    <select id="selectWhereTitle" resultType="com.mid.alcohol.dto.board.BulletinboardListDto">
+    <select id="selectWhereTitle" resultType="com.mid.alcohol.dto.BulletinboardListDto">
         select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
@@ -49,7 +49,7 @@
 	</select>
     
     <!-- 글 내용으로 검색하기 -->
-    <select id="selectWhereContent" resultType="com.mid.alcohol.dto.board.BulletinboardListDto">
+    <select id="selectWhereContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
         select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
@@ -59,7 +59,7 @@
 	</select>
     
     <!-- 제목과 내용으로 검색하기 -->
-    <select id="selectWhereTitleAndContent" resultType="com.mid.alcohol.dto.board.BulletinboardListDto">
+    <select id="selectWhereTitleAndContent" resultType="com.mid.alcohol.dto.BulletinboardListDto">
         select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.CATEGORY, B.IMAGE, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
@@ -69,7 +69,7 @@
 	</select>
     
     <!-- 닉네임으로 검색하기 -->
-    <select id="selectWhereNickname" resultType="com.mid.alcohol.dto.board.BulletinboardListDto">
+    <select id="selectWhereNickname" resultType="com.mid.alcohol.dto.BulletinboardListDto">
         select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.IMAGE, B.CATEGORY, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
@@ -79,7 +79,7 @@
 	</select>
     
     <!-- 유저 아이디로 검색하기 -->
-    <select id="selectWhereUserId" resultType="com.mid.alcohol.dto.board.BulletinboardListDto">
+    <select id="selectWhereUserId" resultType="com.mid.alcohol.dto.BulletinboardListDto">
         select B.BOARD_ID, B.TITLE, B.NICKNAME, B.USER_ID, B.TIME, B.VIEWS, B.RECOMMEND, B.CONTENT, B.IMAGE, B.CATEGORY, count(C.COMMENT_ID) as RCNT
         from BULLETINBOARD B left join COMMENTS C
             on B.BOARD_ID = C.BOARD_ID
@@ -96,13 +96,18 @@
     </update>
     
     <!-- 추천업하면 COMMENDUP테이블 정보 생성 -->
+<<<<<<< HEAD
     <insert id="recommendupInsert">
+=======
+    <insert id="commendupInsert">
+>>>>>>> origin/Taewook5
     	insert into COMMENDUP (BOARD_ID, RECOMMENDER_ID)
         values (#{boardId}, #{recommenderId})
     </insert>
     
+<<<<<<< HEAD
     <!-- 추천업 중복확인을 위한 리스트 읽기 -->
-    <select id="recommendUpSelect" resultType="com.mid.alcohol.domain.board.RecommendUp">
+    <select id="recommendUpSelect" resultType="com.mid.alcohol.domain.RecommendUp">
     	select * from COMMENDUP where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
     </select>
     
@@ -110,6 +115,9 @@
     <delete id="recommendUpDelete">
         delete from COMMENDUP where BOARD_ID = #{boardId}
     </delete>
+=======
+    
+>>>>>>> origin/Taewook5
     
     <!-- 추천다운 버튼 -->
     <update id="recommendDo">
@@ -119,21 +127,28 @@
     </update>
     
     <!-- 추천다운하면 COMMENDDOWN테이블 정보 생성 -->
+<<<<<<< HEAD
     <insert id="recommenddownInsert">
+=======
+    <insert id="commenddownInsert">
+>>>>>>> origin/Taewook5
     	insert into COMMENDDOWN (BOARD_ID, RECOMMENDER_ID)
         values (#{boardId}, #{recommenderId})
     </insert>
     
     <!-- 추천다운 중복확인을 위한 리스트 읽기 -->
-    <select id="recommendDownSelect" resultType="com.mid.alcohol.domain.board.RecommendDown">
+    <select id="recommendDownSelect" resultType="com.mid.alcohol.domain.RecommendDown">
     	select * from COMMENDDOWN where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
     </select>
     
+<<<<<<< HEAD
     <!-- 게시글 삭제시 추천다운 테이블에서 컬럼 삭제 -->
     <delete id="recommendDownDelete">
         delete from COMMENDDOWN where BOARD_ID = #{boardId}
     </delete>
     
+=======
+>>>>>>> origin/Taewook5
     <!-- 조회수 기능 -->
     <update id="viewsUp">
     	update BULLETINBOARD
@@ -142,23 +157,23 @@
     </update>
     
     <!-- 게시판 공지 사항만 보는 기능 -->
-    <select id="selectAnnouncement" resultType="com.mid.alcohol.domain.board.Bulletinboard">
+    <select id="selectAnnouncement" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD where CATEGORY = 1 order by BOARD_ID desc
     </select>
     
     <!-- 게시판 추천 높은순으로 나열하는 기능 -->
-    <select id="selectOrderByRecommend" resultType="com.mid.alcohol.domain.board.Bulletinboard">
+    <select id="selectOrderByRecommend" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD order by RECOMMEND desc
-	</select>
-	
+
     <!-- 유저 닉네임으로 게시판 이력 불러오기 -->
-    <select id="readHistoryByNickname" resultType="com.mid.alcohol.domain.board.Bulletinboard">
+    <select id="readHistoryByNickname" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD where NICKNAME = #{ nickname } 
     	order by BOARD_ID desc
     </select>
     
+<<<<<<< HEAD
     <!-- 닉네임으로 게시글 찾기 -->
-    <select id="selectNicknameOrderByboardId" resultType="com.mid.alcohol.domain.board.Bulletinboard">
+    <select id="selectNicknameOrderByboardId" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD where NICKNAME = #{ nickname } order by BOARD_ID desc
     </select>
     
@@ -169,4 +184,7 @@
         where BOARD_ID= #{ boardId }
     </update>
     
+    
+=======
+>>>>>>> origin/Taewook5
 </mapper>
