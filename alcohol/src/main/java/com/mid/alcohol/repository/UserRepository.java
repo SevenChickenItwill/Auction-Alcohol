@@ -1,9 +1,9 @@
 package com.mid.alcohol.repository;
 
-import com.mid.alcohol.domain.User;
-import com.mid.alcohol.dto.UserAddressUpdateDto;
-import com.mid.alcohol.dto.UserPasswordUpdateDto;
-import com.mid.alcohol.dto.UserPhoneUpdateDto;
+import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.user.UserAddressUpdateDto;
+import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
+import com.mid.alcohol.dto.user.UserPhoneUpdateDto;
 import com.mid.alcohol.domain.Login;
 public interface UserRepository {
     
@@ -33,7 +33,7 @@ public interface UserRepository {
     User findUserByEmailAndPassword (String userEmail, String userPassword);
     
     // 전화번호 수정
-    int PhoneUpdate(User entity);
+    int PhoneUpdate(UserPhoneUpdateDto user);
     
     // 주소 수정
     int AddressUpdate(UserAddressUpdateDto user);
