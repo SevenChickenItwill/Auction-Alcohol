@@ -13,5 +13,7 @@ public interface CommentRepository {
     // 포스트 댓글 개수 세기
     long selectCommentCountWithBoardId(long boardId);
 	Comment selectByCommentId(long commentId);
+	
+	int deleteCommentByBoardId(long boardId);
     
 }

@@ -25,6 +25,12 @@
 						<a href="/alcohol/signup/userModify">계정</a>
 					</div>
 				</li>
+				<li>
+					<c:url var="listPage" value="/bulletinboard/board/list">
+						<c:param name="num" value="0"></c:param>
+					</c:url>
+					<a href="${ listPage }">커뮤니티 페이지</a>
+				</li>
 			</ul>
 		</div>
 		
