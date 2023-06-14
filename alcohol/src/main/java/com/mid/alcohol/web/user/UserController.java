@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mid.alcohol.domain.User;
-import com.mid.alcohol.dto.UserDetaillDto;
-import com.mid.alcohol.dto.UserSignupDto;
+import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.user.UserDetaillDto;
+import com.mid.alcohol.dto.user.UserSignupDto;
 import com.mid.alcohol.repository.UserRepository;
-import com.mid.alcohol.dto.UserPasswordUpdateDto;
-import com.mid.alcohol.dto.UserPhoneUpdateDto;
+import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
+import com.mid.alcohol.dto.user.UserPhoneUpdateDto;
 import com.mid.alcohol.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -130,7 +130,6 @@ public class UserController {
     }
 
     // 전화번호를 수정
-<<<<<<< Updated upstream
     @PostMapping("/userPhoneModify/{userEmail}")
     public String userPhoneModify(
     		@PathVariable String userPhone,
@@ -143,17 +142,7 @@ public class UserController {
         log.info("업데이트 결과={}", result);
      
         return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
-=======
-    @PostMapping("/userPhoneModify")
-    public String userPhoneModify(UserPhoneUpdateDto dto) {
-        log.info("userPhoneModify()");
 
-        int result = userService.PhoneUpdate(dto);
-        log.info("업데이트 결과 = {}", result);
-
-        // 수정 후 사용자 수정 페이지로 이동
-        return "redirect:/signup/userModify";
->>>>>>> Stashed changes
     }
     
     // 전화번호 수정

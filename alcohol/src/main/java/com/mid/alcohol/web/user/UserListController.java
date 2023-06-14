@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.user;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mid.alcohol.domain.User;
-import com.mid.alcohol.dto.UserPasswordUpdateDto;
+import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
 import com.mid.alcohol.service.UserService;
 
 import lombok.RequiredArgsConstructor;

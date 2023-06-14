@@ -1,4 +1,4 @@
-package com.mid.alcohol.domain;
+package com.mid.alcohol.domain.user;
 
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
