@@ -9,15 +9,23 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mid.alcohol.dto.OrderProductDto;
 import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
 
@@ -38,11 +46,29 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	@PostMapping("/paymentmain")
-	public void paymentInfo(Model model, ) {
+	public void paymentInfo(Model model, @RequestParam("list") String listJson) {
 		log.info("paymentInfoPost()");
-		
 		String userNickname = (String)session.getAttribute("userNickname");
+		paymentService.insertPayment(userNickname);
+		int paymentid = paymentService.readPaymentList(userNickname);
 		log.info(userNickname);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<OrderProductDto> list = null;
+		try {
+			list = objectMapper.readValue(listJson, new TypeReference<List<OrderProductDto>>() {});
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		for (OrderProductDto opdto : list) {
+			opdto.setUserNickname(userNickname);
+			opdto.setPaymentid(paymentid);
+			
+		}
+		paymentService.insertOrder(list);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
 	}

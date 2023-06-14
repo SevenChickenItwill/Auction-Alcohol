@@ -1,5 +1,15 @@
 package com.mid.alcohol.domain;
 
-public class PaymentList {
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+@Builder
+public class PaymentList {
+	
+	private int paymentid;
+	private String userNickname;
+	
+	
+	
 }

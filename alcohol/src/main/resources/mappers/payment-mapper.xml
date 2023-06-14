@@ -19,10 +19,10 @@
  	</select>
  	
  	
- 	<!--  -->
- 	<update id="">
- 		
- 	</update>
+ 	<insert id="insertPayment">
+ 		INSERT INTO payment_list (userNickname)
+ 		VALUES (#{userNickname})
+ 	</insert>
  	
 
  	<!-- userid의 장바구니 목록을 가져온다. -->
@@ -33,5 +33,17 @@
  		ON b.productid = p.productid
  		WHERE b.userid = #{userid}
  	</select>
+ 	
+ 	<select id="readPaymentList" resultType="com.mid.alcohol.domain.PaymentList">
+ 		SELECT paymentid
+ 		FROM payment_list
+ 		where rownum = 1
+ 		ORDER BY paymentid desc
+ 	</select>
+ 	
+ 	<insert id="insertOrder">
+ 		INSERT INTO orders
+ 		values (#{paymentid}, #{productid}, #{quantity}, #{price}, #{totalAmount}, #{userNickname}, #{basketid}) 
+ 	</insert>
 
 </mapper>

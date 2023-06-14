@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mid.alcohol.domain.PaymentList;
 import com.mid.alcohol.domain.User;
 import com.mid.alcohol.dto.BasketListDto;
+import com.mid.alcohol.dto.OrderProductDto;
 import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.repository.PaymentRepository;
 
@@ -37,5 +39,17 @@ public class PaymentService {
 		log.info("readBasketByUserid(userid={})", userid);
 		return paymentRepository.readBasketByUserid(userid);
 
+	}
+
+	public void insertPayment(String userNickname) {
+		paymentRepository.insertPayment(userNickname);
+	}
+
+	public int readPaymentList(String userNickname) {
+		return paymentRepository.readPaymentList(userNickname);
+	}
+
+	public void insertOrder(List<OrderProductDto> list) {
+		paymentRepository.insertOrder(list);
 	}
 }

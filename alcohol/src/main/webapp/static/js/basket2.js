@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		var checkboxes = document.querySelectorAll('input[name="checkbox"]:checked');
 
 		// 체크된 항목을 담을 객체 배열
-		var selectedItems = [];
+		var list = [];
 
 		checkboxes.forEach(function(checkbox) {
 			const basketid = checkbox.getAttribute("data-id");
@@ -97,17 +97,17 @@ document.addEventListener('DOMContentLoaded', () => {
 				totalAmount: totalAmount
 			};
 
-			selectedItems.push(item);
+			list.push(item);
 		});
-		selectedItems.forEach((item) => {
+		list.forEach((item) => {
 			console.log(item);
 		});
 
 		// 선택된 항목 리스트를 폼에 추가
 		var hiddenInput = document.createElement("input");
 		hiddenInput.type = "hidden";
-		hiddenInput.name = "selectedItems";
-		hiddenInput.value = JSON.stringify(selectedItems);
+		hiddenInput.name = "list";
+		hiddenInput.value = JSON.stringify(list);
 
 		document.getElementById("myForm").appendChild(hiddenInput);
 
