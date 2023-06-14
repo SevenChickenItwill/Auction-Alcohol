@@ -29,9 +29,11 @@ public interface UserRepository {
     User findUserByEmailAndPassword (String userEmail, String userPassword);
     
     // 전화번호 수정
-    int PhoneUpdate(UserPhoneUpdateDto user);
+    int PhoneUpdate(User entity);
     
     // 주소 수정
     int AddressUpdate(UserAddressUpdateDto user);
+
+    
     
 }

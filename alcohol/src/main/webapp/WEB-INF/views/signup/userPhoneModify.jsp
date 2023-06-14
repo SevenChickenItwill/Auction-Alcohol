@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Alcohol</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -20,7 +20,7 @@
     <c:url var="userPhoneModify" value="/signup/userPhoneModify" ></c:url>
     <form id="accountForm" >
     <div>
-    <input class="d-none" type="text" id="userEmail" name="userEmail" value="${ sessionScope.userEmail }">    
+    <input class="d-none" type="text" id="userPhone" name="userPhone" value="${ sessionScope.userPhone }">    
 		<label>휴대폰 번호</label>
 		<br />
 		<input type="text" id="userAccountPhoneModify" name="userPhone" placeholder="PHONE" required />

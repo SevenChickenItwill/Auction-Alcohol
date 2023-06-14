@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UserPhoneUpdateDto {
+<<<<<<< Updated upstream
 	private String userEmail;
 	private String userPhone;
 	
@@ -22,4 +23,17 @@ public class UserPhoneUpdateDto {
 				.userPhone(userPhone)
 				.build();
 	}
+=======
+    private String userPhone;
+    private String userEmail;
+
+    public User toEntity() {
+        return User.builder()
+                .userEmail(userEmail)
+                .userPhone(userPhone)
+                .build();
+    }
+
+
+>>>>>>> Stashed changes
 }
