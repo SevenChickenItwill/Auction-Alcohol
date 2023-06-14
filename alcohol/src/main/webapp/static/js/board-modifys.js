@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		let filePath = image.value;
 		const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
+		
 		const board_id = inputBoradId.value;
 		const title = inputTitle.value;
 		const content = textareaContent.value;
@@ -43,26 +43,27 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
+		
 		let dtoUrl = `/alcohol/api/recommend/update/${board_id}/${title}/${content}`;
 		
 		try {
 			const result = confirm('수정하시겠습니까?');
 			
 			let responses = await axios.post(dtoUrl);
-
+			
 			const boardId = responses.data;
 			console.log(boardId);
 			
 			form.append('file', image.files[0]);
-
+			
 			if (result) {
 				form.enctype = 'multipart/form-data';
 				form.action = `/alcohol/bulletinboard/board/update/${boardId}`;
 				form.method = 'post';
 				form.submit();
-
+				
 			}
-
+		
 		} catch (error) {
 			console.log(error);
 		}
