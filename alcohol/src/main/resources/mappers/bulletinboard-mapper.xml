@@ -96,11 +96,16 @@
     </update>
     
     <!-- 추천업하면 COMMENDUP테이블 정보 생성 -->
+<<<<<<< HEAD
     <insert id="recommendupInsert">
+=======
+    <insert id="commendupInsert">
+>>>>>>> origin/Taewook5
     	insert into COMMENDUP (BOARD_ID, RECOMMENDER_ID)
         values (#{boardId}, #{recommenderId})
     </insert>
     
+<<<<<<< HEAD
     <!-- 추천업 중복확인을 위한 리스트 읽기 -->
     <select id="recommendUpSelect" resultType="com.mid.alcohol.domain.RecommendUp">
     	select * from COMMENDUP where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
@@ -110,6 +115,9 @@
     <delete id="recommendUpDelete">
         delete from COMMENDUP where BOARD_ID = #{boardId}
     </delete>
+=======
+    
+>>>>>>> origin/Taewook5
     
     <!-- 추천다운 버튼 -->
     <update id="recommendDo">
@@ -119,7 +127,11 @@
     </update>
     
     <!-- 추천다운하면 COMMENDDOWN테이블 정보 생성 -->
+<<<<<<< HEAD
     <insert id="recommenddownInsert">
+=======
+    <insert id="commenddownInsert">
+>>>>>>> origin/Taewook5
     	insert into COMMENDDOWN (BOARD_ID, RECOMMENDER_ID)
         values (#{boardId}, #{recommenderId})
     </insert>
@@ -129,11 +141,14 @@
     	select * from COMMENDDOWN where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
     </select>
     
+<<<<<<< HEAD
     <!-- 게시글 삭제시 추천다운 테이블에서 컬럼 삭제 -->
     <delete id="recommendDownDelete">
         delete from COMMENDDOWN where BOARD_ID = #{boardId}
     </delete>
     
+=======
+>>>>>>> origin/Taewook5
     <!-- 조회수 기능 -->
     <update id="viewsUp">
     	update BULLETINBOARD
@@ -149,8 +164,14 @@
     <!-- 게시판 추천 높은순으로 나열하는 기능 -->
     <select id="selectOrderByRecommend" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD order by RECOMMEND desc
+
+    <!-- 유저 닉네임으로 게시판 이력 불러오기 -->
+    <select id="readHistoryByNickname" resultType="com.mid.alcohol.domain.Bulletinboard">
+    	select * from BULLETINBOARD where NICKNAME = #{ nickname } 
+    	order by BOARD_ID desc
     </select>
     
+<<<<<<< HEAD
     <!-- 닉네임으로 게시글 찾기 -->
     <select id="selectNicknameOrderByboardId" resultType="com.mid.alcohol.domain.Bulletinboard">
     	select * from BULLETINBOARD where NICKNAME = #{ nickname } order by BOARD_ID desc
@@ -164,4 +185,6 @@
     </update>
     
     
+=======
+>>>>>>> origin/Taewook5
 </mapper>

@@ -17,6 +17,10 @@ public class BulletinboardUpdateDto {
     
     private long board_id; // 고유 게시글 번호
     private String title; // 게시글 제목
+<<<<<<< HEAD
+=======
+    private String image; // 게시글 이미지
+>>>>>>> origin/Taewook5
     private String content; // 게시글 내용
     
     public static BulletinboardUpdateDto fromEntity(Bulletinboard entity) {

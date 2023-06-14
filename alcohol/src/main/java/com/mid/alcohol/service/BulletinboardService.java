@@ -25,7 +25,11 @@ import com.mid.alcohol.domain.RecommendDown;
 import com.mid.alcohol.domain.RecommendUp;
 import com.mid.alcohol.dto.BulletinboardCreateDto;
 import com.mid.alcohol.dto.BulletinboardDetailDto;
+<<<<<<< HEAD
 import com.mid.alcohol.dto.BulletinboardImageUpdateDto;
+=======
+import com.mid.alcohol.dto.BulletinboardHistoryDto;
+>>>>>>> origin/Taewook5
 import com.mid.alcohol.dto.BulletinboardListDto;
 import com.mid.alcohol.dto.BulletinboardUpdateDto;
 import com.mid.alcohol.repository.BulletinboardRepository;
@@ -284,24 +288,39 @@ public class BulletinboardService {
 	}
     
 	// 추천 시 중복검사를 위해 COMMENDUP 테이블에 객체 생성
+<<<<<<< HEAD
     public int recommendUpInsert(RecommendUp recommend) {
     	log.info("recommendListInsert(recommend= {})", recommend);
     	
     	int result = bulletinboardRepository.recommendupInsert(recommend);
+=======
+    public int recommendUpInsert(long boardId, String userId) {
+    	log.info("recommendListInsert(boardId= {}, userId= {})", boardId, userId);
+    	
+    	int result = bulletinboardRepository.commendupInsert(boardId, userId);
+>>>>>>> origin/Taewook5
     	
     	return result;
     }
     
     // 비추천 시 중복검사를 위해 COMMENDDOWN 테이블에 객체 생성.
+<<<<<<< HEAD
     public int recommendDownInsert(RecommendDown recommend) {
     	log.info("recommendDelete(recommend= {})", recommend);
     	
     	int result = bulletinboardRepository.recommenddownInsert(recommend);
+=======
+    public int recommendDelete(long boardId, String userId) {
+    	log.info("recommendDelete(baordId= {}, userId= {})", boardId, userId);
+    	
+    	int result = bulletinboardRepository.commenddownInsert(boardId, userId);
+>>>>>>> origin/Taewook5
     	
     	return result;
     }
     
     // 추천시 중복검사하기
+<<<<<<< HEAD
     public int recommendUpSelect(RecommendUp recommend) {
     	log.info("recommendUpSelect(RecommendUp= {})", recommend);
     	
@@ -347,6 +366,24 @@ public class BulletinboardService {
     	
 		return result;
 	}
+=======
+    public RecommendUp recommendUpSelect(long boardId, String userId) {
+    	log.info("recommendUpSelect(baordId= {}, userId= {})", boardId, userId);
+    	
+    	RecommendUp up = bulletinboardRepository.recommendUpSelect(boardId, userId);
+    	
+    	return up;
+    }
+    
+    // 추천다운시 중복검사하기
+    public RecommendDown recommendDownSelect(long boardId, String userId) {
+    	log.info("recommendDownSelect(baordId= {}, userId= {})", boardId, userId);
+    	
+    	RecommendDown down = bulletinboardRepository.recommendDownSelect(boardId, userId);
+    	
+    	return down;
+    }
+>>>>>>> origin/Taewook5
 	
 	// 조회수 증가하는 service
 	public int viewsUp(long boardId) {
@@ -375,6 +412,7 @@ public class BulletinboardService {
 		return list.stream().map(BulletinboardListDto::fromEntity).toList();
 	}
 	
+<<<<<<< HEAD
 	// 닉네임으로 게시글 찾기
 	public Bulletinboard selectNicknameOrderByboardId(String nickname) {
 		log.info("selectNicknameOrderByboardId()");
@@ -384,6 +422,20 @@ public class BulletinboardService {
 		
 		return board.get(0);
 	}
+=======
+
+	public List<BulletinboardHistoryDto> historyReadByBoardId(String nickname) {
+		log.info("historyReadByBoardId()");
+		
+		// entity를 초기화해주는 작업. BulletinBoard 타입으로 엔티티를 만들어주기 때문에 모델명을 따라서 아규먼트 값 설정
+		List<Bulletinboard> entity = bulletinboardRepository.readHistoryByNickname(nickname);
+		// dto를 entity(db타입으로 변환)
+		
+		
+		return entity.stream().map(BulletinboardHistoryDto::fromEntity).toList();
+	}
+	
+>>>>>>> origin/Taewook5
 	
 	// create에서 이미지 저장하는 메서드
 	public int imageUpdate(long boardId, String image) {

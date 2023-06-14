@@ -26,18 +26,30 @@ public interface BulletinboardRepository {
     
     List<BulletinboardListDto> selectWhereTitle(String keyword);
     
+<<<<<<< HEAD
     List<BulletinboardListDto> selectWhereContent(String keyword);
     
     List<BulletinboardListDto> selectWhereTitleAndContent(String keywordT, String keywordC);
     
     List<BulletinboardListDto> selectWhereNickname(String keyword);
     
+=======
+    List<BulletinboardListDto> selectWhereTitle(String keyword);
+    
+    List<BulletinboardListDto> selectWhereContent(String keyword);
+    
+    List<BulletinboardListDto> selectWhereTitleAndContent(String keywordT, String keywordC);
+    
+    List<BulletinboardListDto> selectWhereNickname(String keyword);
+    
+>>>>>>> origin/Taewook5
     List<BulletinboardListDto> selectWhereUserId(String keyword);
 
 	int recommendUp(long boardId);
 
 	int recommendDo(long boardId);
 	
+<<<<<<< HEAD
 	int recommendupInsert(RecommendUp recommend);
 	
 	int recommenddownInsert(RecommendDown recommend);
@@ -45,12 +57,23 @@ public interface BulletinboardRepository {
 	RecommendUp recommendUpSelect(RecommendUp recommend);
 	
 	RecommendDown recommendDownSelect(RecommendDown recommend);
+=======
+	int commendupInsert(long boardId, String recommenderId);
+	
+	int commenddownInsert(long boardId, String recommenderId);
+	
+	RecommendUp recommendUpSelect(long boardId, String recommenderId);
+	
+	RecommendDown recommendDownSelect(long boardId, String recommenderId);
+>>>>>>> origin/Taewook5
 	
 	int viewsUp(long boardId);
 
 	List<Bulletinboard> selectAnnouncement();
 	
 	List<Bulletinboard> selectOrderByRecommend();
+
+	List<Bulletinboard> readHistoryByNickname(String nickname);
 	
 	List<Bulletinboard> selectNicknameOrderByboardId(String nickname);
 	

@@ -104,6 +104,7 @@ a:active {
 							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
 						<circle cx="12" cy="13" r="4"></circle></svg> <strong>Album</strong>
 				</a>
+<<<<<<< HEAD
 
 				<c:url var="paymain" value="/payment/payindex">
 				</c:url>
@@ -114,6 +115,10 @@ a:active {
                 </c:url>
 				<a href="${ boardList }" class="text-danger">커뮤니티</a>
 
+=======
+				<c:url var="homePage" value="/bulletinboard/board/home" />
+				<a href="${ homePage }">임시홈페이지</a>
+>>>>>>> origin/Taewook5
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarHeader"
 					aria-controls="navbarHeader" aria-expanded="false"

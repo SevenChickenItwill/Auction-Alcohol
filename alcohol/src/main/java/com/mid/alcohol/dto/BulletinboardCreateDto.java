@@ -22,6 +22,10 @@ public class BulletinboardCreateDto {
     private String nickname;
     private String user_id;
     private String title;
+<<<<<<< HEAD
+=======
+    private String image;
+>>>>>>> origin/Taewook5
     private String content;
     
     public Bulletinboard toEntity(Bulletinboard bulletinboard) throws Exception {

@@ -41,7 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		let htmlStr = '';
 
+<<<<<<< HEAD
 		htmlStr += `추천수 : [${data.recommend}]`;
+=======
+		htmlStr += `추천수[${data.recommend}]`;
+>>>>>>> origin/Taewook5
 
 		spanRecommendCnt.innerHTML = htmlStr;
 
@@ -75,7 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
 			.then((response) => {
 				console.log(response.data);
 				
+<<<<<<< HEAD
 				if (response.data === 1) {
+=======
+				if (response.data == 1) {
+>>>>>>> origin/Taewook5
 					alert('추천은 계정당 한번만 가능합니다.');
 					console.log(response.data);
 				}
@@ -247,13 +255,21 @@ document.addEventListener('DOMContentLoaded', () => {
 	}
 
 	// 댓글 수정 핸들러
+<<<<<<< HEAD
 	let btnSave;
+=======
+
+>>>>>>> origin/Taewook5
 
 	const showComment = (e) => {
 		const btn = e.target;
 		const card = btn.closest('.card');
 		const textarea = card.querySelector('textarea');
+<<<<<<< HEAD
 		btnSave = document.createElement('button');
+=======
+		const btnSave = document.createElement('button');
+>>>>>>> origin/Taewook5
 		btnSave.textContent = '수정 완료';
 		btnSave.classList.add('btnSave');
 		btnSave.dataset.id = btn.dataset.id;
@@ -274,6 +290,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	function cancelComment(event) {
+<<<<<<< HEAD
+=======
+		const btnSave = document.createElement('button');
+>>>>>>> origin/Taewook5
 		const btnCancel = event.target;
 		const card = btnCancel.closest('.card');
 		const textarea = card.querySelector('.editable');
@@ -355,7 +375,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	commentReg.addEventListener('click', createComment);
 
 	getCommentWithBoardId();
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> origin/Taewook5
 
 
 
