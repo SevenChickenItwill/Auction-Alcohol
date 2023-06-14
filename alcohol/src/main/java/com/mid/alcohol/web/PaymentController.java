@@ -71,8 +71,6 @@ public class PaymentController {
 	}
 	
 	@PostMapping("/paymentmain")
-	public void paymentInfo() {
-		log.info("paymentInfo()");
 	public void paymentInfo(Model model, @RequestParam(name = "OrderProductDto") List<OrderProductDto> orderProductDto) {
 		log.info("paymentInfoPost()");
 		log.info(orderProductDto.toString());
@@ -178,14 +176,6 @@ public class PaymentController {
 		log.info("update()");
 	}
 	
-	@PostMapping("/update")
-	public String update(AdressUpdateDto dto) {
-		log.info("update(dto={})", dto);
-		
-		int result = paymentService.update(dto);
-		log.info("update = {}", result);
-		
-		return "redirect:/payment/paymentmain";
 	
 	@RequestMapping("/kakaopay.cls")
 	@ResponseBody
