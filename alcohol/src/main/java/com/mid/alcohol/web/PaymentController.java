@@ -21,20 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
-import com.mid.alcohol.dto.AdressUpdateDto;
 
-import com.mid.alcohol.dto.PaymentReadDto;
-
-import com.mid.alcohol.dto.BasketListDto;
-import com.mid.alcohol.dto.PaymentAdressModifyDto;
-import com.mid.alcohol.service.PaymentService;
-
-import jakarta.servlet.http.HttpSession;
-import jakarta.websocket.Session;
-
-import com.mid.alcohol.dto.BasketListDto;
-=======
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -42,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mid.alcohol.dto.OrderProductDto;
 import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
->>>>>>> Dahan12
+
 
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -55,12 +42,8 @@ import lombok.extern.slf4j.Slf4j;
 public class PaymentController {
 	
 	@Autowired
-<<<<<<< HEAD
-	private HttpSession session; 
-	
-=======
 	private HttpSession session;
->>>>>>> Dahan12
+
 	
 	@Autowired
 	private PaymentService paymentService;
@@ -75,7 +58,7 @@ public class PaymentController {
 		log.info("paymentInfoPost()");
 		log.info(orderProductDto.toString());
 		
-<<<<<<< HEAD
+
 	}
 	
 	@PostMapping("/updateDeliveryInfo")
@@ -85,7 +68,7 @@ public class PaymentController {
 		int result = paymentService.update(dto);
 		log.info("updateDeliveryInfo = {}", dto);
 		return "redirect:/payment/paymentmain";
-=======
+
 		/*
 		String userNickname = (String)session.getAttribute("userNickname");
 		paymentService.insertPayment(userNickname);
@@ -114,12 +97,12 @@ public class PaymentController {
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
 		*/
->>>>>>> Dahan12
+
 	}
 	
 	@GetMapping("/paymentmain")
 	public void paymentInfoGet(Model model) {
-<<<<<<< HEAD
+
 		String userNickname = (String) session.getAttribute("userNickname");
 		
 		log.info("paymentInfoGet(userNickName={})", userNickname);
@@ -127,13 +110,13 @@ public class PaymentController {
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		
 		model.addAttribute("user", dto);
-=======
+
 		log.info("paymentInfoGet()");
 		String userNickname = (String)session.getAttribute("userNickname");
 		log.info(userNickname);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
->>>>>>> Dahan12
+>
 		
 	}
 	
@@ -142,7 +125,7 @@ public class PaymentController {
 		log.info("information()");
 	}
 	
-<<<<<<< HEAD
+
 	@GetMapping("/modify")
 	public void adressModify(Model model) {
 		log.info("modify()");
@@ -154,9 +137,9 @@ public class PaymentController {
 		model.addAttribute("user", dto);
 		log.info("run3()");	
 	}
-=======
+
 	
->>>>>>> Dahan12
+
 	
 
 	@GetMapping("/paymain")
@@ -171,10 +154,6 @@ public class PaymentController {
 		
 	}
 	
-	@GetMapping("/update")
-	public void update() {
-		log.info("update()");
-	}
 	
 	
 	@RequestMapping("/kakaopay.cls")
@@ -219,13 +198,13 @@ public class PaymentController {
 	@GetMapping("/paysuccess")
 	public void paysuccess() {}
 
-<<<<<<< HEAD
-=======
+
+
 	@GetMapping("/paycancel")
 	public void paycancel() {}
 	
 	@GetMapping("/payfail")
 	public void payfail() {}
 
->>>>>>> Dahan12
+
 }
