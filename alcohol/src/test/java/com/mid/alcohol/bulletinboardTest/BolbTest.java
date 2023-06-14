@@ -90,19 +90,15 @@ public class BolbTest {
 		log.info("base64Image ={}", base64Image);
 	}
 	
-	@Test
+	//@Test
 	public void createTest() throws Exception {
 		log.info("createTest()");
 		
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 50; i++) {
 			
-			byte[] image = imageToByteArray("C:\\team\\middlePj\\alcohol\\src\\main\\webapp\\static\\images\\ioio.jpg");
+			String image = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/ioio.jpg";
 			
-			HashMap<String, byte[]> param = new HashMap<>();
-			
-			param.put("IMAGE", image); // String이 mapper에서 sql문장에 들어가는 param 역할을 하게된다.
-			
-			BulletinboardCreateDto dto = new BulletinboardCreateDto(0, "test" + i, "test" + i, "test" + i, image, "test" + i);
+			BulletinboardCreateDto dto = new BulletinboardCreateDto(0, "화성가야지", "test" + i, "test" + i, image, "test" + i);
 			
 			int result = bulletinboardServie.create(dto);
 			
@@ -111,6 +107,14 @@ public class BolbTest {
 		}
 		
 		log.info("성공");
+		
+	}
+	
+	//@Test
+	public void recommendup() {
+		
+		int result = bulletinboardServie.recommendUpInsert(4, "대만");
+		log.info("result = {}", result);
 		
 	}
 	

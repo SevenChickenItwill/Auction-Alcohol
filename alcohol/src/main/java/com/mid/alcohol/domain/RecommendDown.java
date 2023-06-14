@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class RecommendDown {
 	
-	private long board_id;
-	private String recommender_id;
+	private long boardId;
+	private String recommenderId;
 	
 }
