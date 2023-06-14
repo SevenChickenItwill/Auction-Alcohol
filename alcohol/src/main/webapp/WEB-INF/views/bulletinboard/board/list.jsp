@@ -22,9 +22,16 @@
 	<nav>
 		<div>
 			<ul>
-				<li><c:url value="/bulletinboard/board/create"
-						var="dealCreated" /> <a href="${ dealCreated }">새글작성</a></li>
-				<li><c:url value="/" var="mainPage" /> <a href="${ mainPage }">메인페이지</a></li>
+				<c:if test="${ sessionScope.userNickname ne null }">
+					<li>
+						<c:url value="/bulletinboard/board/create" var="dealCreated" /> 
+						<a href="${ dealCreated }">새글작성</a>
+					</li>
+				</c:if>
+				<li>
+					<c:url value="/" var="mainPage" /> 
+					<a href="${ mainPage }">메인페이지</a>
+				</li>
 			</ul>
 		</div>
 	</nav>
@@ -55,7 +62,9 @@
 						<c:set var="count" value="${ pageCount }" />
 						<c:set var="nums" value="${ param.num }" />
 						<c:set var="maxIndex" value="${ maxIndex }" />
-
+						
+						<c:if test="${ listSize != 0 }">
+						
 						<c:forEach items="${ boards }" var="board" begin="${ count }"
 							end="${ maxIndex - 1 }">
 
@@ -70,7 +79,7 @@
 									<div class="row g-0">
 										<div class="col-md-4">
 											<!-- 이미지 -->
-											<img src="data:image/jpeg;base64,${board.image}"
+											<img src="data:image/jpeg;base64,${ board.image }"
 												class="img-fluid rounded-start" alt="이미지">
 										</div>
 										<div class="col-md-8">
@@ -93,8 +102,9 @@
 							</div>
 							</a>
 						</c:forEach>
+						</c:if>
 					</div>
-
+					
 					<div>
 						<c:url var="nextlist" value="/bulletinboard/board/list">
 							<c:choose>
@@ -210,8 +220,6 @@
 						<a href="${ maxIndex }"><button>&gt;&gt;</button></a>
 					</div>
 
-
-
 					<!-- 검색 -->
 					<c:url value="/bulletinboard/board/search" var="searchPage">
 						<c:param name="pagenum" value="${ pagenum2 }"></c:param>
@@ -230,7 +238,7 @@
 				</div>
 			</div>
 		</div>
-
+		
 	</main>
 
 	<div>

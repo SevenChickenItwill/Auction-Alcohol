@@ -26,14 +26,14 @@
 				<div>
 					<div>
 						<select name="category" id="category">
-							<option value="1">공지사항</option>
+							<option value="1">공지사항</option> <!-- if문으로 운영자만 보이게 하기 -->
 							<option value="0">글작성</option>
 						</select>
 					</div>
 					<div>
 						<label for="nickname">작성자</label> 
-						<input type="text" name="nickname" id="nickname" value="타락파워전사" /> <!-- ${ sessionScope.userNickname } -->
-						<input type="text" name="user_id"  id="userId" value="wooooa" /> <!-- ${ sessionScope.userEmail } -->
+						<input type="text" name="nickname" id="nickname" value="닉네임:${ sessionScope.userNickname }" readonly />
+						<input type="text" name="user_id"  id="userId" value="아이디:${ sessionScope.userEmail }" readonly />
 					</div>
 					<div>
 						<label for="title">제목</label> 

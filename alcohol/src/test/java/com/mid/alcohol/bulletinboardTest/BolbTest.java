@@ -72,47 +72,7 @@ public class BolbTest {
 		return returnValue;
 	}
 	
-	//@Test
-	public void toTagImage() throws IOException {
-		
-		BulletinboardDetailDto board = bulletinboardServie.selectById(1010);
-		
-		byte[] bytes = board.getImage();
-		
-		InputStream inputStream = new ByteArrayInputStream(bytes);
-		BufferedImage image = ImageIO.read(inputStream);
-		
-		// 이미지를 Base64로 인코딩
-		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-		ImageIO.write(image, "jpg", outputStream);
-		String base64Image = Base64.getEncoder().encodeToString(outputStream.toByteArray());
-		
-		log.info("base64Image ={}", base64Image);
-	}
-	
-	@Test
-	public void createTest() throws Exception {
-		log.info("createTest()");
-		
-		for (int i = 0; i < 1; i++) {
-			
-			byte[] image = imageToByteArray("C:\\team\\middlePj\\alcohol\\src\\main\\webapp\\static\\images\\ioio.jpg");
-			
-			HashMap<String, byte[]> param = new HashMap<>();
-			
-			param.put("IMAGE", image); // String이 mapper에서 sql문장에 들어가는 param 역할을 하게된다.
-			
-			BulletinboardCreateDto dto = new BulletinboardCreateDto(0, "test" + i, "test" + i, "test" + i, image, "test" + i);
-			
-			int result = bulletinboardServie.create(dto);
-			
-			log.info("dto= {}", dto);
-			
-		}
-		
-		log.info("성공");
-		
-	}
+
 	
 	
 }

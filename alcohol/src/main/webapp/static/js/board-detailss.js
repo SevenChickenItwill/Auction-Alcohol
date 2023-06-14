@@ -3,125 +3,131 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+	const form = document.querySelector('form#boardForm');
+
+	// 삭제버튼 객체 생성.
+	const deleteBtn = document.querySelector('button#deleteBoardBtn');
 	
-    const form = document.querySelector('form#boardForm');
-    
-    // 삭제버튼 객체 생성.
-    const deleteBtn = document.querySelector('a#deleteBtn');
-    
-    // 아이디를 불러올 수 있는 객체 생성.
-    const inputId = document.querySelector('input#boardId');
-    
-    // 추천수를 바로 갱신하기 위한 객체 생성.
-    const spanRecommendCnt = document.querySelector('span#recommendCnt');
-    
-    // 로그인한 아이디
-    const loginId = document.querySelector('input#loginId').value;
-    
-    deleteBtn.addEventListener('click', (e) => {
-        e.preventDefault;
-         
-         const board_id = inputId.value;
-         const result = confirm(`${board_id}번을 정말 삭제 하시겠습니까?`);
-         
-         
-         if (result) {
-             form.action = './delete';
-             form.method = 'post';
-             form.submit(board_id);
-             
-         }
-    });
-    
-    // 화면에서 바로 갱신하기 위해 선언하는 메서드
-    const makeRecommendElements = (data) => {
+	// 아이디를 불러올 수 있는 객체 생성.
+	const inputId = document.querySelector('input#boardId');
+
+	// 추천수를 바로 갱신하기 위한 객체 생성.
+	const spanRecommendCnt = document.querySelector('span#recommendCnt');
+	
+	// 댓글 카운트
+	const boardCommendCount = document.querySelector('span#boardCommendCount');
+
+	deleteBtn.addEventListener('click', (e) => {
+		e.preventDefault;
+
+		const board_id = inputId.value;
+		const result = confirm(`${board_id}번을 정말 삭제 하시겠습니까?`);
 		
+		form.append('board_id', board_id);
+		
+		if (result) {
+			form.action = './delete';
+			form.method = 'post';
+			form.submit();
+
+		}
+	});
+
+	// 화면에서 바로 갱신하기 위해 선언하는 메서드
+	const makeRecommendElements = (data) => {
+
 		spanRecommendCnt.innerHTML = '';
-		
+
 		let htmlStr = '';
-		
+
 		htmlStr += `추천수[${data.recommend}]`;
-		
+
 		spanRecommendCnt.innerHTML = htmlStr;
-		
+
 	};
-    
-    const getRecommendWithBoardId = async () => {
-        
-        const boardId = document.querySelector('input#boardId').value;
-        const reqUrl = `/alcohol/api/recommend/all/${boardId}`;
-        
-        // Ajax 요청을 보내고 응답을 기다림.
-        try {
-            const response = await axios.get(reqUrl);
-            console.log(response);
-            makeRecommendElements(response.data);
-        } catch (error) {
-            console.log(error);
-        }
-        
-    };
-    
-    // 추천을 올려주는 버튼 생성.
-    const recommendUp = document.querySelector('input#recommendUp');
-    
-    const recommendClickUp = (e) => {
-		
+
+	const getRecommendWithBoardId = async () => {
+
 		const boardId = document.querySelector('input#boardId').value;
-		const data = { boardId };
+		const reqUrl = `/alcohol/api/recommend/all/${boardId}`;
+
+		// Ajax 요청을 보내고 응답을 기다림.
+		try {
+			const response = await axios.get(reqUrl);
+			console.log(response);
+			makeRecommendElements(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+
+	};
+
+	// 추천을 올려주는 버튼 생성.
+	const recommendUp = document.querySelector('input#recommendUp');
+
+	const recommendClickUp = (e) => {
+
+		const boardId = inputId.value;
+		const loginId = document.querySelector('input#loginId').value;
 		
-		if (loginId == null) {
-			alert('로그인이 필요한 서비스입니다.')
-			
-		} else {
-			axios.post(`/alcohol/api/recommend/recommendup/${boardId}`)
-			.then ((response) => {
-				console.log(response);
+		axios.post(`/alcohol/api/recommend/recommendup/boardId=${boardId},loginId=${loginId}`)
+			.then((response) => {
+				console.log(response.data);
+				
+				if (response.data == 1) {
+					alert('추천은 계정당 한번만 가능합니다.');
+					console.log(response.data);
+				}
+				
 				getRecommendWithBoardId(); // 갱신
 			})
 			.catch((error) => console.log(error));
-		}
-		
-		
+
+
+
 	};
-	
+
 	recommendUp.addEventListener('click', recommendClickUp);
-    
-    
-    // 추천을 내려주는 버튼 생성.
-    const recommendDo = document.querySelector('input#recommendDo');
-    
-    const recommendClickDo = (e) => {
-		
+
+
+	// 추천을 내려주는 버튼 생성.
+	const recommendDo = document.querySelector('input#recommendDo');
+
+	const recommendClickDo = (e) => {
+
 		const boardId = document.querySelector('input#boardId').value;
-		const data = { boardId };
-		
-		if (loginId == null) {
-			alert('로그인이 필요한 서비스입니다.')
-			
-		} else {
-			
-			axios.post(`/alcohol/api/recommend/recommenddo/${ boardId }`)
+		const loginId = document.querySelector('input#loginId').value;
+
+		axios.post(`/alcohol/api/recommend/recommenddo/${boardId},${loginId}`)
 			.then((response) => {
 				console.log(response);
+				
+				if (response.data == 1) {
+					alert('비추천은 계정당 한번만 가능합니다.');
+					console.log(response.data);
+				}
+				
 				getRecommendWithBoardId();
+				
 			})
 			.catch((error) => console.log(error));
-		}
-		
-		
-		
+
+
+
+
 	};
-	
+
 	recommendDo.addEventListener('click', recommendClickDo);
-    
-    
-    // 등록버튼 처리
+	
+	// 댓글
+	
+	// 등록버튼 처리
 	
 	const commentCount = document.querySelector('span#commentCount');
 
 	const commentReg = document.querySelector('button#commentReg');
-
+	
 	const textareaContent = document.querySelector('textarea#content');
 	const inputUserNickname = document.querySelector('input#userNickname');
 
@@ -177,12 +183,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// 댓글 목록 표시
 	const replies = document.querySelector('div#replies');
-
+	
 	// comment domain 데이터를 받아서 String 형식을 html에 저장, 추가.
 	const makeCommentElements = (data) => {
+		const userNickname = document.querySelector('input#userNickname').value;
+		
 		// 댓글 개수 업데이트
 		commentCount.innerHTML = data.length; // 배열 길이(원소 개수)
-
+		boardCommendCount.innerHTML = data.length;
+		
 		replies.innerHTML = ''; // <div>의 컨텐트를 지움.
 
 		let htmlStr = '';
@@ -195,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const time = new Date(comment.time).toLocaleString();
 
 			let userCheckHTML = '';
-			if (comment.nickname === 'ada') {
+			if (comment.nickname === userNickname) {
 				userCheckHTML = `
         <div id="userCheck">
           <button class="btnDelete" data-id="${comment.commentId}">
@@ -265,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	function cancelComment(event) {
+		const btnSave = document.createElement('button');
 		const btnCancel = event.target;
 		const card = btnCancel.closest('.card');
 		const textarea = card.querySelector('.editable');
@@ -346,6 +356,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	commentReg.addEventListener('click', createComment);
 
 	getCommentWithBoardId();
-    
-    
+
+
+
+
 });

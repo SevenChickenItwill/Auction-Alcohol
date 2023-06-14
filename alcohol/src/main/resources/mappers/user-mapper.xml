@@ -30,6 +30,6 @@
   </select>
   
   <select id="signInMain" resultType="com.mid.alcohol.domain.User">
-  	select * from Users where userEmail = #{userEmail} AND userPassword = #{userPassword}
+  	select * from USERS where userEmail = #{userEmail} AND userPassword = #{userPassword}
   </select>
 </mapper>

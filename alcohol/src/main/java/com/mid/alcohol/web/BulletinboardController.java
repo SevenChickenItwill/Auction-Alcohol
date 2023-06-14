@@ -216,7 +216,7 @@ public class BulletinboardController {
     public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
         log.info("update(dto={})", dto);
         
-        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        String path = "C:/workspace4/middlePj/alcohol/src/main/webapp/static/images/";
         log.info("fileName= {}", path + file);
         
         try {
@@ -257,7 +257,7 @@ public class BulletinboardController {
         log.info("boardCreate()");
         
         
-        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
+        String path = "C:/workspace4/middlePj/alcohol/src/main/webapp/static/images/";
         log.info("fileName= {}", path + file);
         
         try {
@@ -422,6 +422,11 @@ public class BulletinboardController {
         model.addAttribute("boards", list);
         model.addAttribute("listSize", list.size());
         model.addAttribute("listPageMax", listPageMax);
+    }
+    
+    @GetMapping("/home")
+    public void homePage() {
+    	
     }
     
 }
