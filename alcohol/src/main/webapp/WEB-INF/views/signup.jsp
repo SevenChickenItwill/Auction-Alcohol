@@ -12,11 +12,18 @@
     rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
     crossorigin="anonymous">
+    
+    <style>
+    	body {
+    		background-color: black;
+    		color: white;
+    	}
+    </style>
 </head>
 <body>
     <div>
         <header>
-            <h1>술면조 회원가입</h1> <!-- 메인 회원가입 페이지 -->
+            <h1>회원가입</h1> <!-- 메인 회원가입 페이지 -->
         </header>
         
         <main>
@@ -28,19 +35,19 @@
                 <form id="signupForm" method="post" action="${ signup }">
                     <div>
                         <div>
-                            <label for="userName">이름</label>
+                            <label for="userName">Name</label>
                             <br />
-                            <input type="text" id="userName" name="userName" placeholder="NAME" required  autofocus />
+                            <input type="text" id="userName" name="userName" placeholder="이름*" required  autofocus />
                         </div>
                         <div>
-                            <label for="userPassword">비밀번호</label>
+                            <label for="userPassword">PASSWORD</label>
                             <br />
-                            <input type="password" id="userPassword" name="userPassword" placeholder="PASSWORD" required />
+                            <input type="password" id="userPassword" name="userPassword" placeholder="비밀번호*" required />
                         </div>
                         <div>
-                            <label for="userPasswordCheck">비밀번호 확인</label>
+                            <label for="userPasswordCheck">PASSWORD CHECK</label>
                             <br />
-                            <input type="password" id="userPasswordCheck" name="userPasswordCheck" placeholder="PASSWORD CHECK" required />
+                            <input type="password" id="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인*" required />
                         </div>
                         
                             <ul>
@@ -53,20 +60,20 @@
                             </ul>
                         
                         <div>
-                            <label for="userAddress">주소</label>
+                            <label for="userAddress">ADRESS</label>
                             <br />
-                            <input type="text" id="userAddress" name="userAddress" placeholder="ADDRESS" required >
+                            <input type="text" id="userAddress" name="userAddress" placeholder="주소*" required >
                         </div>
                         <div> 
-                            <label for="userPhone">전화번호</label>
+                            <label for="userPhone">PHONE NUMBER</label>
                             <br />
-                            <input type="text" id="userPhone" name="userPhone" placeholder="PHONE" required>
+                            <input type="text" id="userPhone" name="userPhone" placeholder="핸드폰 번호*" required>
                             <!--  <small id="phoneErrorMessage" style="color: red;"></small> -->
                         </div>
                         <div>
-                            <label for="userNickname">별명</label>
+                            <label for="userNickname">NICKNAME</label>
                             <br />
-                            <input type="text" id="userNickname" name="userNickname" placeholder="NICKNAME"	 required />
+                            <input type="text" id="userNickname" name="userNickname" placeholder="별명*"	 required />
                             <button id="btnNicknameCheck" >중복체크</button>
                         </div>  
                     </div>

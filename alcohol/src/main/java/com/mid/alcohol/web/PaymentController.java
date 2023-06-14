@@ -13,9 +13,12 @@ import com.mid.alcohol.dto.AdressUpdateDto;
 import com.mid.alcohol.dto.PaymentReadDto;
 
 import com.mid.alcohol.dto.BasketListDto;
-
-
+import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
+
 import com.mid.alcohol.dto.BasketListDto;
 
 import lombok.RequiredArgsConstructor;
@@ -28,21 +31,43 @@ import lombok.extern.slf4j.Slf4j;
 public class PaymentController {
 	
 	@Autowired
+	private HttpSession session; 
+	
+	
+	@Autowired
 	private PaymentService paymentService;
+	
+	@GetMapping("/payindex")
+	public void payindex() {
+		log.info("payindex()");
+	}
 	
 	@PostMapping("/paymentmain")
 	public void paymentInfo() {
 		log.info("paymentInfo()");
 		
+	}
 	
+	@PostMapping("/updateDeliveryInfo")
+	public String updateDeliveryInfo(AdressUpdateDto dto) {
+		log.info("updateDeliveryInfo(dto={})", dto);
+		
+		int result = paymentService.update(dto);
+		log.info("updateDeliveryInfo = {}", dto);
+		return "redirect:/payment/paymentmain";
 	}
 	
 	@GetMapping("/paymentmain")
-	public void paymentInfoGet() {
-		log.info("paymentInfoGet()");
+	public void paymentInfoGet(Model model) {
+		String userNickname = (String) session.getAttribute("userNickname");
+		
+		log.info("paymentInfoGet(userNickName={})", userNickname);
+		
+		PaymentAdressModifyDto dto = paymentService.read(userNickname);
+		
+		model.addAttribute("user", dto);
 		
 	}
-	
 	
 	@GetMapping("/information")
 	public void paymentInformation(Model model) {
@@ -50,26 +75,27 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/modify")
-	public void adressModify(Model model, @RequestParam String order_name) {
+	public void adressModify(Model model) {
 		log.info("modify()");
 		
-		PaymentReadDto dto = paymentService.read(order_name);
+		String userNickname = (String) session.getAttribute("userNickname");
+		log.info(userNickname);
+		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		
-		model.addAttribute("payment", dto);
+		model.addAttribute("user", dto);
 		log.info("run3()");	
 	}
 	
 
 	@GetMapping("/paymain")
 	public void paymentMain(Model model) {
-		
-		
+	
 		log.info("paymentMain()");
 	}
 	
 	@GetMapping("/detail")
-	public void paymentDetail(String order_id, Model model) {
-		log.info("paymentDetail(order_id={})", order_id);
+	public void paymentDetail(String userNickName, Model model) {
+		log.info("paymentDetail(order_id={})", userNickName);
 		
 	}
 	
@@ -87,6 +113,5 @@ public class PaymentController {
 		
 		return "redirect:/payment/paymentmain";
 	}
-
 
 }

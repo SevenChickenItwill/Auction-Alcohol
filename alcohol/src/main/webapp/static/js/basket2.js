@@ -81,12 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				const productid = document.querySelector(`input#productid-${basketid}`).value;
 				const quantity = document.querySelector(`input#quantity-${basketid}`).value;
 				const totalAmount = document.querySelector('label#totalAmount').getAttribute('data-totalAmount');
-				
+				const userid = document.querySelector('input#userid').value;
 				const data = {
 					basketid,
 					productid,
 					quantity,
-					totalAmount
+					totalAmount,
+					userid
 				};
 				
 				list.push(data);

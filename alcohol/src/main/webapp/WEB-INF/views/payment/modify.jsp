@@ -13,33 +13,40 @@
 			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 			crossorigin="anonymous">
 	</head>
+	<style>
+    	body {
+    		background-color: black;
+    		color: white;
+    	}
+    </style>
 
 <body>
-	<div class="container-fluid">
-		<header class="my-2 p-5 text-center text-bg-dark">
-			<h1>배송지 변경/수정 페이지</h1>
-		</header>
-	</div>
+	<header class="my-2 p-5 text-center text-bg-dark">
+		<h1>배송지 변경/수정 페이지</h1>
+	</header>
 	
+	
+	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
+	 
 	<div>
 		<main class="my-2">
 			<div class="card">
 				<form class="card-body" id="modifyForm">
 					<div class="my-2">
-						<label class="form-label" for="order_name">이름</label>
-						 <textarea class="form-control" id="order_name" name="order_name">${ payment.order_name }</textarea>
+						<label class="form-label" for="userNickname">이름</label>
+						 <textarea class="form-control" id="userNickname" name="userNickname">${ user.userNickname }</textarea>
 					</div>
 					<div class="my-2">
-						<label class="form-label" for="order_adress">주소</label>
-						<textarea class="form-control" id="order_adress" name="order_adress">${ payment.order_adress }</textarea>
+						<label class="form-label" for="userAddress">주소</label>
+						<textarea class="form-control" id="userAddress" name="userAddress">${ user.userAddress }</textarea>
 					</div>
 					<div class="my-2">
-						<label class="form-label" for="order_phone">핸드폰 번호</label>
-						 <textarea class="form-control" name="order_phone" id="order_phone">${ payment.order_phone }</textarea>
+						<label class="form-label" for="userPhone">핸드폰 번호</label>
+						 <textarea class="form-control" name="userPhone" id="userPhone">${ user.userPhone }</textarea>
 					</div>
 					<div class="my-2">
-						<label class="form-label" for="order_email">이메일</label>
-						 <textarea class="form-control" name="order_email" id="order_email">${ payment.order_email }</textarea>
+						<label class="form-label" for="userEmail">이메일</label>
+						 <textarea class="form-control" name="userEmail" id="userEmail">${ user.userEmail }</textarea>
 					</div>
 				</form>
 				
@@ -53,7 +60,7 @@
 		</main>
 	</div>
 	
-	<script src="./../static/js/payment-modify.js"></script>
+	<script src="./../static/js/payment-modifyy.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

@@ -26,6 +26,7 @@
 			<label class="py-6" for="allCheckbox">전체선택</label> 
 			<span class="btnDeleteBasket">삭제</span>
 		</div>
+		
 		<div class="card-boby">
 			<c:forEach var="basket" items="${list}">
 				<div>
@@ -57,12 +58,13 @@
 		</div>
 		
 		<div class="card-footer">
+			<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> 
 			<br>
 			<span id="btnPayment" class="btn">결제하기</span>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="./static/js/basket2.js"></script>
+	<script src="../static/js/basket2.js"></script>
 </body>
 </html>
