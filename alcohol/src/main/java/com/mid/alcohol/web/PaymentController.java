@@ -26,6 +26,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mid.alcohol.dto.AdressUpdateDto;
 import com.mid.alcohol.dto.OrderProductDto;
 import com.mid.alcohol.dto.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
@@ -48,17 +49,10 @@ public class PaymentController {
 	@Autowired
 	private PaymentService paymentService;
 	
-	@GetMapping("/payindex")
-	public void payindex() {
-		log.info("payindex()");
-	}
-	
 	@PostMapping("/paymentmain")
 	public void paymentInfo(Model model, @RequestParam(name = "OrderProductDto") List<OrderProductDto> orderProductDto) {
 		log.info("paymentInfoPost()");
 		log.info(orderProductDto.toString());
-		
-
 	}
 	
 	@PostMapping("/updateDeliveryInfo")
@@ -102,21 +96,11 @@ public class PaymentController {
 	
 	@GetMapping("/paymentmain")
 	public void paymentInfoGet(Model model) {
-
-		String userNickname = (String) session.getAttribute("userNickname");
-		
-		log.info("paymentInfoGet(userNickName={})", userNickname);
-		
-		PaymentAdressModifyDto dto = paymentService.read(userNickname);
-		
-		model.addAttribute("user", dto);
-
 		log.info("paymentInfoGet()");
 		String userNickname = (String)session.getAttribute("userNickname");
 		log.info(userNickname);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
->
 		
 	}
 	
@@ -148,11 +132,7 @@ public class PaymentController {
 		log.info("paymentMain()");
 	}
 	
-	@GetMapping("/detail")
-	public void paymentDetail(String userNickName, Model model) {
-		log.info("paymentDetail(order_id={})", userNickName);
-		
-	}
+	
 	
 	
 	

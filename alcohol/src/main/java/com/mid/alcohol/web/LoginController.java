@@ -37,16 +37,6 @@ public class LoginController {
     
     @PostMapping("/login")
     public String login(LoginCheckDto dto, HttpSession session) {
-<<<<<<< HEAD
-    	
-    	User user = userService.login(dto);
-    	
-    	session.setAttribute("userEmail", user.getUserEmail());
-    	session.setAttribute("userPassword", user.getUserPassword());
-    	session.setAttribute("userNickname", user.getUserNickname());
-    	
-    	return "redirect:/auction/auctionlist";
-=======
         
         User user = userService.login(dto);
         
@@ -55,7 +45,6 @@ public class LoginController {
         session.setAttribute("userNickname", user.getUserNickname());
         
         return "redirect:/auction/auctionlist";
->>>>>>> origin/Dohyun4
     }
     
     @GetMapping("/logout")
