@@ -75,6 +75,13 @@ public class CommentService {
 	}
 
 
+	public int deleteCommentByBoardId(long board_id) {
+		log.info("deleteCommentByBoardId(board_id={})", board_id);
+		
+		return commentRepository.deleteCommentByBoardId(board_id);
+	}
+
+
     
     
 }

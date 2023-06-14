@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class BulletinboardDetailDto {
     
     private long board_id; // 게시글 고유 번호
-    private byte[] image; // 게시글 이미지
+    private String image; // 게시글 이미지
     private String title; // 게시글 제목
     private String nickname; // 게시글 작성자 닉네임
     private String user_id; // 게시글 작성자 아이디

@@ -11,7 +11,7 @@
 				rel="stylesheet"
 				integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 				crossorigin="anonymous">
-	  <title>결제 위젯</title>
+	  <title>Payment</title>
 	  <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 	  <style>
 	    #payment-button{ width:100%; padding:15px; background-color:#3065AC; color:white; border-radius:3px; font-size:16px; border:none; margin-top:10px}
@@ -47,39 +47,40 @@
 	   -->
 	  
 	  	<div class="title">배송지 정보</div>
+	  	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	  		<li>
 	  			<c:url value="/payment/modify" var="adressModify">
-	  				<c:param name="order_name" value="admin" />
+	  				<c:param name="userNickname" value="대한" />
 				</c:url><a href="${adressModify}">배송지 수정</a>
 			</li>
 		<div class="my-2">
-			<label class="form-label" for="order_name">이름</label>
-			<input class="form-control" id="order_name" value="${ payment.order_name }" readonly />
+			<label class="form-label" for="userNickname">이름</label>
+			<input class="form-control" id="userNickname" value="${ user.userNickname }" readonly />
 		</div>
 		<div class="my-2">
-			<label class="form-label" for="order_adress">주소</label>
-			<textarea class="form-control" id="order_adress" readonly>${ payment.order_adress }</textarea>
+			<label class="form-label" for="userAddress">주소</label>
+			<textarea class="form-control" id="userAddress" readonly>${ user.userAddress }</textarea>
 		</div>
 		<div class="my-2">	
-			<label class="form-label" for="order_phone">핸드폰 번호</label>
-			<input class="form-control" id="order_phone" value="${ payment.order_phone }" readonly />
+			<label class="form-label" for="userPhone">핸드폰 번호</label>
+			<input class="form-control" id="userPhone" value="${ user.userPhone }" readonly />
 		</div>
 		<div class="my-2">
-			<label class="form-label" for="order_email">이메일</label>
-			<input class="form-control" id="order_email" value="${ payment.order_email }" readonly />
+			<label class="form-label" for="userEmail">이메일</label>
+			<input class="form-control" id="userEmail" value="${ user.userEmail }" readonly />
 		</div>
 		<hr>	
 		
 		<div class="title">계산서</div>		
 		<hr>
 	
-	  <!-- 결제 방법 영역-->
+	  <!-- 결제 방법 영역 -->
 	  <div class="title">결제 방법</div>
 	  <img src="../static/img/small.png">
 	  <br>
-	  <c:url value="/payment/information" var="paymentinformation">
+	  <c:url value="/payment/paymentsuccess" var="paymentsuccess">
 			<c:param name="num" value="0" />
-	  </c:url><a href="${paymentinformation}">주문/결제 내역</a>
+	  </c:url><a href="${paymentsuccess}">주문/결제 내역</a>
 	  	
 	<script src="./../static/js/payment-paymentmain.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

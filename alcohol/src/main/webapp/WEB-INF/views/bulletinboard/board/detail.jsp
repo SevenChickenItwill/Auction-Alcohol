@@ -22,7 +22,8 @@
 
 	<main>
 		
-		<input type="text" class="d-none" value="${ sessionScope.userEmail }" id="loginId" />
+		<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" name="loginId"/>
+		
 		
 		<section>
 			<form id="boardForm">
@@ -39,7 +40,7 @@
 									<p class="card-text" >
 										<span>조회수 : [${ board.views }]</span>
 										<span id="recommendCnt">추천수 : [${ board.recommend }]</span>
-										<span>댓글[개수]</span>
+										댓글<span id="boardCommendCount">[개수]</span>
 									</p>
 									<img src="data:image/jpeg;base64,${ image }" alt="이미지" />
 									<p class="card-text">${ board.content }</p>
@@ -55,18 +56,22 @@
 					</div>
 				</div>
 			</form>
+			<input class="d-none" type="text" value="${ board.nickname }" name="writerid"  />
+			<input class="d-none" type="text" value="${ sessionScope.userNickname }" name="checkid" />
 			<span> <c:url value="/bulletinboard/board/list?num=0"
 					var="boardList" /> <a href="${ boardList }">목록페이지</a>
 			</span>
-			<!-- if문 넣기 -->
-				<span> 
-				<c:url var="boardModify" value="/bulletinboard/board/modify">
-					<c:param name="id" value="${ board.board_id }"></c:param>
-				</c:url> 
-				<a href="${ boardModify }">수정하기</a> 
-				<a id="deleteBtn">삭제하기</a>
-				</span>
-			
+				<c:if test="${ checkid eq writerid }">
+				
+					<span> 
+						<c:url var="boardModify" value="/bulletinboard/board/modify">
+							<c:param name="id" value="${ board.board_id }"></c:param>
+							<c:param name="paramImage" value="${ image }" ></c:param>
+						</c:url> 
+						<a href="${ boardModify }">수정하기</a>
+						<button id="deleteBoardBtn">삭제하기</button>
+					</span>
+				</c:if>
 			  <div>
                  <!-- 댓글 목록 보여줄 영역 -->
                     <span>댓글</span>
@@ -85,7 +90,7 @@
                 
                 
                 <div>
-                    <input value="test33" id="userNickname" readonly/>
+                    <input value="${ sessionScope.userNickname }" id="userNickname" readonly/>
                 </div>
                 <div>
                     <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
@@ -109,8 +114,7 @@
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../../static/js/comments.js"></script>
-		<script src="../../static/js/board-details.js"></script>
+		<script src="../../static/js/board-detailss.js"></script>
 	</div>
 
 </body>
