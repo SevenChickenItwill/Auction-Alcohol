@@ -1,6 +1,6 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.user;
 
-import com.mid.alcohol.domain.User;
+import com.mid.alcohol.domain.user.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,19 +11,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AdressUpdateDto {
-	private String userNickname;
-	private String userAddress;
-	private String userPhone;
+
+public class UserPasswordUpdateDto {
 	private String userEmail;
+	private String userPassword;
+	
 	
 	public User toEntity() {
+		
 		return User.builder()
-				.userNickname(userNickname)
-				.userAddress(userAddress)
-				.userPhone(userPhone)
 				.userEmail(userEmail)
+				.userPassword(userPassword)
 				.build();
 	}
+	
 }
-
