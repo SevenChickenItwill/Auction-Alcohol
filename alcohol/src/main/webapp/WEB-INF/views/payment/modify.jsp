@@ -13,23 +13,28 @@
 			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 			crossorigin="anonymous">
 	</head>
+	<style>
+    	body {
+    		background-color: black;
+    		color: white;
+    	}
+    </style>
 
 <body>
-	<div class="container-fluid">
-		<header class="my-2 p-5 text-center text-bg-dark">
-			<h1>배송지 변경/수정 페이지</h1>
-		</header>
-	</div>
+	<header class="my-2 p-5 text-center text-bg-dark">
+		<h1>배송지 변경/수정 페이지</h1>
+	</header>
 	
-	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickName }" readonly="readonly"/>
+	
+	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	 
 	<div>
 		<main class="my-2">
 			<div class="card">
 				<form class="card-body" id="modifyForm">
 					<div class="my-2">
-						<label class="form-label" for="userNickName">이름</label>
-						 <textarea class="form-control" id="userNickName" name="userNickName">${ user.userNickName }</textarea>
+						<label class="form-label" for="userNickname">이름</label>
+						 <textarea class="form-control" id="userNickname" name="userNickname">${ user.userNickname }</textarea>
 					</div>
 					<div class="my-2">
 						<label class="form-label" for="userAddress">주소</label>

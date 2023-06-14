@@ -13,12 +13,12 @@ import com.mid.alcohol.dto.BasketListDto;
 @Repository
 public interface PaymentRepository {
 
-    int updateDeliveryInfo(Payment payment);
+    int updateDeliveryInfo(User user);
     
-
+    
     User selectByOrderInfo(String userNickname);
     
-
+        
     List<BasketListDto> readBasketByUserid(String userid);
 
 

@@ -50,12 +50,12 @@
 	  	<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	  		<li>
 	  			<c:url value="/payment/modify" var="adressModify">
-	  				<c:param name="userNickName" value="대한" />
+	  				<c:param name="userNickname" value="대한" />
 				</c:url><a href="${adressModify}">배송지 수정</a>
 			</li>
 		<div class="my-2">
-			<label class="form-label" for="userNickName">이름</label>
-			<input class="form-control" id="userNickName" value="${ user.userNickName }" readonly />
+			<label class="form-label" for="userNickname">이름</label>
+			<input class="form-control" id="userNickname" value="${ user.userNickname }" readonly />
 		</div>
 		<div class="my-2">
 			<label class="form-label" for="userAddress">주소</label>

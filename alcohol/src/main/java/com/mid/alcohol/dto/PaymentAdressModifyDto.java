@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class PaymentAdressModifyDto {
 
 	private String userName;
-	private String userNickName;
+	private String userNickname;
 	private LocalDateTime userBirthday;
 	private int userAge;
 	private String userGender;
@@ -30,7 +30,7 @@ public class PaymentAdressModifyDto {
 	public static PaymentAdressModifyDto fromEntity(User entity) {
 		return PaymentAdressModifyDto.builder()
 				.userName(entity.getUserName())
-				.userNickName(entity.getUserNickname())
+				.userNickname(entity.getUserNickname())
 				.userBirthday(entity.getUserBirthday())
 				.userAge(entity.getUserAge())
 				.userGender(entity.getUserGender())

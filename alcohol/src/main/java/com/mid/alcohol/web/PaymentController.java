@@ -48,16 +48,22 @@ public class PaymentController {
 		
 	}
 	
-	@PostMapping("/deliveryInfoUpdate")
-	public String deliveryInfoUpdate() {
+	@PostMapping("/updateDeliveryInfo")
+	public String updateDeliveryInfo(AdressUpdateDto dto) {
+		log.info("updateDeliveryInfo(dto={})", dto);
 		
+		int result = paymentService.update(dto);
+		log.info("updateDeliveryInfo = {}", dto);
 		return "redirect:/payment/paymentmain";
 	}
+	
 	@GetMapping("/paymentmain")
-	public void paymentInfoGet(@RequestParam("userid") String userNickName, Model model) {
-		log.info("paymentInfoGet(userNickName={})", userNickName);
+	public void paymentInfoGet(Model model) {
+		String userNickname = (String) session.getAttribute("userNickname");
 		
-		PaymentAdressModifyDto dto = paymentService.read(userNickName);
+		log.info("paymentInfoGet(userNickName={})", userNickname);
+		
+		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		
 		model.addAttribute("user", dto);
 		
