@@ -1,4 +1,4 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.board;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

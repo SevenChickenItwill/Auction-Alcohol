@@ -6,13 +6,13 @@
     
     <!-- PK ID로 댓글 읽어오기 -->
     <select id = "selectByCommentId"
-        resultType="com.mid.alcohol.domain.Comment">
+        resultType="com.mid.alcohol.domain.board.Comment">
         select * from COMMENTS where COMMENT_ID = #{commentId}
         </select>
     
     <!-- BODARD ID로 댓글 읽어오기 -->
     <select id="selectByBoardId"
-        resultType="com.mid.alcohol.domain.Comment">
+        resultType="com.mid.alcohol.domain.board.Comment">
         select * from COMMENTS
         where BOARD_ID = #{boardId}
         order by TIME desc

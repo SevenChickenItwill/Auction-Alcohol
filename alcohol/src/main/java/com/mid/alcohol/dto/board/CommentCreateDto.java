@@ -1,6 +1,6 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.board;
 
-import com.mid.alcohol.domain.Comment;
+import com.mid.alcohol.domain.board.Comment;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

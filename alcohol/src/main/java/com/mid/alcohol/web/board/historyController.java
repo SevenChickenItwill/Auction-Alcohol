@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.board;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mid.alcohol.dto.BulletinboardDetailDto;
-import com.mid.alcohol.dto.BulletinboardHistoryDto;
+import com.mid.alcohol.dto.board.BulletinboardDetailDto;
+import com.mid.alcohol.dto.board.BulletinboardHistoryDto;
 import com.mid.alcohol.service.BulletinboardService;
 
 import lombok.RequiredArgsConstructor;

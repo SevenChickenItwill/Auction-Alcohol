@@ -1,9 +1,9 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.board;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.domain.board.Bulletinboard;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

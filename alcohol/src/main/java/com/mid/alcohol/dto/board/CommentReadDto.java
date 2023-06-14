@@ -1,8 +1,8 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.board;
 
 import java.sql.Timestamp;
 
-import com.mid.alcohol.domain.Comment;
+import com.mid.alcohol.domain.board.Comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

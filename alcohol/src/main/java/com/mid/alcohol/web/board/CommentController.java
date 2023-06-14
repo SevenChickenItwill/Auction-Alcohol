@@ -1,9 +1,8 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.board;
 
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,15 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mid.alcohol.domain.Comment;
-import com.mid.alcohol.dto.BulletinboardDetailDto;
-import com.mid.alcohol.dto.CommentCreateDto;
-import com.mid.alcohol.dto.CommentListDto;
-import com.mid.alcohol.dto.CommentReadDto;
-import com.mid.alcohol.dto.CommentUpdateDto;
+import com.mid.alcohol.dto.board.CommentCreateDto;
+import com.mid.alcohol.dto.board.CommentListDto;
+import com.mid.alcohol.dto.board.CommentReadDto;
+import com.mid.alcohol.dto.board.CommentUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
 import com.mid.alcohol.service.CommentService;
 

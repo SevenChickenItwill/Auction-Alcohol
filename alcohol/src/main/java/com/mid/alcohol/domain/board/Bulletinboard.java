@@ -1,4 +1,4 @@
-package com.mid.alcohol.domain;
+package com.mid.alcohol.domain.board;
 
 import java.sql.Blob;
 import java.time.LocalDateTime;

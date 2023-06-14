@@ -23,10 +23,6 @@
 	<main>
 		
 		<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" name="loginId"/>
-<<<<<<< HEAD
-		
-=======
->>>>>>> origin/Taewook5
 		
 		<section>
 			<form id="boardForm">
@@ -69,10 +65,6 @@
 					<span> 
 						<c:url var="boardModify" value="/bulletinboard/board/modify">
 							<c:param name="id" value="${ board.board_id }"></c:param>
-<<<<<<< HEAD
-							<c:param name="paramImage" value="${ image }" ></c:param>
-=======
->>>>>>> origin/Taewook5
 						</c:url> 
 						<a href="${ boardModify }">수정하기</a>
 						<button id="deleteBoardBtn">삭제하기</button>

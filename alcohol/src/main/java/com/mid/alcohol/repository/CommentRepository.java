@@ -2,7 +2,7 @@ package com.mid.alcohol.repository;
 
 import java.util.List;
 
-import com.mid.alcohol.domain.Comment;
+import com.mid.alcohol.domain.board.Comment;
 
 public interface CommentRepository {
     

@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.board;
 
 import java.io.File;
 import java.util.UUID;
@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mid.alcohol.domain.Bulletinboard;
-import com.mid.alcohol.domain.RecommendDown;
-import com.mid.alcohol.domain.RecommendUp;
-import com.mid.alcohol.dto.BulletinboardCreateDto;
-import com.mid.alcohol.dto.BulletinboardDetailDto;
-import com.mid.alcohol.dto.BulletinboardListDto;
-import com.mid.alcohol.dto.BulletinboardUpdateDto;
+import com.mid.alcohol.domain.board.Bulletinboard;
+import com.mid.alcohol.domain.board.RecommendDown;
+import com.mid.alcohol.domain.board.RecommendUp;
+import com.mid.alcohol.dto.board.BulletinboardCreateDto;
+import com.mid.alcohol.dto.board.BulletinboardDetailDto;
+import com.mid.alcohol.dto.board.BulletinboardListDto;
+import com.mid.alcohol.dto.board.BulletinboardUpdateDto;
 import com.mid.alcohol.service.BulletinboardService;
 
 import lombok.RequiredArgsConstructor;

@@ -1,10 +1,10 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.board;
 
 import java.sql.Blob;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mid.alcohol.domain.Bulletinboard;
+import com.mid.alcohol.domain.board.Bulletinboard;
 import com.mid.alcohol.service.BulletinboardService;
 
 import lombok.AllArgsConstructor;
@@ -22,10 +22,6 @@ public class BulletinboardCreateDto {
     private String nickname;
     private String user_id;
     private String title;
-<<<<<<< HEAD
-=======
-    private String image;
->>>>>>> origin/Taewook5
     private String content;
     
     public Bulletinboard toEntity(Bulletinboard bulletinboard) throws Exception {
