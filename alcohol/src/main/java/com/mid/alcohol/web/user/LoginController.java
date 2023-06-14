@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.user;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mid.alcohol.domain.Login;
-import com.mid.alcohol.domain.User;
+import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.LoginCheckDto;
-import com.mid.alcohol.dto.UserSignupDto;
+import com.mid.alcohol.dto.user.UserSignupDto;
 import com.mid.alcohol.service.UserService;
 
 import jakarta.servlet.http.HttpSession;

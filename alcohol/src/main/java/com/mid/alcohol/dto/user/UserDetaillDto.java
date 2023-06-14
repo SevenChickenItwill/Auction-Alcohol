@@ -1,8 +1,8 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.user;
 
 import java.time.LocalDate;
 
-import com.mid.alcohol.domain.User;
+import com.mid.alcohol.domain.user.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
