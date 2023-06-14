@@ -5,15 +5,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.mid.alcohol.domain.Auction;
-import com.mid.alcohol.domain.AuctionProducts;
-import com.mid.alcohol.domain.Chat;
-import com.mid.alcohol.domain.UserAuction;
-import com.mid.alcohol.dto.AuctionDetailSearchDto;
-import com.mid.alcohol.dto.AuctionListDto;
-import com.mid.alcohol.dto.AuctionSearchDto;
-import com.mid.alcohol.dto.ChatListDto;
-import com.mid.alcohol.dto.ChatMemberDto;
+import com.mid.alcohol.domain.auction.Auction;
+import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.domain.auction.Chat;
+import com.mid.alcohol.domain.auction.UserAuction;
+import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
+import com.mid.alcohol.dto.auction.AuctionListDto;
+import com.mid.alcohol.dto.auction.AuctionSearchDto;
+import com.mid.alcohol.dto.auction.ChatListDto;
+import com.mid.alcohol.dto.auction.ChatMemberDto;
 
 
 @Repository

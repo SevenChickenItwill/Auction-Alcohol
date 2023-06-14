@@ -7,10 +7,10 @@
 		INSERT INTO AuctionProducts ( userId, pName, category, constructor, brandName, cost )
 		values (#{userId}, #{pName}, #{category}, #{constructor}, #{brandName}, #{cost})
 	</insert>
-	<select id="read" resultType="com.mid.alcohol.domain.AuctionProducts">
+	<select id="read" resultType="com.mid.alcohol.domain.auction.AuctionProducts">
 		SELECT * FROM AuctionProducts WHERE userId = #{userId}
 	</select>
-	<select id="readAt" resultType="com.mid.alcohol.domain.AuctionProducts">
+	<select id="readAt" resultType="com.mid.alcohol.domain.auction.AuctionProducts">
 		SELECT * FROM AuctionProducts WHERE productId = #{productId}
 	</select>
 	<delete id="deleteByProductId">
@@ -23,7 +23,7 @@
 		WHERE productid = #{productId}
 	</update>
 	
-	<select id="readDetail" resultType="com.mid.alcohol.dto.AuctionReadDto">
+	<select id="readDetail" resultType="com.mid.alcohol.dto.auction.AuctionReadDto">
     	SELECT * 
     	FROM auctionproducts
     	where
@@ -51,7 +51,7 @@
     	INSERT INTO productphoto VALUES (#{productid}, #{filepath})
     </insert>
     
-    <select id="selectPhoto" resultType="com.mid.alcohol.domain.Photo">
+    <select id="selectPhoto" resultType="com.mid.alcohol.domain.auction.Photo">
     	SELECT * FROM productphoto WHERE productid = #{productid}
     </select>
     

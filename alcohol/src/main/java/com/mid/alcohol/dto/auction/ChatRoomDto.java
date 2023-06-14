@@ -1,4 +1,4 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.auction;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.auction;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

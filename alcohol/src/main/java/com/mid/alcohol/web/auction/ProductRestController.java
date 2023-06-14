@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.auction;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mid.alcohol.domain.AuctionProducts;
-import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.service.AuctionProductService;
 
 import lombok.RequiredArgsConstructor;

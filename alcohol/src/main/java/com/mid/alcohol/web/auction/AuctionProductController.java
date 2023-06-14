@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.auction;
 
 import java.io.File;
 import java.time.LocalDateTime;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mid.alcohol.domain.AuctionProducts;
-import com.mid.alcohol.dto.AuctionCreateDto;
-import com.mid.alcohol.dto.AuctionReadDto;
+import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.dto.auction.AuctionCreateDto;
+import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.service.AuctionProductService;
 
 import jakarta.servlet.http.HttpServletRequest;

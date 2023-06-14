@@ -1,4 +1,4 @@
-package com.mid.alcohol.domain;
+package com.mid.alcohol.domain.auction;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

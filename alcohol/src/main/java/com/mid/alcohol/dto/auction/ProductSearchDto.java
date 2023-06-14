@@ -1,6 +1,6 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.auction;
 
-import com.mid.alcohol.domain.AuctionProducts;
+import com.mid.alcohol.domain.auction.AuctionProducts;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

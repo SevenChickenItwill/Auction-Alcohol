@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.auction;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

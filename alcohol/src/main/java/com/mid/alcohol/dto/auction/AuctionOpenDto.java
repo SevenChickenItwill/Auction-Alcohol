@@ -1,8 +1,8 @@
-package com.mid.alcohol.dto;
+package com.mid.alcohol.dto.auction;
 
 import java.time.LocalDateTime;
 
-import com.mid.alcohol.domain.Auction;
+import com.mid.alcohol.domain.auction.Auction;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

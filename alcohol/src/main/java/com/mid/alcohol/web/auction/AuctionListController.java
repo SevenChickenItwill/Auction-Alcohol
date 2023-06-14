@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.auction;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mid.alcohol.dto.AuctionListDto;
+import com.mid.alcohol.dto.auction.AuctionListDto;
 import com.mid.alcohol.service.AuctionService;
 
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.auction;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mid.alcohol.dto.AuctionListDto;
-import com.mid.alcohol.dto.AuctionOpenDto;
-import com.mid.alcohol.dto.AuctionSearchDto;
+import com.mid.alcohol.dto.auction.AuctionListDto;
+import com.mid.alcohol.dto.auction.AuctionOpenDto;
+import com.mid.alcohol.dto.auction.AuctionSearchDto;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
 

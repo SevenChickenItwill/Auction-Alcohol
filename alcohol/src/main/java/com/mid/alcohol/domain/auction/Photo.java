@@ -1,4 +1,4 @@
-package com.mid.alcohol.domain;
+package com.mid.alcohol.domain.auction;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserAuction {
-
-	private long cid;
-	private String chatroom;
-	private int membercount;
+public class Photo {
+	
+	private int productid;
+	private String photopath;
 	
 	
 }

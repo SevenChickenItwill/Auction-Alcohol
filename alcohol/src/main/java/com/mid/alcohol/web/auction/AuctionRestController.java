@@ -1,4 +1,4 @@
-package com.mid.alcohol.web;
+package com.mid.alcohol.web.auction;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,16 +19,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.mid.alcohol.domain.AuctionProducts;
-import com.mid.alcohol.domain.Photo;
-import com.mid.alcohol.dto.AuctionDetailSearchDto;
-import com.mid.alcohol.dto.AuctionListDto;
-import com.mid.alcohol.dto.AuctionReadDto;
-import com.mid.alcohol.dto.ChatInputDto;
-import com.mid.alcohol.dto.ChatListDto;
-import com.mid.alcohol.dto.ChatRoomDto;
+import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.domain.auction.Photo;
+import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
+import com.mid.alcohol.dto.auction.AuctionListDto;
+import com.mid.alcohol.dto.auction.AuctionReadDto;
+import com.mid.alcohol.dto.auction.ChatInputDto;
+import com.mid.alcohol.dto.auction.ChatListDto;
+import com.mid.alcohol.dto.auction.ChatRoomDto;
 
-import com.mid.alcohol.dto.ProductSearchDto;
+import com.mid.alcohol.dto.auction.ProductSearchDto;
 import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
