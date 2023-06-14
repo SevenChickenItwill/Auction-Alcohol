@@ -2,30 +2,58 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const accountForm = document.querySelector('#accountForm');
-    const btnPhoneCancel = document.querySelector('button#btnPhoneCancel');  
-    const btnPhoneUpdate = document.querySelector('button#btnPhoneUpdate');
-    const userAccountPhoneModify = document.querySelector('#userAccountPhoneModify');
+	const accountForm = document.querySelector('#accountForm');
+	const btnPhoneCancel = document.querySelector('button#btnPhoneCancel');
+	const btnPhoneUpdate = document.querySelector('button#btnPhoneUpdate');
+	const userAccountPhoneModify = document.querySelector('input#userAccountPhoneModify');
+	const inputUserEmail = document.querySelector('#userEmail');
 
-    btnPhoneCancel.addEventListener('click', () => {
-        const check = confirm('수정을 취소할까요?');
-        if (check) {
-            accountForm.action = './userModify';
-            accountForm.method = 'get';
-            accountForm.submit();
-        }
-    });
+	btnPhoneCancel.addEventListener('click', () => {
+		const check = confirm('수정을 취소할까요?');
+		if (check) {
+			accountForm.action = './userModify';
+			accountForm.method = 'get';
+			accountForm.submit();
+		}
+	});
 
-    btnPhoneUpdate.addEventListener('click', () => {		
-        if (userAccountPhoneModify.value.trim() === '') {
-            alert('항목을 반드시 작성하세요.');
-            return;
-        }
-        const check = confirm('수정할까요?');
-        if (check) {
-            accountForm.action = './userModify';
-            accountForm.method = 'post';
-            accountForm.submit();
-        }
-    });
+	btnPhoneUpdate.addEventListener('click', (e) => {
+		e.preventDefault;
+		
+		const userPhone = userAccountPhoneModify.value;
+		const userEmail = inputUserEmail.value;
+		if (userPhone.trim() === '') {
+			alert('항목을 반드시 작성하세요.');
+			return;
+		}
+
+		if (!isValidPhoneNumber(userPhone)) {
+			alert('올바른 전화번호 형식을 입력해주세요. (예: 010-0000-0000)');
+			return;
+		}
+
+		//const userPhone = document.createElement("input");
+		//userPhone.type = "hidden";
+		//userPhone.name = "userPhone";
+		//userPhone.value = JSON.stringify(userPhoneValue);
+		
+		
+		
+		const check = confirm('수정할까요?');
+
+		if (check) {
+			//accountForm.appendChild(userPhone);
+		    //accountForm.submit();
+			accountForm.method = 'POST';
+			accountForm.action = `/alcohol/signup/userPhoneModify/${userEmail}`;
+			accountForm.submit();
+		}
+	});
+
+	// 전화번호 유효성 체크
+	function isValidPhoneNumber(phoneNumber) {
+		const regex = /^\d{3}-\d{4}-\d{4}$/;
+		return regex.test(phoneNumber);
+	}
+
 });

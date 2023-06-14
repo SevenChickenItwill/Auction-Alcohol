@@ -3,7 +3,10 @@ package com.mid.alcohol.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -103,7 +106,7 @@ public class UserController {
     // 로그인된 메인 페이지에서 계정을 눌렀을 때 보여줄 계정 정보
     @PostMapping("/userModify")
     public void userModify() {
-
+    	
     	
     }
 
@@ -121,18 +124,22 @@ public class UserController {
         int result = userService.PasswordUpdate(dto);
         log.info("업데이트 결과={}", result);
 
-         return "redirect:/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+         return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
 
     // 전화번호를 수정
-    @PostMapping("/userPhoneModify")
-    public String userPhoneModify(UserPhoneUpdateDto dto) {
-    	log.info("userPhoneModify()", dto);
+    @PostMapping("/userPhoneModify/{userEmail}")
+    public String userPhoneModify(
+    		@PathVariable String userPhone,
+    		@PathVariable String userEmail) {
+    	UserPhoneUpdateDto dto = new UserPhoneUpdateDto(userEmail, userPhone);
+    	
+    	log.info("userPhoneModify(dto= {})", dto);
     	
     	int result = userService.PhoneUpdate(dto);
         log.info("업데이트 결과={}", result);
      
-        return "redirect:/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+        return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
     }
     
     // 전화번호 수정

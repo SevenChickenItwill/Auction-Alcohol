@@ -12,11 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class UserPhoneUpdateDto {
+	private String userEmail;
 	private String userPhone;
 	
 	public User toEntity() {
 		
 		return User.builder()
+				.userEmail(userEmail)
 				.userPhone(userPhone)
 				.build();
 	}

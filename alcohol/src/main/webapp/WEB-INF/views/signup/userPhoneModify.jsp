@@ -18,12 +18,12 @@
 	</header>
 	
     <c:url var="userPhoneModify" value="/signup/userPhoneModify" ></c:url>
-    <form id="accountForm" method="post" action="${ userPhoneModify }">
+    <form id="accountForm" >
     <div>
     <input class="d-none" type="text" id="userEmail" name="userEmail" value="${ sessionScope.userEmail }">    
 		<label>휴대폰 번호</label>
 		<br />
-		<input type="text" id="userAccountPhoneModify" name="userAccountPhoneModify" placeholder="PHONE" required />
+		<input type="text" id="userAccountPhoneModify" name="userPhone" placeholder="PHONE" required />
 	</div>
     </form>
 	<div>

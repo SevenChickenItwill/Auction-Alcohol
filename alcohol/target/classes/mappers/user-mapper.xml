@@ -50,9 +50,9 @@
  
  <!-- 전화번호 수정 -->
  <update id="PhoneUpdate">
-  update USER
+  update USERS
   set USERPHONE = #{userPhone}
-  where USERPHONE = #{userEmail}
+  where USEREMAIL = #{userEmail}
  </update>
 
  <!-- 수정할 때 해당 이메일의 비밀번호인지 확인-->
