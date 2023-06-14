@@ -80,6 +80,10 @@ public class AuctionProductController {
 	@PostMapping("/productdelete")
 	public String productDelete(int productid) {
 		
+		// 상품 삭제 시 사진 함께 삭제
+		int result2 = apservice.deleteBeforePhoto(productid);
+		log.info("{} 상품번호의 사진 삭제완료",productid);
+		
 		
 		int result = apservice.delete(productid);
 		log.info("삭제결과={}", result);

@@ -22,6 +22,7 @@ public class AuctionCreateDto {
 	private String brandname;
 	private long cost;
 	
+	
 	public AuctionProducts toEntity(){
 		
 		AuctionProducts product = AuctionProducts.builder()

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Photo {
 	
 	private int productid;
-	private String filepath;
+	private String photopath;
 	
 	
 }

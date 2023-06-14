@@ -109,7 +109,7 @@ public interface AuctionRepository {
 
 	void updateStart(Timestamp now);
 
-	
+	List<Chat> readAllchatData(String userNickname);
 
 }
 

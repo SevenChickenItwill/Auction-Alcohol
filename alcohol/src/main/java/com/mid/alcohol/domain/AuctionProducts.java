@@ -25,6 +25,7 @@ public class AuctionProducts {
     private String brandName; // 브랜드명
     private long cost; // 경매품 원가(매입가)
     
+    
     public void toWildcard(AuctionProducts entity) {
     	if (!brandName.equals("")) {
     		entity.setBrandName("%"+brandName+"%");

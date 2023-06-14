@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.socket.WebSocketSession;
 
 import com.mid.alcohol.domain.Chat;
+import com.mid.alcohol.domain.Photo;
 import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.AuctionListDto;
 import com.mid.alcohol.dto.ChatListDto;
+import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -36,6 +39,9 @@ public class AuctionUserController {
 	@Autowired
 	private AuctionUserService userservice;
 	
+	@Autowired
+	private AuctionProductService pdservice;
+	
 	@GetMapping("/mainsite")
 	public String usermain(@RequestParam int aid, String auctionName, Model model) {
 		log.info("usermain(aid={}, auctionname={})",aid,auctionName);
@@ -43,11 +49,40 @@ public class AuctionUserController {
 		AuctionListDto auctiondto = aucservice.readOne(aid);
 		List<ChatListDto> chatdto = userservice.readChatDataOne(aid);
 		log.info("list1 ={}", chatdto);
+		Photo photo = pdservice.selectPhoto(auctiondto.getProductId());
+		String img = "";
+		try {
+			img = pdservice.listToTagImage(pdservice.resizeImage(photo.getPhotopath()));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		model.addAttribute("list1", chatdto);
 		model.addAttribute("list2",auctiondto);
+		model.addAttribute("image",img);
 		
 		return "/auction/auction-userpage";
+	}
+	
+	@GetMapping("/auctionview")
+	public String userAuction(HttpSession session, Model model) {
+		
+		log.info("userAuction()");
+		
+		List<AuctionListDto> list = aucservice.readUserEnd((String)session.getAttribute("userNickname"));
+		List<AuctionListDto> list2 = aucservice.readUserIng((String)session.getAttribute("userNickname"));
+		// service로부터 아이디값에 포함된 경매 리스트만 불러오기
+		log.info((String)session.getAttribute("userNickname"));
+		
+		log.info("list={}",list);
+		log.info("list2={}",list2);
+		model.addAttribute("myauction",list2);
+		model.addAttribute("myauction2", list);
+		
+		return "/Userauction";
+		
+		
 	}
 	
 	

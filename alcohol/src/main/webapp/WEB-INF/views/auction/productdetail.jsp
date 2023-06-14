@@ -13,8 +13,56 @@
 
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
+<style>
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    
+
+}
+.mains{
+    margin-left: 220px;
+}
+
+.headers{
+    margin-left:220px;
+}
+</style>
 </head>
 <body>
+
+<div class="flex-shrink-0 p-3 bg-light sidebar" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark">
+          관리자 메인
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionRegistration" value="/auction/registration" />
+        <a href="${ auctionRegistration }" class="nav-link link-dark">
+          경매등록
+        </a>
+      </li>
+    </ul>
+  </div>
 	<div>
 		<header>
 			<h1>상품 상세보기</h1>
@@ -36,37 +84,40 @@
 		<main>
 			<section>
 				<c:url var="productmodify" value="/auction/productmodify" />
-				<form id="detailform" action="${ productmodify }" method="post">
+				<form class="form" id="detailform" action="${ productmodify }" method="post">
 					<input type="text" value="${ product.productid }" name="productid" class="d-none">
 					<div>
 						<label>상품명</label>
-						<input type="text" name="pname" value="${ product.pname }" readonly>
+						<input class="form-control" type="text" name="pname" value="${ product.pname }" readonly>
 					</div>
 					<div>
 						<label>제조사(생산자)</label>
-						<input type="text" name="constructor" value="${ product.constructor }" readonly>
+						<input class="form-control" type="text" name="constructor" value="${ product.constructor }" readonly>
 					</div>
 					<div>
 						<label>브랜드</label>
-						<input type="text" name="brandname" value="${ product.brandname }" readonly>
+						<input class="form-control" type="text" name="brandname" value="${ product.brandname }" readonly>
 					</div>
 					<div>
 						<label>종류</label>
-						<input id="category" type="text" value="${ product.category }" readonly>
+						<input class="form-control" id="category" type="text" value="${ product.category }" readonly>
 						<input class="d-none" name="category" value="${ product.category }">
 					</div>
 					<div>
 						<label>원가</label>
-						<input type="number" name="cost" value="${ product.cost }" readonly>
+						<input class="form-control" type="number" name="cost" value="${ product.cost }" readonly>
 					</div>
 				<div>
-					<input type="submit" value="수정" />
+					<input class="form-control" type="submit" value="수정" />
 					
-					<button id="btndelete">삭제</button>
+					<button class="form-control" id="btndelete">삭제</button>
 				</div>
 				</form>
 			</section>
 		</main>
+	</div>
+	<div id="imgshow">
+						
 	</div>
 
 	<script

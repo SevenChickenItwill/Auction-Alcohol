@@ -43,8 +43,16 @@
     	
     </select>
     
-    <insert id="savePhotoPath">
-    	insert into productphoto (productid, photopath) VALUES (#{productid}, #{filepath})
+    <delete id="deleteBeforePhoto">
+    	DELETE FROM productphoto WHERE productid = #{productid}
+    </delete>
+    
+    <insert id="uploadPhoto">
+    	INSERT INTO productphoto VALUES (#{productid}, #{filepath})
     </insert>
+    
+    <select id="selectPhoto" resultType="com.mid.alcohol.domain.Photo">
+    	SELECT * FROM productphoto WHERE productid = #{productid}
+    </select>
     
 </mapper>

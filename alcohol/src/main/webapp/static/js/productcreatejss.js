@@ -9,11 +9,11 @@
 	 const brandNameTag = document.querySelector('input#brandName');
 	 const constructorTag = document.querySelector('input#constructor');
 	 const costTag = document.querySelector('input#cost');
-	 const imgTag = document.querySelector('input#image');
+	 
 	 const categoryTag = document.querySelector('select#category')
 	 const form = document.querySelector('form#subform');
-	 const btnimgupload = document.querySelector('button#btnimgupload');
 	 
+	
 	 
 	 
 	 let imguploadok = 0;
@@ -44,6 +44,8 @@
 		 form.submit();
 		 
 	 })
+	 
+	 
 	 
 	 
  })
