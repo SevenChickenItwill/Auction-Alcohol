@@ -24,5 +24,9 @@ public interface AuctionProductRepository {
 
 	List<AuctionReadDto> readDetail(AuctionProducts entity);
 
-	int savePhotoPath(Photo photo);
+	int deleteBeforePhoto(int productid);
+
+	int uploadPhoto(Photo photo);
+	
+	Photo selectPhoto(int productid);
 }

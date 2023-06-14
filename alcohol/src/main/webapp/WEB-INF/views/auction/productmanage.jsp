@@ -13,13 +13,61 @@
 
 <meta charset="UTF-8">
 <title>상품관리</title>
+<style>
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    
+
+}
+.mains{
+    margin-left: 220px;
+}
+
+.headers{
+    margin-left:220px;
+}
+</style>
 </head>
 <body class="mx-3">
-	<header>
+<div class="flex-shrink-0 p-3 bg-light sidebar" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark">
+          관리자 메인
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionRegistration" value="/auction/registration" />
+        <a href="${ auctionRegistration }" class="nav-link link-dark">
+          경매등록
+        </a>
+      </li>
+    </ul>
+  </div>
+
+	<header class="headers">
 		<h1>경매 상품 관리</h1>
 		<h4>${ sessionScope.userNickname } 님 반갑습니다</h4>
 	</header>
-	<main class="card">
+	<main class="card mains">
 			<div class="d-none">
 				<input id="userid" value="${ sessionScope.userNickname }" name="userid">
 			</div>

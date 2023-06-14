@@ -38,7 +38,7 @@
             </c:forEach>
         </div>
         <div class="batting" id="batsection" >
-        	<img src="https://biz.chosun.com/resizer/6YuMZCIEekRHxZRAflffewbmPvo=/464x0/smart/cloudfront-ap-northeast-1.images.arcpublishing.com/chosunbiz/L42AC76QP5UT65XY2XEM2JQJWI.png" />
+        	<img src="data:image/jpeg;base64,${image}" alt="이미지 준비중" />
         	<label for="nowbid">현재 입찰가</label>
         	<input type="number" readonly="readonly" id="nowbid" value="${ list2.nowbid }" />
         	<label for="bidder">현재 입찰자</label>

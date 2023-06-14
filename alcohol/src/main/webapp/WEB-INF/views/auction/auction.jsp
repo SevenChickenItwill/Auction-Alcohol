@@ -139,7 +139,12 @@
         <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
         <li class="nav-item">${ sessionScope.userNickname } 님</li>
+        
       </ul>
+      <div>
+      	<c:url var="logout" value="/account/logout"></c:url>
+      	<a href="${ logout }"><button>로그아웃</button></a>
+      </div>
     </header>
   </div>
 		
@@ -153,12 +158,13 @@
 				<form method="post" action="${ search }" id="searchForm">
 					<label class="form-label card" for="searchtext">검색 내용</label> 
 					<input class="card form-control" name="searchtext" id="searchtext" type="text" /> 
-					<input class="d-none" type="text" name="userid"	value="test" /> 
+					<input class="d-none" type="text" name="userid" id="userid"	value="${ sessionScope.userNickname }" /> 
 					<input class="btn form-control" type="submit" id="btnAuctionSearch" value="검색" />
 				</form>
 			</div>
 			<div class="card">
 				<div class="form-control">
+				
 					<span><h2>상세 검색 Form</h2></span> <input class="form-control"
 						type="date" id="auctionstart" name="auctionstart" />
 				</div>
@@ -280,7 +286,7 @@
 			crossorigin="anonymous">
 			
 		</script>
-		<script src="../static/js/auction-management.js"></script>
+		<script src="../static/js/auction-managements.js"></script>
 	</div>
 </body>
 </html>

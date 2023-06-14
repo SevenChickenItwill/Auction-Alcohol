@@ -3,6 +3,11 @@ package com.mid.alcohol.dto;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.mid.alcohol.service.AuctionProductService;
+import com.mid.alcohol.service.AuctionService;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,6 +37,7 @@ public class AuctionListDto {
 	private String bidder;
 	private String auctioneer;
 	private long successbid;
+	
 	
 	
 	

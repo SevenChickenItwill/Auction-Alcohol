@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import com.mid.alcohol.domain.Auction;
 import com.mid.alcohol.domain.AuctionProducts;
 import com.mid.alcohol.domain.Chat;
+import com.mid.alcohol.domain.Photo;
 import com.mid.alcohol.domain.UserAuction;
 import com.mid.alcohol.dto.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.AuctionListDto;
@@ -245,7 +247,7 @@ public class AuctionService {
 	public List<AuctionListDto> readEndlist() {
 		// TODO Auto-generated method stub
 		log.info("readlist()");
-
+		
 		return auctionrepository.readEndAuctionList();
 	}
 
@@ -256,6 +258,55 @@ public class AuctionService {
 		log.info("{}",entity);
 		return auctionrepository.updatebat(entity);
 	}
+
+	public List<AuctionListDto> readUserEnd(String attribute) {
+		// TODO Auto-generated method stub
+		List<AuctionListDto> list = auctionrepository.readEndAuctionList();
+		
+		List<AuctionListDto> list2 = new ArrayList<>();
+		
+		for(AuctionListDto x : list) {
+			
+			if(attribute.equals(x.getBidder())) {
+				list2.add(x);
+				log.info("{}",x);
+			}
+			
+		}
+		
+		
+		return list2;
+	}
+
+	public List<AuctionListDto> readUserIng(String attribute) {
+		// TODO Auto-generated method stub
+		List<Chat> list = auctionrepository.readAllchatData(attribute);
+		HashSet<Long> set = new HashSet<>();
+		for(Chat x : list) {
+			
+			set.add(x.getCid());
+			
+		}
+		
+		List<AuctionListDto> list2 = auctionrepository.readAllAuctionList();
+		List<AuctionListDto> list3 = new ArrayList<>();
+		for(AuctionListDto x : list2) {
+			
+			for(Long y : set) {
+				
+				if(x.getAid()==y) {
+					list3.add(x);
+				}
+				
+			}
+			
+			
+		}
+		log.info("{}",list3);
+		return list3;
+	}
+
+	
 
 	
 
