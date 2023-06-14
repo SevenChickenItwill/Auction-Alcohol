@@ -1,5 +1,5 @@
-	<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -14,48 +14,44 @@
 </head>
 <body>
 	<header>
-		<h1>��й�ȣ ����</h1>
+		<h1>비밀번호 변경</h1>
 	</header>
 	
 	<c:url var="userPasswordModify" value="/signup/userPasswordModify"></c:url>
 	<form id="userAccountModifyForm" method="post" action="${ userPasswordModify }">
-	<div>
-		<label>���� ��й�ȣ</label>
+    <div>
+    <input class="d-none" type="text" id="userEmail" name="userEmail"  value="${ sessionScope.userEmail }">
+		<label>현재 비밀번호</label>
 		<br />
 		<input type="password" id="userAccountPasswordModify" name="userAccountPasswordModivy" placeholder="CURRENTPASSWORD"/>
 	</div>
-	
-		
-	
 	<div>
-		<label>�� ��й�ȣ</label>
+		<label>새 비밀번호</label>
 		<br />
 		<input type="password" id="userAccountNewPasswordModify" name="userAccountNewPAsswordModify" placeholder="NEWPASSWORD" required />
 	</div>
-	
-	
-	
 	<div>
-		<label>�� ��й�ȣ Ȯ��</label>
+		<label>새 비밀번호 확인</label>
 		<br />
 		<input type="password" id="userAccountNewPasswordCheckModify" name="userAccountNewPasswordCheckModify" placeholder="NEWPASSWORDCHECK" required />
 	</div>
 	</form>
 	<div>
-		<input type="submit" id="btnPasswordCancel" value="���"/>
-		<input type="submit" id="btnPasswordUpdate" value="�����ϱ�"/>
+        <button id="btnPasswordCancel">취소</button>
+        <button id="btnPasswordUpdate">수정하기</button>
 	</div>
+ 
 	<div>
 		
 	<ul>
 		<li>
-			<label>��й�ȣ ���� ���:</label>
+			<label>비밀번호 설정 요건:</label>
 		</li>
 		<li>
-			<label>8�� �̻� 20�� �̸�</label>
+			<label>8자 이상 20자 미만</label>
 		</li>
 		<li>
-			<label>����, Ư�� ��ȣ, ���ĺ����θ� �����Ǿ�� �մϴ�.</label>
+			<label>숫자, 특수 기호, 알파벳으로만 구성되어야 합니다.</label>
 		</li>
 	</ul>
 		
@@ -66,5 +62,6 @@
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
 		<script src="../static/js/userAccountPasswordUpdate.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

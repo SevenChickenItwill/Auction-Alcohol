@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Alcohol</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
@@ -13,17 +14,21 @@
 </head>
 <body>
 	<header>
-		<h1>ÈÞ´ëÆù ¹øÈ£ º¯°æ</h1>
+		<h1>íœ´ëŒ€í° ë²ˆí˜¸ ë³€ê²½</h1>
 	</header>
 	
-	<div>
-		<label>ÈÞ´ëÆù ¹øÈ£</label>
+    <c:url var="userPhoneModify" value="/signup/userPhoneModify" ></c:url>
+    <form id="accountForm" >
+    <div>
+    <input class="d-none" type="text" id="userPhone" name="userPhone" value="${ sessionScope.userPhone }">    
+		<label>íœ´ëŒ€í° ë²ˆí˜¸</label>
 		<br />
-		<input type="text" id="userAccountPhoneModify" name="userAccountPhoneModify" required />
+		<input type="text" id="userAccountPhoneModify" name="userPhone" placeholder="PHONE" required />
 	</div>
+    </form>
 	<div>
-		<input type="submit" id="btnPhoneCancel" value="Ãë¼Ò" />
-		<input type="submit" id="btnPhoneUpdate" value="¼öÁ¤ÇÏ±â" />
+        <button id="btnPhoneCancel">ì·¨ì†Œ</button>
+        <button id="btnPhoneUpdate">ìˆ˜ì •í•˜ê¸°</button>
 	</div>
 	
 	<script

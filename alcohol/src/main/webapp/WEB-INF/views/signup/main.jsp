@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +23,10 @@
 			<ul>
 				<li>
 					<div>
-						<a href="/alcohol/signup/userModify">계정</a>
-					</div>
+                        <a href="/alcohol/signup/signupEmail">로그인</a>
+                        <a href="/alcohol/signup/signupEmail">회원가입</a>      
+   				        <a href="/alcohol/signup/userModify">계정</a>
+                    </div>
 				</li>
 				<li>
 					<c:url var="listPage" value="/bulletinboard/board/list">
@@ -33,6 +36,7 @@
 				</li>
 			</ul>
 		</div>
+        
 		
 
 		<script

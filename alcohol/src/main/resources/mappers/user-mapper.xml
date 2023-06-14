@@ -5,20 +5,8 @@
 
 <!-- UserMapper.xml -->
 <mapper namespace="com.mid.alcohol.repository.UserRepository">
-  
-  <!-- 회원가입 (이메일) -->
-  <insert id="userEmailSignup">
-    INSERT INTO USERS (userEmail)
-    VALUES (#{userEmail})
-  </insert>
-  
-  <!-- 회원가입 정보  -->
-  <insert id="userMainSignup" >
-    insert into USERS (userEmail, userPassword, userPasswordCheck, userName, userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender)
-    values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName}, #{userAge}, #{userAddress}, #{userPhone}, #{userNickname}, #{userBirthday}, #{userJoindate}, #{userGender})
-     
-  </insert>
 
+<<<<<<< HEAD
   <!-- 이메일 중복체크 -->
   <select id="findByUserEmail" resultType="com.mid.alcohol.domain.User">
     select * from USERS where userEmail = #{userEmail}
@@ -32,4 +20,64 @@
   <select id="signInMain" resultType="com.mid.alcohol.domain.User">
   	select * from Users where userEmail = #{userEmail} AND userPassword = #{userPassword}
   </select>
+=======
+ <!-- 회원가입 (이메일) -->
+ <insert id="userEmailSignup">
+  INSERT INTO USERS (userEmail)
+  VALUES (#{userEmail})
+ </insert>
+
+ <!-- 회원가입 정보 -->
+ <insert id="userMainSignup">
+  insert into USERS (userEmail, userPassword, userPasswordCheck, userName,
+  userAge, userAddress, userPhone, userNickname, userBirthday,
+  userJoindate, userGender, category)
+  values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName},
+  #{userAge}, #{userAddress}, #{userPhone}, #{userNickname},
+  #{userBirthday}, #{userJoindate}, #{userGender}, #{category})
+
+ </insert>
+
+ <!-- 이메일 중복체크 -->
+ <select id="findByUserEmail"
+  resultType="com.mid.alcohol.domain.User">
+  select * from USERS where userEmail = #{userEmail}
+ </select>
+
+ <!-- 별명 중복체크, 계정 상세정보 보여주기 -->
+ <select id="findByUserNickname"
+  resultType="com.mid.alcohol.domain.User">
+  select * from USERS where userNickname = #{userNickname}
+ </select>
+
+ <!-- 로그인 정보 -->
+ <select id="signInMain" resultType="com.mid.alcohol.domain.User">
+  select * from Users where userEmail = #{userEmail} AND userPassword =
+  #{userPassword}
+ </select>
+
+ <!-- 비밀번호 수정 -->
+ <update id="PasswordUpdate">
+  update USERS
+  set USERPASSWORD = #{userPassword}
+  where USEREMAIL = #{userEmail}
+ </update>
+ 
+ <!-- 전화번호 수정 -->
+ <update id="PhoneUpdate">
+  update USERS
+  set USERPHONE = #{userPhone}
+  where USEREMAIL = #{userEmail}
+ </update>
+
+ <!-- 수정할 때 해당 이메일의 비밀번호인지 확인-->
+ <select id="findUserByEmailAndPassword"
+  resultType="com.mid.alcohol.domain.User">
+  SELECT *
+  FROM USERS
+  WHERE userEmail = #{userEmail} AND
+  userPassword = #{userPassword}
+ </select>
+
+>>>>>>> origin/Dohyun4
 </mapper>

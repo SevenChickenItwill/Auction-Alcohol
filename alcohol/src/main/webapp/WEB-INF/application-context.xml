@@ -11,27 +11,27 @@
         
     <!-- bean definitions here -->
     <!-- HikariConfig hikariConfig = new HidariConfig(); 생성자 호출 -->    
-    <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
         <!-- hikariConfig.setDriverClassName("...") 메서드 호출 -->
         <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-        <property name="username" value="scott"></property>
-        <property name="password" value="tiger"></property>
-    </bean>
+    	<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+   	 	<property name="username" value="scott" />
+    	<property name="password" value="tiger" />
+	</bean>
     <!-- HikariDataSource.dataSource = new HikariDataSource(hikariConfig) -->
 
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
-        <constructor-arg ref="hikariConfig" />
-    </bean>
+    	<constructor-arg ref="hikariConfig" />
+	</bean>
     
 
     <!-- SqlSesstionFactoryBean 객체:
         Data Source(Connection Pool)을 이용해서 SQL문장들을 실행하고 결과 처리를 수행하는 객체
      -->
      <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
-        <property name="mapperLocations" value="classpath:/mappers/**/*.xml"></property>
-     </bean>
+    	<property name="dataSource" ref="dataSource" />
+    	<property name="mapperLocations" value="classpath:/mappers/**/*.xml" />
+	</bean>
      
      <!-- Mybatis 프레임워크에서 생성하고 관리하는 bean 
      base-package와 그 하위 패키지에서 검색함.-->
