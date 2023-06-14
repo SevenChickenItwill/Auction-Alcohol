@@ -13,6 +13,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
@@ -303,13 +305,16 @@ public class BulletinboardService {
     public int recommendUpSelect(RecommendUp recommend) {
     	log.info("recommendUpSelect(RecommendUp= {})", recommend);
     	
-    	RecommendUp result = bulletinboardRepository.recommendUpSelect(recommend);
+    	RecommendUp commend = bulletinboardRepository.recommendUpSelect(recommend);
+    	log.info("RECOMMEDUPSELECT commend= {}", commend);
     	
-    	if (result != null) {
-    		return 0;
-    	} else {
+    	if (commend != null) {
     		return 1;
+    	} else {
+    		return 0;
     	}
+    	
+    	
     }
     
     // 추천다운시 중복검사하기
@@ -324,6 +329,24 @@ public class BulletinboardService {
     		return 1;
     	}
     }
+    
+    // 게시글 삭제시 commendUp 테이블 행 삭제
+    public int recommendUpDelete(long boardId) {
+    	log.info("recommendUpDelete(baordId= {})", boardId);
+    	
+    	int result = bulletinboardRepository.recommendUpDelete(boardId);
+    	
+    	return result;
+    }
+    
+    // 게시글 삭제시 commendDown 테이블 행 삭제
+    public int recommendDownDelete(long boardId) {
+    	log.info("recommendDownDelete(boardId= {})", boardId);
+    	
+    	int result = bulletinboardRepository.recommendDownDelete(boardId);
+    	
+		return result;
+	}
 	
 	// 조회수 증가하는 service
 	public int viewsUp(long boardId) {
@@ -372,6 +395,5 @@ public class BulletinboardService {
 		
 		return result;
 	}
-	
-	
+
 }

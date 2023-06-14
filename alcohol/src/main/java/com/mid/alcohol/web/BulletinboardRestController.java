@@ -51,6 +51,7 @@ public class BulletinboardRestController {
 		RecommendUp recommend = new RecommendUp(boardId, loginId);
 		
 		int selectResult = bulletinboardService.recommendUpSelect(recommend);
+		log.info("CONTROLLER selectResult= {}", selectResult);
 		
 		if (selectResult == 1) {
 			return ResponseEntity.ok(selectResult);

@@ -20,6 +20,9 @@
         </header>
         
         <main>
+        	
+        	<input class="d-none" value="${ board.image }" id="inputImage" name="inputImage" />
+        	
             <section>
                 	<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" name="loginId"/>
                     <input type="number" class="d-none" value="${ board.board_id }" id="boardId" name="boardId" />
@@ -32,7 +35,7 @@
                         <span name="time">${ board.time }</span>
                     </div>
                     <div>
-                        <img src="data:image/jpeg;base64,${ board.image }" class="img-fluid rounded-start" alt="이미지">
+                        <img src="data:image/jpeg;base64,${ board.image }" class="img-fluid rounded-start" alt="이미지" id="DefaultImage">
                     </div>
                     <div>
                         <textarea id="content" name="content">${ board.content }</textarea>

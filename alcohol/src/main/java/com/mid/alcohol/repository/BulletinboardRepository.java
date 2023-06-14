@@ -56,4 +56,8 @@ public interface BulletinboardRepository {
 	
 	int imageUpdate(BulletinboardImageUpdateDto dto);
 	
+	int recommendUpDelete(long boardId);
+
+	int recommendDownDelete(long boardId);
+	
 }

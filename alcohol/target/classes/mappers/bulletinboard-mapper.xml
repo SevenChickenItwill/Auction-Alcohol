@@ -106,6 +106,11 @@
     	select * from COMMENDUP where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
     </select>
     
+    <!-- 게시글 삭제시 추천업 테이블에서 컬럼 삭제 -->
+    <delete id="recommendUpDelete">
+        delete from COMMENDUP where BOARD_ID = #{boardId}
+    </delete>
+    
     <!-- 추천다운 버튼 -->
     <update id="recommendDo">
     	update BULLETINBOARD
@@ -123,6 +128,11 @@
     <select id="recommendDownSelect" resultType="com.mid.alcohol.domain.RecommendDown">
     	select * from COMMENDDOWN where BOARD_ID = #{boardId} and RECOMMENDER_ID = #{recommenderId}
     </select>
+    
+    <!-- 게시글 삭제시 추천다운 테이블에서 컬럼 삭제 -->
+    <delete id="recommendDownDelete">
+        delete from COMMENDDOWN where BOARD_ID = #{boardId}
+    </delete>
     
     <!-- 조회수 기능 -->
     <update id="viewsUp">

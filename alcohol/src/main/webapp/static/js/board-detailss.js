@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		let htmlStr = '';
 
-		htmlStr += `추천수[${data.recommend}]`;
+		htmlStr += `추천수 : [${data.recommend}]`;
 
 		spanRecommendCnt.innerHTML = htmlStr;
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			.then((response) => {
 				console.log(response.data);
 				
-				if (response.data == 1) {
+				if (response.data === 1) {
 					alert('추천은 계정당 한번만 가능합니다.');
 					console.log(response.data);
 				}

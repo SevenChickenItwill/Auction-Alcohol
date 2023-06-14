@@ -24,6 +24,7 @@
 		
 		<input type="text" class="" value="${ sessionScope.userNickname }" id="loginId" name="loginId"/>
 		
+		
 		<section>
 			<form id="boardForm">
 				<input type="number" class="d-none" value="${ board.board_id }" id="boardId"
@@ -65,6 +66,7 @@
 					<span> 
 						<c:url var="boardModify" value="/bulletinboard/board/modify">
 							<c:param name="id" value="${ board.board_id }"></c:param>
+							<c:param name="paramImage" value="${ image }" ></c:param>
 						</c:url> 
 						<a href="${ boardModify }">수정하기</a>
 						<button id="deleteBoardBtn">삭제하기</button>

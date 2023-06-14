@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		let dtoUrl = `/alcohol/api/recommend/create/${category}/${nickname}/${user_id}/${title}/${content}`;
 		
 		try {
+			const result = confirm('생성하시겠습니까?');
+			
 			let responses = await axios.post(dtoUrl);
 			
 			const boardId = responses.data.board_id;
 			console.log(boardId);
-			
-			const result = confirm('생성하시겠습니까?');
 			
 			form.append('file', image.files[0]);
 			
