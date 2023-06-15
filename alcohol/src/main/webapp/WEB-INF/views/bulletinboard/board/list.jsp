@@ -26,12 +26,27 @@
 	display: flex;
 	justify-content: center;
 }
+
+.aDiv {
+	justify-content: space-evenly;
+}
+
+.wrapper {
+	height: 10px;
+	width: 700px;
+	display: grid;
+	place-items: center;
+	justify-items: start;
+	align-items: end;
+	min-height: 20vh;
+}
 </style>
 <body>
 	<header>
 		<div class="navbar navbar-dark bg-dark shadow-sm">
 			<div class="container">
-				<a href="#" class="navbar-brand d-flex align-items-center"> <path
+				<c:url var="mainPage" value="/" />
+				<a href="${ mainPage }" class="navbar-brand d-flex align-items-center"> <path
 						d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
 					<strong>Turkey Brewery</strong>
 				</a>
@@ -42,10 +57,14 @@
 		<div>
 			<ul>
 				<c:if test="${ sessionScope.userNickname ne null }">
-					<li><c:url value="/bulletinboard/board/create"
-							var="dealCreated" /> <a href="${ dealCreated }">새글작성</a></li>
+					<li>
+						<c:url value="/bulletinboard/board/create" var="dealCreated" /> 
+						<a href="${ dealCreated }">새글작성</a>
+					</li>
 				</c:if>
-				<li><c:url value="/" var="mainPage" /> <a href="${ mainPage }">메인페이지</a>
+				<li>
+					<c:url value="/" var="mainPage" /> 
+						<a href="${ mainPage }">메인페이지</a>
 				</li>
 			</ul>
 		</div>
@@ -56,22 +75,23 @@
 		<div>
 			<div>
 				<!-- 전체글 ㅣ 공지글 ㅣ 추천순  정렬 -->
-				<div>
+				<div class="aDiv d-grid gap-2 d-md-flex">
 					<c:url value="/bulletinboard/board/list?num=0" var="boardList">
 						<c:param name="num" value="0" />
 					</c:url>
-					<a href="${ boardList }"><button type="button"
-							class="btn btn-primary btn-lg">전체글</button></a>
+					<a href="${ boardList }">
+					<button type="button"
+							class="btn btn-dark btn-lg">전체글</button></a>
 					<c:url var="announcement" value="/bulletinboard/board/announcement">
 						<c:param name="num" value="0"></c:param>
 					</c:url>
 					<a href="${ announcement }"><button type="button"
-							class="btn btn-secondary btn-lg">공지 사항</button></a>
+							class="btn btn-dark btn-lg">공지 사항</button></a>
 					<c:url var="recommend" value="/bulletinboard/board/recommend">
 						<c:param name="num" value="0"></c:param>
 					</c:url>
 					<a href="${ recommend }"><button type="button"
-							class="btn btn-secondary btn-lg">추천순</button></a>
+							class="btn btn-dark btn-lg">추천순</button></a>
 				</div>
 
 				<!-- 포스트 테이블 -->
