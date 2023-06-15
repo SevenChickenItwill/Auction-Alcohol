@@ -9,9 +9,11 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.log.LogAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mid.alcohol.dto.payment.AdressUpdateDto;
+import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
 import com.mid.alcohol.service.PaymentService;
@@ -42,9 +45,25 @@ public class PaymentController {
 	private PaymentService paymentService;
 
 	@PostMapping("/paymentmain")
-	public void paymentInfo(Model model, @RequestParam(name = "OrderProductDto") List<OrderProductDto> orderProductDto) {
+	public void paymentInfo(Model model, 
+			@RequestParam(name = "quantity") List<Integer> quantitylist,
+			@RequestParam(name = "basketid") List<Integer> basketidlist) {
 		log.info("paymentInfoPost()");
-		log.info(orderProductDto.toString());
+		log.info("quantitylist: {}", quantitylist);
+		log.info("basketidlist: {}", basketidlist);
+		
+		List<BasketUpdateListDto> basketUpdateListDto = new ArrayList<>();
+		for (int i = 0; i < quantitylist.size(); i++) {
+			BasketUpdateListDto basketUpdateDto = new BasketUpdateListDto();
+			basketUpdateDto.setQuantity(quantitylist.get(i));
+			basketUpdateDto.setBasketid(basketidlist.get(i));
+			basketUpdateListDto.add(basketUpdateDto);
+		}
+		for (BasketUpdateListDto x : basketUpdateListDto) {
+			log.info(""+x.getBasketid());
+			log.info(""+x.getQuantity());
+		}
+		paymentService.updateBaket(basketUpdateListDto);
 	}
 
 	@PostMapping("/updateDeliveryInfo")

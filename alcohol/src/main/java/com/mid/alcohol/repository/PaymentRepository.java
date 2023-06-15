@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.payment.BasketListDto;
+import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 
 
@@ -24,6 +25,10 @@ public interface PaymentRepository {
 	int readPaymentList(String userNickname);
 
 	void insertOrder(List<OrderProductDto> list);
+
+	void updateBaket(BasketUpdateListDto basketUpdateListDto);
+
+	void deletebasket(int basketid);
 
 
 }

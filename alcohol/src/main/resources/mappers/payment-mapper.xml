@@ -55,5 +55,16 @@
 		values (#{paymentid}, #{productid}, #{quantity}, #{price}, #{totalAmount},
 		#{userNickname}, #{basketid})
 	</insert>
+	
+	<update id="updateBaket">
+		UPDATE basket
+		SET quantity = #{quantity}
+		WHERE basketid = #{basketid}
+	</update>
+	
+	<delete id="deletebasket">
+		DELETE FROM basket
+		WHERE basketid = #{basketid}
+	</delete>
 
 </mapper>

@@ -36,7 +36,7 @@ public class PayHomeController {
 		log.info("home(dto={})", dto);
 		
 		model.addAttribute("list", dto);
-        return "payindex";
+        return "payment/payindex";
     }
 	
 	

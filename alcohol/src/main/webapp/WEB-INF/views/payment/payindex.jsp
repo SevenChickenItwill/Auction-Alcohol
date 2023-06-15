@@ -26,14 +26,15 @@
 		<div class="card-header">
 			<input type="checkbox" id="allCheckbox" name="allCheckbox"/> 
 			<label class="py-6" for="allCheckbox">전체선택</label> 
-			<span class="btnDeleteBasket">삭제</span>
+			<span class="btn" id="btnDeleteBasket" >삭제</span>
 		</div>
 		
 		<div class="card-boby">
 				<c:forEach var="basket" items="${list}">
-					<div>
+					<div id="div-${ basket.basketid }" class="btn">
 						<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
 						<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
+						<input id="basketid-${ basket.basketid }" value="${ basket.basketid }" class="d-none">	
 						<label>${basket.brandname}</label>
 						<hr>
 						<label>${basket.pname}</label>
@@ -43,8 +44,8 @@
 						<label>주문수량</label>
 						<input
 							style="width: 50px;" id="quantity-${basket.basketid}" data-id="${ basket.basketid }"
-							type="number" value="${basket.quantity}" name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
-						<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }">
+							type="number" value="${basket.quantity}" data-name="inputQuantity" data-initQuantity="${ basket.quantity }"> 
+						<input class="d-none" id="price-${ basket.basketid }" value="${ basket.price }" data-id="${ basket.basketid }">
 						<br>
 						<label>주문금액</label> 
 						<span id="orderAmount-${basket.basketid}" class="mx-2" 
@@ -57,7 +58,6 @@
 		</div>
 		
 		<div class="card-footer">
-			<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 			<label>총 주문금액</label> <label id="totalAmount" data-totalAmount="0">0원</label> 
 			<br>
 			<input id="paymentSubmit" class="btn" type="submit" value="결제하기">
@@ -65,6 +65,6 @@
 			</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-	<script src="../static/js/basket2.js"></script>
+	<script src="./static/js/basket2.js"></script>
 </body>
 </html>

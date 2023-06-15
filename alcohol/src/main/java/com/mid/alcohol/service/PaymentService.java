@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.payment.AdressUpdateDto;
 import com.mid.alcohol.dto.payment.BasketListDto;
+import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
 import com.mid.alcohol.repository.PaymentRepository;
@@ -60,5 +61,17 @@ public class PaymentService {
 
 	public void insertOrder(List<OrderProductDto> list) {
 		paymentRepository.insertOrder(list);
+	}
+
+
+	public void updateBaket(List<BasketUpdateListDto> basketUpdateListDto) {
+		for (BasketUpdateListDto dto : basketUpdateListDto) {
+			paymentRepository.updateBaket(dto);
+		}
+	}
+
+
+	public void deletebasket(int basketid) {
+		paymentRepository.deletebasket(basketid);
 	}
 }
