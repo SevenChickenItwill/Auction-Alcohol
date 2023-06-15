@@ -99,11 +99,11 @@
 				<div>
 					<c:url var="signupEmail" value="/signup/signupEmail"></c:url>
 					<form id="signupEmailForm" method="post" action="${ signupEmail }">
-						<div class="formWrapper">
-							<div class="formContent">
+						<div class="formWrapper row">
+							<div class="formContent col-md-12">
 								<label for="userEmail"></label> 
 								<input type="text" id="userEmail" name="userEmail" placeholder="이메일" requiredm
-									autofocus class="inputEmail form-control rounded" />
+									autofocus class="inputEmail form-control rounded " />
 							</div>
 						</div>
 					</form>
