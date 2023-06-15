@@ -7,9 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.domain.shop.Products;
+import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.service.ShopService;
 
@@ -56,6 +59,32 @@ public class ShopController {
 		return "redirect:/shop/pdlist";
 	}
 	
+	@PostMapping("/pdmodify")
+	public String pdmodifyclear(@RequestBody ShopDetailDto dto) {
+		
+		log.info("pdmodifyclear(pid={})",dto.getPid());
+		
+		int result = shopservice.updatepd(dto);
+		log.info("update rows = {}",result);
+		
+		return "redirect:/shop/pdmodify";
+		
+	}
 	
+	@GetMapping("/pdmodify")
+	public void pdmodify(int pid, Model model) {
+		log.info("pdmodify(pid={})",pid);
+		 ShopDetailDto dto = shopservice.readdetail(pid);
+		
+		 model.addAttribute("detail",dto);
+	}
+	
+	@GetMapping("/delete")
+	public String pddelete(int pid) {
+		log.info("pddelete({})",pid);
+		int result = shopservice.deletepd(pid);
+		
+		return "redirect:/shop/pdlist";
+	}
 	
 }

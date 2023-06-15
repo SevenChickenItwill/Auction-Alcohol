@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.shop.Products;
+import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 import com.mid.alcohol.repository.ShopRepository;
@@ -31,6 +32,7 @@ public class ShopService {
 	
 	public List<Products> searchlist(ShopSearchDto dto) {
 		
+		dto.toWildCard();
 		List<Products> list = shoprepository.searchlist(dto);
 		
 		try {
@@ -128,6 +130,31 @@ public class ShopService {
 		Products products = dto.toEntity();
 		
 		return shoprepository.createpd(products);
+	}
+
+	public ShopDetailDto readdetail(int pid) {
+		// TODO Auto-generated method stub
+		log.info("readdetail({})",pid);
+		
+		Products products = shoprepository.readdetail(pid);
+		
+		return ShopDetailDto.FromEntity(products);
+	}
+
+	public int deletepd(int pid) {
+		// TODO Auto-generated method stub
+		log.info("deletepd(pid={})",pid);
+		
+		int result = shoprepository.deletepd(pid);
+		
+		return result;
+	}
+
+	public int updatepd(ShopDetailDto dto) {
+		// TODO Auto-generated method stub
+		log.info("updatepd={}",dto);
+		
+		return shoprepository.updatepd(dto);
 	}
 	
 	
