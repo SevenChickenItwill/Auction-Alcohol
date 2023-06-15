@@ -418,8 +418,4 @@ public class BulletinboardController {
 		return "redirect:/bulletinboard/board/detail?id=" + boardId;
 	}
 	
-	@GetMapping("/homes")
-    public void homePage() {
-       
-    }
 }
