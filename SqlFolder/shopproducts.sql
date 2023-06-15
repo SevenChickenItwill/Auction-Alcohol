@@ -1,0 +1,70 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 목요일-6월-15-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table PRODUCTS
+--------------------------------------------------------
+
+  CREATE TABLE "SCOTT"."PRODUCTS" 
+   (	"PID" NUMBER(10,0), 
+	"PRODUCTNAME" VARCHAR2(40 CHAR), 
+	"STANDARD" VARCHAR2(20 CHAR), 
+	"UNIT" VARCHAR2(20 CHAR), 
+	"PRICE" NUMBER(10,0), 
+	"BRAND" VARCHAR2(40 CHAR), 
+	"USERID" VARCHAR2(40 CHAR), 
+	"EXPIRATIONDATE" VARCHAR2(40 CHAR), 
+	"ALCOHOL_LEVEL" NUMBER(10,2), 
+	"HASHTAG" VARCHAR2(100 CHAR), 
+	"PHOTOPATH" VARCHAR2(1000 CHAR), 
+	"CATEGORY" NUMBER(10,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" ;
+REM INSERTING into SCOTT.PRODUCTS
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index SYS_C008478
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SCOTT"."SYS_C008478" ON "SCOTT"."PRODUCTS" ("PID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Trigger PRODUCTS_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."PRODUCTS_TRG" 
+BEFORE INSERT ON PRODUCTS 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SCOTT"."PRODUCTS_TRG" ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PRODUCTS
+--------------------------------------------------------
+
+  ALTER TABLE "SCOTT"."PRODUCTS" ADD PRIMARY KEY ("PID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("CATEGORY" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("PRODUCTNAME" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("STANDARD" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("UNIT" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("PRICE" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("BRAND" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("USERID" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("EXPIRATIONDATE" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."PRODUCTS" MODIFY ("ALCOHOL_LEVEL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table PRODUCTS
+--------------------------------------------------------
+
+  ALTER TABLE "SCOTT"."PRODUCTS" ADD CONSTRAINT "PRODUCTS_FK1" FOREIGN KEY ("CATEGORY")
+	  REFERENCES "SCOTT"."CATEGORY" ("CATEGORYID") ENABLE;

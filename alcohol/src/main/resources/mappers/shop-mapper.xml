@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mid.alcohol.repository.ShopRepository">
+
+	<select id="productall" resultType="com.mid.alcohol.domain.shop.products">
+		select * from products where userid = #{userid}
+	</select>
+	
+	<select id="searchlist" resultMap="com.mid.alcohol.domain.shop.products">
+		select * from products where userid = #{userid}
+		<if test="option == 1">
+			AND productname LIKE #{search}
+		</if>
+		 <if test="option == 2">
+			AND hashtag LIKE #{search}
+		</if>
+		<if test="option == 3">
+			AND brand LIKE #{search}
+		</if>
+		<if test="option == 4">
+			AND (productname LIKE #{search} OR brand LIKE #{search} OR hashtag LIKE #{search})
+		</if>
+	</select>
+
+	<insert id="createpd">
+		INSERT INTO products (productname, standard, unit, price, brand, userid, expirationdate, alcohol_level, hashtag, photopath, category)
+		VALUES (#{productname}, #{standard}, #{unit}, #{price}, #{brand}, #{userid}, #{expirationdate}, #{alcohol_level}, #{hashtag}, #{photopath}, #{category})
+	</insert>
+	
+
+    
+</mapper>
