@@ -17,7 +17,7 @@ public interface PaymentRepository {
     
     User selectByOrderInfo(String userNickname);
     
-    List<BasketListDto> readBasketByUserid(String userid);
+    List<BasketListDto> readBasketByUserNickname(String userNickname);
 
 	void insertPayment(String userNickname);
 

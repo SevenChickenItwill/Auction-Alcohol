@@ -30,13 +30,13 @@
 
 
 	<!-- userid의 장바구니 목록을 가져온다. -->
-	<select id="readBasketByUserid"
+	<select id="readBasketByUserNickname"
 		resultType="com.mid.alcohol.dto.payment.BasketListDto">
 		SELECT b.basketid, b.productid, b.price, b.quantity, p.brandname, p.pname
 		FROM basket b
 		JOIN auctionproducts p
 		ON b.productid = p.productid
-		WHERE b.userid = #{userid}
+		WHERE b.userNickname = #{userNickname}
 	</select>
 
 	<select id="readPaymentList" resultType="java.lang.Integer">

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.mid.alcohol.dto.payment.BasketListDto;
 import com.mid.alcohol.service.PaymentService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,14 +21,18 @@ import lombok.extern.slf4j.Slf4j;
 public class PayHomeController {
 
 	@Autowired
+	private HttpSession session;
+	
+	@Autowired
 	private final PaymentService paymentService;
 	
 	@GetMapping("/paymain")
     public String home(Model model) {    	
         log.info("home()");
-        String userid = "test";
+        
+        String userNickname = (String) session.getAttribute("userNickname");
 		
-		List<BasketListDto> dto = paymentService.readBasketByUserid(userid);
+		List<BasketListDto> dto = paymentService.readBasketByUserNickname(userNickname);
 		log.info("home(dto={})", dto);
 		
 		model.addAttribute("list", dto);

@@ -44,9 +44,9 @@ public class PaymentService {
 		return dto;
 	}
 
-	public List<BasketListDto> readBasketByUserid(String userid) {
-		log.info("readBasketByUserid(userid={})", userid);
-		return paymentRepository.readBasketByUserid(userid);
+	public List<BasketListDto> readBasketByUserNickname(String userNickname) {
+		log.info("readBasketByuserNickname(userNickname={})", userNickname);
+		return paymentRepository.readBasketByUserNickname(userNickname);
 
 	}
 

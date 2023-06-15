@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 결제 정보 넘기기
 	// formSubmit.js 파일의 내용
 
-	document.getElementById("paymentSubmit").addEventListener("click", function(event) {
+	/*document.getElementById("paymentSubmit").addEventListener("click", function(event) {
 		event.preventDefault(); // 폼 제출 기본 동작 막기
 
 		// 체크된 항목 가져오기
@@ -115,11 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		request.open('POST', '/alcohol/payment/paymentmain');
 		request.send(formData);*/
 
-		document.getElementById("myForm").appendChild(hiddenInput);
+		/*document.getElementById("myForm").appendChild(hiddenInput);
 
 		// 폼 제출
 		document.getElementById("myForm").submit();
-	});
+	});*/
 
 	/*const btnPayment = document.querySelector('span#btnPayment');
 	btnPayment.addEventListener('click', () => {

@@ -24,7 +24,7 @@
 		<c:url var="paymentmain" value="/payment/paymentmain"/>
 		<form id="myForm" action="${ paymentmain }" method="post">
 		<div class="card-header">
-			<input type="checkbox" id="allCheckbox" /> 
+			<input type="checkbox" id="allCheckbox" name="allCheckbox"/> 
 			<label class="py-6" for="allCheckbox">전체선택</label> 
 			<span class="btnDeleteBasket">삭제</span>
 		</div>
