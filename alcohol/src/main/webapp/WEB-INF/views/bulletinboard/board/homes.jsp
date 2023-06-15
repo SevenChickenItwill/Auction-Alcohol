@@ -16,7 +16,10 @@
             min-height: 100vh;
         }
         
-        
+        #turkey {
+        	margin-top: 10px;
+        	margin-bottom: 10px;
+        }
         /* Header styles */
         header {
             background-color: #333;
@@ -30,13 +33,14 @@
             list-style-type: none;
             padding: 0;
             margin: 0;
+            margin-top: -45px;
             
         }
         
         nav ul li {
             display: inline;
             margin-right: 50px;
-            margin-top: 50px;
+            
         }
         
         nav ul li a {
@@ -57,6 +61,7 @@
        		text-underline-offset: var(--offset, 0.2em);
   			text-decoration: underline 0.12em;
   			transition: --offset 400ms, text-decoration-color 400ms;
+  			
        }
        
         .a:hover,
@@ -64,6 +69,12 @@
         	--offset: 0.5em;
  			 text-decoration-color: blue;
  			 
+        }
+        
+        #jam {
+        	margin-left: 625px;
+        	margin-bottom: 20px;
+        	
         }
         
         /* 경매페이지, 쇼핑몰 이동 페이지 */
@@ -107,9 +118,9 @@
         .mainBackground {
             flex: 1;
             background-image: url('./static/images/mainBackground.jpg');
-            
+            background-repeat: no-repeat;
             background-size: 1340px 730px;
-            background-position: 52% 4px;
+            background-position: 52% -100px;
             background-blend-mode: lighten;
             
             position: relative;
@@ -140,30 +151,32 @@
         .grids {
         text-align: center;
         /* 경매몰, 쇼핑몰 이동 px수치가 커질수록 아래로*/
-         margin-top: 250px;
+         margin-top: 300px;
         }
-       	
-       	
-       	
-       	
+       
         #nickname {
-       	text-align: right;
+       	 margin-left: 300px;
         }
         
     </style>
 </head>
 <body>
     <header>
-        <h1>Alcohol Event Mall</h1>
+        <h1 id="turkey">Turkey Brewery</h1>
         <c:url value="/auction/auctionlist" var="auctionList" >
                 </c:url>
+        <c:url value="/bulletinboard/board/list" var="communityList">
+        	<c:param name="num" value="0" />
+        </c:url>
         
         <nav class="navi">
-            <ul>
+            <ul id="jam">
                 <li><a href="#" class="a">주류 쇼핑몰</a></li>
                 <li><a href="${ auctionList }" class="a">주류 경매</a></li>
+                <li><a href="${ communityList }" class="a">커뮤니티</a></li>
                 <li><a href="#" class="a">마이페이지</a></li>
                 <li id="nickname">"${ sessionScope.userNickname }"님, 환영합니다.</li>
+                <li><a href="#" class="a" id="logout">로그아웃</a></li>
             </ul>
         </nav>
         

@@ -44,7 +44,7 @@ public class LoginController {
         session.setAttribute("userPassword", user.getUserPassword());
         session.setAttribute("userNickname", user.getUserNickname());
         
-        return "/bulletinboard/board/homes";
+        return "redirect:/";
     }
     
     @GetMapping("/logout")
