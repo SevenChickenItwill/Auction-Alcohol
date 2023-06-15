@@ -25,14 +25,14 @@ public class ShopController {
 	private ShopService shopservice;
 	
 	@GetMapping("/pdlist")
-	public void pdlist(Model model) {
+	public void pdlist(Model model, HttpSession session) {
 		
 		log.info("pdlist()");
+		String userid = (String) session.getAttribute("userNickname");
+		List<Products> list = shopservice.productall(userid); 
 		
-		List<Products> list = shopservice.productall(); 
-		
-		model.addAttribute(list);
-		log.info("{}",list);
+		model.addAttribute("prolist",list);
+		log.info("정상 실행");
 		
 	}
 	
@@ -53,7 +53,7 @@ public class ShopController {
 		int result = shopservice.createPd(dto);
 		log.info("{} row add complete");
 		
-		return "/shop/pdlist";
+		return "redirect:/shop/pdlist";
 	}
 	
 	

@@ -4,7 +4,7 @@
 
  document.addEventListener('DOMContentLoaded',()=>{
 	 
-	 const btnsearch = document.querySelector('input#btnsearch');
+	 const btnsearch = document.querySelector('button#btnsearch');
 	 const userid = document.querySelector('input#userid');
 	 const tbodys = document.querySelector('tbody#tbodys');
 	 const searchtext = document.querySelector('input#searchtext');
@@ -27,7 +27,7 @@
 		 }
 		 
 		 try{
-			let response = axios.post(reqUrl,data);
+			let response = await axios.post(reqUrl,data);
 			let list = response.data;
 			makeNewList(list);
 			console.log("검색완료");

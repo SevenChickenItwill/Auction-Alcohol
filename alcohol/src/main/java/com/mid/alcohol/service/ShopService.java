@@ -56,9 +56,9 @@ public class ShopService {
 		
 	}
 	
-	public List<Products> productall(){
+	public List<Products> productall(String userid){
 		
-		List<Products> list = shoprepository.productall();
+		List<Products> list = shoprepository.productall(userid);
 		log.info("productall()");
 		// 사진 크기 변환 및 경로 변경해서 쏴줄 메서드 호출
 		

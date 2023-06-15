@@ -49,16 +49,21 @@
 					 'Content-Type' : 'multipart/form-data'
 				 }
 			 });
-			 const data = response.data;
+			 let data = response.data;
 			 console.log(data);
 			 const name = data;
 			 console.log(name);
 			 
 			 photopathinput.value = name;
 			 
-			 let reqUrl2= `/alcohol/api/shop/loadimg/${name}`;
+			 let reqUrl2= `/alcohol/api/shop/loadimg`;
+			 data = {
+				 
+				 name : name
+				 
+			 } 
 			 
-			 let response2 = axios.post(reqUrl2);
+			 let response2 = await axios.post(reqUrl2,data);
 			 let imgname = response2.data;
 			 
 			 imgpreview.innerHTML = `<img src="data:image/jpeg;base64,${imgname}" />`;

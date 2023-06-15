@@ -4,11 +4,11 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mid.alcohol.repository.ShopRepository">
 
-	<select id="productall" resultType="com.mid.alcohol.domain.shop.products">
+	<select id="productall" resultType="com.mid.alcohol.domain.shop.Products">
 		select * from products where userid = #{userid}
 	</select>
 	
-	<select id="searchlist" resultMap="com.mid.alcohol.domain.shop.products">
+	<select id="searchlist" resultType="com.mid.alcohol.domain.shop.Products">
 		select * from products where userid = #{userid}
 		<if test="option == 1">
 			AND productname LIKE #{search}

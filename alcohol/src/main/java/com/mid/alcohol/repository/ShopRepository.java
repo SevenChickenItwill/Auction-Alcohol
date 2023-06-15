@@ -9,7 +9,7 @@ public interface ShopRepository {
 
 	List<Products> searchlist(ShopSearchDto dto);
 	
-	List<Products> productall();
+	List<Products> productall(String userid);
 
 	int createpd(Products products);
 	

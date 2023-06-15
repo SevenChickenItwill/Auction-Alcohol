@@ -54,7 +54,7 @@
 						<option value="11">주정</option>
 						<option value="12">기타주류</option>
 					</select>
-					<button class="btn" id="btncreate"></button>
+					<button class="btn" id="btncreate">상품 등록</button>
 			</form>
 		</div>
 		<div>
@@ -69,6 +69,8 @@
 			
 		</div>
 	</main>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="../static/js/pdcreate.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

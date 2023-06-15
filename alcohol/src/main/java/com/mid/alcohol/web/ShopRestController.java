@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.shop.Products;
+import com.mid.alcohol.dto.shop.ShopPhotoDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 import com.mid.alcohol.service.ShopService;
 
@@ -58,13 +59,13 @@ public class ShopRestController {
 		return ResponseEntity.ok(photopath);
 	}
 	
-	@PostMapping("/loadimg/{name}")
-	public ResponseEntity<String> loadimg(@PathVariable String name){
+	@PostMapping("/loadimg")
+	public ResponseEntity<String> loadimg(@RequestBody ShopPhotoDto dto){
 		log.info("loadimg");
 		
 		String result = "";
 		try {
-			result = shopservice.listToTagImage(shopservice.resizeImage(name));
+			result = shopservice.listToTagImage(shopservice.resizeImage(dto.getName()));
 			log.info("result = {}",result);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -20,13 +20,14 @@ public class ShopProductCreateDto {
 	private String brand;
 	private String userid;
 	private String expirationdate;
-	private long alcohol_level;
+	private double alcohol_level;
 	private String hashtag;
+	private int category;
 	private String photopath;
 	
 	public Products toEntity() {
 		
-		return Products.builder().productname(productname).alcohol_level(alcohol_level).brand(brand).expirationdate(expirationdate).hashtag(hashtag).photopath(photopath).price(price).standard(standard).unit(unit).userid(userid).build();
+		return Products.builder().productname(productname).alcohol_level(alcohol_level).brand(brand).expirationdate(expirationdate).hashtag(hashtag).photopath(photopath).price(price).standard(standard).unit(unit).userid(userid).category(category).build();
 		
 	}
 	

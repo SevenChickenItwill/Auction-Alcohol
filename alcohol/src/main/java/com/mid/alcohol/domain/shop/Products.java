@@ -19,8 +19,9 @@ public class Products {
 	private String brand;
 	private String userid;
 	private String expirationdate;
-	private long alcohol_level;
+	private double alcohol_level;
 	private String hashtag;
 	private String photopath;
+	private int category;
 	
 }
