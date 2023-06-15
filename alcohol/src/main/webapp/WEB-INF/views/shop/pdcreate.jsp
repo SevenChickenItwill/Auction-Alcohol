@@ -14,6 +14,13 @@
     crossorigin="anonymous">
 	</head>
 	<body>
+	<nav class="testnav"> <!-- 나중에 지워도 됩니다. -->
+			<ul>
+				<li><a href="/alcohol/shop/pdlist">목록가기</a></li>
+				<li><a href="/alcohol/shop/pdcreate">상품등록</a></li>
+				<li>마이페이지</li>
+			</ul>
+		</nav>
 		<header>
 			<h1>상품 등록 페이지</h1>
 		</header>

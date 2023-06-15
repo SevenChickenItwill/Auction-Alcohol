@@ -20,6 +20,9 @@
 	 const modifyform = document.querySelector('form#modifyform');
 	 const imgpreview = document.querySelector('div#imgpreview');
 	 const btndelete = document.querySelector('button#btndelete');
+	 const categorynum = document.querySelector('input#categorynum');
+	 let catesel = parseInt(categorynum.value); 
+	 categoryselect.selectedIndex = catesel - 1;
 	 
 	 // 이미지 업로드 관련
 	 const btnimg = document.querySelector('button#imgupload');
@@ -102,6 +105,11 @@
 		 
 		 e.preventDefault();
 		 
+		 let result = confirm('정말로 삭제하시겠습니까?')
+		 if(!result){
+			 return;
+		 }
+		 
 		 let pid = pidinput.value;
 		 
 		 modifyform.action = `/alcohol/shop/delete?pid=${pid}`;
@@ -131,7 +139,7 @@
 			 alcohollevelinput.value='';
 		 }
 		 
-		 if(photopath=''){
+		 if(photopath==''){
 			 
 			 alert('사진을 업로드하지 않아 기본 사진으로 업로드됩니다');
 			 photopath='C:\imgs\defaultimg.jpg'

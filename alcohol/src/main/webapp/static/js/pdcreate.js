@@ -86,7 +86,7 @@
 		 let alcohol_level = alcohollevelinput.value;
 		 let hashtag = hashtaginput.value;
 		 let category = categoryselect.value;
-		 let photopath = photopathinput.value;
+		 let photopaths = photopathinput.value;
 		 
 		 if(alcohol_level>=100){
 			 
@@ -94,10 +94,10 @@
 			 alcohollevelinput.value='';
 		 }
 		 
-		 if(photopath=''){
+		 if(photopaths==''){
 			 
 			 alert('사진을 업로드하지 않아 기본 사진으로 업로드됩니다');
-			 photopath='C:\imgs\defaultimg.jpg'
+			 photopathinput.value='C:\imgs\defaultimg.jpg'
 			 
 		 }
 		 

@@ -14,7 +14,13 @@
     crossorigin="anonymous">
 	</head>
 	<body>
-		
+		<nav class="testnav"> <!-- 나중에 지워도 됩니다. -->
+			<ul>
+				<li><a href="/alcohol/shop/pdlist">목록가기</a></li>
+				<li><a href="/alcohol/shop/pdcreate">상품등록</a></li>
+				<li>마이페이지</li>
+			</ul>
+		</nav>
 		<header><h1>상품 리스트</h1></header>
 		<main>
 			<div>
@@ -53,55 +59,58 @@
 					</thead>
 					<tbody id="tbodys">
 					<c:forEach var="list" items="${ prolist }">
+					<c:url var="detail" value="/shop/pdmodify">
+						<c:param name="pid" value="${ list.pid }"></c:param>
+					</c:url>
 					<tr>
-						<td>${ list.pid }</td>
-						<td>${ list.productname }</td>
-						<td>${ list.standard }</td>
-						<td>${ list.unit }</td>
-						<td>${ list.price }</td>
-						<td>${ list.brand }</td>
-						<td>${ list.userid }</td>
-						<td>${ list.expirationdate }</td>
-						<td>${ list.alcohol_level }</td>
-						<td>${ list.hashtag }</td>
+						<td><a href="${detail }">${ list.pid }</a></td>
+						<td><a href="${detail }">${ list.productname }</a></td>
+						<td><a href="${detail }">${ list.standard }</a></td>
+						<td><a href="${detail }">${ list.unit }</a></td>
+						<td><a href="${detail }">${ list.price }</a></td>
+						<td><a href="${detail }">${ list.brand }</a></td>
+						<td><a href="${detail }">${ list.userid }</a></td>
+						<td><a href="${detail }">${ list.expirationdate }</a></td>
+						<td><a href="${detail }">${ list.alcohol_level }</a></td>
+						<td><a href="${detail }">${ list.hashtag }</a></td>
 						<c:if test="${ list.category == 1 }">
-								<td>탁주</td>
+								<td><a href="${detail }">탁주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 2 }">
-								<td>약주</td>
+								<td><a href="${detail }">약주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 3 }">
-								<td>청주</td>
+								<td><a href="${detail }">청주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 4 }">
-								<td>맥주</td>
+								<td><a href="${detail }">맥주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 5 }">
-								<td>과실주</td>
+								<td><a href="${detail }">과실주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 6 }">
-								<td>소주</td>
+								<td><a href="${detail }">소주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 7 }">
-								<td>위스키</td>
+								<td><a href="${detail }">위스키</a></td>
 							</c:if>
 							<c:if test="${ list.category == 8 }">
-								<td>브랜디</td>
+								<td><a href="${detail }">브랜디</a></td>
 							</c:if>
 							<c:if test="${ list.category == 9 }">
-								<td>증류주</td>
+								<td><a href="${detail }">증류주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 10 }">
-								<td>리큐르</td>
+								<td><a href="${detail }">리큐르</a></td>
 							</c:if>
 							<c:if test="${ list.category == 11 }">
-								<td>주정</td>
+								<td><a href="${detail }">주정</a></td>
 							</c:if>
 							<c:if test="${ list.category == 12 }">
-								<td>기타주류</td>
+								<td><a href="${detail }">기타주류</a></td>
 							</c:if>
 						<td><img src = "data:image/jpeg;base64,${ list.photopath }" /></td>
-					</tr>
+					</tr></a>
 					</c:forEach>
 					
 					</tbody>

@@ -60,7 +60,7 @@ public class ShopController {
 	}
 	
 	@PostMapping("/pdmodify")
-	public String pdmodifyclear(@RequestBody ShopDetailDto dto) {
+	public String pdmodifyclear(ShopDetailDto dto) {
 		
 		log.info("pdmodifyclear(pid={})",dto.getPid());
 		
@@ -72,7 +72,7 @@ public class ShopController {
 	}
 	
 	@GetMapping("/pdmodify")
-	public void pdmodify(int pid, Model model) {
+	public void pdmodify(@RequestParam int pid, Model model) {
 		log.info("pdmodify(pid={})",pid);
 		 ShopDetailDto dto = shopservice.readdetail(pid);
 		
@@ -80,7 +80,7 @@ public class ShopController {
 	}
 	
 	@GetMapping("/delete")
-	public String pddelete(int pid) {
+	public String pddelete(@RequestParam int pid) {
 		log.info("pddelete({})",pid);
 		int result = shopservice.deletepd(pid);
 		
