@@ -109,6 +109,10 @@ a:active {
 				<c:url var="paymain" value="/payment/payindex">
 				</c:url>
 				<a href="${paymain}">결제하기</a>
+				
+				<c:url var="shopmain" value="/shop/shopmain">
+				</c:url>
+				<a href="${shopmain}" class="text-info">상품 스토어</a>
 
 				<c:url value="/bulletinboard/board/list" var="boardList" >
                     <c:param name="num" value="0" />
