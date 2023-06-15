@@ -19,7 +19,7 @@
 	<c:url var="userAddressModify" value="/signup/userAddressModify"></c:url>
 	<form id="userAccountform" name="userAccountform" method="post"
 		action="${userAddressModify}">
-
+    <input type="text" class="d-none" id="userEmail" name="userEmail" value="${ sessionScope.userEmail }" />
 	<div>
 		<label>주소</label> 
         <br /> 
@@ -34,8 +34,10 @@
 			id="sample6_detailAddress" name="userDetailAddress"
 			placeholder="DETAILADDRESS"> 
         <input type="text"
-			id="sample6_extraAddress" name="userAddressNotes" placeholder="NOTES">
-
+			id="sample6_extraAddress" name="userAddressNotes" placeholder="NOTES">      
+    </div>
+    </form>
+        
 		<script>
 			function sample6_execDaumPostcode() {
 				new daum.Postcode(
@@ -94,8 +96,6 @@
 						}).open();
 			}
 		</script>
-	</div>
-    </form>
     <div>
        <button id="btnAddressCancel">취소</button>
        <button id="btnAddressUpdate">수정하기</button>
@@ -104,7 +104,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
-    <script scr="../static/js/userAccountAddressUpdate"></script>
+    <script src="../static/js/userAccountAddressUpdate.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   
 </body>

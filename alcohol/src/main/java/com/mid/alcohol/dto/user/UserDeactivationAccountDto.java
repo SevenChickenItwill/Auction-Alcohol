@@ -7,19 +7,18 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Builder
-public class UserAddressUpdateDto {
+public class UserDeactivationAccountDto {
 	private String userEmail;
-	private String userAddress;
+	private int deactivationAccount;
 	
 	public User toEntity() {
-		
 		return User.builder()
 				.userEmail(userEmail)
-				.userAddress(userAddress)
+				.deactivationAccount(deactivationAccount)
 				.build();
 	}
 }

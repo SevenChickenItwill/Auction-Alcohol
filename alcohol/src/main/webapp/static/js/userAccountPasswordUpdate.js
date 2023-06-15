@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		const url = `/alcohol/api/signup/passwordModify/${userEmail}/${userPassword}/${newPassword}`;
 		try {
-			let response = await axios.get(url);
+			let response = await axios.post(url);
 			console.log(response);
 
 			if (response.data === "valid") {

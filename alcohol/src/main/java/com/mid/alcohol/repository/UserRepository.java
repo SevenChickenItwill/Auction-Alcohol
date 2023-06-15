@@ -18,7 +18,6 @@ public interface UserRepository {
     
     // 중복된 이메일이 있는지, 계정 페이지에서 상세보기
     User findByUserEmail(String userEmail);
-
     
     // 로그인 하기 위해
     User signInMain(User login);
@@ -30,11 +29,16 @@ public interface UserRepository {
     User findUserByEmailAndPassword (String userEmail, String userPassword);
     
     // 전화번호 수정
-    int PhoneUpdate(UserPhoneUpdateDto user);
+    int PhoneUpdate(User user);
     
     // 주소 수정
-    int AddressUpdate(UserAddressUpdateDto user);
-
+    int AddressUpdate(User user);
+    
+    // 계정 비활성화
+    int DeactivationAccount(String userEmail);
+    
+    // 계정 활성화
+    int ActivationAccount(String userEmail);
 
     
     

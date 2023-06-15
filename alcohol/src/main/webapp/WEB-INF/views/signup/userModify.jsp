@@ -81,14 +81,15 @@
 	<br />
  
 	<div>
-		<label>계정 삭제</label>
-		<button id="btnAccountDelete">삭제</button>
+		<label>계정 비활성화</label>
+		<a class="btn btn-outline-primary" 
+           href="/alcohol/signup/deactivationAccount">비활성화</a>
 	</div>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
-	<script src="../static/js/userAccountList.js"></script>
+	
 </body>
 </html>

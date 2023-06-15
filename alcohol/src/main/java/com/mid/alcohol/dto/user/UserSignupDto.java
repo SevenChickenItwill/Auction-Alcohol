@@ -33,7 +33,8 @@ public class UserSignupDto {
     private String userPhone;  
     private String userGender;
     private String userNickname;
-    private Number category; 
+    private int category;
+    private int deactivationAccount;
     private LocalDate userBirthday;
     private Timestamp userJoindate = Timestamp.valueOf(LocalDateTime.now());
     // -> JSPL에서는 LocalDateTime 겍체를 사용하지 못하기 때문에 Timestamp 타입으로 선언
@@ -60,6 +61,7 @@ public class UserSignupDto {
                 .userAge(userAge)
                 .userNickname(userNickname)
                 .category(category)
+                .deactivationAccount(deactivationAccount)
                 .userBirthday(LocalDateTime.of(userBirthday, LocalTime.of(0, 0)))
                 .userJoindate(userJoindate.toLocalDateTime())
                 .build();

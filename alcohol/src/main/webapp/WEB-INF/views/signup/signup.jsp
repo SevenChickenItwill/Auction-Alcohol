@@ -8,7 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Alcohol</title>
 <link
-
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
@@ -29,7 +28,11 @@
 				<c:url var="signup" value="/signup/signup" />
 				<form id="signupForm" method="post" action="${ signup }">
 					<div>
-						<div>
+						<div> 
+                            <select class="d-none" name="decativationAccount">
+                                <option  value="0" selected>활성화 계정</option>
+                                <option  value="1">비활성화 계정</option>
+                            </select>
 							<select name="category">
 								<option value="0">구매자</option>
 								<option value="1">판매자</option>
