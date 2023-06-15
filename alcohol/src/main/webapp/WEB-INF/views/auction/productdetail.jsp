@@ -61,12 +61,45 @@
           경매등록
         </a>
       </li>
+            <li>
+      	<c:url var="shopproducts" value="/shop/pdlist" />
+        <a href="${ shopproducts }" class="nav-link link-dark">
+          쇼핑몰 상품조회
+        </a>
+      </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="${ shopcreate }" class="nav-link link-dark">
+          쇼핑몰 상품등록
+        </a>
+      </li>
     </ul>
   </div>
 	<div>
-		<header>
-			<h1>상품 상세보기</h1>
-		</header>
+		<div>
+        <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">경매품 상세 페이지</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-link px-2 link-dark">
+        <a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
+        
+      </ul>
+      <div>
+      	<c:url var="logout" value="/account/logout"></c:url>
+      	<a href="${ logout }"><button>로그아웃</button></a>
+      </div>
+    </header>
+  </div>
 		
 		<nav>
 			<ul>
@@ -81,7 +114,7 @@
 			</ul>
 		</nav>
 		
-		<main>
+		<main class="mains">
 			<section>
 				<c:url var="productmodify" value="/auction/productmodify" />
 				<form class="form" id="detailform" action="${ productmodify }" method="post">

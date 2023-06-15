@@ -12,17 +12,95 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
     crossorigin="anonymous">
+    <style>
+    .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    
+
+}
+.mains{
+    margin-left: 220px;
+}
+
+.headers{
+    margin-left:220px;
+}
+    
+    </style>
 	</head>
 	<body>
-		<nav class="testnav"> <!-- 나중에 지워도 됩니다. -->
-			<ul>
-				<li><a href="/alcohol/shop/pdlist">목록가기</a></li>
-				<li><a href="/alcohol/shop/pdcreate">상품등록</a></li>
-				<li>마이페이지</li>
-			</ul>
-		</nav>
-		<header><h1>상품 리스트</h1></header>
-		<main>
+	
+	<div class="flex-shrink-0 p-3 bg-white sidebars" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionManagement" value="/auction/auction" />
+        <a href="${ auctionManagement }" class="nav-link link-dark">
+          경매조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark">
+          관리자 메뉴
+        </a>
+      </li>
+            <li>
+      	<c:url var="shopproducts" value="/shop/pdlist" />
+        <a href="${ shopproducts }" class="nav-link link-dark">
+          쇼핑몰 상품조회
+        </a>
+      </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="${ shopcreate }" class="nav-link link-dark">
+          쇼핑몰 상품등록
+        </a>
+      </li>
+    </ul>
+  </div>
+
+		<div>
+        <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">상품 관리 페이지</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-link px-2 link-dark">
+        <a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
+        
+      </ul>
+      <div>
+      	<c:url var="logout" value="/account/logout"></c:url>
+      	<a href="${ logout }"><button>로그아웃</button></a>
+      </div>
+    </header>
+  </div>
+		<main class="mains">
 			<div>
 				<c:url var="pdcreate" value="/shop/pdcreate"></c:url>
 				<a href="${pdcreate }"><button>상품 등록</button></a>

@@ -51,6 +51,8 @@ public class ShopController {
 	@PostMapping("/pdcreate")
 	public String pdcreateclear(ShopProductCreateDto dto) {
 		
+		
+		
 		log.info("pdcreateclear()");
 		
 		int result = shopservice.createPd(dto);
@@ -67,7 +69,7 @@ public class ShopController {
 		int result = shopservice.updatepd(dto);
 		log.info("update rows = {}",result);
 		
-		return "redirect:/shop/pdmodify";
+		return "redirect:/shop/pdmodify?pid="+dto.getPid();
 		
 	}
 	
