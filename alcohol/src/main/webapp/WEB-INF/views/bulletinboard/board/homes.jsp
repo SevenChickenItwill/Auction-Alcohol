@@ -30,7 +30,7 @@
         
         nav ul li {
             display: inline;
-            margin-right: 10px;
+            margin-right: 20px;
         }
         
         nav ul li a {
@@ -54,16 +54,21 @@
             display: flex;
         }
         
+     
+        
         /* Left section styles */
-        .left-section {
+        .mainBackground {
             flex: 1;
             background-image: url('../../static/images/mainBackground.jpg');
-            background-color: rgba(0, 0, 160, 1.0); 
-            background-size: cover;
-            background-position: center;
+            background-color: rgba(0, 0, 0, 1.0); 
+            background-size: 1200px 600px;
+            background-position: 50% 4px;
             background-blend-mode: lighten;
-            position: relative;
             
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 10px;
             text-decoration: none;
         }
@@ -71,60 +76,24 @@
         /* welcome 문구 */
        .welcome {
           text-align: left;
+          mx: 10px;
        }
-
-        /* Right section styles */
-        .right-section {
-            flex: 1;
-            background-image: url('../../static/images/mainBackground2.jpg');
-            background-color: rgba(255, 255, 255, 0.5);
-            background-size: cover;
-            padding: 20px;
+     
+        .shoppingmall-font {
+        
+        text-decoration: none;
+        margin-top: -5px;
         }
         
-        .navi {
-           align-items: center;
+        .bidmall-font {
+        text-decoration: none;
+        margin-top: -5px;
         }
         
-        .left-box {
-             margin: 10px;
-            transition: transform 0.1s ease;
-            text-decoration: none;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #fff;
-        }
-        
-        /* Linked fonts styles */
-        .left-box:hover {
-            transform: scale(1.05);
-        }
-        
-        .left-font {
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            color: inherit;
-            text-decoration: none;
-            font: 35px "Nunito Sans", "Noto Sans KR";
-            opacity: 1;
-            transform: matrix(1, 0, 0, 1, 0, 0);
-        }
-        
-        .right-font {
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            color: white;
-            font: 35px "Nunito Sans", "Noto Sans KR";
-            transform: matrix(1, 0, 0, 1, 0, 0);
-            opacity: 1;
-            text-decoration: none;
-        }
-        
-         .right-box:hover {
-            transform: scale(1.05);
-        }
+       	.grids {
+       		text-align: center;
+       		
+       	}
         
     </style>
 </head>
@@ -140,19 +109,16 @@
             </ul>
         </nav>
     </header>
-    
-    <main>
-        <section class="left-section">
-        <h2 class="welcome">Welcome to our Korean Traditional Alcohol Event Mall</h2>
-            <p class="left-box"><a href="#" class="left-font">경매 페이지로 이동</a></p>
-        </section>
+    <h2 class="welcome">Welcome to our Korean Traditional Alcohol Event Mall</h2>
+    <main class="mainBackground">
         
-        <section class="right-section">
-            <h2></h2>
-            <p class="right-box"><a href="#" class="right-font">주류 쇼핑몰로 이동</a></p>
-        </section>
+        <div class= "grids">
+    		<p><a href="#" class="shoppingmall-font">주류 쇼핑몰로 이동</a></p>
+        	<p><a href="#" class="bidmall-font">경매몰로 이동</a></p>
+        </div>
+        
     </main>
-    
+    	
     <footer>
         <p>&copy; Alcohol Event Mall of Team Turkey(칠면조). All rights reserved.</p>
     </footer>
