@@ -11,7 +11,7 @@
 <meta name="author"
 	content="Mark Otto, Jacob Thornton, 그리고 Bootstrap 기여자들">
 <meta name="generator" content="Hugo 0.104.2">
-<title>Album example · Bootstrap v5.2</title>
+<title>칠면주조에 오신 것을 환영합니다.</title>
 
 <link rel="canonical"
 	href="https://getbootstrap.kr/docs/5.2/examples/album/" />
@@ -23,6 +23,11 @@
 
 
 <style>
+li{
+	color: white;
+	margin-right: 50px;
+}
+
 a:link {`1
 	color:secondary;
 }
@@ -89,6 +94,7 @@ a:active {
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
+
 </style>
 
 
@@ -102,20 +108,21 @@ a:active {
 				
 						<path
 							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-						<circle cx="12" cy="13" r="4"></circle></svg> <strong>Album</strong>
+						<circle cx="12" cy="13" r="4"></circle></svg> <strong style="text-align: center;">칠면주조 경매 리스트</strong>
 				</a>
-				<ul>
-				<li><a href="/alcohol/shop/pdlist">목록가기</a></li>
-				</ul>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-					aria-controls="navbarHeader" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+				
+				
 			</div>
+			
+<nav class="nav nav-pills flex-column flex-sm-row">
+   <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Auction</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Board</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link">${ sessionScope.userNickname } 님 환영합니다.</a>
+</nav>
 		</div>
-		<input class="card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
+		<input class="card d-none" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	</header>
 
 	<main>
