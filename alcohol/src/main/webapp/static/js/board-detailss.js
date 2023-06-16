@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	// 추천을 올려주는 버튼 생성.
-	const recommendUp = document.querySelector('input#recommendUp');
+	const recommendUp = document.querySelector('button#recommendUp');
 
 	const recommendClickUp = (e) => {
 

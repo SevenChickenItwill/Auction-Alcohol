@@ -128,11 +128,10 @@
 
 											<div class="recommendBtn">
 												<div style="margin-right: 10px;">
-													<input type="button" value="추천" id="recommendUp" />
-													<i><img src="/alcohol/static/images/recommedup.png"></i>
+													<input type="button" class="btn btn-success" value="추천" id="recommendUp" />
 												</div>
 												<div style="margin-left: 10px;">
-													<input type="button" value="비추천" id="recommendDo" />
+													<input class="btn btn-success" type="button" value="비추천" id="recommendDo" />
 												</div>
 											</div>
 
@@ -143,11 +142,7 @@
 						</form>
 						<input class="d-none" type="text" value="${ board.nickname }"
 							name="writerid" /> <input class="d-none" type="text"
-							value="${ sessionScope.userNickname }" name="checkid" /> <span>
-							<c:url
-								value="/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0"
-								var="boardList" /> <a href="${ boardList }">목록페이지</a>
-						</span>
+							value="${ sessionScope.userNickname }" name="checkid" /> 
 						<c:if test="${ checkid eq writerid }">
 
 							<span> <c:url var="boardModify"
@@ -157,6 +152,11 @@
 								<button id="deleteBoardBtn">삭제하기</button>
 							</span>
 						</c:if>
+						<div>
+							<c:url
+								value="/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0"
+								var="boardList" /> <a href="${ boardList }">목록페이지</a>
+						</div>
 						<div>
 							<!-- 댓글 목록 보여줄 영역 -->
 							<span>댓글</span> <span id="commentCount"></span>
