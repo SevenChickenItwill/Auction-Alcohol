@@ -26,6 +26,7 @@ import com.mid.alcohol.domain.board.RecommendUp;
 import com.mid.alcohol.dto.board.BulletinboardCreateDto;
 import com.mid.alcohol.dto.board.BulletinboardDetailDto;
 import com.mid.alcohol.dto.board.BulletinboardImageUpdateDto;
+import com.mid.alcohol.dto.board.BulletinboardKeywordDto;
 import com.mid.alcohol.dto.board.BulletinboardHistoryDto;
 import com.mid.alcohol.dto.board.BulletinboardListDto;
 import com.mid.alcohol.dto.board.BulletinboardUpdateDto;
@@ -106,7 +107,9 @@ public class BulletinboardService {
             String keywordT = keyword;
             String keywordC = keywordT;
             
-            List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC);
+            BulletinboardKeywordDto dto = new BulletinboardKeywordDto(keywordT, keywordC);
+            
+            List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitleAndContent(dto);
 //            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitleAndContent(keywordT, keywordC);
 //            
 //            for (int i = 0; i < list.size(); i++) {

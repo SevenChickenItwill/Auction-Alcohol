@@ -45,7 +45,7 @@ public class LoginController {
         session.setAttribute("userPassword", user.getUserPassword());
         session.setAttribute("userNickname", user.getUserNickname());
         
-        return "redirect:/auction/auctionlist";
+        return "redirect:/";
     }
     
     @GetMapping("/logout")

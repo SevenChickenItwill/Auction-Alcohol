@@ -4,7 +4,7 @@
 
  document.addEventListener('DOMContentLoaded',()=>{
 	 
-	 const btnsubmit = document.querySelector('button#btnSubmit');
+	 const btnsubmit = document.querySelector('input#btnSubmit');
 	 const btnsignUp = document.querySelector('button#btnSignUp');
 	 const form = document.querySelector('form#loginform');
 	 const userEmail = document.querySelector('input#userEmail');

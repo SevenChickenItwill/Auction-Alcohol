@@ -72,11 +72,21 @@ public class UserController {
 		return "/signup/signupCompletion";
 	}
 
+<<<<<<< HEAD
 	// 회원가입 완료 페이지로 이동
 	@GetMapping("/signupCompletion")
 	public void signupCompletion() {
 		log.info("signupCompletion()");
 	}
+=======
+    // 메인 페이지 이동
+    @GetMapping("/main")
+    public String main() {
+        log.info("main()");
+        
+        return "redirect:/signup/signupEmail";
+    }
+>>>>>>> origin/Taewook6
 
 	// 메인 페이지 이동
 	@GetMapping("/main")

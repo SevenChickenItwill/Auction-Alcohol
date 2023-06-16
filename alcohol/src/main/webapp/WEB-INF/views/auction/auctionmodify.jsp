@@ -55,10 +55,23 @@
           경매등록
         </a>
       </li>
+            <li>
+      	<c:url var="shopproducts" value="/shop/pdlist" />
+        <a href="${ shopproducts }" class="nav-link link-dark">
+          쇼핑몰 상품조회
+        </a>
+      </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="${ shopcreate }" class="nav-link link-dark">
+          쇼핑몰 상품등록
+        </a>
+      </li>
     </ul>
   </div>
     
-                <div class="container">
+                <div>
+        <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
       <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
@@ -72,8 +85,13 @@
         <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item">*** 님</li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
+        
       </ul>
+      <div>
+      	<c:url var="logout" value="/account/logout"></c:url>
+      	<a href="${ logout }"><button>로그아웃</button></a>
+      </div>
     </header>
   </div>
     
