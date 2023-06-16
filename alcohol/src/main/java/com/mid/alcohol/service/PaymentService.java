@@ -1,6 +1,7 @@
 package com.mid.alcohol.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import com.mid.alcohol.dto.payment.BasketListDto;
 import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
+import com.mid.alcohol.dto.payment.PaymentListDto;
 import com.mid.alcohol.repository.PaymentRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -74,4 +76,46 @@ public class PaymentService {
 	public void deletebasket(int basketid) {
 		paymentRepository.deletebasket(basketid);
 	}
+
+
+	public void insertPaymentList(List<PaymentListDto> list) {
+		for (PaymentListDto x : list) {
+			paymentRepository.insertPaymentList(x);
+		}
+	}
+
+
+	public void deleteOrders(int paymentid) {
+		paymentRepository.deleteOrders(paymentid);
+	}
+
+
+	public void deletePayment(int paymentid) {
+		paymentRepository.deletePayment(paymentid);
+	}
+
+
+	public List<PaymentListDto> getPaymentList(int paymentid) {
+		return paymentRepository.getPaymentList(paymentid);
+	}
+
+
+	public List<Integer> getBasketidFromOrders(int paymentid) {
+		return paymentRepository.getBasketidFromOrders(paymentid);
+	}
+
+
+	public void deletebasket(List<Integer> basketidlist) {
+		for (Integer basketid : basketidlist) {
+			paymentRepository.deletebasket(basketid);
+		}
+	}
+
+
+//	public List<String> getPnameByBasketid(List<Integer> basketidlist) {
+//		List<String> pnameList = paymentRepository.
+//		return ;
+//	}
+
+
 }

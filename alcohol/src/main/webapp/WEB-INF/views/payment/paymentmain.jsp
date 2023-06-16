@@ -81,10 +81,15 @@
 	  <img src="../static/img/small.png">
 	  <br>
 
-	  <div class="btn" id="btnkakaopay">결제하기</div>
+	  <span class="btn" id="btnkakaopay">결제하기</span>
+	  <c:url var="cancelpayment" value="/payment/paymentcancel"/>
+	  <form action="${ cancelpayment }" method="post">
+	  	<input type="submit" value="결제취소" class="btn">
+	  </form>
 	  <script type="text/javascript" src="../static/js/jquery-3.7.0.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 	
 	<script src="./../static/js/jq.js"></script>
+	<script src="../static/js/paymentt.js"></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

@@ -26,6 +26,7 @@ import com.mid.alcohol.dto.payment.AdressUpdateDto;
 import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
+import com.mid.alcohol.dto.payment.PaymentListDto;
 import com.mid.alcohol.service.PaymentService;
 
 import jakarta.servlet.http.HttpSession;
@@ -45,12 +46,16 @@ public class PaymentController {
 	private PaymentService paymentService;
 
 	@PostMapping("/paymentmain")
-	public void paymentInfo(Model model, 
+	public String paymentInfo(Model model, 
 			@RequestParam(name = "quantity") List<Integer> quantitylist,
-			@RequestParam(name = "basketid") List<Integer> basketidlist) {
+			@RequestParam(name = "basketid") List<Integer> basketidlist,
+			@RequestParam(name = "productid") List<Integer> productidlist,
+			@RequestParam(name = "price") List<Integer> pricelist) {
 		log.info("paymentInfoPost()");
 		log.info("quantitylist: {}", quantitylist);
 		log.info("basketidlist: {}", basketidlist);
+		log.info("productidlist: {}", productidlist);
+		log.info("pricelist: {}", pricelist);
 		
 		List<BasketUpdateListDto> basketUpdateListDto = new ArrayList<>();
 		for (int i = 0; i < quantitylist.size(); i++) {
@@ -59,11 +64,31 @@ public class PaymentController {
 			basketUpdateDto.setBasketid(basketidlist.get(i));
 			basketUpdateListDto.add(basketUpdateDto);
 		}
-		for (BasketUpdateListDto x : basketUpdateListDto) {
-			log.info(""+x.getBasketid());
-			log.info(""+x.getQuantity());
-		}
+		// 장바구니 업데이트
 		paymentService.updateBaket(basketUpdateListDto);
+		
+		String userNickname = (String)session.getAttribute("userNickname");
+		// 결제 테이블 생성
+		paymentService.insertPayment(userNickname);
+		// 결제 id가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제목록 만들기
+		List<PaymentListDto> list = new ArrayList<>();
+		// PaymentlistDto 객체 만들어서 리스트에 넣어주기
+		for (int i = 0; i < quantitylist.size(); i++) {
+			PaymentListDto paymentListDto = new PaymentListDto(
+														paymentid, 
+														productidlist.get(i), 
+														quantitylist.get(i), 
+														pricelist.get(i),
+														userNickname, 
+														basketidlist.get(i));
+			list.add(paymentListDto);		
+		}
+		// 결제목록리스트 넣어주기
+		paymentService.insertPaymentList(list);
+		
+		return "redirect:/payment/paymentmain";
 	}
 
 	@PostMapping("/updateDeliveryInfo")
@@ -132,6 +157,19 @@ public class PaymentController {
 	@RequestMapping("/kakaopay.cls")
 	@ResponseBody
 	public String kakaopay() {
+		String userNickname = (String) session.getAttribute("userNickname");
+		// 결제 id 가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제 id로 basketid 가져오기
+		List<Integer> basketidlist = paymentService.getBasketidFromOrders(paymentid);
+		// basketidlist로 pname찾기
+//		List<String> pnameList  = paymentService.getPnameByBasketid(basketidlist);
+		// 결제목록 가져오기
+		List<PaymentListDto> list = paymentService.getPaymentList(paymentid);
+		int totalAmount = 0;
+		for (PaymentListDto x : list) {
+			totalAmount += x.getPrice() * x.getQuantity();
+		}
 		try {
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
 			try {
@@ -140,7 +178,7 @@ public class PaymentController {
 				connection.setRequestProperty("Authorization", "KakaoAK 57e7976b8b01733b8d39b2e982361037");
 				connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 				connection.setDoOutput(true);
-				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name=초코파이&quantity=1&total_amount=2200&tax_free_amount=0&approval_url=http://localhost:8081/alcohol/payment/paysuccess&fail_url=http://localhost:8081/alcohol/payment/payfail&cancel_url=http://localhost:8081/alcohol/payment/paycancel";
+				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name="+userNickname+"&quantity=1&total_amount="+totalAmount+"&tax_free_amount=0&approval_url=http://localhost:8081/alcohol/payment/paysuccess&fail_url=http://localhost:8081/alcohol/payment/payfail&cancel_url=http://localhost:8081/alcohol/payment/paycancel";
 				OutputStream ops = connection.getOutputStream();
 				DataOutputStream dops = new DataOutputStream(ops);
 				dops.writeBytes(param);
@@ -170,14 +208,47 @@ public class PaymentController {
 
 	@GetMapping("/paysuccess")
 	public void paysuccess() {
+		String userNickname = (String) session.getAttribute("userNickname");
+		// 결제 id 가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제 id로 basketid 가져오기
+		List<Integer> basketidlist = paymentService.getBasketidFromOrders(paymentid);
+		// basketid로 basket 테이블 지우기
+		paymentService.deletebasket(basketidlist);
 	}
 
 	@GetMapping("/paycancel")
 	public void paycancel() {
+		String userNickname = (String) session.getAttribute("userNickname");
+		// 결제 id 가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제 id로 주문목록 지우기
+		paymentService.deleteOrders(paymentid);
+		// 결제 id로 결제 테이블 지우기
+		paymentService.deletePayment(paymentid);
 	}
 
 	@GetMapping("/payfail")
 	public void payfail() {
+		String userNickname = (String) session.getAttribute("userNickname");
+		// 결제 id 가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제 id로 주문목록 지우기
+		paymentService.deleteOrders(paymentid);
+		// 결제 id로 결제 테이블 지우기
+		paymentService.deletePayment(paymentid);
+	}
+	
+	@PostMapping("/paymentcancel")
+	public void paymentcancel() {
+		String userNickname = (String) session.getAttribute("userNickname");
+		// 결제 id 가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제 id로 주문목록 지우기
+		paymentService.deleteOrders(paymentid);
+		// 결제 id로 결제 테이블 지우기
+		paymentService.deletePayment(paymentid);
+		
 	}
 
 }

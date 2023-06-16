@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			checkbox.checked = allCheckbox.checked;
 			const id = checkbox.getAttribute('data-id');
 
-			const inputs = ["quantity", "basketid"]
+			const inputs = ["quantity", "basketid", "productid", "price"]
 			inputs.forEach((s) => {
 				const selector = `input#${s}-${id}`
 				const inputElement = document.querySelector(selector);

@@ -66,5 +66,31 @@
 		DELETE FROM basket
 		WHERE basketid = #{basketid}
 	</delete>
+	
+	<insert id="insertPaymentList">
+		INSERT INTO orders
+		values (#{paymentid}, #{productid}, #{quantity}, #{price}, #{userNickname}, #{basketid})
+	</insert>
 
+	<delete id="deleteOrders">
+		DELETE FROM orders
+		WHERE paymentid = #{paymentid}
+	</delete>
+	
+	<delete id="deletePayment">
+		DELETE FROM payment_list
+		WHERE paymentid = #{paymentid}
+	</delete>
+	
+	<select id="getPaymentList" resultType="com.mid.alcohol.dto.payment.PaymentListDto">
+		SELECT *
+		FROM orders
+		WHERE paymentid = #{paymentid}
+	</select>
+	
+	<select id="getBasketidFromOrders" resultType="java.lang.Integer">
+		SELECT basketid
+		FROM orders
+		WHERE paymentid = #{paymentid}
+	</select>
 </mapper>

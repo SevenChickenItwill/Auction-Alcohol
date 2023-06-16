@@ -35,6 +35,7 @@
 						<input type="checkbox" id="checkbox-${ basket.basketid }" data-id="${ basket.basketid }" name="checkbox"> 
 						<input id="productid-${ basket.basketid }" value="${ basket.productid }" class="d-none">
 						<input id="basketid-${ basket.basketid }" value="${ basket.basketid }" class="d-none">	
+						<input id="price-${ basket.basketid }" value="${ basket.price }" class="d-none">	
 						<label>${basket.brandname}</label>
 						<hr>
 						<label>${basket.pname}</label>
