@@ -73,7 +73,7 @@
   <update id="ActivationAccount">
    update USERS
    set DEACTIVATIONACCOUNT = 0
-   where USEREMAIL = {userEmail}
+   where USEREMAIL = #{userEmail}
   </update>
 
  <!-- 수정할 때 해당 이메일의 비밀번호인지 확인-->
@@ -84,6 +84,14 @@
   WHERE userEmail = #{userEmail} AND
   userPassword = #{userPassword}
  </select>
-
-
+ 
+ <!-- 유저 비밀번호 찾기 -->
+  <select id="findByUserPassword"
+   resultType="com.mid.alcohol.domain.user.User">
+  SELECT *
+  FROM USERS
+  WHERE userEmail = #{userEmail} AND 
+  userName = #{userName} AND userPhone = #{userPhone}
+  </select>
+  
 </mapper>

@@ -4,9 +4,9 @@ import org.springframework.stereotype.Repository;
 
 
 import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.user.FindByUserPasswordDto;
 import com.mid.alcohol.dto.user.LoginCheckDto;
 import com.mid.alcohol.dto.user.UserAddressUpdateDto;
-import com.mid.alcohol.dto.user.UserDeactivationAccountDto;
 import com.mid.alcohol.dto.user.UserDetaillDto;
 import com.mid.alcohol.dto.user.UserSignupDto;
 import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
@@ -53,6 +53,15 @@ public class UserService {
 
 		return userRepository.signInMain(login.toEntity());
 	}
+	
+	// 계정 비밀번호 찾기
+		public User findByUserPassword(FindByUserPasswordDto userEmail) {
+			
+			log.info("findByUserPassword={}", userEmail);
+			
+			
+			return userRepository.findByUserPassword(userEmail);
+		}
 
 	// 계정 정보를 보여주기위해
 	public UserDetaillDto read(String userEmail) {
@@ -107,6 +116,8 @@ public class UserService {
 		
 		return userRepository.ActivationAccount(userEmail);
 	}
+	
+	
 	
 
 }

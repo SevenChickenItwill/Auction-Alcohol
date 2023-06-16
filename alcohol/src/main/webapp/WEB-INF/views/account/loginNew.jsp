@@ -28,6 +28,15 @@
 					<input class="card" type="password" id="userPassword" name="userPassword" required="required" />
 					
 				</form>
+    
+    <div>
+           <div>
+            <c:url var="findPassword" value="/signup/findByUserPassword"></c:url>
+            <a href="${ findPassword }">비밀번호 찾기</a>
+           </div>
+    </div>
+    
+    
 			</div>
 			<div class="form form-control">
 				<button class="btn" id="btnSubmit">로그인</button>

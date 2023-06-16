@@ -3,19 +3,13 @@ package com.mid.alcohol.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.user.UserAddressUpdateDto;
-import com.mid.alcohol.dto.user.UserDeactivationAccountDto;
 import com.mid.alcohol.dto.user.UserDetaillDto;
 import com.mid.alcohol.dto.user.UserSignupDto;
-import com.mid.alcohol.repository.UserRepository;
 import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
 import com.mid.alcohol.dto.user.UserPhoneUpdateDto;
 import com.mid.alcohol.service.UserService;
@@ -23,7 +17,6 @@ import com.mid.alcohol.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -44,12 +37,11 @@ public class UserController {
 	public String signupEmail(UserSignupDto dto, @RequestParam("userEmail") String userEmail, Model model) {
 		log.info("signupEmail()", dto);
 		log.info("email={}", userEmail);
-		
+
 		model.addAttribute("userEmail", userEmail);
 
 		return "/signup/signup";
 	}
-	
 
 	@PostMapping("/")
 
@@ -92,7 +84,7 @@ public class UserController {
 		log.info("main()");
 	}
 
-	// =============================여기서부터 수정 컨트롤러===================================================================//
+	// =============================여기서부터 수정컨트롤러===================================================================//
 
 	// 계정 페이지 이동
 	@GetMapping("/userModify")
@@ -148,18 +140,17 @@ public class UserController {
 
 	// 주소 수정
 	@PostMapping("/userAddressModify")
-	public String userAddressModify(UserAddressUpdateDto dto,
-			@RequestParam("userAddress") String userAddress,
+	public String userAddressModify(UserAddressUpdateDto dto, @RequestParam("userAddress") String userAddress,
 			@RequestParam("userDetailAddress") String userDetailAddress,
-			@RequestParam("userAddressNotes") String userAddressNotes) {		
+			@RequestParam("userAddressNotes") String userAddressNotes) {
 		log.info("userAddress(dto={})", dto);
-		
+
 		String combinedAddress = userAddress + " " + userDetailAddress + " " + userAddressNotes;
 		dto.setUserAddress(combinedAddress);
-		
+
 		int result = userService.AddressUpdate(dto);
 		log.info("업데이트 결과={}", result);
-		
+
 		return "redirect:/signup/userModify";
 	}
 
@@ -168,51 +159,73 @@ public class UserController {
 	public void userAddressModifyy() {
 
 	}
-	
+
 	// 계정 비활성화 페이지
-	@PostMapping("deactivationAccount")
+	@PostMapping("/deactivationAccount")
 	public String DeactivationAccount(String userEmail) {
-		
+
 		log.info("userPhoneModify(userEmail={})", userEmail);
 		int result = userService.DeactivationAccount(userEmail);
 		log.info("업데이트 결과={}", result);
 
-		return "redirect:/signup/deleteCompletion"; // 수정 후 사용자 수정 페이지로 리다이렉트
-		
+		return "redirect:/signup/deactivationCompletion"; // 수정 후 사용자 수정 페이지로 리다이렉트
+
 	}
-	
+
 	// 계정 비활성화 페이지
-	@GetMapping("deactivationAccount")
+	@GetMapping("/deactivationAccount")
 	public void DeactivationAccount() {
-			
+
 	}
-	
+
 	// 비활성화 완료 페이지
-	@GetMapping("deleteCompletion")
+	@GetMapping("/deactivationCompletion")
 	public void deleteCompletion() {
-		
+
 	}
-	
+
 	// 계정 활성화 페이지
-    @PostMapping("/activationAccount")
-    public String activationAccount(UserPasswordUpdateDto dto,
-            @RequestParam("userEmail") String userEmail) {
-        
-        log.info("email={}", userEmail);
-        dto.setUserEmail(userEmail);
-        int result = userService.ActivationAccount(userEmail);
-        log.info("업데이트 결과", result);
-        
-        return"/signup/signupEmail";
-    }
-	
+	@PostMapping("/activationAccount")
+	public String activationAccount(UserPasswordUpdateDto dto, @RequestParam("userEmail") String userEmail) {
+
+		log.info("email={}", userEmail);
+		dto.setUserEmail(userEmail);
+		int result = userService.ActivationAccount(userEmail);
+		log.info("업데이트 결과", result);
+
+		return "/signup/activationCompletion";
+	}
+
 	// 계정 활성화 페이지
 	@GetMapping("/activationAccount")
 	public String activationAccountd() {
-		
-		return "/signup/userEmail";
+
+		return "/signup/activationCompletion";
 	}
-	
-	
+
+	// 계정 활성화 완료 페이지
+	@GetMapping("/activationCompletion")
+	public void activationCompletion() {
+
+	}
+
+	// 비밀번호 찾기 페이지
+	@GetMapping("/findByUserPassword")
+	public void findByUserPassword() {
+
+	}
+
+	// 비밀번호 찾기 페이지
+	@PostMapping("/findByUserPassword")
+	public String findByUserPasswordd() {
+//			@RequestParam("userEmail") String userEmail,
+//			@RequestParam("userName") String username,
+//			@RequestParam("userPhone") String userPhone ) {
+//		log.info("findByUserPasswordd={}", dto);
+//		
+//		User user = userService.findByUserPassword(dto);
+		
+		return "/signup/signupEmail";
+	}
 
 }

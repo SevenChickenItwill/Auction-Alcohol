@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
-		const url = `/alcohol/api/signup/deactivationAccount`;
+		const url = `/alcohol/api/signup/activationAccount`;
 		const data = {
 			userEmail,
 			userPassword: password
@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				document.querySelector('input#accountPassword').value = '';		
 				return;
 			}
-		} catch (errer) {
-			console.log(errer);
+		} catch (error) {
+			console.log(error);
 			return;
 		}
 		

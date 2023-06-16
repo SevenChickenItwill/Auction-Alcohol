@@ -1,9 +1,8 @@
 package com.mid.alcohol.repository;
 
 import com.mid.alcohol.domain.user.User;
-import com.mid.alcohol.dto.user.UserAddressUpdateDto;
+import com.mid.alcohol.dto.user.FindByUserPasswordDto;
 import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
-import com.mid.alcohol.dto.user.UserPhoneUpdateDto;
 
 public interface UserRepository {
     
@@ -39,7 +38,9 @@ public interface UserRepository {
     
     // 계정 활성화
     int ActivationAccount(String userEmail);
-
+    
+    // 유저 비밀번호 찾기
+    User findByUserPassword(FindByUserPasswordDto dto);
     
     
 }

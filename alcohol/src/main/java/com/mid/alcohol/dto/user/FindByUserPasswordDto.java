@@ -11,19 +11,17 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
-public class UserPasswordUpdateDto {
+public class FindByUserPasswordDto {
+	private String userName;
 	private String userEmail;
-	private String userPassword;
-	private int deactivationAccount;
+	private String userPhone;
 	
 	public User toEntity() {
 		
 		return User.builder()
+				.userName(userName)
 				.userEmail(userEmail)
-				.userPassword(userPassword)
-				.deactivationAccount(deactivationAccount)
+				.userPhone(userPhone)
 				.build();
 	}
-	
 }
