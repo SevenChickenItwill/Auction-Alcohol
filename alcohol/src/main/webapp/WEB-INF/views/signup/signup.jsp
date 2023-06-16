@@ -122,11 +122,15 @@
 	display: flex;
     justify-content: space-around;
     align-items: center;
-        font-size: 28px;
+    font-size: 28px;
 }
 
 .btnSignCan {
 	padding-bottom: 16px;
+}
+
+.btn {
+	margin-left: auto;
 }
 </style>
 </head>
