@@ -118,11 +118,7 @@
         .mainBackground {
             flex: 1;
             background-image: url('./static/images/mainBackground.jpg');
-<<<<<<< Updated upstream
             background-repeat: no-repeat;
-=======
-            background-repeat:no-repeat;
->>>>>>> Stashed changes
             background-size: 1340px 730px;
             background-position: 52% -100px;
             background-blend-mode: lighten;
@@ -171,6 +167,9 @@
                 </c:url>
         <c:url value="/bulletinboard/board/list" var="communityList">
         	<c:param name="num" value="0" />
+        	<c:param name="category" value=""></c:param>
+        	<c:param name="keyword" value=""></c:param>
+        	<c:param name="boardNumber" value="0"></c:param>
         </c:url>
         
         <nav class="navi">
