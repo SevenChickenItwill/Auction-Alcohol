@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		let htmlStr = '';
 
-		htmlStr += `추천수 : [${data.recommend}]`;
+		htmlStr += `추천수 ${data.recommend}`;
 
 		spanRecommendCnt.innerHTML = htmlStr;
 

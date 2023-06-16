@@ -200,7 +200,7 @@ public class BulletinboardController {
 		int result = bulletinboardService.bulletinboardDelete(board_id);
 		log.info("result = {}", result);
 
-		return "redirect:/bulletinboard/board/list?num=0";
+		return "redirect:/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0";
 	}
 
 	@GetMapping("/create")
@@ -208,7 +208,7 @@ public class BulletinboardController {
 		log.info("create()");
 	}
 
-	private static String path = "C:\\workspace\\lab-midproject\\middlePj\\alcohol\\src\\main\\webapp\\static\\images\\";
+	private static String path = "C:\\imgs\\";
 
 	@PostMapping("/create/{boardId}")
 	public String boardCreate(@PathVariable("boardId") long boardId, @RequestBody MultipartFile file) {
@@ -230,7 +230,7 @@ public class BulletinboardController {
 
 		int result = bulletinboardService.imageUpdate(boardId, photopath);
 
-		return "redirect:/bulletinboard/board/list?num=0";
+		return "redirect:/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0";
 	}
 
 	@PostMapping("/update/{boardId}")
