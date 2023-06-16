@@ -19,5 +19,7 @@ public interface ShopRepository {
 	int deletepd(int pid);
 	
 	int updatepd(ShopDetailDto dto);
+
+	Products readpd(long pid);
 	
 }

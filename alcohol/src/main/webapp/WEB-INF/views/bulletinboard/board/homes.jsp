@@ -118,7 +118,11 @@
         .mainBackground {
             flex: 1;
             background-image: url('./static/images/mainBackground.jpg');
+<<<<<<< Updated upstream
             background-repeat: no-repeat;
+=======
+            background-repeat:no-repeat;
+>>>>>>> Stashed changes
             background-size: 1340px 730px;
             background-position: 52% -100px;
             background-blend-mode: lighten;

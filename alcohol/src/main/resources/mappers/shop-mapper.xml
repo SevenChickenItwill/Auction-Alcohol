@@ -41,5 +41,9 @@
 		UPDATE products SET productname=#{productname}, standard=#{standard}, unit=#{unit}, price=#{price}, brand=#{brand}, userid=#{userid}, expirationdate=#{expirationdate}, alcohol_level=#{alcohol_level}, hashtag=#{hashtag}, photopath=#{photopath}, category=#{category}
 		WHERE pid = #{pid}
 	</update>
+	
+	<select id="readpd" resultType="com.mid.alcohol.domain.shop.Products">
+		SELECT * FROM products WHERE pid = #{pid}
+	</select>
     
 </mapper>

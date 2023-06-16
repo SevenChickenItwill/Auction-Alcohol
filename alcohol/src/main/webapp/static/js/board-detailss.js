@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	recommendDo.addEventListener('click', recommendClickDo);
 	
-	// 댓글
+	///////////////////////////////////////////////////// 댓글//////////////////////////////////////////////////////
 	
 	// 등록버튼 처리
 	
@@ -202,8 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			// Timestamp 타입 값을 날짜/시간 타입 문자열로 변환:
 			const time = new Date(comment.time).toLocaleString();
-
+			
+			// userCheckHTML의 값을 빈 값으로 일단 설정한 뒤
 			let userCheckHTML = '';
+			// 조건문을 먹여 닉네임 일치 시 삭제 수정 버튼을 보여줌
 			if (comment.nickname === userNickname) {
 				userCheckHTML = `
         <div id="userCheck">

@@ -3,6 +3,7 @@ package com.mid.alcohol.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,6 +88,18 @@ public class ShopController {
 		int result = shopservice.deletepd(pid);
 		
 		return "redirect:/shop/pdlist";
+	}
+	
+	@GetMapping("/pddetail")
+	public String pddetail(long pid, Model model) {
+		log.info("pddetail=({})", pid);
+		
+		ShopDetailDto dto = shopservice.readpd(pid);
+		log.info("dto= {}", dto);
+		
+		model.addAttribute("product", dto);
+		
+		return "/shop/pddetail";
 	}
 	
 }

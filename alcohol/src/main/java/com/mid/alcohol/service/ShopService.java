@@ -156,6 +156,15 @@ public class ShopService {
 		
 		return shoprepository.updatepd(dto);
 	}
+
+	public ShopDetailDto readpd(long pid) {
+		// TODO Auto-generated method stub
+		log.info("readpd={}", pid);
+		
+		Products products = shoprepository.readpd(pid);
+		
+		return ShopDetailDto.FromEntity(products);
+	}
 	
 	
 }

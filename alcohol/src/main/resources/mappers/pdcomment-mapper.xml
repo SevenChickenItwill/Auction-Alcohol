@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.mid.alcohol.repository.ProductCommentRepository">
+ 	
+ 	<!-- CommentId로 댓글 읽어오기 -->
+ 	<select id = "selectByCommentId"
+        resultType="com.mid.alcohol.domain.shop.ProductComment">
+        select * from PDCOMMENT where COMMENTID = #{commentId}
+        </select>
+        
+    <!-- pid로 댓글 읽어오기 -->
+    <select id="selectBypId"
+        resultType="com.mid.alcohol.domain.shop.ProductComment">
+        select * from PDCOMMENT
+        where PID = #{pId}
+        order by TIME desc
+    </select>
+    
+    <!-- 댓글 수정 -->
+    <update id="update">
+        update PDCOMMENT
+        set CONTENT = #{content}, TIME = systimestamp
+        where COMMENTID = #{comment_id}
+    </update>
+    
+    <!-- 댓글 생성 -->
+    <insert id="insert">
+        insert into PDCOMMENT (pid, pname, nickname, content, time) 
+            values (#{pid}, #{pname}, #{nickname}, #{content}, systimestamp) <!-- 모델 이름과 완벽히 일치 --> 
+    </insert>
+    
+    <!-- 댓글 comment_id로 삭제 -->  
+    <delete id="delete">
+        delete from PDCOMMENT
+        where COMMENTID = #{commentId}
+    </delete>
+    
+ </mapper>
