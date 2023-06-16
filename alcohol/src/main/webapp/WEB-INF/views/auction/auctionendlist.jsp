@@ -87,7 +87,7 @@
 				
 						<path
 							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-						<circle cx="12" cy="13" r="4"></circle></svg> <strong>칠면주조 경매 리스트</strong>
+						<circle cx="12" cy="13" r="4"></circle></svg> <strong>칠면주조 경매 종료 목록</strong>
 				</a>
 				
 			</div>

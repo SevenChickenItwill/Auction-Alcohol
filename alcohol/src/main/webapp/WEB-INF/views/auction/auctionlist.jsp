@@ -103,7 +103,7 @@ a:active {
 
 	<header>
 		<div class="navbar navbar-dark bg-dark shadow-sm">
-			<div class="container">
+			<div class="container" style="width: 100px;">
 				<a href="#" class="navbar-brand d-flex align-items-center"> 
 				
 						<path
@@ -115,11 +115,13 @@ a:active {
 			</div>
 			
 <nav class="nav nav-pills flex-column flex-sm-row">
-   <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Auction</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Board</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link">${ sessionScope.userNickname } 님 환영합니다.</a>
+   <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/auction/auctionlist">Auction</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/bulletinboard/board/list?num=0">Board</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
+  <a style="margin-left:450px; color:white; font-weight: bold; font-size: large;" class="flex-sm-fill text-sm-center nav-link">{${ sessionScope.userNickname } 님}</a>
+  <c:url var="logout" value="/account/logout"></c:url>
+      	<a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
 </nav>
 		</div>
 		<input class="card d-none" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>

@@ -13,8 +13,30 @@
 	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
 	crossorigin="anonymous">
 <style>
+.p-3 {
+    padding: 2rem!important;
+}
+li{
+	font-size:large;
+	font-weight:bold;
+	padding-bottom: 35px;
+}
+.container {
+    
+    width: 100%;
+  }
+  .navbar {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .navbar .navbar-nav .nav-link {
+    color: #fff;
+  }
+
+
 .scrollable-table-container {
-	height: 200px;
+	height: 300px;
 	overflow-y: scroll;
 }
 
@@ -31,69 +53,90 @@
 }
 #modals{
 	position: fixed;
-    margin-left: 220px;
+    
 
 }
 .sidebar{
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 60px;
     left: 0;
     height: 100%;
-    width: 200px;
+    width: 240px;
     
 
 }
 .mains{
-    margin-left: 220px;
+    margin-right: 220px;
+    margin-left: 380px;
+    
 }
 
 .headers{
-    margin-left:220px;
+    margin: 0px 270px;
+    
+}
+body{
+
+	background-color: light;
 }
 </style>
 </head>
 <body>
 
-<div class="flex-shrink-0 p-3 bg-light sidebar" style="width: 200px;">
+<div id="sidebar" class="flex-shrink-0 p-3 bg-light sidebar">
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
+    <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark list-group-item list-group-item-action">
+          관리자 메인
+        </a>
+      </li>
       <li class="nav-item">
         <c:url var="auctionProduct" value="/auction/product" />
-        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
-          경매상품조회/수정
+        <a href="${ auctionProduct }" class="nav-link link-dark list-group-item list-group-item-action" aria-current="page">
+          경매 상품조회/수정
         </a>
       </li>
       <li>
         <c:url var="productcreate" value="/auction/productcreate" />
-        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
-          경매상품등록
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0 list-group-item list-group-item-action">
+          경매 상품등록
         </a>
       </li>
       <li>
-        <c:url var="auctionadmin" value="/auction" />
-        <a href="${ auctionadmin }" class="nav-link link-dark">
-          관리자 메인
+        <c:url var="auctionm" value="/auction/auction" />
+        <a href="${ auctionm }" class="nav-link link-dark list-group-item list-group-item-action">
+          경매 조회/수정
         </a>
       </li>
       <li>
         <c:url var="auctionRegistration" value="/auction/registration" />
-        <a href="${ auctionRegistration }" class="nav-link link-dark">
-          경매등록
+        <a href="${ auctionRegistration }" class="nav-link link-dark list-group-item list-group-item-action">
+          경매 등록
         </a>
       </li>
             <li>
       	<c:url var="shopproducts" value="/shop/pdlist" />
-        <a href="${ shopproducts }" class="nav-link link-dark">
+        <a href="${ shopproducts }" class="nav-link link-dark list-group-item list-group-item-action">
           쇼핑몰 상품조회
         </a>
       </li>
       <li>
       	<c:url var="shopcreate" value="/shop/pdcreate" />
-        <a href="${ shopcreate }" class="nav-link link-dark">
+        <a href="${ shopcreate }" class="nav-link link-dark list-group-item list-group-item-action">
           쇼핑몰 상품등록
         </a>
       </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="#" class="nav-link link-dark list-group-item list-group-item-action">
+          쇼핑몰 주문현황
+        </a>
+      </li>
     </ul>
+    
+    
   </div>
   <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
 <div id="modals" class="modal fade" tabindex="-1">
@@ -136,55 +179,67 @@
 		</div>
 	
 	<div>
-        <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">경매 관리 페이지</span>
-      </a>
-
-      <ul class="nav nav-pills">
-        <li class="nav-link px-2 link-dark">
-        <a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item">${ sessionScope.userNickname } 님</li>
-        
-      </ul>
-      <div>
-      	<c:url var="logout" value="/account/logout"></c:url>
-      	<a href="${ logout }"><button>로그아웃</button></a>
-      </div>
-    </header>
-  </div>
+        <div class="container" style="width: 100%; max-width: 9999px">
+  <header>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container" style="width: 100px;">
+				<a href="#" class="navbar-brand d-flex align-items-center"> 
+				
+						<path
+							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+						<circle cx="12" cy="13" r="4"></circle></svg> <strong style="text-align: center;">칠면주조 경매 리스트</strong>
+				</a>
+				
+				
+			</div>
+			
+<nav class="nav nav-pills flex-column flex-sm-row">
+   <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/auction/auctionlist">Auction</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/bulletinboard/board/list?num=0">Board</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
+  <a style="margin-left:437px; color:white; font-weight: bold; font-size: large;" class="flex-sm-fill text-sm-center nav-link">{${ sessionScope.userNickname } 님}</a>
+  <c:url var="logout" value="/account/logout"></c:url>
+      	<a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+</nav>
+		</div>
+		<input class="card d-none" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
+	</header>
+</div>
 		
 
-		<br />
+		
 
-		<main class="mains">
-			<div class="card">
+		<main class="mains my-4">
+			<div class="form-control">
 				<c:url var="search" value="/auction/auction">
 				</c:url>
-				<form method="post" action="${ search }" id="searchForm">
-					<label class="form-label card" for="searchtext">검색 내용</label> 
-					<input class="card form-control" name="searchtext" id="searchtext" type="text" /> 
+				<form method="post" action="${ search }" id="searchForm" class="form">
+					<label class="form-label" for="searchtext" >검색 내용</label> 
+					<input class="form-control my-3" name="searchtext" id="searchtext" type="text" /> 
+					
 					<input class="d-none" type="text" name="userid" id="userid"	value="${ sessionScope.userNickname }" /> 
-					<input class="btn form-control" type="submit" id="btnAuctionSearch" value="검색" />
+					<input class="form-control" type="submit" id="btnAuctionSearch" value="검색" />
 				</form>
 			</div>
+			
+			<br />
+			
 			<div class="card">
 				<div class="form-control">
 				
-					<span><h2>상세 검색 Form</h2></span> <input class="form-control"
+					<span><h2>상세 검색</h2></span>
+						<label class="form-label">경매 시작일</label>
+					 <input class="form-control"
 						type="date" id="auctionstart" name="auctionstart" />
 				</div>
 				<div class="form-control">
+				<label class="form-label">경매 종료일</label>
 					<input class="form-control" type="date" id="auctionend"
 						name="auctionend" />
 				</div>
 				<div class="form-control">
+				<label class="form-label">경매 상태</label>
 					<select class="form-control" name="status" id="status">
 						<option selected="selected" value="3">선택안함</option>
 						<option value="0">경매 준비중</option>
@@ -193,6 +248,7 @@
 					</select>
 				</div>
 				<div class="form-control">
+				<label class="form-label">주류 종류</label>
 					<select class="form-control" id="category" name="category">
 						<option selected="selected" value="0">선택안함</option>
 						<option value="1">탁주</option>
@@ -211,13 +267,14 @@
 				</div>
 				<div class="form-control">
 					<div class="form-control">
-						<label for="minimum">금액 범위</label> <input type="number"
-							id="minimum" name="minimum" value="10000" /> ~ <input
-							type="number" id="maximum" name="maximum" value="1000000" />
+						<label for="minimum">현재 입찰가</label> 
+						<input type="number"
+							id="minimum" name="minimum" value="10000" style="border-radius: 5px;" /> ~ <input
+							type="number" id="maximum" name="maximum" value="1000000" style="border-radius: 5px;" />
 					</div>
 				</div>
 				<div class="form-control">
-					<label for="searchtext">상세 검색 내용</label> <select id="textoption"
+					<label for="searchtext">검색 종류</label> <select id="textoption"
 						name="textoption">
 						<option value="1">상품명</option>
 						<option value="2">경매명</option>
@@ -225,7 +282,7 @@
 					</select>
 				</div>
 				<div class="form-control">
-					<label for="searchtext2">상세검색명</label> <input type="text"
+					<label for="searchtext2">검색 내용</label> <input  type="text"
 						id="searchtext2" name="searchtext2" class="card form-control" />
 				</div>
 
@@ -236,11 +293,8 @@
 
 			<div>
 
-
-				<button class="btn" id="btnAuctionRegistration">
-					<c:url var="auctionRegistration" value="/auction/registration" />
-					<a href="${ auctionRegistration }">경매등록</a>
-				</button>
+			<br />
+				
 			</div>
 
 			<div class="scrollable-table-container">
@@ -290,7 +344,7 @@
 			
 		</main>
 		
-		
+
 		 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

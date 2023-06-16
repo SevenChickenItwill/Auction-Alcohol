@@ -87,14 +87,14 @@
 				
 						<path
 							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-						<circle cx="12" cy="13" r="4"></circle></svg> <strong>칠면주조 경매 리스트</strong>
+						<circle cx="12" cy="13" r="4"></circle></svg> <strong>칠면주조 경매 진행 목록</strong>
 				</a>
 				
 			</div>
 <nav class="nav nav-pills flex-column flex-sm-row">
    <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Auction</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Board</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/auction/auctionlist">Auction</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/bulletinboard/board/list">Board</a>
   <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
   <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link">${ sessionScope.userNickname } 님 환영합니다.</a>
 </nav>

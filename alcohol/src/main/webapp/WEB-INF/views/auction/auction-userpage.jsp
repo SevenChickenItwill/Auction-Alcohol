@@ -15,8 +15,28 @@
 </head>
 <body>
     <header>
-        <h1>${ list2.auctionName } / ${ list2.pname }</h1>
-    </header>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container">
+				<a href="#" class="navbar-brand d-flex align-items-center"> 
+				
+						<path
+							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+						<circle cx="12" cy="13" r="4"></circle></svg> <strong>${ list2.auctionName } / ${ list2.pname }</strong>
+				</a>
+				
+			</div>
+<nav class="nav nav-pills flex-column flex-sm-row">
+   <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/auction/auctionlist">Auction</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/bulletinboard/board/list">Board</a>
+  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
+  <a style="margin-left:50px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link">${ sessionScope.userNickname } 님 환영합니다.</a>
+</nav>
+		</div>
+		<input class="d-none card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
+	</header>
+        
+    
     <main>
     	<%-- 로그인 완성되면 바꿔야할 변수, 세션값 받아오기 --%>
     	<c:set var="loginid" value="${ sessionScope.userNickname }"></c:set>
