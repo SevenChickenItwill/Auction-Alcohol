@@ -92,6 +92,16 @@
 			 
 			 alert('도수를 잘못 입력하셨습니다.');
 			 alcohollevelinput.value='';
+			 return;
+		 }
+		 
+		 if(productname=='' || standard == '' || unit == '' || price == '' ||
+		 brand == '' || expirationdate == '' || alcohol_level == '' || hashtag == '' ||
+		 category == ''){
+			 
+			 alert('모든 항목은 필수 항목입니다. 모두 입력해주세요.');
+			 return;
+			 
 		 }
 		 
 		 if(photopaths==''){

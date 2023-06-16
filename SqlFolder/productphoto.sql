@@ -17,5 +17,4 @@
   TABLESPACE "USERS" ;
 REM INSERTING into SCOTT.PRODUCTPHOTO
 SET DEFINE OFF;
-Insert into SCOTT.PRODUCTPHOTO (PRODUCTID,PHOTOPATH) values (24,'C:\mid-pj\middlePj\alcohol\src\main\webapp\static\image\a89543a5-2c38-4044-ae74-904278a104bcdefaultimg.jpg');
-Insert into SCOTT.PRODUCTPHOTO (PRODUCTID,PHOTOPATH) values (1,'C:\mid-pj\middlePj\alcohol\src\main\webapp\static\image\f88ef493-6c1e-42fb-8e16-1264411f386ddefaultimg.jpg');
+
