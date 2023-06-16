@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -156,16 +158,20 @@ public class PaymentController {
 
 	@RequestMapping("/kakaopay.cls")
 	@ResponseBody
-	public String kakaopay() {
+	public String kakaopay() throws UnsupportedEncodingException {
 		String userNickname = (String) session.getAttribute("userNickname");
 		// 결제 id 가져오기
 		int paymentid = paymentService.readPaymentList(userNickname);
 		// 결제 id로 basketid 가져오기
 		List<Integer> basketidlist = paymentService.getBasketidFromOrders(paymentid);
-		// basketidlist로 pname찾기
-//		List<String> pnameList  = paymentService.getPnameByBasketid(basketidlist);
+		
+		String pname = paymentService.getPname(basketidlist.get(0));
+		
 		// 결제목록 가져오기
 		List<PaymentListDto> list = paymentService.getPaymentList(paymentid);
+		int paymentCount = (basketidlist.size() - 1);
+		String item_name = pname+" 외 "+paymentCount+"건";
+		item_name = URLEncoder.encode(item_name, "utf-8");
 		int totalAmount = 0;
 		for (PaymentListDto x : list) {
 			totalAmount += x.getPrice() * x.getQuantity();
@@ -178,7 +184,8 @@ public class PaymentController {
 				connection.setRequestProperty("Authorization", "KakaoAK 57e7976b8b01733b8d39b2e982361037");
 				connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 				connection.setDoOutput(true);
-				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name="+userNickname+"&quantity=1&total_amount="+totalAmount+"&tax_free_amount=0&approval_url=http://localhost:8081/alcohol/payment/paysuccess&fail_url=http://localhost:8081/alcohol/payment/payfail&cancel_url=http://localhost:8081/alcohol/payment/paycancel";
+				//String nickname = URLEncoder.encode(userNickname, "utf-8");
+				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name="+item_name+"&quantity=1&total_amount="+totalAmount+"&tax_free_amount=0&approval_url=http://localhost:8081/alcohol/payment/paysuccess&fail_url=http://localhost:8081/alcohol/payment/payfail&cancel_url=http://localhost:8081/alcohol/payment/paycancel";
 				OutputStream ops = connection.getOutputStream();
 				DataOutputStream dops = new DataOutputStream(ops);
 				dops.writeBytes(param);

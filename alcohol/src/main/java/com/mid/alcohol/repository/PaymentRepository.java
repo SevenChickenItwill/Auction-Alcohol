@@ -41,6 +41,8 @@ public interface PaymentRepository {
 
 	List<Integer> getBasketidFromOrders(int paymentid);
 
+	String getPname(Integer basketid);
+
 
 
 }

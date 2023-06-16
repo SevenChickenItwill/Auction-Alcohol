@@ -112,10 +112,12 @@ public class PaymentService {
 	}
 
 
-//	public List<String> getPnameByBasketid(List<Integer> basketidlist) {
-//		List<String> pnameList = paymentRepository.
-//		return ;
-//	}
+	public String getPname(Integer basketid) {
+		return paymentRepository.getPname(basketid);
+	}
+
+
+	
 
 
 }
