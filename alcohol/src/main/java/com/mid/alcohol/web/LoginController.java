@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.user.LoginCheckDto;
@@ -63,17 +63,18 @@ public class LoginController {
     }
     
     @PostMapping("/loginNew")
-    public String loginPassword(UserSignupDto dto, Model model) {
+    public String loginPassword(UserSignupDto dto, 
+            @RequestParam("userEmail") String userEmail, Model model) {
         log.info("loginPassword", dto);
         
-        model.addAttribute("userEmail", dto.getUserEmail());
+        model.addAttribute("userEmail", userEmail);
         
         User user = userService.signupEmailCheck(dto.getUserEmail());
         
         if (user.getDeactivationAccount() == 0) {
         	return "/account/loginNew";
         } else {
-        	return "/signup/activationUserAccount";
+        	return "/signup/activationAccount";
         }
     }
         

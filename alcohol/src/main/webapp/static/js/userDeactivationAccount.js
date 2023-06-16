@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
-		const url = `/alcohol/api/signup/activationAccount`;
+		const url = `/alcohol/api/signup/deactivationAccount`;
 		const data = {
 			userEmail,
 			userPassword: password

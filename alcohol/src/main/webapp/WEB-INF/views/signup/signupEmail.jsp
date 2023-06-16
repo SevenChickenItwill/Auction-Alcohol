@@ -36,7 +36,9 @@
 		<c:url var="signupEmail" value="/signup/signupEmail"></c:url>
 		<form id="signupEmailForm" method="post" action="${ signupEmail }">
 			<div>
-				<label for="userEmail">이메일</label> <br /> <input type="text"
+				<label for="userEmail">이메일</label> 
+				<br /> 
+				<input type="text"
 					id="userEmail" name="userEmail" placeholder="EMAIL" required
 					autofocus />
 			</div>

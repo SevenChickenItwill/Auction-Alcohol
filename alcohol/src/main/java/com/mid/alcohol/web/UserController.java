@@ -49,6 +49,7 @@ public class UserController {
 
 		return "/signup/signup";
 	}
+	
 
 	@PostMapping("/")
 
@@ -179,8 +180,6 @@ public class UserController {
 		return "redirect:/signup/deleteCompletion"; // 수정 후 사용자 수정 페이지로 리다이렉트
 		
 	}
-
-	
 	
 	// 계정 비활성화 페이지
 	@GetMapping("deactivationAccount")
@@ -195,13 +194,21 @@ public class UserController {
 	}
 	
 	// 계정 활성화 페이지
-	@PostMapping("/activationUserAccount")
-	public void activationUserAccount() {
-		
-	}
+    @PostMapping("/activationAccount")
+    public String activationAccount(UserPasswordUpdateDto dto,
+            @RequestParam("userEmail") String userEmail) {
+        
+        log.info("email={}", userEmail);
+        dto.setUserEmail(userEmail);
+        int result = userService.ActivationAccount(userEmail);
+        log.info("업데이트 결과", result);
+        
+        return"/signup/signupEmail";
+    }
 	
-	@GetMapping("/activationUserAccount")
-	public String activationUserAccountd() {
+	// 계정 활성화 페이지
+	@GetMapping("/activationAccount")
+	public String activationAccountd() {
 		
 		return "/signup/userEmail";
 	}
