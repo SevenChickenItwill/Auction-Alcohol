@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mid.alcohol.dto.payment.AdressUpdateDto;
+import com.mid.alcohol.dto.payment.BasketListDto;
 import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
@@ -130,6 +131,10 @@ public class PaymentController {
 		log.info(userNickname);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
+		List<BasketListDto> basketdto = paymentService.readBasketByUserNickname(userNickname);
+		log.info("home(dto={})", basketdto);
+		
+		model.addAttribute("list", basketdto);
 
 	}
 
