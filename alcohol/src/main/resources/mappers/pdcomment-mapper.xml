@@ -22,7 +22,7 @@
     <update id="update">
         update PDCOMMENT
         set CONTENT = #{content}, TIME = systimestamp
-        where COMMENTID = #{comment_id}
+        where COMMENTID = #{commentId}
     </update>
     
     <!-- 댓글 생성 -->
