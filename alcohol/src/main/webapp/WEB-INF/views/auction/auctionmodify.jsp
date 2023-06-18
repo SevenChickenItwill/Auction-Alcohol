@@ -177,60 +177,60 @@ body{
             </c:url>
             <form id="forms" name="forms" action="${ auctionupdate }" method="post">
                 <div>
-                    <input type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
+                    <input class="d-none" type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
                 </div>
                 <div>
                     
                     <input type="text" id="auctioneer" value="${ detail.auctioneer }" name="auctioneer" class="d-none" readonly="readonly"/>
                 </div>
                 <div>
-                    <label for="auctionName">경매명</label>
-                    <input value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" />
+                    <label class="form-label mx-2" for="auctionName">경매명</label>
+                    <input class="form-control" value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" />
                 </div>
                 
                 <div>
-                    <label for="pname">상품명</label>
-                    <input value="${ detail.pname }" id="pname" name="pname" type="text"  />
-                    <button id="btnProductSearch">내 상품 찾기</button>
+                    <label class="form-label mx-2" for="pname">상품명</label>
+                    <input class="form-control" value="${ detail.pname }" id="pname" name="pname" type="text"  />
+                    <button class="card btn" id="btnProductSearch">내 상품 찾기</button>
                 </div>
                 <div>
-                    <label for="constructor">제조사(생산자)</label>
-                    <input value="${ detail.constructor }" id="constructor" name="constructor" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="constructor">제조사(생산자)</label>
+                    <input class="form-control" value="${ detail.constructor }" id="constructor" name="constructor" type="text" readonly="readonly" />
                 </div>
                 <div>
-                    <label for="brandname">브랜드</label>
-                    <input value="${ detail.brandname }" id="brandname" name="brandname" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="brandname">브랜드</label>
+                    <input class="form-control" value="${ detail.brandname }" id="brandname" name="brandname" type="text" readonly="readonly" />
                 </div>
                 <div>
-                    <label for="category">종류</label>
-                    <input value="${ detail.category }" id="category" name="category" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="category">종류</label>
+                    <input class="form-control" value="${ detail.category }" id="category" name="category" type="text" readonly="readonly" />
                 </div>
                 <div>
-                    <label for="passBid">즉시 낙찰가</label>
-                    <input value="${ detail.passbid }" id="passbid" name="passbid" type="number"  />
+                    <label class="form-label mx-2" for="passBid">즉시 낙찰가</label>
+                    <input class="form-control" value="${ detail.passbid }" id="passbid" name="passbid" type="number"  />
                 </div>
                 <div>
-                    <label for="auctionStart">경매 시작일</label>
-                    <input value="${ detail.auctionStart }" id="auctionStart" name="auctionStart" type="datetime-local"  />
+                    <label class="form-label mx-2" for="auctionStart">경매 시작일</label>
+                    <input class="form-control" value="${ detail.auctionStart }" id="auctionStart" name="auctionStart" type="datetime-local"  />
                 </div>
                 <div>
-                    <label for="auctionEnd">경매 종료일</label>
-                    <input value="${ detail.auctionEnd }" id="auctionEnd" name="auctionEnd" type="datetime-local"  />
+                    <label class="form-label mx-2" for="auctionEnd">경매 종료일</label>
+                    <input class="form-control" value="${ detail.auctionEnd }" id="auctionEnd" name="auctionEnd" type="datetime-local"  />
                 </div>
                 <div>
                     <!-- 현재 입찰가(시작가) -->
-                    <label for="nowbid">입찰가액</label>
-                    <input value="${ detail.nowbid }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
+                    <label class="form-label mx-2" for="nowbid">입찰가액</label>
+                    <input class="form-control" value="${ detail.nowbid }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
                 </div>
                 <div>
                     <!-- 현재 입찰자 -->
-                    <label for="bidder">입찰자</label>
-                    <input value="${ detail.bidder }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
+                    <label class="form-label mx-2" for="bidder">입찰자</label>
+                    <input class="form-control" value="${ detail.bidder }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
                 </div>
                 <div>
                     <!-- status -->
-                    <label for="status">경매 상태</label>
-                    <select name = "status" id="status">
+                    <label class="form-label mx-2" for="status">경매 상태</label>
+                    <select class="form-control" name = "status" id="status">
                         <option value="1">경매 진행 확정</option>
                         <option value="0">경매 진행 보류</option>
                     </select>
@@ -241,9 +241,9 @@ body{
                 </div>
                 <div>
                 	<c:if test="${ detail.status < 1 }">
-                    <input type="submit" value="수정" class="btn">
+                    <input type="submit" value="수정" class="btn form-control">
                     </c:if>
-                    <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete">삭제</button>
+                    <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete btn-outline-blue form-control">삭제</button>
                     
                 </div>
             </form>

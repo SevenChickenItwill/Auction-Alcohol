@@ -224,6 +224,6 @@ body{
 		
 	</script>
 	<script src="../static/js/category-detail.js"></script>
-	<script src="../static/js/product-management.js"></script>
+	<script src="../static/js/product-managements.js"></script>
 </body>
 </html>

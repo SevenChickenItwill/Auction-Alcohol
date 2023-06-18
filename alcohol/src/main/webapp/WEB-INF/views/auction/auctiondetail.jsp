@@ -177,68 +177,70 @@ body{
             </c:url>
             <form action="${ auctionmodify }" method="get">
                 <div>
-                    <input id="aid" name="aid" readonly value="${ detail.aid }" />
+                    <input class="d-none form-control" id="aid" name="aid" readonly value="${ detail.aid }" />
                 </div>
                 <div>
                     
                     <input id="auctioneer" value="${ detail.auctioneer }" name="auctioneer" class="d-none" readonly="readonly"/>
                 </div>
                 <div>
-                    <label class="form-label" for="auctionName">경매명</label>
-                    <input value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="auctionName">경매명</label>
+                    <input class="form-control" value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" readonly="readonly" />
                 </div>
                 
                 <div>
-                    <label class="form-label" for="pname">상품명</label>
-                    <input value="${ detail.pname }" id="pname" name="pname" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="pname">상품명</label>
+                    <input class="form-control" value="${ detail.pname }" id="pname" name="pname" type="text" readonly="readonly" />
                     <!-- <button id="btnProductSearch">내 상품 찾기</button>  -->
                 </div>
                 <div>
-                    <label class="form-label" for="constructor">제조사(생산자)</label>
-                    <input value="${ detail.constructor }" id="constructor" name="constructor" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="constructor">제조사(생산자)</label>
+                    <input class="form-control" value="${ detail.constructor }" id="constructor" name="constructor" type="text" readonly="readonly" />
                 </div>
                 <div>
-                    <label class="form-label" for="brandname">브랜드</label>
-                    <input value="${ detail.brandname }" id="brandname" name="brandname" type="text" readonly="readonly" />
+                    <label class="form-label mx-2" for="brandname">브랜드</label>
+                    <input class="form-control" value="${ detail.brandname }" id="brandname" name="brandname" type="text" readonly="readonly" />
                 </div>
                 <div>
-                    <label class="form-label" for="category">종류</label>
-                    <input value="${ detail.category }" id="category" name="category" type="text" readonly="readonly" />
+                    <label class="form-label mx-2"  for="category">종류</label>
+                    <input class="form-control" value="${ detail.category }" id="category" name="category" type="text" readonly="readonly" />
                 </div>
                 <div>
-                    <label class="form-label" for="passBid">즉시 낙찰가</label>
-                    <input value="${ detail.passbid }" id="passbid" name="passbid" type="number" readonly="readonly" />
+                    <label class="form-label mx-2" for="passBid">즉시 낙찰가</label>
+                    <input class="form-control" value="${ detail.passbid }" id="passbid" name="passbid" type="number" readonly="readonly" />
                 </div>
                 <div>
-                    <label class="form-label" for="auctionStart">경매 시작일</label>
-                    <input value="${ detail.auctionStart }" id="auctionStart" name="auctionStart" type="datetime-local" readonly="readonly" />
+                    <label class="form-label mx-2" for="auctionStart">경매 시작일</label>
+                    <input class="form-control" value="${ detail.auctionStart }" id="auctionStart" name="auctionStart" type="datetime-local" readonly="readonly" />
                 </div>
                 <div>
-                    <label class="form-label" for="auctionEnd">경매 종료일</label>
-                    <input value="${ detail.auctionEnd }" id="auctionEnd" name="auctionEnd" type="datetime-local" readonly="readonly" />
+                    <label class="form-label mx-2" for="auctionEnd">경매 종료일</label>
+                    <input class="form-control" value="${ detail.auctionEnd }" id="auctionEnd" name="auctionEnd" type="datetime-local" readonly="readonly" />
                 </div>
                 <div>
                     <!-- 현재 입찰가(시작가) -->
-                    <label class="form-label" class="form-label" for="nowbid">입찰가액</label>
-                    <input value="${ detail.nowbid }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
+                    <label class="form-label mx-2" class="form-label" for="nowbid">입찰가액</label>
+                    <input class="form-control" value="${ detail.nowbid }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
                 </div>
                 <div>
                     <!-- 현재 입찰자 -->
-                    <label class="form-label" for="bidder">입찰자</label>
-                    <input value="${ detail.bidder }" id="nowBid" name="nowBid" type="text" readonly="readonly" />
+                    <label class="mx-2 form-label" for="bidder">입찰자</label>
+                    <input class="form-control" value="${ detail.bidder }" id="nowBid" name="nowBid" type="text" readonly="readonly" />
                 </div>
                 <div>
                     <!-- status -->
-                    <label class="form-label" for="status">경매 상태</label>
-                    <input value="${ detail.status }" id="status" name="status" type="text" readonly="readonly" />
+                    <label class="mx-2 form-label" for="status">경매 상태</label>
+                    <input class="form-control" value="${ detail.status }" id="status" name="status" type="text" readonly="readonly" />
                 </div>
                 <div>
                     <!-- 상품코드 -->
                     <input class="d-none" value="${ detail.productId }" id="productId" name="productId" type="number" readonly="readonly" />
                 </div>
+                <c:if test="${ detail.status == 0 }">
                 <div>
-                    <input type="submit" value="수정 / 삭제" class="btn">
+                    <input type="submit" value="수정 / 삭제" class="btn form-control">
                 </div>
+                </c:if>
             </form>
         </div>
         
