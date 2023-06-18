@@ -7,6 +7,75 @@
 <title>Alcohol</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+<style>
+/* Custom styles for your page */
+body {
+	font-family: Arial, sans-serif;
+	background-color: #fff; /* Changed the background color to white */
+}
+
+header {
+	text-align: center;
+	padding: 2rem;
+	background-color: #fff;
+	color: #000;
+}
+
+form {
+	max-width: 600px;
+	margin: 0 auto;
+	padding: 2rem;
+	background-color: #fff;
+}
+
+form label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+	color: #fff;
+}
+
+form input[type="text"] {
+	width: 100%;
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-bottom: 1rem;
+	color: #fff;
+	background-color: #fff;
+}
+
+div {
+	text-align: center;
+	margin-top: 1rem;
+}
+
+button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	background-color: #000; /* Changed the background color to black */
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:hover {
+	background-color: #333;
+}
+
+button#btnPhoneCancel {
+	margin-right: 1rem;
+	background-color: #777;
+}
+
+</style>
+
 </head>
 <body>
 	<header>
@@ -18,8 +87,7 @@
 		<div>
 			<input class="d-none" type="text" id="userEmail" name="userEmail" value="${ sessionScope.userEmail }">
 			<label>휴대폰 번호</label>
-			<br />
-			<input type="text" id="userAccountPhoneModify" name="userPhone" placeholder="PHONE" required />
+			<input type="text" id="userAccountPhoneModify" name="userPhone" placeholder="전화번호" required />
 		</div>
 	</form>
 	<div>

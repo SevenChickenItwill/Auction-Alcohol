@@ -10,6 +10,76 @@
             rel="stylesheet"
             integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
             crossorigin="anonymous">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #fff;
+            }
+
+            header {
+                text-align: center;
+                padding: 2rem;
+                background-color: #f8f8f8;
+                color: #000;
+            }
+
+            form {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 2rem;
+                background-color: #fff;
+            }
+
+            form label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                color: #000;
+            }
+
+            form select {
+                width: 100%;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-bottom: 1rem;
+                color: #000;
+                background-color: #fff;
+            }
+
+            form input[type="password"] {
+                width: 100%;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-bottom: 1rem;
+                color: #000;
+                background-color: #fff;
+            }
+
+            div {
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            button {
+                display: inline-block;
+                padding: 0.5rem 1rem;
+                background-color: #000;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #333;
+            }
+        </style>
 	</head>
 	<body>
 		<header>
@@ -44,6 +114,5 @@
               crossorigin="anonymous"></script>
         <script src="../static/js/userDeactivationAccount.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-              
 	</body>
 </html>

@@ -1,4 +1,4 @@
-.<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -164,12 +164,14 @@
 									</select>
 								</div>
 								<div class="nameDiv col-md-12">
-									<label for="userName"></label> <input type="text" id="userName"
+									<label for="userName"></label> 
+									<input type="text" id="userName"
 										name="userName" placeholder="이름"
 										class="nameInput form-control rounded" autofocus />
 								</div>
 								<div class="passwordDiv col-md-12">
-									<label for="userPassword"></label> <input type="password"
+									<label for="userPassword"></label> 
+									<input type="password"
 										id="userPassword" name="userPassword" placeholder="비밀번호"
 										class="passwordInput form-control rounded" required />
 								</div>

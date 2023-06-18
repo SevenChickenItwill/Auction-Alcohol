@@ -8,64 +8,77 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Alcohol</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+	rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous">
 
 <style>
+/* Custom styles for your page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff; /* 변경: 흰색(#fff)으로 설정 */
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .content {
-    font-family: system-ui, serif;
-    font-size: 36px;
+    background-color: #fff;
     border-radius: 1rem;
-    padding: 1rem;
-    width: 400px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0;
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.form-group label {
-    margin-right: 1rem;
-}
-
-.form-group input {
-    flex-grow: 1;
-    padding: 12px;
-    border-radius: 4px;
+.inputField {
+    width: 100%;
+    padding: 10px;
     border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 10px;
 }
 
-.form-group .btn {
-    margin-left: 1rem;
+.inputDiv {
+    margin-bottom: 15px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #333;
 }
 
 .deactivate-account {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .deactivate-account label {
-    margin-right: 1rem;
+    margin-right: 10px;
 }
-</style>
 
+</style>
 
 </head>
 <body>
@@ -73,62 +86,63 @@
 		<h1>회원 정보관리</h1>
 	</header>
 	
-	<div style="display: flex;
-    justify-content: center;">
-    <div style="
-    width: 800px;>
+	<div class="container">
+    	<div class="content">
 	
 	<c:url var="userModify" value="/signup/userModify"></c:url>
-	<form id="accountForm" method="post" action="${ userModify }">
+	<form id="accountForm" method="post" action="${userModify}">
 		<div>
 			<h2>계정</h2>
+			<hr>
 		</div>
-		<div class="form-group">
+		<div class="inputDiv col-md-12">
 			<label for="userEmail">이메일</label> 
-			<input type="email" id="userAccountEmail"
-				name="userAccountEmail" readonly value="${ dto.userEmail }" />
-			<c:url var="userPasswordModify" value="userPasswordModify">
-                 <c:param name="userEmail" value="${ dto.userEmail }"></c:param>
-            </c:url>        
-			<a class="btn btn-outline-primary" 
-               href="${ userPasswordModify }">수정</a>
+			<input class="inputField" 
+				type="email" id="userAccountEmail" name="userAccountEmail" readonly value="${dto.userEmail}" />
 		</div>
-		<div class="form-group">
+        <c:url var="userPasswordModify" value="userPasswordModify">
+            <c:param name="userEmail" value="${dto.userEmail}"></c:param>
+        </c:url>
+		<div class="inputDiv col-md-12">
 			<label for="userPassword">비밀번호</label> 
-			<input type="password"
-				id="userAccountPassword" name="userAccountPassword"
-				value="${ dto.userPassword }" readonly />
+			<input class="inputField"
+				type="password" id="userAccountPassword" name="userAccountPassword"
+				value="${dto.userPassword}" readonly />
+			<a class="btn" 
+               href="${userPasswordModify}">수정</a>
 		</div>
-		<div class="form-group">
+		<div class="inputDiv col-md-12">
 			<label for="userPhone">전화번호</label> 
-			<input type="text" id="userAccountPhone"
-				name="userAccountPhone" value="${ dto.userPhone }" readonly />
+			<input class="inputField" 
+				type="text" id="userAccountPhone"
+				name="userAccountPhone" value="${dto.userPhone}" readonly />
             <c:url var="userPhoneModify" value="userPhoneModify">
-                 <c:param name="userEmail" value="${ dto.userEmail }"></c:param>
+                 <c:param name="userEmail" value="${dto.userEmail}"></c:param>
             </c:url>
-            <a class="btn btn-outline-primary" 
-               href="${ userPhoneModify }">수정</a>
+            <a class="btn" 
+               href="${userPhoneModify}">수정</a>
 		</div>
-		<div class="form-group">
+		<div class="inputDiv col-md-12">
 			<label for="userAddress">주소</label>
-			<input type="text" id="userAccountAddress" 
-                name="userAccountAddress" value="${ dto.userAddress }" readonly />
+			<input class="inputField" 
+				type="text" id="userAccountAddress" 
+                name="userAccountAddress" value="${dto.userAddress}" readonly />
             <c:url var="userAddressModify" value="userAddressModify">
-                 <c:param name="userEmail" value="${ dto.userEmail }"></c:param>
+                 <c:param name="userEmail" value="${dto.userEmail}"></c:param>
             </c:url>
-			<a class="btn btn-outline-primary"
-               href="${ userAddressModify }">수정</a>
+			<a class="btn"
+               href="${userAddressModify}">수정</a>
 		</div>
-		<div class="form-group">
+		<div class="inputDiv col-md-12">
 			<label for="userAccountBirthday">생년월일</label> 
-			<input type="date"
-				id="userAccountBirthday" name="userAccountBirthday"
-				value="${ dto.userBirthday }" readonly>
+			<input class="inputField" 
+				type="date" id="userAccountBirthday" name="userAccountBirthday"
+				value="${dto.userBirthday}" readonly>
 		</div>
 	</form>
 	<div class="deactivate-account">
 		<label>계정 비활성화</label>
-		<a class="btn btn-outline-primary" 
+		<a class="btn" 
            href="/alcohol/signup/deactivationAccount">비활성화</a>
 	</div>
 	</div>
