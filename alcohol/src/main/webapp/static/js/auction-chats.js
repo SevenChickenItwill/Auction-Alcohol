@@ -44,11 +44,11 @@
 		 let html = '';
 		 if(loginid==userid){
 		 
-		 html = `<input class="form-control text-end text-bg-warning" type="text" value="${message} : ${userid}" readonly="readonly"/>
+		 html = `<input class="chatings form-control text-end text-bg-warning" type="text" value="${message} : ${userid}" readonly="readonly"/>
 		 		<input class="d-none" name="cid${cid}" id="cid${cid}" value="${cid}"/>`;
 		 ;
 		 } else{
-			 html = `<input class="form-control text-bg-secondary" type="text" value="${userid} : ${message}" readonly="readonly"/>
+			 html = `<input class="chatings form-control text-bg-secondary" type="text" value="${userid} : ${message}" readonly="readonly"/>
 			 <input class="d-none" name="cid${cid}" id="cid${cid}" value="${cid}"/>`;
 		 }
 		 nowbids.value = `${nowbid}`;
@@ -56,6 +56,7 @@
 		 bidcounts.value = `${bidcount}`;
 		 otherchatlist.innerHTML += html;
 		 statusinput.value = `${statusvalue}`;
+		 otherchatlist.scrollTop = otherchatlist.scrollHeight;
 		 
 		 
 	 }

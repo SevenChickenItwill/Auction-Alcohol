@@ -66,6 +66,7 @@ li{
 
 }
 .mains{
+	margin-top: 50px;
     margin-right: 220px;
     margin-left: 380px;
     
@@ -173,25 +174,25 @@ body{
 		<div class="form-control">
 			<form id="modifyform" class="form">
 				<input type="number" name="pid" id="pid" class="d-none" value="${detail.pid }"/>
-				<label for="productname">상품명</label>
-				<input type="text" required="required" name="productname" id="productname" value="${detail.productname }"/>
-				<label for="standard">규격</label>
-				<input type="text" required="required" name="standard" id="standard" value="${ detail.standard }"/>
-				<label for="unit">단위</label>
-				<input type="text" required="required" name="unit" id="unit" value="${ detail.unit }"/>
-				<label for="price">가격</label>
-				<input type="number" required="required" name="price" id="price" value="${ detail.price }"/>
-				<label for="brand">브랜드</label>
-				<input type="text" required="required" name="brand" id="brand" value="${ detail.brand }"/>
+				<label class="form-label" for="productname">상품명</label>
+				<input class="form-control" type="text" required="required" name="productname" id="productname" value="${detail.productname }"/>
+				<label class="form-label" for="standard">규격</label>
+				<input class="form-control" type="text" required="required" name="standard" id="standard" value="${ detail.standard }"/>
+				<label class="form-label" for="unit">단위</label>
+				<input class="form-control" type="text" required="required" name="unit" id="unit" value="${ detail.unit }"/>
+				<label class="form-label" for="price">가격</label>
+				<input class="form-control" type="number" required="required" name="price" id="price" value="${ detail.price }"/>
+				<label class="form-label" for="brand">브랜드</label>
+				<input class="form-control" type="text" required="required" name="brand" id="brand" value="${ detail.brand }"/>
 				<input value="${ sessionScope.userNickname }" class="d-none" type="text" required="required" name="userid" id="userid" />
-				<label for="expirationdate">유통기한</label>
-				<input type="text" required="required" name="expirationdate" id="expirationdate" value="${ detail.expirationdate }"/>
-				<label for="alcohol_level">도수</label>
-				<input type="number" required="required" name="alcohol_level" id="alcohol_level" value="${ detail.alcohol_level }"/>
-				<label for="hashtag">해시태그</label>
-				<input type="text" required="required" name="hashtag" id="hashtag" value="${ detail.hashtag }"/>
+				<label class="form-label" for="expirationdate">유통기한</label>
+				<input class="form-control" type="text" required="required" name="expirationdate" id="expirationdate" value="${ detail.expirationdate }"/>
+				<label class="form-label" for="alcohol_level">도수</label>
+				<input class="form-control" type="number" required="required" name="alcohol_level" id="alcohol_level" value="${ detail.alcohol_level }"/>
+				<label class="form-label" for="hashtag">해시태그</label>
+				<input class="form-control" type="text" required="required" name="hashtag" id="hashtag" value="${ detail.hashtag }"/>
 				<input class="d-none" type="text" required="required" name="photopath" id="photopath" value="${ detail.photopath }" />
-				<label for="category">카테고리</label>
+				<label class="form-label" for="category">카테고리</label>
 					<%-- value 는 category 테이블의 코드랑 동일하게 설정함. --%>
 					
 					<select class="form-control" id="category" name="category" >
@@ -208,12 +209,12 @@ body{
 						<option value="11">주정</option>
 						<option value="12">기타주류</option>
 					</select>
-					<button class="btn" id="btnmodify">상품 수정</button>
-					<button class="btn" id="btndelete">상품 삭제</button>
+					<button class="btn form-control btn-outline-success" id="btnmodify">상품 수정</button>
+					<button class="btn form-control btn-outline-danger" id="btndelete">상품 삭제</button>
 					
 			</form>
 			<c:url var="listmain" value="/shop/pdlist"></c:url>
-					<a href="${ listmain }"><button class="btn" id="btnBack">뒤로가기</button></a>
+					<a href="${ listmain }"><button class="btn form-control" id="btnBack">뒤로가기</button></a>
 		</div>
 		<div>
 				<form id="imginsert" enctype="multipart/form-data">

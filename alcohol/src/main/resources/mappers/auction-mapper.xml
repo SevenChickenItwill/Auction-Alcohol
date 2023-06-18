@@ -400,5 +400,8 @@
     	select * from Chat Where userid = #{userNickname}
     </select>
     
+    <select id="findphotoroot" resultType="com.mid.alcohol.domain.auction.Photo">
+    	select * from Productphoto where productid = #{pid}
+    </select>
     
 </mapper>

@@ -248,7 +248,9 @@ public class AuctionService {
 		// TODO Auto-generated method stub
 		log.info("readlist()");
 		
-		return auctionrepository.readEndAuctionList();
+		List<AuctionListDto> list = auctionrepository.readEndAuctionList();
+		
+		return list;
 	}
 
 	public int updatebat(ChatInputDto dto) {
@@ -304,6 +306,11 @@ public class AuctionService {
 		}
 		log.info("{}",list3);
 		return list3;
+	}
+
+	public Photo findphotoroot(int productId) {
+		// TODO Auto-generated method stub
+		return auctionrepository.findphotoroot(productId);
 	}
 
 	

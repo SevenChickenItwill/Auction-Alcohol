@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.mid.alcohol.domain.auction.Auction;
 import com.mid.alcohol.domain.auction.AuctionProducts;
 import com.mid.alcohol.domain.auction.Chat;
+import com.mid.alcohol.domain.auction.Photo;
 import com.mid.alcohol.domain.auction.UserAuction;
 import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.auction.AuctionListDto;
@@ -110,6 +111,8 @@ public interface AuctionRepository {
 	void updateStart(Timestamp now);
 
 	List<Chat> readAllchatData(String userNickname);
+
+	Photo findphotoroot(int pid);
 
 }
 

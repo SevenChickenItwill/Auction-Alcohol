@@ -175,7 +175,7 @@ body{
             <c:url var="auctionupdate" value="/auction/update">
                <c:param name="aid" value="${ detail.aid }" />
             </c:url>
-            <form id="forms" name="forms" action="${ auctionupdate }" method="post">
+            <form id="forms" name="forms" >
                 <div>
                     <input class="d-none" type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
                 </div>
@@ -191,7 +191,7 @@ body{
                 <div>
                     <label class="form-label mx-2" for="pname">상품명</label>
                     <input class="form-control" value="${ detail.pname }" id="pname" name="pname" type="text"  />
-                    <button class="card btn" id="btnProductSearch">내 상품 찾기</button>
+                    <button class="card btn" id="btnsearch">내 상품 찾기</button>
                 </div>
                 <div>
                     <label class="form-label mx-2" for="constructor">제조사(생산자)</label>
@@ -225,7 +225,7 @@ body{
                 <div>
                     <!-- 현재 입찰자 -->
                     <label class="form-label mx-2" for="bidder">입찰자</label>
-                    <input class="form-control" value="${ detail.bidder }" id="nowBid" name="nowBid" type="number" readonly="readonly" />
+                    <input class="form-control" value="${ detail.bidder }" id="bidder" name="bidder" type="text" readonly="readonly" />
                 </div>
                 <div>
                     <!-- status -->
@@ -241,10 +241,10 @@ body{
                 </div>
                 <div>
                 	<c:if test="${ detail.status < 1 }">
-                    <input type="submit" value="수정" class="btn form-control">
-                    </c:if>
-                    <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete btn-outline-blue form-control">삭제</button>
+                    <button id="btnupdates" class="btn btn-outline-success form-control">수정</button>
                     
+                    <button id="btndelete" data-v="${ detail.aid }" class="btn btndelete btn-outline-danger form-control">삭제</button>
+                    </c:if>
                 </div>
             </form>
             
@@ -273,7 +273,7 @@ body{
     </div>
     <script src="../static/js/auction-delete.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="../static/js/auction-registration2.js"></script>
+        <script src="../static/js/auction-modify.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" 
                 crossorigin="anonymous">

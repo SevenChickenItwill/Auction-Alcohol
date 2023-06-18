@@ -13,6 +13,17 @@
     rel="stylesheet"
     crossorigin="anonymous">
 <style>
+a{
+	text-decoration: none;
+	color: black;
+}
+
+.table td,
+.table th{
+	text-align: center;
+	vertical-align: middle;
+}
+
 .p-3 {
     padding: 2rem!important;
 }
@@ -172,10 +183,10 @@ body{
 		<main class="mains">
 			
 			<div class="card">
-				<label class="form-label" style="font-weight: bold; font-size: xx-large;" for="searchtext">검색창</label>
+				<label class="mx-2 form-label" style="font-weight: bold; font-size: xx-large;" for="searchtext">검색창</label>
 				<div><input type="text" value="${ sessionScope.userNickname }" class="d-none" name="userid" id="userid"></div>
 				<input class="form-control" type="text" placeholder="검색할 내용을 입력하세요." id="searchtext" name="searchtext" />
-				<label class="form-label">검색 종류</label>
+				<label class="mx-2 form-label">검색 종류</label>
 				<select id="searchoption" name="searchoption" class="form-control">
 					<option value="1">상품명</option>
 					<option value="2">해시태그</option>
@@ -185,7 +196,7 @@ body{
 				<button class="btn" id="btnsearch">검색</button>
 			</div>
 			<div class="scrollable-table-container">
-				<table class="scrollable-table">
+				<table class="scrollable-table table">
 					<thead>
 						<tr>
 						<th>상품코드</th>

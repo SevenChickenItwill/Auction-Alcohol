@@ -12,22 +12,25 @@
      	const category = document.querySelector('input#category');
      // const idValue = document.querySelector('input#id').value;
      // 실제로는 아이디값 받기 현재는 로그인 기능 없으니
-     	const id = document.querySelector('input#id').value;
+     	
      	const productid = document.querySelector('input#productId');
      	const auctionName = document.querySelector('input#auctionName');
      	const auctionEnd = document.querySelector('input#auctionEnd');
      	const auctionStart = document.querySelector('input#auctionStart');
      	console.log(productid);
-     	const formst = document.querySelector('form#createform');
-     	const btncreateAuction = document.querySelector('button#btncreateAuction');
+     	const formst = document.querySelector('form#forms');
+     	const btnupdates = document.querySelector('button#btnupdates');
+     	const id = document.querySelector('input#userid').value;
      	
      	function eventcatch(){
 			 alert('입력되지 않은 내용이 존재합니다.');
 			 
 		 }
      	
-     	btncreateAuction.addEventListener('click',(e)=>{
-			
+     	btnupdates.addEventListener('click',(e)=>{
+			 
+			e.preventDefault();
+			console.log('정상작동');
 			if(auctionEnd.value==""){
 				console.log(auctionEnd.value);
 				eventcatch();
@@ -56,12 +59,12 @@
 			}
 			
 			formst.method='post';
-			formst.action='/alcohol/auction/registration';
+			formst.action='/alcohol/auction/update';
 			formst.submit(); 
 		 });
      
      
-     const btnProductSearch = document.querySelector('button#btnProductSearch');
+     const btnsearch = document.querySelector('button#btnsearch');
      
      function makeProduct(data){
 			
@@ -225,11 +228,11 @@
 		 
 	 }
      
-     btnProductSearch.addEventListener('click', (e) => {
+     btnsearch.addEventListener('click', (e) => {
 		 e.preventDefault();
 		
 		
-		 
+		 console.log('정상작동');
 		 
 		 getProductswithId();
 		 

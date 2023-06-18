@@ -176,25 +176,25 @@ body{
 	<main class="mains">
 		<div class="form">
 			<form id="createform" class="form">
-				<label for="productname">상품명</label>
-				<input type="text" required="required" name="productname" id="productname" />
-				<label for="standard">규격</label>
-				<input type="text" required="required" name="standard" id="standard" />
-				<label for="unit">단위</label>
-				<input type="text" required="required" name="unit" id="unit" />
-				<label for="price">가격</label>
-				<input type="number" required="required" name="price" id="price" />
-				<label for="brand">브랜드</label>
-				<input type="text" required="required" name="brand" id="brand" />
+				<label class="form-label" for="productname">상품명</label>
+				<input class="form-control" type="text" required="required" name="productname" id="productname" />
+				<label class="form-label" for="standard">규격</label>
+				<input class="form-control" type="text" required="required" name="standard" id="standard" />
+				<label class="form-label" for="unit">단위</label>
+				<input class="form-control" type="text" required="required" name="unit" id="unit" />
+				<label class="form-label" for="price">가격</label>
+				<input class="form-control" type="number" required="required" name="price" id="price" />
+				<label class="form-label" for="brand">브랜드</label>
+				<input class="form-control" type="text" required="required" name="brand" id="brand" />
 				<input value="${ sessionScope.userNickname }" class="d-none" type="text" required="required" name="userid" id="userid" />
-				<label for="expirationdate">유통기한</label>
-				<input type="text" required="required" name="expirationdate" id="expirationdate" />
-				<label for="alcohol_level">도수</label>
-				<input type="number" required="required" name="alcohol_level" id="alcohol_level" />
-				<label for="hashtag">해시태그</label>
-				<input type="text" required="required" name="hashtag" id="hashtag" />
+				<label class="form-label" for="expirationdate">유통기한</label>
+				<input class="form-control" type="text" required="required" name="expirationdate" id="expirationdate" />
+				<label class="form-label" for="alcohol_level">도수</label>
+				<input class="form-control" type="number" required="required" name="alcohol_level" id="alcohol_level" />
+				<label class="form-label" for="hashtag">해시태그</label>
+				<input class="form-control" type="text" required="required" name="hashtag" id="hashtag" />
 				<input class="d-none" type="text" required="required" name="photopath" id="photopath" />
-				<label for="category">카테고리</label>
+				<label class="form-label" for="category">카테고리</label>
 					<%-- value 는 category 테이블의 코드랑 동일하게 설정함. --%>
 					<select class="form-control" id="category" name="category">
 						<option selected="selected" value="1">탁주</option>
