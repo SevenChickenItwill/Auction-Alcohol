@@ -64,7 +64,7 @@
 .recommendBtn {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 </style>
 <body>
@@ -143,42 +143,55 @@
 						<input class="d-none" type="text" value="${ board.nickname }"
 							name="writerid" /> <input class="d-none" type="text"
 							value="${ sessionScope.userNickname }" name="checkid" /> 
-						<c:if test="${ checkid eq writerid }">
-
-							<span> <c:url var="boardModify"
-									value="/bulletinboard/board/modify">
+						
+						<div class="d-grid gap-2">
+							<c:url value="/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0" var="boardList" />
+							<a href="${ boardList }" class="btn btn-outline-secondary" type="button">목록페이지</a>
+						</div>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px;">
+							<c:if test="${ checkid eq writerid }">
+								<c:url var="boardModify" value="/bulletinboard/board/modify">
 									<c:param name="id" value="${ board.board_id }"></c:param>
-								</c:url> <a href="${ boardModify }">수정하기</a>
-								<button id="deleteBoardBtn">삭제하기</button>
-							</span>
-						</c:if>
-						<div>
-							<c:url
-								value="/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0"
-								var="boardList" /> <a href="${ boardList }">목록페이지</a>
+								</c:url>
+								<a href="${ boardModify }" class="btn btn-outline-secondary " type="button">수정하기</a>
+								<button class="btn btn-outline-secondary" type="button"
+									id="deleteBoardBtn">삭제하기</button>
+							</c:if>
 						</div>
-						<div>
-							<!-- 댓글 목록 보여줄 영역 -->
-							<span>댓글</span> <span id="commentCount"></span>
-						</div>
-
-
-						<div>댓글 수정 테스트</div>
+						
+						<hr style="margin-top: 30px; margin-bottom: 5px;" />
+						
 						<div>
 							<input id="updateCommentId" type="hidden" />
 						</div>
-
-
+						
+						
 						<div>
-							<input value="${ sessionScope.userNickname }" id="userNickname"
+							<span>전체 댓글</span> <span id="commentCount"></span>
+						</div>
+						
+						<hr style="margin-top: 5px; margin-bottom: 15px;" />
+						
+						<div class="form-floating" style="height: 100px; height: 30px;">
+							<div class="form-control" style="padding: 5px;">
+								<label for="viewUserNickname">닉네임</label>
+								<div class="vr"></div>
+								<span name="viewUserNickname">${ sessionScope.userNickname }</span>
+							</div>
+						</div>
+						
+						<input value="${ sessionScope.userNickname }" class="d-none" id="userNickname"
 								readonly />
+						
+						<div class="form-floating mb-3">
+							<textarea class="col-5 form-control" style="height: 100px; height: 150px;"
+								 placeholder="댓글 쓰기" id="content"></textarea>
 						</div>
-						<div>
-							<textarea class="col-5" placeholder="댓글 쓰기" id="content"></textarea>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+							<button type="button" class="btn btn-secondary" id="commentReg" style="margin-bottom: 30px;">등록</button>
 						</div>
-						<div>
-							<button id="commentReg">등록</button>
-						</div>
+						
+						<hr style="margin-top: 5px; margin-bottom: 15px;" />
 
 						<div id="replies"></div>
 					</section>

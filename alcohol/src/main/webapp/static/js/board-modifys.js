@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const image = document.querySelector('input#file');
 		
 		let filePath = image.value;
-		const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+		// const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 		
 		const board_id = inputBoradId.value;
 		const title = inputTitle.value;
@@ -37,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		
 		console.log('filePath = ' + filePath);
 		
-		if (!allowedExtensions.exec(filePath)) {
-			alert('이미지 파일만 업로드가 가능합니다.');
-			image.value = '';
-			return;
-		}
+		//if (!allowedExtensions.exec(filePath) ) {
+		//	alert('이미지 파일만 업로드가 가능합니다.');
+		//	image.value = '';
+		//	return;
+		//}
 		
 		
 		let dtoUrl = `/alcohol/api/recommend/update/${board_id}/${title}/${content}`;

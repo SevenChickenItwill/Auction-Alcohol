@@ -102,7 +102,7 @@
 				</div>
 				<div class="form-floating mb-3">
 					<label for="content"></label>
-					<textarea name="content" id="content" class="form-control" placeholder="Leave a comment here" 
+					<textarea name="content" id="content" class="form-control" placeholder="Content" 
 						 style="height: 100px; height: 320px;" required></textarea>
 				</div>
 			</div>	

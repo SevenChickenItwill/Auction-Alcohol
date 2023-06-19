@@ -118,11 +118,7 @@
         .mainBackground {
             flex: 1;
             background-image: url('./static/images/mainBackground.jpg');
-<<<<<<< Updated upstream
             background-repeat: no-repeat;
-=======
-            background-repeat:no-repeat;
->>>>>>> Stashed changes
             background-size: 1340px 730px;
             background-position: 52% -100px;
             background-blend-mode: lighten;
@@ -175,10 +171,12 @@
         	<c:param name="keyword" value=""></c:param>
         	<c:param name="boardNumber" value="0"></c:param>
         </c:url>
+        <c:url value="/shop/pdlist" var="shopPage">
+        </c:url>
         
         <nav class="navi">
             <ul id="jam">
-                <li><a href="#" class="a">주류 쇼핑몰</a></li>
+                <li><a href="${ shopPage }" class="a">주류 쇼핑몰</a></li>
                 <li><a href="${ auctionList }" class="a">주류 경매</a></li>
                 <li><a href="${ communityList }" class="a">커뮤니티</a></li>
                 <li><a href="#" class="a">마이페이지</a></li>

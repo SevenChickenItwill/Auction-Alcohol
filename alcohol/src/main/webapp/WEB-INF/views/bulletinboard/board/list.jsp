@@ -247,8 +247,8 @@
 										<c:param name="category" value="${ category }"></c:param>
 										<c:param name="boardNumber" value="1"></c:param>
 									</c:url>
-									<a href="${ indexZero }"><button>&lt;&lt;</button></a> <a
-										href="${ beforelist }"><button>&lt;</button></a>
+									<a href="${ indexZero }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&lt;&lt;</button></a> <a
+										href="${ beforelist }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&lt;</button></a>
 								</div>
 								<c:choose>
 
@@ -336,14 +336,14 @@
 
 								</c:choose>
 								<div>
-									<a href="${ nextlist }"><button>&gt;</button></a>
+									<a href="${ nextlist }"><button class="btn btn-dark" type="button" style="padding: 3px 12px;">&gt;</button></a>
 									<c:url var="maxIndex"
 										value="/bulletinboard/board/list?num=${ listPageMax - 1 }">
 										<c:param name="keyword" value="${ keyword }"></c:param>
 										<c:param name="category" value="${ category }"></c:param>
 										<c:param name="boardNumber" value="1"></c:param>
 									</c:url>
-									<a href="${ maxIndex }"><button>&gt;&gt;</button></a>
+									<a href="${ maxIndex }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&gt;&gt;</button></a>
 								</div>
 							</div>
 
