@@ -89,6 +89,11 @@
 	display: flex;
 	height: 100%;
 }
+
+.card-img-top {
+	height: 10rem;
+	object-fit: cover;
+}
 </style>
 <body>
 	<header>
@@ -171,15 +176,18 @@
 													</c:url>
 													<a href="${ detailPage }">
 														<div class="row g-0">
-															<div class="col-md-2" style="display: flex; align-items: center;">
+															<div
+																class="col-md-2"
+																style="display: flex; align-items: center;">
 																<!-- 이미지 -->
 																<img src="data:image/jpeg;base64,${ board.image }"
-																	class="img-fluid rounded-start" alt="이미지">
+																	class="img-fluid rounded-startc card-img-top"
+																	alt="이미지" />
 															</div>
 															<div class="col-md-10">
 																<div class="card-body">
 																	<!-- 게시글 제목, 게시글 댓글수 -->
-																	<h5 class="card-title">${ board.title }[${ board.rcnt }]</h5>
+																	<h5 class="card-title d-inline-block text-truncate" style="max-width: 150px;">${ board.title }<span>[${ board.rcnt }]</span></h5>
 
 																	<!-- 닉네임(아이디) ㅣ 시간 ㅣ 조회수 ㅣ 추천수   대로 나타냄 -->
 																	<p class="smallNickId  card-text">
@@ -189,8 +197,9 @@
 																			조회수 : [${ board.views }]
 																		</small>
 																	</p>
-																	
-																	<p class="card-text d-inline-block text-truncate" style="max-width: 150px;">${ board.content }</p>
+
+																	<p class="card-text d-inline-block text-truncate"
+																		style="max-width: 150px;">${ board.content }</p>
 																</div>
 															</div>
 														</div>
@@ -247,8 +256,10 @@
 										<c:param name="category" value="${ category }"></c:param>
 										<c:param name="boardNumber" value="1"></c:param>
 									</c:url>
-									<a href="${ indexZero }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&lt;&lt;</button></a> <a
-										href="${ beforelist }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&lt;</button></a>
+									<a href="${ indexZero }"><button style="padding: 3px 12px;"
+											class="btn btn-dark" type="button">&lt;&lt;</button></a> <a
+										href="${ beforelist }"><button style="padding: 3px 12px;"
+											class="btn btn-dark" type="button">&lt;</button></a>
 								</div>
 								<c:choose>
 
@@ -336,14 +347,16 @@
 
 								</c:choose>
 								<div>
-									<a href="${ nextlist }"><button class="btn btn-dark" type="button" style="padding: 3px 12px;">&gt;</button></a>
+									<a href="${ nextlist }"><button class="btn btn-dark"
+											type="button" style="padding: 3px 12px;">&gt;</button></a>
 									<c:url var="maxIndex"
 										value="/bulletinboard/board/list?num=${ listPageMax - 1 }">
 										<c:param name="keyword" value="${ keyword }"></c:param>
 										<c:param name="category" value="${ category }"></c:param>
 										<c:param name="boardNumber" value="1"></c:param>
 									</c:url>
-									<a href="${ maxIndex }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&gt;&gt;</button></a>
+									<a href="${ maxIndex }"><button style="padding: 3px 12px;"
+											class="btn btn-dark" type="button">&gt;&gt;</button></a>
 								</div>
 							</div>
 

@@ -1,112 +1,207 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insert title here</title>
+<title>ì¹ ë©´ì£¼ì¡°ì— ì˜¤ì‹ ê±¸ í™˜ì˜í•©ë‹ˆë‹¤ - ì»¤ë®¤ë‹ˆí‹°</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 	crossorigin="anonymous" />
 </head>
-</head>
-<body>
-	<h1>»ó¼¼º¸±â ÆäÀÌÁö</h1>
-	<div>
-		<c:url var="historylist" value="/bulletinboard/board/historylist">
-			<c:param value="${board.nickname}" name="nickname" />
-		</c:url>
-		<a type="button" href= "${historylist}">µÚ·Î°¡±â</a>
-	</div>
-	
-	<main>
-		
-		<input type="text" class="d-none" value="${ sessionScope.userEmail }" id="loginId" />
-		
-		<section>
-			<form id="boardForm">
-				<input type="number" class="d-none" value="${ board.board_id }" id="boardId"
-					name="board_id" />
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 offset-lg-2 mt-5">
-							<div class="card">
-								<div class="card-body">
-									<h5 class="card-title">${ board.title }</h5>
-									<p class="card-text">${ board.nickname }(${ board.user_id })
-										${ board.time }</p>
-									<p class="card-text" >
-										<span>Á¶È¸¼ö : [${ board.views }]</span>
-										<span id="recommendCnt">ÃßÃµ¼ö : [${ board.recommend }]</span>
-										<span>´ñ±Û[°³¼ö]</span>
-									</p>
-									<img src="data:image/jpeg;base64,${ image }" alt="ÀÌ¹ÌÁö" />
-									<p class="card-text">${ board.content }</p>
-									
-										<div>
-											<input type="button" value="ÃßÃµ" id="recommendUp" />
-											<input type="button" value="ºñÃßÃµ" id="recommendDo" />
-										</div>
+<style>
+.navList {
+	display: flex;
+	flex-direction: row-reverse;
+	margin-right: 10px;
+}
 
+.textNav {
+	color: white;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.textNav:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.navbar {
+	margin-bottom: 20px;
+}
+
+.main {
+	display: flex;
+	justify-content: center;
+}
+
+.mainInner {
+	width: 800px;
+}
+
+.innerView {
+	display: grid;
+	justify-content: center;
+}
+
+.userFont {
+	font-size: 4px;
+}
+
+.imgDiv {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+.recommendBtn {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 40px;
+}
+</style>
+<body>
+	<header>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container">
+				<c:url var="mainPage" value="/" />
+				<a href="${ mainPage }"
+					class="navbar-brand d-flex align-items-center"> <path
+						d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+					<strong>Turkey Brewery</strong>
+				</a>
+			</div>
+			<div class="navList">
+				<div>
+					<a href="#" class="textNav">ë§ˆì´í˜ì´ì§€</a>
+					<c:url value="/" var="mainPage" />
+					<a href="${ mainPage }" class="textNav">ë©”ì¸í˜ì´ì§€</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+	<div class="main">
+		<div>
+			<div class="mainInner">
+				<div class="innerView">
+					<input type="text" class="d-none"
+						value="${ sessionScope.userEmail }" id="loginId" />
+
+					<section>
+						<form id="boardForm">
+							<input type="number" class="d-none" value="${ board.board_id }"
+								id="boardId" name="board_id" />
+							<div>
+								<div>
+									<div>
+										<div style="width: 500px;">
+											<div>
+												<h5 class="fs-2 fw-bold" style="margin-bottom: 17px;">${ board.title }</h5>
+											</div>
+											<p class="userFont">${ board.nickname }(${ board.user_id })
+												<span class="vr"></span> ${ board.time }
+											</p>
+											<hr style="margin: 0;" />
+											<p>
+												<span>ì¡°íšŒìˆ˜[${ board.views }]</span> <span class="vr"
+													style="margin-left: 8px; margin-right: 8px;"> </span> <span
+													id="recommendCnt"> ì¶”ì²œìˆ˜ ${ board.recommend } <span
+													class="vr" style="margin-left: 8px; margin-right: 8px;">
+												</span>
+												</span> <span class="badge rounded-pill text-bg-warning"> ëŒ“ê¸€<span
+													id="boardCommendCount"></span>
+												</span>
+											</p>
+											<div class="imgDiv">
+												<img src="data:image/jpeg;base64,${ image }" alt="ì´ë¯¸ì§€" />
+											</div>
+											<p>${ board.content }</p>
+											<div>
+												<div class="recommendBtn">
+													<div style="margin-right: 10px;">
+														<input type="button" class="btn btn-success" value="ì¶”ì²œ"
+															id="recommendUp" />
+													</div>
+													<div style="margin-left: 10px;">
+														<input class="btn btn-success" type="button" value="ë¹„ì¶”ì²œ"
+															id="recommendDo" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
+						</form>
+
+						<div class="d-grid gap-2">
+							<c:url var="historylist" value="/action/actionview">
+								<c:param value="${board.nickname}" name="nickname" />
+							</c:url>
+							<a class="btn btn-outline-secondary" type="button" href="${historylist}">ë’¤ë¡œê°€ê¸°</a>
 						</div>
-					</div>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px;">
+							<c:if test="${ checkid eq writerid }">
+								<c:url var="boardModify" value="/bulletinboard/board/modify">
+									<c:param name="id" value="${ board.board_id }"></c:param>
+								</c:url>
+								<a href="${ boardModify }" class="btn btn-outline-secondary " type="button">ìˆ˜ì •í•˜ê¸°</a>
+								<button class="btn btn-outline-secondary" type="button"
+									id="deleteBtn">ì‚­ì œí•˜ê¸°</button>
+							</c:if>
+						</div>
+						
+						<hr style="margin-top: 30px; margin-bottom: 5px;" />
+						
+						<div>
+							<input id="updateCommentId" type="hidden" />
+						</div>
+						
+						<div>
+							<span>ì „ì²´ ëŒ“ê¸€</span> <span id="commentCount"></span>
+						</div>
+						
+						<hr style="margin-top: 5px; margin-bottom: 15px;" />
+						
+						<div class="form-floating" style="height: 100px; height: 30px;">
+							<div class="form-control" style="padding: 5px;">
+								<label for="viewUserNickname">ë‹‰ë„¤ì„</label>
+								<div class="vr"></div>
+								<span name="viewUserNickname" id="userNickname">${ sessionScope.userNickname }</span>
+							</div>
+						</div>
+						
+						<input value="${ sessionScope.userNickname }" class="d-none" id="userNickname" readonly />
+						
+						<div class="form-floating mb-3">
+							<textarea class="col-5 form-control" style="height: 100px; height: 150px;"
+								 placeholder="ëŒ“ê¸€ ì“°ê¸°" id="content"></textarea>
+						</div>
+						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+							<button type="button" class="btn btn-secondary" id="commentReg" style="margin-bottom: 30px;">ë“±ë¡</button>
+						</div>
+
+						<div id="replies"></div>
+
+					</section>
 				</div>
-			</form>
-				<span> 
-				<c:url var="boardModify" value="/bulletinboard/board/modify">
-					<c:param name="id" value="${ board.board_id }"></c:param>
-				</c:url> 
-				<a href="${ boardModify }">¼öÁ¤ÇÏ±â</a> 
-				<a id="deleteBtn">»èÁ¦ÇÏ±â</a>
-				</span>
-			  <div>
-                 <!-- ´ñ±Û ¸ñ·Ï º¸¿©ÁÙ ¿µ¿ª -->
-                    <span>´ñ±Û</span>
-                    <span id="commentCount"></span>
-                </div>
-                
-                
-                
-                <div>
-                ´ñ±Û ¼öÁ¤ Å×½ºÆ®
-                </div>
-                <div>
-                <input id="updateCommentId" type="hidden"/>
-                </div>
-                 
-                
-                
-                <div>
-                    <input value="test33" id="userNickname" readonly/>
-                </div>
-                <div>
-                    <textarea class= "col-5" placeholder="´ñ±Û ¾²±â" id="content"></textarea>
-                </div>
-                <div>
-                	<button id="commentReg" >µî·Ï</button>
-                </div>
-                
-                
-                <div id="replies"></div>
-
-				
-			
-		</section>
-		
-
-	</main>
-	
+			</div>
+		</div>
+	</div>
 	<div>
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../../static/js/board-history.js"></script>
+		<script src="../../static/js/board-history.js"></script>
+	</div>
 </body>
 </html>
