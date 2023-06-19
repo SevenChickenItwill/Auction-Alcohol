@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	const selectCategory = document.querySelector('select#category');
 
 	// 닉네임
-	const inputNickname = document.querySelector('input#nickname');
+	const inputNickname = document.querySelector('span#nickname');
 
 	// 아이디
-	const inputUserId = document.querySelector('input#userId');
+	const inputUserId = document.querySelector('span#userId');
 
 	// 제목
 	const inputTitle = document.querySelector('input#title');
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
 		const category = selectCategory.value;
-		const nickname = inputNickname.value;
-		const user_id = inputUserId.value;
+		const nickname = inputNickname.innerHTML;
+		const user_id = inputUserId.innerHTML;
 		const title = inputTitle.value;
 		const content = textareaContent.value;
 

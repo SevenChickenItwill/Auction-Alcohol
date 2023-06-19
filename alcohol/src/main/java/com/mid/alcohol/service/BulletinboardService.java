@@ -26,6 +26,7 @@ import com.mid.alcohol.domain.board.RecommendUp;
 import com.mid.alcohol.dto.board.BulletinboardCreateDto;
 import com.mid.alcohol.dto.board.BulletinboardDetailDto;
 import com.mid.alcohol.dto.board.BulletinboardImageUpdateDto;
+import com.mid.alcohol.dto.board.BulletinboardKeywordDto;
 import com.mid.alcohol.dto.board.BulletinboardHistoryDto;
 import com.mid.alcohol.dto.board.BulletinboardListDto;
 import com.mid.alcohol.dto.board.BulletinboardUpdateDto;
@@ -44,13 +45,8 @@ public class BulletinboardService {
     public List<BulletinboardListDto> selectAll() {
         log.info("selectAll");
         
-//        List<BulletinboardListDto> listImage = bulletinboardRepository.selectImageOrderByIdDesc();
         List<BulletinboardListDto> list = bulletinboardRepository.selectOrderByIdDesc();
         
-//        for (int i = 0; i < list.size(); i++) {
-//        	list.get(i).setImage(listImage.get(i).getImage());
-//        }
-//        
         return list;
     }
 
@@ -85,53 +81,30 @@ public class BulletinboardService {
         if (category.equals("t")) {
         	
         	 List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitle(keyword);
-//             List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitle(keyword);
-//             
-//             for (int i = 0; i < list.size(); i++) {
-//             	list.get(i).setImage(listImage.get(i).getImage());
-//             }
              
              return list;
         } else if (category.equals("c")) {
         	
         	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereContent(keyword);
-//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereContent(keyword);
-//            
-//            for (int i = 0; i < list.size(); i++) {
-//            	list.get(i).setImage(listImage.get(i).getImage());
-//            }
             
             return list;
         } else if (category.equals("tc")) {
             String keywordT = keyword;
             String keywordC = keywordT;
             
-            List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitleAndContent(keywordT, keywordC);
-//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereTitleAndContent(keywordT, keywordC);
-//            
-//            for (int i = 0; i < list.size(); i++) {
-//            	list.get(i).setImage(listImage.get(i).getImage());
-//            }
+            BulletinboardKeywordDto dto = new BulletinboardKeywordDto(keywordT, keywordC);
+            
+            List<BulletinboardListDto> list = bulletinboardRepository.selectWhereTitleAndContent(dto);
             
             return list;
         } else if (category.equals("n")) {
         	
         	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereNickname(keyword);
-//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereNickname(keyword);
-//            
-//            for (int i = 0; i < list.size(); i++) {
-//            	list.get(i).setImage(listImage.get(i).getImage());
-//            }
             
             return list;
         } else if (category.equals("i")) {
         	
         	List<BulletinboardListDto> list = bulletinboardRepository.selectWhereUserId(keyword);
-//            List<BulletinboardListDto> list = bulletinboardRepository.selectImageWhereUserId(keyword);
-//            
-//            for (int i = 0; i < list.size(); i++) {
-//            	list.get(i).setImage(listImage.get(i).getImage());
-//            }
             
             return list;
         }
@@ -267,7 +240,8 @@ public class BulletinboardService {
 	}
     
     // 추천 관련 service
-
+    
+    // 추천 업
 	public int recommendUp(long boardId) {
 		log.info("recommentUp(id= {})", boardId);
 		
@@ -275,7 +249,8 @@ public class BulletinboardService {
 		
 		return result;
 	}
-
+	
+	// 추천 다운
 	public int recommendDo(long boardId) {
 		log.info("recommendDo(id= {})", boardId);
 		
@@ -310,9 +285,9 @@ public class BulletinboardService {
     	log.info("RECOMMEDUPSELECT commend= {}", commend);
     	
     	if (commend != null) {
-    		return 1;
+    		return 1; // null이 아닐때 중복이 있을때
     	} else {
-    		return 0;
+    		return 0; // null일때
     	}
     	
     	
@@ -325,9 +300,9 @@ public class BulletinboardService {
     	RecommendDown down = bulletinboardRepository.recommendDownSelect(recommend);
     	
     	if (down != null) {
-    		return 0;
-    	} else {
     		return 1;
+    	} else {
+    		return 0;
     	}
     }
     

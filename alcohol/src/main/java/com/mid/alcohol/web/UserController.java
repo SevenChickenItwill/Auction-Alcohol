@@ -87,8 +87,10 @@ public class UserController {
 
     // 메인 페이지 이동
     @GetMapping("/main")
-    public void main() {
+    public String main() {
         log.info("main()");
+        
+        return "redirect:/signup/signupEmail";
     }
 
     // =============================여기서부터 수정 컨트롤러===================================================================//
