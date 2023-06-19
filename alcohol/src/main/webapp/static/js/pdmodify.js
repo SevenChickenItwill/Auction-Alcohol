@@ -151,7 +151,7 @@
 		 if(photopath==''){
 			 
 			 alert('사진을 업로드하지 않아 기본 사진으로 업로드됩니다');
-			 photopath='C:\imgs\defaultimg.jpg'
+			 photopath='C:\\imgs\\defaultimg.jpg'
 			 
 		 }
 		 

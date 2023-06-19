@@ -177,7 +177,7 @@ a:active {
 						<div class="col">
 							<div class="card shadow-sm">
 								<p class="my-1 mx-2">${ list.auctionName }</p>
-								<img src="data:image/jpeg;base64,${list.photopath }" width="100%" height="225px">
+								<img src="data:image/jpeg;base64,${list.photopath }" alt="No Image" width="100%" height="225px">
 
 								<div class="card-body">
 									<p class="d-none"></p>
