@@ -280,7 +280,7 @@ h2{
 					<th>주종</th>
 					<th>배송지</th>
 					<th>전화번호</th>
-					
+					<th>상태</th>
 				</tr>
 			</thead>
 			<tbody class="table table-hover" id="tablebody3">
@@ -295,6 +295,12 @@ h2{
 						<td>${ list3.category }</td>
 						<td>${ list3.userAddress }</td>
 						<td>${ list3.userPhone }</td>
+						<c:if test="${ list3.status==0 }">
+							<td>배송 준비중</td>
+						</c:if>
+						<c:if test="${ list3.status==1 }">
+						<td>배송 중</td>
+						</c:if>
 					</tr>
 				</c:forEach>
 				

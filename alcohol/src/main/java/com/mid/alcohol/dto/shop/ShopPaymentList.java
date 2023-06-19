@@ -45,5 +45,6 @@ public class ShopPaymentList {
 	private long totalamount;
 	private long basketid;
 	private int quantity;
+	private int status;
 	
 }
