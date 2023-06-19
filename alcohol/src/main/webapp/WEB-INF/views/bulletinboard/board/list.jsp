@@ -97,7 +97,7 @@
 </style>
 <body>
 	<header>
-		<div class="navbar navbar-dark bg-dark shadow-sm">
+		<div class="navbar navbar-dark bg-dark shadow-sm" style="display: flex; flex-wrap: nowrap;">
 			<div class="container">
 				<c:url var="mainPage" value="/" />
 				<a href="${ mainPage }"
