@@ -47,8 +47,8 @@
 	</select>
 	
 	<insert id="createBasket">
-		INSERT INTO basket (productid, quantity, price)	
-		VALUES (#{productid}, #{quantity}, #{price})
+		INSERT INTO basket (productid, quantity, price, pname)	
+		VALUES (#{productid}, #{quantity}, #{price}, #{productname})
 	</insert>
     
 </mapper>

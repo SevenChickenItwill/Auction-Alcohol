@@ -13,6 +13,7 @@ public class BasketSaveDto {
 	private int quantity;
 	private long price;
 	private int basketid;
+	private String productname;
 
 	public Basket toEntity() {
 
@@ -21,7 +22,9 @@ public class BasketSaveDto {
 				.quantity(quantity)
 				.price(price)
 				.basketid(basketid)
+				.productname(productname)
 				.build();
+				
 				
 				
 				

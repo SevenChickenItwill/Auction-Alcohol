@@ -14,4 +14,6 @@ public class Basket {
 	private String userid;
 	private long price;
 	private int quantity;
+	private String productname;
+	
 }
