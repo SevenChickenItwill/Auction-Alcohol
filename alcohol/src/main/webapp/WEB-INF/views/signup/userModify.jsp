@@ -13,16 +13,23 @@
 	crossorigin="anonymous">
 
 <style>
-/* Custom styles for your page */
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #fff; /* 변경: 흰색(#fff)으로 설정 */
+    background-color: #fff; 
+}
+
+header {
+ text-align: center;
+ padding: 2rem;
+ background-color: #fff;
+ color: #000;
 }
 
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
 }
 
@@ -32,13 +39,6 @@ body {
     padding: 2rem;
     max-width: 600px;
     width: 100%;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 0;
 }
 
 .inputField {

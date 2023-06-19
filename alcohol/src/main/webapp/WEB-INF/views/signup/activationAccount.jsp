@@ -19,7 +19,7 @@ body {
 header {
 	text-align: center;
 	padding: 2rem;
-	background-color: #f8f8f8;
+	background-color: #fff;
 	color: #000;
 }
 
@@ -49,7 +49,7 @@ input[type="password"] {
 button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
-	background-color: #000; /* Changed the background color to black */
+	background-color: #000; 
 	color: #fff;
 	border: none;
 	border-radius: 4px;

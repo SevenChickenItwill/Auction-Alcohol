@@ -121,7 +121,7 @@ public class UserController {
 		int result = userService.PasswordUpdate(dto);
 		log.info("업데이트 결과={}", result);
 
-		return "/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
+		return "redirect:/signup/userModify"; // 수정 후 사용자 수정 페이지로 이동
 	}
 
 	// 전화번호를 수정

@@ -77,7 +77,7 @@ button#btnAddressCancel {
 	background-color: #777;
 }
 
-/* Nike style */
+
 body {
 	background-color: #fff;
 }

@@ -15,14 +15,12 @@ import lombok.NoArgsConstructor;
 public class UserPasswordUpdateDto {
 	private String userEmail;
 	private String userPassword;
-	private int deactivationAccount;
 	
 	public User toEntity() {
 		
 		return User.builder()
 				.userEmail(userEmail)
-				.userPassword(userPassword)
-				.deactivationAccount(deactivationAccount)
+				.userPassword(userPassword)			
 				.build();
 	}
 	

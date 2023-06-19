@@ -9,10 +9,9 @@
 	integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
 <style>
-/* Custom styles for your page */
 body {
 	font-family: Arial, sans-serif;
-	background-color: #fff; /* Changed the background color to white */
+	background-color: #fff; 
 }
 
 header {
@@ -42,7 +41,6 @@ form input[type="text"] {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	margin-bottom: 1rem;
-	color: #fff;
 	background-color: #fff;
 }
 
@@ -54,7 +52,7 @@ div {
 button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
-	background-color: #000; /* Changed the background color to black */
+	background-color: #000; 
 	color: #fff;
 	border: none;
 	border-radius: 4px;
