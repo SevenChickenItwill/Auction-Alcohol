@@ -122,11 +122,12 @@
 	</select>
 
 	<select id="getBasketInfo"
-		resultType="com.mid.alcohol.dto.BasketListDto">
+		resultType="com.mid.alcohol.dto.payment.BasketListDto">
 		SELECT b.basketid, b.productid, b.quantity, b.price, b.pname, p.brandname
 		FROM basket b
 		JOIN auctionproducts p
 		ON b.productid = p.productid
 		WHERE b.basketid = #{basketid}
 	</select>
+	
 </mapper>
