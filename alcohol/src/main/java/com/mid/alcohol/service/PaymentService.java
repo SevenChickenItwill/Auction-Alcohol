@@ -1,6 +1,7 @@
 package com.mid.alcohol.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.mid.alcohol.domain.user.User;
 import com.mid.alcohol.dto.payment.AdressUpdateDto;
 import com.mid.alcohol.dto.payment.BasketListDto;
+import com.mid.alcohol.dto.payment.BasketUpdateListDto;
 import com.mid.alcohol.dto.payment.OrderProductDto;
 import com.mid.alcohol.dto.payment.PaymentAdressModifyDto;
+import com.mid.alcohol.dto.payment.PaymentListDto;
 import com.mid.alcohol.repository.PaymentRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -44,9 +47,9 @@ public class PaymentService {
 		return dto;
 	}
 
-	public List<BasketListDto> readBasketByUserid(String userid) {
-		log.info("readBasketByUserid(userid={})", userid);
-		return paymentRepository.readBasketByUserid(userid);
+	public List<BasketListDto> readBasketByUserNickname(String userNickname) {
+		log.info("readBasketByuserNickname(userNickname={})", userNickname);
+		return paymentRepository.readBasketByUserNickname(userNickname);
 
 	}
 
@@ -61,4 +64,69 @@ public class PaymentService {
 	public void insertOrder(List<OrderProductDto> list) {
 		paymentRepository.insertOrder(list);
 	}
+
+
+	public void updateBaket(List<BasketUpdateListDto> basketUpdateListDto) {
+		for (BasketUpdateListDto dto : basketUpdateListDto) {
+			paymentRepository.updateBaket(dto);
+		}
+	}
+
+
+	public void deletebasket(int basketid) {
+		paymentRepository.deletebasket(basketid);
+	}
+
+
+	public void insertPaymentList(List<PaymentListDto> list) {
+		for (PaymentListDto x : list) {
+			paymentRepository.insertPaymentList(x);
+		}
+	}
+
+
+	public void deleteOrders(int paymentid) {
+		paymentRepository.deleteOrders(paymentid);
+	}
+
+
+	public void deletePayment(int paymentid) {
+		paymentRepository.deletePayment(paymentid);
+	}
+
+
+	public List<PaymentListDto> getPaymentList(int paymentid) {
+		return paymentRepository.getPaymentList(paymentid);
+	}
+
+
+	public List<Integer> getBasketidFromOrders(int paymentid) {
+		return paymentRepository.getBasketidFromOrders(paymentid);
+	}
+
+
+	public void deletebasket(List<Integer> basketidlist) {
+		for (Integer basketid : basketidlist) {
+			paymentRepository.deletebasket(basketid);
+		}
+	}
+
+
+	public String getPname(Integer basketid) {
+		return paymentRepository.getPname(basketid);
+	}
+
+
+	public List<BasketListDto> getBasketList(List<Integer> basketidlist) {
+		List<BasketListDto> list = new ArrayList<>();
+		for (Integer basketid : basketidlist) {
+			list.add(paymentRepository.getBasketInfo(basketid));
+		}
+		return list;
+	}
+
+
+	
+
+
 }

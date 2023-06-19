@@ -105,6 +105,7 @@ a:active {
 						<circle cx="12" cy="13" r="4"></circle></svg> <strong>Album</strong>
 				</a>
 
+
 				<c:url var="paymain" value="/payment/payindex">
 				</c:url>
 				<a href="${paymain}">결제하기</a>
@@ -113,7 +114,9 @@ a:active {
                     <c:param name="num" value="0" />
                 </c:url>
 				<a href="${ boardList }" class="text-danger">커뮤니티</a>
-				
+
+				<c:url var="homePage" value="/bulletinboard/board/home" />
+				<a href="${ homePage }">임시홈페이지</a>
 
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarHeader"
