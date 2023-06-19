@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mid.alcohol.domain.shop.Products;
+import com.mid.alcohol.dto.shop.AdminProductInfoDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.service.ShopService;
@@ -102,4 +103,13 @@ public class ShopController {
 		return "/shop/pddetail";
 	}
 	
+	@GetMapping("/aproductinfo")
+	public void adminProductInfo(Model model, HttpSession session) {
+		String userNickname = (String) session.getAttribute("userNickname");
+		List<AdminProductInfoDto> list = shopservice.getAdminProductInfoDto(userNickname);
+		for (AdminProductInfoDto x : list) {
+			log.info(""+x);
+		}
+		model.addAttribute("list", list);
+	}
 }

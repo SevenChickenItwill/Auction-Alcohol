@@ -17,7 +17,7 @@
 	<body>
 			<c:url var="basket" value="/paymain">
             </c:url>
-		<form id="detailForm" action="${ basket }">
+		<form id="detailForm" action="${ basket }" method="get">
 			<div>닉네임: <input type="text" value="${ sessionScope.userNickname }" name="nickname" id="nickname" readonly="readonly"/></div>
 			<div>상품명: <input type="text" value="${ product.productname }" name="productname" id="productname" readonly="readonly"/></div>
 			<div>상품 아이디: <input type="hidden" value="${ product.pid }" name="pId" id="pId" readonly="readonly" /></div>	
