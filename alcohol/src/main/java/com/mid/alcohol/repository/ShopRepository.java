@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
+import com.mid.alcohol.dto.shop.ShopPaymentList;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 
 public interface ShopRepository {
@@ -19,5 +20,7 @@ public interface ShopRepository {
 	int deletepd(int pid);
 	
 	int updatepd(ShopDetailDto dto);
+
+	List<ShopPaymentList> readPaymentListByUser(String userNickname);
 	
 }

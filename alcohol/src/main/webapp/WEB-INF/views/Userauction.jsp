@@ -92,6 +92,11 @@ a:active {
 	align-content: center;
 	justify-content: center;
 }
+h2{
+	
+	font-weight: bold;
+	
+}
 
 </style>
 
@@ -120,11 +125,17 @@ a:active {
   <a style="margin-left:450px; color:white; font-weight: bold; font-size: large;" class="flex-sm-fill text-sm-center nav-link">{${ sessionScope.userNickname } 님}</a>
   <c:url var="logout" value="/account/logout"></c:url>
       	<a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+      	<a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">회원정보 수정</a>
 </nav>
 		</div>
 		<input class="card d-none" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	</header>
 	<main class="mains">
+	<div style="
+    display: flex;
+    justify-content: center;
+	">
+	<div style="width: 1100px; margin-top: 100px;">
 	<div class="form-control">
 	<div class="auctionform">
 	
@@ -145,7 +156,7 @@ a:active {
 					<th>입찰수</th>
 				</tr>
 			</thead>
-			<tbody class="table table-hover" id="tablebody">
+			<tbody class="table table-hover" id="tablebody1">
 				<c:forEach items="${myauction}" var="myauction">
 					<c:if test="${myauction.status == 1 }">
 					<c:url var="quickgoing" value="/auction/mainsite">
@@ -191,7 +202,7 @@ a:active {
 					<th>결제 여부</th>
 				</tr>
 			</thead>
-			<tbody class="table table-hover" id="tablebody">
+			<tbody class="table table-hover" id="tablebody2">
 				<c:forEach items="${myauction2}" var="mine">
 					<c:if test="${mine.status == 2 }">
 					<tr>
@@ -217,6 +228,83 @@ a:active {
 			</tbody>
 		</table>
 		</div>
+		</div>
+		<br />
+		<div class="form-control">
+	<div class="auctionform">
+	<h2>게시글 이력</h2>
+	</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>게시글 번호</th>
+					<th>제목</th>
+					<th>작성자</th><!-- boardId, nickname -->
+					<th>내용</th>
+					<th>작성시간</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${ histories }" var="history">
+				<tr>
+					<td>${ history.board_id }</td>
+					<td>
+						<c:url var="postDetailPage" value="/bulletinbaord/board/historydetail">
+							<c:param name="id" value= "${ history.board_id }" />
+						</c:url>
+						<a href="${ postDetailPage }">${ history.title }</a>
+					</td>	
+					<td>${ history.user_id }(${ history.nickname })</td>
+					<td>${ history.content }</td>
+					<td>${ history.time }</td>
+				</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		</div>
+		<br />
+		<div class="form-control">
+		<div class="auctionform">
+			<h2>주문 목록</h2>
+			</div>
+			<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>상품명(규격 / 단위)</th>
+					<th>판매자</th>
+					<th>수량</th>
+					<th>단가</th>
+					<th>합계금액</th>
+					<th>도수</th>
+					<th>주종</th>
+					<th>배송지</th>
+					<th>전화번호</th>
+					
+				</tr>
+			</thead>
+			<tbody class="table table-hover" id="tablebody3">
+				<c:forEach var="list3" items="${ mypayment }">
+					<tr>
+						<td>${ list3.productname } ( ${ list3.standard } / ${ list3.unit })</td>
+						<td>${ list3.userid }</td>
+						<td>${ list3.quantity }</td>
+						<td>${ list3.price }</td>
+						<td>${ list3.totalamount }</td>
+						<td>${ list3.alcohol_level }</td>
+						<td>${ list3.category }</td>
+						<td>${ list3.userAddress }</td>
+						<td>${ list3.userPhone }</td>
+					</tr>
+				</c:forEach>
+				
+				
+			</tbody>
+		</table>
+		</div>
+		</div>
+		
+		</div>	
 		</div>
 	</main>
 

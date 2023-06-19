@@ -140,7 +140,7 @@ body{
     
     
   </div>
-    <div>
+    <div style="height: 80px;">
         <div class="container" style="width: 100%; max-width: 9999px">
   <header>
 		<div class="navbar navbar-dark bg-dark shadow-sm">
@@ -171,7 +171,7 @@ body{
   
   <!-- 사이드바아아아아아아아============================================================ -->
 		<div class="flex-shrink-0 p-3 bg-white" style="width: 200px;">
-    <hr>
+    
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
       	<c:url var="auctionProduct" value="/auction/product" />
@@ -212,15 +212,36 @@ body{
     </ul>
   </div>
   <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->
-       
-
-        <script
+    
+	
+	
+        
+    </div>
+    <main class="mains">
+    	<div class="form-control">
+    		<div>
+    			<h1>금월 쇼핑몰 매출액</h1>
+    		</div>
+    		<div>
+    			<input type="text" height="50px" class="form-control" />
+    		</div>
+    		<div>
+    			<h1>총 쇼핑몰 매출액</h1>
+    		</div>
+    		<div>
+    			<h1>금월 경매 매출액</h1>
+    		</div>
+    		<div>
+    			<h1>총 경매 매출액</h1>
+    		</div>
+    	</div>
+    </main>   
+    <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
             crossorigin="anonymous">
 									
 								</script>
         <script src="sidebars.js"></script>
-    </div>
 </body>
 </html>
