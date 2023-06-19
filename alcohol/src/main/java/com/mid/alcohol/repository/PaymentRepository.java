@@ -43,6 +43,8 @@ public interface PaymentRepository {
 
 	String getPname(Integer basketid);
 
+	BasketListDto getBasketInfo(Integer basketid);
+
 
 
 }

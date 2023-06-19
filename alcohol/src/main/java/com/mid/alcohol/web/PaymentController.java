@@ -93,6 +93,7 @@ public class PaymentController {
 		
 		return "redirect:/payment/paymentmain";
 	}
+	
 
 	@PostMapping("/updateDeliveryInfo")
 	public String updateDeliveryInfo(AdressUpdateDto dto) {
@@ -131,10 +132,15 @@ public class PaymentController {
 		log.info(userNickname);
 		PaymentAdressModifyDto dto = paymentService.read(userNickname);
 		model.addAttribute("userinfo", dto);
-		List<BasketListDto> basketdto = paymentService.readBasketByUserNickname(userNickname);
-		log.info("home(dto={})", basketdto);
 		
-		model.addAttribute("list", basketdto);
+		// 결제 id 가져오기
+		int paymentid = paymentService.readPaymentList(userNickname);
+		// 결제 id로 basketid 가져오기
+		List<Integer> basketidlist = paymentService.getBasketidFromOrders(paymentid);
+		// 장바구니 리스트 가져오기
+		List<BasketListDto> list = paymentService.getBasketList(basketidlist);
+		// 모델에 list 넣기
+		model.addAttribute("list", list);
 
 	}
 
@@ -169,7 +175,7 @@ public class PaymentController {
 		int paymentid = paymentService.readPaymentList(userNickname);
 		// 결제 id로 basketid 가져오기
 		List<Integer> basketidlist = paymentService.getBasketidFromOrders(paymentid);
-		
+		// 
 		String pname = paymentService.getPname(basketidlist.get(0));
 		
 		// 결제목록 가져오기
@@ -219,12 +225,14 @@ public class PaymentController {
 	}
 
 	@GetMapping("/paysuccess")
-	public void paysuccess() {
+	public void paysuccess(Model model) {
 		String userNickname = (String) session.getAttribute("userNickname");
 		// 결제 id 가져오기
 		int paymentid = paymentService.readPaymentList(userNickname);
 		// 결제 id로 basketid 가져오기
 		List<Integer> basketidlist = paymentService.getBasketidFromOrders(paymentid);
+		// 결제한 내역 보여주기
+		
 		// basketid로 basket 테이블 지우기
 		paymentService.deletebasket(basketidlist);
 	}

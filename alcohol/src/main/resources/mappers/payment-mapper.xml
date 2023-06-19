@@ -111,11 +111,22 @@
 	<select id="getPname" resultType="java.lang.String">
 		SELECT pname
 		FROM (
-		SELECT a.pname
+		SELECT
+		a.pname
 		FROM auctionproducts a
-		JOIN orders o ON a.productid = o.productid
+		JOIN orders o ON a.productid =
+		o.productid
 		WHERE o.basketid = #{basketid}
 		)
 		WHERE ROWNUM &lt;= 1
+	</select>
+
+	<select id="getBasketInfo"
+		resultType="com.mid.alcohol.dto.BasketListDto">
+		SELECT b.basketid, b.productid, b.quantity, b.price, b.pname, p.brandname
+		FROM basket b
+		JOIN auctionproducts p
+		ON b.productid = p.productid
+		WHERE b.basketid = #{basketid}
 	</select>
 </mapper>

@@ -117,6 +117,15 @@ public class PaymentService {
 	}
 
 
+	public List<BasketListDto> getBasketList(List<Integer> basketidlist) {
+		List<BasketListDto> list = new ArrayList<>();
+		for (Integer basketid : basketidlist) {
+			list.add(paymentRepository.getBasketInfo(basketid));
+		}
+		return list;
+	}
+
+
 	
 
 
