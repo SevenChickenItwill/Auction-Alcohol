@@ -28,7 +28,7 @@ public class User {
 	private LocalDateTime userBirthday; // 유저 생년월일
 	private LocalDateTime userJoindate; // 유저 가입 시간
 	private String userGender; // 유저 성별
-	private Number category; // 판매자&구매자 구별
+	private int category; // 판매자&구매자 구별
 	private long userRanking; // 유저 등급
 	private long userPoint; // 유저가 갖고있는 포인트
 }
