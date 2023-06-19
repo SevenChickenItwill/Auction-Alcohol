@@ -59,6 +59,7 @@
 		SELECT * FROM products WHERE pid = #{pid}
 	</select>
 
+
 	<select id="getAdminProductInfoDto"
 		resultType="com.mid.alcohol.dto.shop.AdminProductInfoDto">
 		SELECT p.pid, p.productname, p.standard, p.price, p.brand, o.basketid,
@@ -74,4 +75,11 @@
 
 
 
+
+	
+	<insert id="createBasket">
+		INSERT INTO basket (productid, quantity, price)	
+		VALUES (#{productid}, #{quantity}, #{price})
+	</insert>
+    
 </mapper>

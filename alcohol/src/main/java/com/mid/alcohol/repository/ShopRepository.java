@@ -2,6 +2,7 @@ package com.mid.alcohol.repository;
 
 import java.util.List;
 
+import com.mid.alcohol.domain.payment.Basket;
 import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.AdminProductInfoDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
@@ -24,5 +25,8 @@ public interface ShopRepository {
 	Products readpd(long pid);
 
 	List<AdminProductInfoDto> getAdminProductInfoDto(String userNickname);
+
+	int createBasket(Basket basket);
+
 	
 }

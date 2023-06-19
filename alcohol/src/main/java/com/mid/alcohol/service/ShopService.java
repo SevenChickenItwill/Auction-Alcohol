@@ -15,8 +15,11 @@ import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mid.alcohol.domain.payment.Basket;
 import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.AdminProductInfoDto;
+
+import com.mid.alcohol.dto.shop.BasketSaveDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
@@ -167,9 +170,17 @@ public class ShopService {
 		return ShopDetailDto.FromEntity(products);
 	}
 
+
 	public List<AdminProductInfoDto> getAdminProductInfoDto(String userNickname) {
 		// TODO Auto-generated method stub
 		return shoprepository.getAdminProductInfoDto(userNickname);
+	}
+	
+	public int createBasket(BasketSaveDto dto) {
+		
+		Basket basket = dto.toEntity();
+		
+		return shoprepository.createBasket(basket);
 	}
 	
 	

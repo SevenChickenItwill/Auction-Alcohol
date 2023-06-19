@@ -91,7 +91,7 @@ public class ShopController {
 		return "redirect:/shop/pdlist";
 	}
 	
-	@GetMapping("/pddetail")
+	@GetMapping("/pddetails")
 	public String pddetail(long pid, Model model) {
 		log.info("pddetail=({})", pid);
 		
@@ -100,7 +100,7 @@ public class ShopController {
 		
 		model.addAttribute("product", dto);
 		
-		return "/shop/pddetail";
+		return "/shop/pddetails";
 	}
 	
 	@GetMapping("/aproductinfo")
