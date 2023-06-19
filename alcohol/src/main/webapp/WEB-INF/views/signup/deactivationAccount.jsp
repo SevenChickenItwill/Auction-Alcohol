@@ -101,7 +101,7 @@
                 </select>
                 <br><br>
                 <p>계정을 비활성화 하려면 현재 비밀번호를 입력하세요.</p>
-                <label for="password">비밀번호:</label>
+                <label for="password">비밀번호</label>
                 <input type="password" id="accountPassword" name="accountPassword" required>
             </div>   
             </form>
