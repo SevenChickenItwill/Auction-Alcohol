@@ -59,6 +59,7 @@ public class ProductCommentService {
 		}
 
 
+		// 수정하기
 		public int update(long commentId, ProductCommentUpdateDto dto) {
 			log.info("update(commentId={}, dto={})", commentId, dto);
 			
