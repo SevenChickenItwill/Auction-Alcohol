@@ -157,7 +157,7 @@
 						<form id="signupForm" method="post" action="${ signup }">
 							<div>
 								<div>
-									<select name="category" class="form-select"
+									<select name="categorys" class="form-select"
 										aria-label="Default select example">
 										<option value="0">구매자</option>
 										<option value="1">판매자</option>

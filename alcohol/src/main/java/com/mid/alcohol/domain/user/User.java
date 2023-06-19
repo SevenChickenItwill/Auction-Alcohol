@@ -29,7 +29,7 @@ public class User {
 	private LocalDateTime userJoindate; // 유저 가입 시간
 	private String userGender; // 유저 성별
 	private int deactivationAccount; // 비활성화 계정
-	private int category; // 판매자&구매자 구별
+	private int categorys; // 판매자&구매자 구별
 	private long userRanking; // 유저 등급
 	private long userPoint; // 유저가 갖고있는 포인트
 }

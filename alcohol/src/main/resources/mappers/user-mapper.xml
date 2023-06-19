@@ -15,11 +15,10 @@
  <!-- 회원가입 정보 -->
  <insert id="userMainSignup">
   insert into USERS (userEmail, userPassword, userPasswordCheck, userName,
-  userAge, userAddress, userPhone, userNickname, userBirthday,
-  userJoindate, userGender, category)
+  userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender, categorys)
   values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName},
   #{userAge}, #{userAddress}, #{userPhone}, #{userNickname},
-  #{userBirthday}, #{userJoindate}, #{userGender}, #{category})
+  #{userBirthday}, #{userJoindate}, #{userGender}, #{categorys})
 
  </insert>
 

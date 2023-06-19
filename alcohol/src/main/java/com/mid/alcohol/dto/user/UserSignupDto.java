@@ -33,7 +33,7 @@ public class UserSignupDto {
     private String userPhone;  
     private String userGender;
     private String userNickname;
-    private int category;
+    private int categorys;
     private int deactivationAccount;
     private LocalDate userBirthday;
     private Timestamp userJoindate = Timestamp.valueOf(LocalDateTime.now());
@@ -60,7 +60,7 @@ public class UserSignupDto {
                 .userEmail(userEmail)
                 .userAge(userAge)
                 .userNickname(userNickname)
-                .category(category)
+                .categorys(categorys)
                 .deactivationAccount(deactivationAccount)
                 .userBirthday(LocalDateTime.of(userBirthday, LocalTime.of(0, 0)))
                 .userJoindate(userJoindate.toLocalDateTime())

@@ -130,8 +130,6 @@
          	<button id="btnPasswordUpdate" >수정하기</button>
      	</div>
      </form>
- 
-     
      
      </div>
      </div>
