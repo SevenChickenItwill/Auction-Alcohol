@@ -15,7 +15,7 @@
 	 
 	 const getCommentWithPid = async () => {
 		 
-		 const pId = document.querySelector('input#pId').value;
+		 const pId = document.querySelector('input#productid').value;
 		 console.log('pId');
 		 // 댓글 요청 URL
 		 const reqUrl = `/alcohol/api/pdComment/all/${pId}`;

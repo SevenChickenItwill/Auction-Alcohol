@@ -181,7 +181,8 @@
                 <li><a href="${ communityList }" class="a">커뮤니티</a></li>
                 <li><a href="#" class="a">마이페이지</a></li>
                 <li id="nickname">"${ sessionScope.userNickname }"님, 환영합니다.</li>
-                <li><a href="#" class="a" id="logout">로그아웃</a></li>
+                <c:url var="logout" value="/account/logout"></c:url>
+                <li><a href="${ logout }" class="a" id="logout">로그아웃</a></li>
             </ul>
         </nav>
         

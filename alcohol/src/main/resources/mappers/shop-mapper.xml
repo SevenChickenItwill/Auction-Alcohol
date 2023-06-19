@@ -45,5 +45,10 @@
 	<select id="readpd" resultType="com.mid.alcohol.domain.shop.Products">
 		SELECT * FROM products WHERE pid = #{pid}
 	</select>
+	
+	<insert id="createBasket">
+		INSERT INTO basket (productid, quantity, price)	
+		VALUES (#{productid}, #{quantity}, #{price})
+	</insert>
     
 </mapper>

@@ -12,15 +12,18 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
     crossorigin="anonymous">
+   	<style>
+   		#toBasket {
+   			text-decoration: none;
+   		}
+   	</style>
    	
 	</head>
 	<body>
-			<c:url var="basket" value="/paymain">
-            </c:url>
-		<form id="detailForm" action="${ basket }">
+		<form id="detailForm"">
 			<div>닉네임: <input type="text" value="${ sessionScope.userNickname }" name="nickname" id="nickname" readonly="readonly"/></div>
 			<div>상품명: <input type="text" value="${ product.productname }" name="productname" id="productname" readonly="readonly"/></div>
-			<div>상품 아이디: <input type="hidden" value="${ product.pid }" name="pId" id="pId" readonly="readonly" /></div>	
+			<div><input type="hidden" value="${ product.pid }" name="productid" id="productid" readonly="readonly" /></div>	
 			<!-- name은 아규먼트로 넘겨주기 위함 -->
 			<!-- 장바구니에 담기 클릭 시 수량 = 0일 경우 수량 선택 필수 alert 작업 js에서 TODO -->
 			<div>수량:
@@ -28,7 +31,7 @@
 			</div>
 			<div>가격:<input type="number" value="${ product.price }" name="price" id="price" readonly="readonly"/></div>
 			<div>
-				<a href = "${ basket }" >장바구니에 담기</a>
+				<button id="toBasket" name="toBasket">장바구니에 담기</button>
 			</div>
 		</form>
 		
@@ -41,7 +44,7 @@
                     <textarea class= "col-5" placeholder="댓글 쓰기" id="content"></textarea>
                 </div>
                 <div>
-                	<button id="commentReg" >등록</button>
+                	<button id="commentReg" >댓글 등록</button>
                 </div>
                 
                 
@@ -49,6 +52,7 @@
 		
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 		<script src="../static/js/productComment-detail.js"></script>
+		<script src="../static/js/product-detail.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
