@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.auction.AuctionProducts;
 import com.mid.alcohol.domain.auction.Photo;
+import com.mid.alcohol.dto.auction.AuctionChartDataDto;
+import com.mid.alcohol.dto.auction.AuctionChartDto;
 import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.auction.AuctionListDto;
 import com.mid.alcohol.dto.auction.AuctionListPhotoDto;
@@ -31,6 +33,7 @@ import com.mid.alcohol.dto.auction.ChatListDto;
 import com.mid.alcohol.dto.auction.ChatRoomDto;
 
 import com.mid.alcohol.dto.auction.ProductSearchDto;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
@@ -174,6 +177,31 @@ public class AuctionRestController {
 		
 		
 		return ResponseEntity.ok(base64);
+		
+	}
+	
+	// Chart Maker
+	@PostMapping("/loadchartdata")
+	public ResponseEntity<List<AuctionChartDataDto>> makechartShop(@RequestBody AuctionChartDto dto){
+		log.info("makechartShop(dto={})",dto);
+		dto.toEntity();
+		List<AuctionChartDataDto> list = acservice.readSalesData(dto);
+		
+		
+		
+		return ResponseEntity.ok(list);
+	}
+	
+	@PostMapping("/loadauctionchart")
+	public ResponseEntity<List<AuctionChartDataDto>> makechartAuction(@RequestBody AuctionChartDto dto){
+		
+		log.info("makechartAuction({})",dto);
+		
+		
+		
+		List<AuctionChartDataDto> list = acservice.readAuctionData(dto);
+		
+		return ResponseEntity.ok(list);
 		
 	}
 

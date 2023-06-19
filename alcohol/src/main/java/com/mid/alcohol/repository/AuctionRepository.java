@@ -10,11 +10,14 @@ import com.mid.alcohol.domain.auction.AuctionProducts;
 import com.mid.alcohol.domain.auction.Chat;
 import com.mid.alcohol.domain.auction.Photo;
 import com.mid.alcohol.domain.auction.UserAuction;
+import com.mid.alcohol.dto.auction.AuctionChartDataDto;
+import com.mid.alcohol.dto.auction.AuctionChartDto;
 import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.auction.AuctionListDto;
 import com.mid.alcohol.dto.auction.AuctionSearchDto;
 import com.mid.alcohol.dto.auction.ChatListDto;
 import com.mid.alcohol.dto.auction.ChatMemberDto;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 
 
 @Repository
@@ -113,6 +116,10 @@ public interface AuctionRepository {
 	List<Chat> readAllchatData(String userNickname);
 
 	Photo findphotoroot(int pid);
+
+	List<AuctionChartDataDto> readSalesData(AuctionChartDto dto);
+
+	List<AuctionChartDataDto> readAuctionData(AuctionChartDto dto);
 
 }
 

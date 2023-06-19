@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
-import com.mid.alcohol.dto.shop.ShopPaymentList;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 import com.mid.alcohol.repository.ShopRepository;
@@ -158,7 +158,7 @@ public class ShopService {
 		return shoprepository.updatepd(dto);
 	}
 
-	public List<ShopPaymentList> readPaymentListByUser(String attribute) {
+	public List<ShopPaymentListDto> readPaymentListByUser(String attribute) {
 		// TODO Auto-generated method stub
 		log.info("readPaymentListByUser(id={})",attribute);
 		

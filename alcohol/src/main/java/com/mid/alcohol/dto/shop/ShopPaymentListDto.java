@@ -1,5 +1,6 @@
 package com.mid.alcohol.dto.shop;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ShopPaymentList {
+public class ShopPaymentListDto {
 
 	private long pid;
 	private String productname;
@@ -46,5 +47,6 @@ public class ShopPaymentList {
 	private long basketid;
 	private int quantity;
 	private int status;
+	private Timestamp paydate;
 	
 }

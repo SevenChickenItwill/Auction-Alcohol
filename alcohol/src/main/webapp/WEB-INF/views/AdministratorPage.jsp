@@ -224,39 +224,23 @@ body{
         
     </div>
     <main class="mains">
+    	<div style="display: flex; justify-content: center;">
+    		<h1>월별 매출액 추이</h1>
+    	</div>
     	<div>
     		<canvas id="MonthlySales">
     		
     		</canvas>
     	</div>
-    
-    	<div style="margin-top: 60px;" class="form-control">
-    		<div>
-    			<h1>금월 쇼핑몰 매출액</h1>
-    		</div>
-    		<div>
-    			<input type="text" class="form-control resultinput" />
-    		</div>
-    		<div>
-    			<h1>총 쇼핑몰 매출액</h1>
-    		</div>
-    		<div>
-    			<input type="text" class="form-control resultinput" />
-    		</div>
-    		<div>
-    			<h1>금월 경매 매출액</h1>
-    		</div>
-    		<div>
-    			<input type="text" class="form-control resultinput" />
-    		</div>
-    		<div>
-    			<h1>총 경매 매출액</h1>
-    		</div>
-    		<div>
-    			<input type="text" class="form-control resultinput" />
-    		</div>
+    	<div>
+    		<canvas id="MonthlyAuction">
+    		
+    		</canvas>
     	</div>
+    	
     </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>   
     <script
@@ -266,5 +250,6 @@ body{
 									
 								</script>
         <script src="sidebars.js"></script>
+        <script src="./static/js/auctionmainchart.js"></script>
 </body>
 </html>

@@ -21,7 +21,7 @@ import com.mid.alcohol.domain.auction.UserAuction;
 import com.mid.alcohol.dto.auction.AuctionListDto;
 import com.mid.alcohol.dto.auction.ChatListDto;
 import com.mid.alcohol.dto.board.BulletinboardHistoryDto;
-import com.mid.alcohol.dto.shop.ShopPaymentList;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
@@ -85,7 +85,7 @@ public class AuctionUserController {
 		// service로부터 아이디값에 포함된 경매 리스트만 불러오기
 		log.info((String)session.getAttribute("userNickname"));
 		List<BulletinboardHistoryDto> dto = bulletinboardService.historyReadByBoardId((String)session.getAttribute("userNickname"));
-		List<ShopPaymentList> list3 = shopservice.readPaymentListByUser((String)session.getAttribute("userNickname"));
+		List<ShopPaymentListDto> list3 = shopservice.readPaymentListByUser((String)session.getAttribute("userNickname"));
 		
 		// 뷰에 BulletinBoardHistoryDto를 전달
 		model.addAttribute("histories", dto);

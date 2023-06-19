@@ -42,7 +42,7 @@
 		WHERE pid = #{pid}
 	</update>
     
-    <select id="readPaymentListByUser" resultType="com.mid.alcohol.dto.shop.ShopPaymentList">
+    <select id="readPaymentListByUser" resultType="com.mid.alcohol.dto.shop.ShopPaymentListDto">
     	SELECT * FROM orders o
     	JOIN products p ON o.productid = p.pid
     	JOIN users u ON o.usernickname = u.usernickname
