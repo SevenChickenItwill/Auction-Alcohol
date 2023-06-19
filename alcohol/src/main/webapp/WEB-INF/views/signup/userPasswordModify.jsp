@@ -102,19 +102,19 @@
          <div class="content">
      
      <c:url var="userPasswordModify" value="/signup/userPasswordModify"></c:url>
-     <form id="userAccountModifyForm" method="post" action="${userPasswordModify}">
+     <form id="userAccountModifyForm">
          <div class="form-group">
              <input type="hidden" id="userEmail" name="userEmail" value="${sessionScope.userEmail}" />
              <label for="userAccountPasswordModify">현재 비밀번호</label>
-             <input type="password" class="form-control focus-ring-dark" id="userAccountPasswordModify" name="userAccountPasswordModify" placeholder="현재 비밀번호" required />
+             <input type="password" id="userPassword" name="userPassword" placeholder="현재 비밀번호" required />
          </div>
          <div class="form-group">
              <label for="userAccountNewPasswordModify">새 비밀번호</label>
-             <input type="password" class="form-control" id="userAccountNewPasswordModify" name="userAccountNewPasswordModify" placeholder="새 비밀번호" required />
+             <input type="password" id="userAccountNewPasswordModify" name="userAccountNewPasswordModify" placeholder="새 비밀번호" required />
          </div>
          <div class="form-group">
              <label for="userAccountNewPasswordCheckModify">새 비밀번호 확인</label>
-             <input type="password" class="form-control" id="userAccountNewPasswordCheckModify" name="userAccountNewPasswordCheckModify" placeholder="새 비밀번호 확인" required />
+             <input type="password" id="userAccountNewPasswordCheckModify" name="userAccountNewPasswordCheckModify" placeholder="새 비밀번호 확인" required />
          </div>
          <div>
          <div>
@@ -123,12 +123,12 @@
              <li>8자 이상 20자 미만</li>
              <li>숫자, 특수 기호, 알파벳으로만 구성되어야 합니다.</li>
          </ul>
-     </div>
-     </div>
-         <div style="display: flex; justify-content: flex-end;">
-         <button id="btnPasswordCancel" >취소</button>
-         <button id="btnPasswordUpdate" >수정하기</button>
-         </div>
+     	</div>
+     	</div>
+     	<div style="display: flex; justify-content: flex-end;">
+         	<button id="btnPasswordCancel" >취소</button>
+         	<button id="btnPasswordUpdate" >수정하기</button>
+     	</div>
      </form>
  
      

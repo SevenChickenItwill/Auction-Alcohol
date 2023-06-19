@@ -80,6 +80,7 @@ button#btnPhoneCancel {
 		<h1>휴대폰 번호 변경</h1>
 	</header>
 
+	<div>
 	<c:url var="userPhoneModify" value="/signup/userPhoneModify" />
 	<form id="accountForm" action="${userPhoneModify}" method="post">
 		<div>
@@ -88,11 +89,11 @@ button#btnPhoneCancel {
 			<input type="text" id="userAccountPhoneModify" name="userPhone" placeholder="전화번호" required />
 		</div>
 	</form>
-	<div>
+	<div >
 		<button id="btnPhoneCancel">취소</button>
 		<button id="btnPhoneUpdate">수정하기</button>
 	</div>
-
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

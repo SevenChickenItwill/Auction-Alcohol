@@ -117,7 +117,7 @@ public class UserController {
 	@PostMapping("/userPasswordModify")
 	public String userPasswordModify(UserPasswordUpdateDto dto) {
 		log.info("userPasswordModify");
-
+		
 		int result = userService.PasswordUpdate(dto);
 		log.info("업데이트 결과={}", result);
 

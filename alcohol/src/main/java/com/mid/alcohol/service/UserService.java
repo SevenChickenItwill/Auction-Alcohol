@@ -78,7 +78,7 @@ public class UserService {
 	public int PasswordUpdate(UserPasswordUpdateDto user) {
 		log.info("update({})", user);
 		
-		return userRepository.PasswordUpdate(user);
+		return userRepository.PasswordUpdate(user.toEntity());
 	}
 	
 	// 해당 이메일의 비밀번호인지 확인

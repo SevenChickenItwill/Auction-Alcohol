@@ -22,7 +22,7 @@ public interface UserRepository {
     User signInMain(User login);
     
     // 비밀번호 수정
-    int PasswordUpdate(UserPasswordUpdateDto user);
+    int PasswordUpdate(User user);
     
     // 해당 이메일의 비밀번호인지 확인
     User findUserByEmailAndPassword (String userEmail, String userPassword);

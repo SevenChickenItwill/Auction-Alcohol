@@ -191,7 +191,7 @@
 								<div class="row g-3">
 									<div class="col-sm-8">
 										<input type="text" id="sample6_postcode" name="userPostalCode"
-											placeholder="우편번호" class="form-control">
+											placeholder="우편번호" class="form-control" readonly />
 									</div>
 									<div
 										class="col-sm-4 btnWrapper d-grid gap-2 d-md-flex justify-content-md-end">
@@ -202,18 +202,18 @@
 								<div class="addressDiv row g-3">
 									<div class="col-sm-8">
 										<input type="text" id="sample6_address" name="userAddress"
-											placeholder="주소" class="form-control" />
+											placeholder="주소" class="form-control" readonly />
 									</div>
 								</div>
 								<div class="addressDiv row g-3">
 									<div class="col-sm-6">
 										<input type="text" id="sample6_detailAddress"
-											name="userDetailAddress" placeholder="DETAILADDRESS"
+											name="userDetailAddress" placeholder="상세주소"
 											class="form-control">
 									</div>
 									<div class="col-sm-6">
 										<input type="text" id="sample6_extraAddress"
-											name="userAddressNotes" placeholder="NOTES"
+											name="userAddressNotes" placeholder="참고사항"
 											class="form-control">
 									</div>
 								</div>

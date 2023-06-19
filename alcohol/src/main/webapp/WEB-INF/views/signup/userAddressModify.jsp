@@ -124,26 +124,25 @@ button:hover {
 		<input type="text" class="d-none" id="userEmail" name="userEmail"
 			value="${ sessionScope.userEmail }" />
 		<div>
-			<label>주소</label>
 			<div class="row g-3">
 				<div class="col-sm-8">
 					<input type="text" id="sample6_postcode" name="userPostalCode"
-						placeholder="우편번호" class="form-control">
+						placeholder="우편번호" class="form-control" readonly />
 				</div>
 				<div
 					class="col-sm-4 btnWrapper d-grid gap-2 d-md-flex justify-content-md-end">
 					<input type="button" onclick="sample6_execDaumPostcode()"
 						style="font-size: 14px; height: 42px;" value="우편번호 찾기"
-						class="btnContent btn btn-dark me-md-2">
+						class="btnContent btn btn-dark me-md-2" />
 				</div>
 			</div>
 			<div>
 				<input type="text" id="sample6_address" name="userAddress"
-					placeholder="ADDRESS"> <br> <input type="text"
+					placeholder="주소" readonly /> <br> <input type="text"
 					id="sample6_detailAddress" name="userDetailAddress"
-					placeholder="DETAILADDRESS"> <input type="text"
+					placeholder="상세주소" /> <input type="text"
 					id="sample6_extraAddress" name="userAddressNotes"
-					placeholder="NOTES">
+					placeholder="참고사항" />
 			</div>
 		</div>
 	</form>

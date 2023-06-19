@@ -57,18 +57,19 @@ public class UserListController {
 	}
 
 	// 해당 이메일의 비밀번호가 맞는지 확인 후
-	@PostMapping("/passwordModify/{userEmail}/{userPassword}/{newPassword}")
-	public ResponseEntity<String> userPasswordCheck(@PathVariable String userEmail, @PathVariable String userPassword,
-			@PathVariable String newPassword) {
-
-		User user = userService.signupEmailCheck(userEmail);
+	@PostMapping("/passwordModify")
+	public ResponseEntity<String> PasswordCheck(
+	        @RequestBody User dto) {
+	    
+		log.info("userPasswordCheck(userEmail={}, userPassword={})",
+                dto.getUserEmail(), dto.getUserPassword());
+		
+		User user = userService.signupEmailCheck(dto.getUserEmail());
 		log.info("user={}", user);
-
-		if (user != null && user.getUserPassword().equals(userPassword)) {
-			// 비밀번호가 일치하는 경우
-			UserPasswordUpdateDto dto = UserPasswordUpdateDto.builder().userEmail(userEmail).userPassword(newPassword)
-					.build();
-			userService.PasswordUpdate(dto);
+		
+		if (user != null && user.getUserEmail().equals(dto.getUserEmail()) 
+		                 && user.getUserPassword().equals(dto.getUserPassword())) {
+			// 비밀번호가 일치하는 경우					
 			return ResponseEntity.ok("valid"); // 비밀번호가 일치함을 알리는 응답 반환
 		} else {
 			// 비밀번호가 일치하지 않는 경우

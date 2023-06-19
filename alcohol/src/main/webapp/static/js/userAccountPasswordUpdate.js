@@ -5,11 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	const btnPasswordCancel = document.querySelector('button#btnPasswordCancel');
 	const userAccountModifyForm = document.querySelector('#userAccountModifyForm');
 	const btnPasswordUpdate = document.querySelector('button#btnPasswordUpdate');
-	const userAccountPasswordModify = document.querySelector('input#userAccountPasswordModify');
+	const userAccountPasswordModify = document.querySelector('input#userPassword');
 	const userAccountNewPasswordModify = document.querySelector('input#userAccountNewPasswordModify');
 	const userAccountNewPasswordCheckModify = document.querySelector('input#userAccountNewPasswordCheckModify');
 	const userEmail = document.querySelector('#userEmail').value;
-	
+
 
 	btnPasswordCancel.addEventListener('click', () => {
 		const check = confirm('수정을 취소할까요?');
@@ -20,12 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	btnPasswordUpdate.addEventListener('click', async () => {
+	btnPasswordUpdate.addEventListener('click', async (e) => {
+		e.preventDefault();
+		
 		const passwordValue = userAccountPasswordModify.value;
 		const newPasswordValue = userAccountNewPasswordModify.value;
 		const newPasswordCheckValue = userAccountNewPasswordCheckModify.value;
 		let newPassword = newPasswordValue;
 		let userPassword = passwordValue;
+		
+		console.log(newPassword);
+		
 		if (passwordValue === '' ||
 			newPasswordValue === '' ||
 			newPasswordCheckValue === '') {
@@ -40,33 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		// TODO: 기존 비밀번호 확인
 
-		if (!isValidPassword(newPasswordValue)) {
+		if (!isValidPassword(newPasswordValue) || newPasswordValue.length>20 || newPasswordValue.length<8) {
 			alert('비밀번호는 8자 이상 20자 미만이며, 숫자, 특수 기호, 알파벳으로만 구성되어야 합니다.');
 			return;
 		}
 
 
 
-		const url = `/alcohol/api/signup/passwordModify/${userEmail}/${userPassword}/${newPassword}`;
+		const url = `/alcohol/api/signup/passwordModify`;
+		const data = {
+			userEmail: userEmail,
+			userPassword: userPassword
+		};
 		try {
-			let response = await axios.post(url);
+			let response = await axios.post(url, data);
 			console.log(response);
 
-			if (response.data === "valid") {
-				// 기존 비밀번호가 일치하는 경우
-				alert('수정할까요?');
-				userAccountModifyForm.action = './userModify';
-				userAccountModifyForm.method = 'get';
-				userAccountModifyForm.submit();
-			} else {
+			if (response.data === "invalid") {
 				// 기존 비밀번호가 일치하지 않는 경우
 				alert('기존 비밀번호가 일치하지 않습니다.');
 				document.querySelector('input#userAccountPasswordModify').value = ''; // 입력된 비밀번호를 지웁니다.
+				return;
 			}
 		} catch (error) {
 			console.log(error);
+			return;
 		}
-
+		
+		const check = confirm('수정할까요?')
+		if (check) {
+			userAccountModifyForm.action = './userPasswordModify';
+			userAccountModifyForm.method = 'post';
+			userAccountModifyForm.submit();
+		}
 	});
 
 	// 비밀번호 무결성 체크
