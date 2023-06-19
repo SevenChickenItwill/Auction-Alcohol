@@ -232,7 +232,7 @@
 							<option value="tc">제목 + 내용</option>
 							<option value="n">닉네임</option>
 							<option value="i">아이디</option>
-						</select> <input type="text" name="keyword" placeholder="검색어" required />
+						</select> <input type="text" name="keyword" placeholder="Search" required />
 						<input type="submit" value="검색" />
 					</form>
 				</div>
@@ -242,7 +242,7 @@
 	</main>
 
 	<div>
-		<script
+		<script 
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>

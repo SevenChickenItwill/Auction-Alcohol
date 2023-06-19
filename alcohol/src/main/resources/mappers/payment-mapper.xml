@@ -13,8 +13,6 @@
  		WHERE userNickname = #{userNickname}
  	</update>
  	
- 	
-
 
 	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
 	<select id="selectByOrderInfo"

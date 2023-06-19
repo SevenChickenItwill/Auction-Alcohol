@@ -57,7 +57,7 @@ public class BulletinboardController {
 		// 검색한 Deal list값을 저장하는 객체 생성.
 		List<BulletinboardListDto> list = bulletinboardService.search(category, keyword);
 
-		// 이미지 크기 조정후 이미지를 view에 보내주기
+		// 이미지 크기 조정후 이미지를 view에 보내주기List<BulletinboardListDto> list = bulletinboardService.search(category, keyword);
 		for (int i = 0; i < list.size(); i++) {
 
 			try {
