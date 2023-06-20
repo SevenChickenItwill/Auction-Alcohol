@@ -154,8 +154,8 @@ body{
         </a>
       </li>
       <li>
-      	<c:url var="shopcreate" value="/shop/pdcreate" />
-        <a href="#" class="nav-link link-dark list-group-item list-group-item-action">
+      	<c:url var="aproductinfo" value="/shop/aproductinfo" />
+        <a href="${ aproductinfo }" class="nav-link link-dark list-group-item list-group-item-action">
           쇼핑몰 주문현황
         </a>
       </li>

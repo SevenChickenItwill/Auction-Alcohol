@@ -216,16 +216,16 @@ body {
 		</div>
 		<div>
 			<label for="productname" class="mx-3 my-2 form-label">상품명</label> <input
-				id="productname" name="pname" type="text" class="mx-3 form-control">
+				id="productname" name="pname" type="text" class="mx-3 form-control" style="width: 890px;">
 		</div>
 		<div>
 			<label for="constructor" class="mx-3 my-2 form-label">제조사</label> <input
-				id="constructor" class="mx-3 form-control" name="constructor"
+				id="constructor" class="mx-3 form-control" name="constructor" style="width: 890px;"
 				type="text">
 		</div>
 		<div>
 			<label for="brandname" class="mx-3 my-2 form-label">브랜드명</label> <input
-				id="brandname" class="mx-3 form-control" name="brandname"
+				id="brandname" class="mx-3 form-control" name="brandname" style="width: 890px;"
 				type="text">
 		</div>
 		<div>

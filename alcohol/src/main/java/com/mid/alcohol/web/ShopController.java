@@ -92,11 +92,19 @@ public class ShopController {
 	}
 	
 	@GetMapping("/pddetails")
-	public String pddetail(long pid, Model model) {
+	public String pddetail(@RequestParam("id") long pid, Model model) {
 		log.info("pddetail=({})", pid);
 		
 		ShopDetailDto dto = shopservice.readpd(pid);
 		log.info("dto= {}", dto);
+		
+		String photoPath = "";
+			try {
+				photoPath = shopservice.listToTagImage(shopservice.resizeImage(dto.getPhotopath()));
+				dto.setPhotopath(photoPath);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		
 		model.addAttribute("product", dto);
 		

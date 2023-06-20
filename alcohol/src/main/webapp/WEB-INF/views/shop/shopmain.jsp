@@ -115,6 +115,13 @@ header {
 							</c:url>
 							<a href="${ mypage }" class="abc fw-bold">MyPage</a>
 						</div>
+						
+						<div>
+							<!-- 장바구니 -->
+							<c:url value="/paymain" var="paymain"></c:url>
+							<a href="${ paymain }" class="abc fw-bold">Basket</a>
+						</div>
+						
 					</div>
 					<div class="navList">
 						<span style="color: white;" >'${ sessionScope.userNickname }'님 &nbsp;</span>
@@ -181,7 +188,7 @@ header {
 				<c:forEach items="${ products }" var="list" begin="${count}"
 					end="${ maxIndex -1 }">
 					<c:url var="pddetails" value="/shop/pddetails">
-						<c:param name="id" value="${shop.detail}"></c:param>
+						<c:param name="id" value="${ list.pid }"></c:param>
 					</c:url>
 					<div id="list" class="card" style="width: 18rem;">
 						<a href="${ pddetails }">
@@ -203,9 +210,6 @@ header {
 								<li class="list-group-item">가격: ${ list.price }</li>
 							</ul>
 						</a>
-						<div class="card-body">
-							<button type="button" class="btn btn-dark">구매하기</button>
-						</div>
 					</div>
 				</c:forEach>
 
@@ -340,43 +344,6 @@ header {
 			<div></div>
 		</div>
 	</div>
-
-
-
-
-	<!-- 
-	<c:forEach items="${ products }" var="list">
-		<div class="my-2">
-			<label class="form-label" for="productname">상품이름</label>
-			<input class="form-control" id="productname" value="${ list.productname }" readonly />
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="brand">브랜드</label>
-			<input class="form-control" id="brand" value="${ list.brand }" readonly />
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="photopath">상품이미지</label>
-			<input class="form-control" id="photopath" value="${ list.photopath }" readonly />
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="hashtag">상품정보/설명</label>
-			<textarea class="form-control" id="hashtag" readonly>${ list.hashtag }</textarea>
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="alchol_level">상품도수</label>
-			<input class="form-control" id="alchol_level" value="${ list.alcohol_level }" readonly />
-		</div>
-		<div class="my-2">
-			<label class="form-label" for="expirationdate">유통기한</label>
-			<input class="form-control" id="expirationdate" value="${ list.expirationdate }" readonly>
-		</div>
-		<div class="my-2">	
-			<label class="form-label" for="price">상품가격</label>
-			<input class="form-control" id="price" value="${ list.price }" readonly />
-		</div>
-	</c:forEach>
-	 -->
-
 
 </body>
 </html>

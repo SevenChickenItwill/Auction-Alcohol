@@ -179,6 +179,12 @@ h2{
 							</c:url>
 							<a href="${ mypage }" class="abc fw-bold">MyPage</a>
 						</div>
+						
+						<div>
+							<!-- 회원 수정 페이지 -->
+							<c:url var="userModify" value="/signup/userModify" ></c:url>
+						</div>
+						<a href="${ userModify }" class="abc fw-bold">Modification</a>
 					</div>
 					<div class="navList">
 						<span style="color: white;" >'${ sessionScope.userNickname }'님 &nbsp;</span>
@@ -323,7 +329,7 @@ h2{
 		</table>
 		</div>
 		<br />
-		<div class="form-control">
+		<div class="form-control"  style="margin-bottom: 30px;">
 		<div class="auctionform">
 			<h2>주문 목록</h2>
 			</div>
