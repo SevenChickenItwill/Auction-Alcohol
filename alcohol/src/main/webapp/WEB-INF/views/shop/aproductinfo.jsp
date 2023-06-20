@@ -91,7 +91,7 @@
 								<td>${ info.brand }</td>
 								<td>${ info.price }</td>
 								<td>${ info.quantity }</td>
-								<td>
+								<td id="status" data-id="${ info.pid }">
 									<c:if test="${ info.status == 0}">
 										상품준비중
 									</c:if>
@@ -107,6 +107,7 @@
 								<td>${ info.useraddress }</td>
 								<td>${ info.userphone }</td>
 								<td>${ info.useremail }</td>
+								<td id="delivery" class="btn" data-id="${ info.pid }" data-bid="${ info.basketid }">배송중</td>
 							</tr>
 					</c:forEach>
 						</tbody>	
@@ -121,6 +122,7 @@
 			<input type="submit" value="주문목록">
 		</form>
 	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="../static/js/aproductinfo.js"></script>
 
 	<script

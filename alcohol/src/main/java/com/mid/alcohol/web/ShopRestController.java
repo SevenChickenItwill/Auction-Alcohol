@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.BasketSaveDto;
+import com.mid.alcohol.dto.shop.DeliveryDto;
 import com.mid.alcohol.dto.shop.ShopPhotoDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
@@ -86,5 +87,12 @@ public class ShopRestController {
 		int result = shopservice.createBasket(dto);
 		
 		}
+	
+	@PostMapping("/delivery")
+	public ResponseEntity<Integer> delivery(@RequestBody DeliveryDto dto) {
+		log.info("delivery(deliverydto{})", dto);
+		shopservice.updateDelivery(dto);
+		return ResponseEntity.ok(1);
+	}
 	
 }

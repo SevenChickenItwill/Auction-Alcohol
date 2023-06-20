@@ -107,9 +107,6 @@ public class ShopController {
 	public void adminProductInfo(Model model, HttpSession session) {
 		String userNickname = (String) session.getAttribute("userNickname");
 		List<AdminProductInfoDto> list = shopservice.getAdminProductInfoDto(userNickname);
-		for (AdminProductInfoDto x : list) {
-			log.info(""+x);
-		}
 		model.addAttribute("list", list);
 	}
 }

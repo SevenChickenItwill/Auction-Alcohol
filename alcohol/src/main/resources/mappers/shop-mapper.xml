@@ -73,13 +73,14 @@
 		where p.userid = #{userNickname}
 	</select>
 
-
-
-
-	
 	<insert id="createBasket">
 		INSERT INTO basket (productid, quantity, price)	
 		VALUES (#{productid}, #{quantity}, #{price})
 	</insert>
     
+    <update id="updateDelivery">
+    	update orders
+    	set status = 1
+    	where productid = #{productid} and basketid = #{basketid}
+    </update>
 </mapper>

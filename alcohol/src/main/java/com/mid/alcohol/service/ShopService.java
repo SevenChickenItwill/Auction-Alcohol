@@ -20,6 +20,7 @@ import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.AdminProductInfoDto;
 
 import com.mid.alcohol.dto.shop.BasketSaveDto;
+import com.mid.alcohol.dto.shop.DeliveryDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
@@ -181,6 +182,10 @@ public class ShopService {
 		Basket basket = dto.toEntity();
 		
 		return shoprepository.createBasket(basket);
+	}
+
+	public void updateDelivery(DeliveryDto dto) {
+		shoprepository.updateDelivery(dto);
 	}
 	
 	

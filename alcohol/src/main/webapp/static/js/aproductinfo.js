@@ -18,4 +18,26 @@ document.addEventListener('DOMContentLoaded', ()=> {
 			}
 		});
 	});
+	
+	const btnDelivery = document.querySelectorAll('#delivery');
+	btnDelivery.forEach((btn) => {
+		btn.addEventListener('click', async () => {
+			const productid = btn.getAttribute('data-id');
+			const basketid = btn.getAttribute('data-bid');
+			
+			let reqUrl = '/alcohol/api/shop/delivery'
+			let data = {
+				productid,
+				basketid
+			}
+			try {
+				const response = await axios.post(reqUrl, data);
+				const td = document.querySelector(`#status[data-id="${productid}"]`)
+				td.innerHTML = '배송중';
+			} catch(error) {
+				console.log(error);
+			}
+			
+		}); 
+	});
 });

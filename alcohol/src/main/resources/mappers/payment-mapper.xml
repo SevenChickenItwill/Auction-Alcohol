@@ -78,7 +78,7 @@
 	</delete>
 
 	<insert id="insertPaymentList">
-		INSERT INTO orders
+		INSERT INTO orders (paymentid, productid, quantity, price, usernickname, basketid)
 		values (#{paymentid}, #{productid},
 		#{quantity}, #{price}, #{userNickname}, #{basketid})
 	</insert>

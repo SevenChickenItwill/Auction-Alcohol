@@ -5,6 +5,7 @@ import java.util.List;
 import com.mid.alcohol.domain.payment.Basket;
 import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.AdminProductInfoDto;
+import com.mid.alcohol.dto.shop.DeliveryDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 
@@ -27,6 +28,8 @@ public interface ShopRepository {
 	List<AdminProductInfoDto> getAdminProductInfoDto(String userNickname);
 
 	int createBasket(Basket basket);
+
+	void updateDelivery(DeliveryDto dto);
 
 	
 }
