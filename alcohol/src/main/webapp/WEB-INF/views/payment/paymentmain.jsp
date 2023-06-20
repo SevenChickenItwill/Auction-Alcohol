@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 <meta charSet="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,6 +89,7 @@
 					readonly="readonly" /> <span>${ sessionScope.userNickname }</span>
 				<span style="corlor: white">로그아웃</span> <span>마이페이지</span>
 			</div>
+
 		</div>
 	</header>
 	<div class="my-3 ">

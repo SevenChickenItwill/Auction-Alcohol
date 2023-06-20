@@ -1,4 +1,4 @@
-.<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -122,11 +122,15 @@
 	display: flex;
     justify-content: space-around;
     align-items: center;
-        font-size: 28px;
+    font-size: 28px;
 }
 
 .btnSignCan {
 	padding-bottom: 16px;
+}
+
+.btn {
+	margin-left: auto;
 }
 </style>
 </head>
@@ -153,19 +157,21 @@
 						<form id="signupForm" method="post" action="${ signup }">
 							<div>
 								<div>
-									<select name="category" class="form-select"
+									<select name="categorys" class="form-select"
 										aria-label="Default select example">
 										<option value="0">구매자</option>
 										<option value="1">판매자</option>
 									</select>
 								</div>
 								<div class="nameDiv col-md-12">
-									<label for="userName"></label> <input type="text" id="userName"
+									<label for="userName"></label> 
+									<input type="text" id="userName"
 										name="userName" placeholder="이름"
 										class="nameInput form-control rounded" autofocus />
 								</div>
 								<div class="passwordDiv col-md-12">
-									<label for="userPassword"></label> <input type="password"
+									<label for="userPassword"></label> 
+									<input type="password"
 										id="userPassword" name="userPassword" placeholder="비밀번호"
 										class="passwordInput form-control rounded" required />
 								</div>
@@ -185,7 +191,7 @@
 								<div class="row g-3">
 									<div class="col-sm-8">
 										<input type="text" id="sample6_postcode" name="userPostalCode"
-											placeholder="우편번호" class="form-control">
+											placeholder="우편번호" class="form-control" readonly />
 									</div>
 									<div
 										class="col-sm-4 btnWrapper d-grid gap-2 d-md-flex justify-content-md-end">
@@ -196,18 +202,18 @@
 								<div class="addressDiv row g-3">
 									<div class="col-sm-8">
 										<input type="text" id="sample6_address" name="userAddress"
-											placeholder="주소" class="form-control" />
+											placeholder="주소" class="form-control" readonly />
 									</div>
 								</div>
 								<div class="addressDiv row g-3">
 									<div class="col-sm-6">
 										<input type="text" id="sample6_detailAddress"
-											name="userDetailAddress" placeholder="DETAILADDRESS"
+											name="userDetailAddress" placeholder="상세주소"
 											class="form-control">
 									</div>
 									<div class="col-sm-6">
 										<input type="text" id="sample6_extraAddress"
-											name="userAddressNotes" placeholder="NOTES"
+											name="userAddressNotes" placeholder="참고사항"
 											class="form-control">
 									</div>
 								</div>

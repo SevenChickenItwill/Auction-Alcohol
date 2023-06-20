@@ -113,8 +113,11 @@
 									required="required" autofocus />
 							</div>
 						</div>
-					</form>
-				</div>
+                    </form>
+                    <div>
+                   <a class="btn" href="/alcohol/signup/findByUserPassword">비밀번호 찾기</a>
+                </div>
+               </div>
 				<div class="btnWrapper d-grid gap-2 d-md-flex justify-content-md-end">
 					<input type="submit" class="btnContent btn btn-dark me-md-2" id="btnSubmit" value="로그인" />
 				</div>

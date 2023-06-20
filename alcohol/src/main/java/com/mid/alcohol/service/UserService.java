@@ -4,7 +4,9 @@ import org.springframework.stereotype.Repository;
 
 
 import com.mid.alcohol.domain.user.User;
+import com.mid.alcohol.dto.user.FindByUserPasswordDto;
 import com.mid.alcohol.dto.user.LoginCheckDto;
+import com.mid.alcohol.dto.user.UserAddressUpdateDto;
 import com.mid.alcohol.dto.user.UserDetaillDto;
 import com.mid.alcohol.dto.user.UserSignupDto;
 import com.mid.alcohol.dto.user.UserPasswordUpdateDto;
@@ -51,6 +53,15 @@ public class UserService {
 
 		return userRepository.signInMain(login.toEntity());
 	}
+	
+	// 계정 비밀번호 찾기
+		public User findByUserPassword(FindByUserPasswordDto userEmail) {
+			
+			log.info("findByUserPassword={}", userEmail);
+			
+			
+			return userRepository.findByUserPassword(userEmail);
+		}
 
 	// 계정 정보를 보여주기위해
 	public UserDetaillDto read(String userEmail) {
@@ -67,7 +78,7 @@ public class UserService {
 	public int PasswordUpdate(UserPasswordUpdateDto user) {
 		log.info("update({})", user);
 		
-		return userRepository.PasswordUpdate(user);
+		return userRepository.PasswordUpdate(user.toEntity());
 	}
 	
 	// 해당 이메일의 비밀번호인지 확인
@@ -81,11 +92,32 @@ public class UserService {
 	public int PhoneUpdate(UserPhoneUpdateDto user) {
 		log.info("update({})", user);	
 		
-		return userRepository.PhoneUpdate(user);
-
+		return userRepository.PhoneUpdate(user.toEntity());
+	}
+	
+	// 주소 수정
+	public int AddressUpdate(UserAddressUpdateDto user) {
+		log.info("update({})", user);
+		
+		return userRepository.AddressUpdate(user.toEntity());
+	}
+	
+	// 계정 비활성화
+	public int DeactivationAccount(String userEmail) {
+		log.info("DeactivationAccount({})", userEmail);
+		
+		return userRepository.DeactivationAccount(userEmail);
 	}
 
-
+	// 계정 활성화
+	public int ActivationAccount(String userEmail) {
+		log.info("ActivationAccount({})", userEmail);
+		
+		return userRepository.ActivationAccount(userEmail);
+	}
+	
+	
+	
 
 }
 
