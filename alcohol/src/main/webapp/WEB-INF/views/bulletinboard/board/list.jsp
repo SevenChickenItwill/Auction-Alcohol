@@ -25,6 +25,7 @@
 	height: 100%;
 	display: flex;
 	justify-content: center;
+	flex-direction: column-reverse;
 }
 
 .aDiv {
@@ -32,18 +33,9 @@
 	margin-top: 10px;
 }
 
-.wrapper {
-	height: 10px;
-	width: 700px;
-	display: grid;
-	place-items: center;
-	justify-items: center;
-	align-items: end;
-	min-height: 20vh;
-}
-
 .row {
-	justify-content: center
+	justify-content: center;
+	width: 598px;
 }
 
 .col-md-4 {
@@ -68,15 +60,12 @@
 .textNav {
 	color: white;
 	text-decoration: none;
+	margin-left: 10px;
 }
 
 .textNav:hover {
 	color: blue;
 	text-decoration: underline;
-}
-
-.textNav {
-	margin-left: 10px;
 }
 
 .pageNum {
@@ -94,6 +83,11 @@
 .keywordSubmit {
 	display: flex;
 	justify-content: space-evenly;
+}
+
+.mainDiv {
+	display: flex;
+	height: 100%;
 }
 </style>
 <body>
@@ -118,7 +112,8 @@
 	</header>
 
 	<div style="outline: none" class="main">
-		<div class="wrapper">
+		<div
+			style="display: flex; align-content: center; flex-wrap: wrap; align-items: stretch; flex-direction: column;">
 			<div>
 				<!-- 전체글 ㅣ 공지글 ㅣ 추천순  정렬 -->
 				<div class="aDiv d-grid gap-2 d-md-flex">
@@ -153,11 +148,10 @@
 								type="button" class="btn btn-dark btn-lg">새글작성</button></a>
 					</c:if>
 				</div>
-
 				<!-- 포스트 테이블 -->
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-8 offset mt-5">
+						<div class="col-lg-8 offset mt-5" style="width: 600px;">
 							<div>
 								<c:set var="len" value="${ length }"></c:set>
 								<c:set var="count" value="${ pageCount }" />
@@ -170,18 +164,19 @@
 											end="${ maxIndex - 1 }">
 											<input type="hidden" value="${ board.board_id }" id="boardId" />
 											<div class="itemBoard">
-												<div class="card mb-3" style="max-width: 860 px;">
+												<div class="card mb-3"
+													style="max-width: 860px; width: 600px;">
 													<c:url var="detailPage" value="/bulletinboard/board/detail">
 														<c:param name="id" value="${ board.board_id }"></c:param>
 													</c:url>
 													<a href="${ detailPage }">
 														<div class="row g-0">
-															<div class="col-md-4">
+															<div class="col-md-2" style="display: flex; align-items: center;">
 																<!-- 이미지 -->
 																<img src="data:image/jpeg;base64,${ board.image }"
 																	class="img-fluid rounded-start" alt="이미지">
 															</div>
-															<div class="col-md-8">
+															<div class="col-md-10">
 																<div class="card-body">
 																	<!-- 게시글 제목, 게시글 댓글수 -->
 																	<h5 class="card-title">${ board.title }[${ board.rcnt }]</h5>
@@ -194,7 +189,8 @@
 																			조회수 : [${ board.views }]
 																		</small>
 																	</p>
-																	<p class="card-text">${ board.content }</p>
+																	
+																	<p class="card-text d-inline-block text-truncate" style="max-width: 150px;">${ board.content }</p>
 																</div>
 															</div>
 														</div>
@@ -252,8 +248,8 @@
 										<c:param name="category" value="${ category }"></c:param>
 										<c:param name="boardNumber" value="1"></c:param>
 									</c:url>
-									<a href="${ indexZero }"><button>&lt;&lt;</button></a> <a
-										href="${ beforelist }"><button>&lt;</button></a>
+									<a href="${ indexZero }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&lt;&lt;</button></a> <a
+										href="${ beforelist }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&lt;</button></a>
 								</div>
 								<c:choose>
 
@@ -341,14 +337,14 @@
 
 								</c:choose>
 								<div>
-									<a href="${ nextlist }"><button>&gt;</button></a>
+									<a href="${ nextlist }"><button class="btn btn-dark" type="button" style="padding: 3px 12px;">&gt;</button></a>
 									<c:url var="maxIndex"
 										value="/bulletinboard/board/list?num=${ listPageMax - 1 }">
 										<c:param name="keyword" value="${ keyword }"></c:param>
 										<c:param name="category" value="${ category }"></c:param>
 										<c:param name="boardNumber" value="1"></c:param>
 									</c:url>
-									<a href="${ maxIndex }"><button>&gt;&gt;</button></a>
+									<a href="${ maxIndex }"><button style="padding: 3px 12px;" class="btn btn-dark" type="button">&gt;&gt;</button></a>
 								</div>
 							</div>
 

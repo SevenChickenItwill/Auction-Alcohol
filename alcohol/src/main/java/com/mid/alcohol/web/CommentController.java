@@ -30,7 +30,7 @@ import lombok.extern.slf4j.Slf4j;
 public class CommentController {
 
     private final CommentService commentService;
-    private final BulletinboardService bulletinboardService;
+
     
     
     @GetMapping("/all/{boardId}")

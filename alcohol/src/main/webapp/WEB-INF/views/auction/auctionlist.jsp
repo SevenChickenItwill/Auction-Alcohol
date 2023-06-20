@@ -105,9 +105,7 @@ a:active {
 						<circle cx="12" cy="13" r="4"></circle></svg> <strong>Album</strong>
 				</a>
 
-				<c:url value="/shop/shopmain" var="shopMain">
-	  				<c:param name="num" value="0" />
-				</c:url><a href="${shopMain}" class="text-info">상품 스토어</a>
+
 
 
 				<button class="navbar-toggler" type="button"

@@ -3,47 +3,93 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mid.alcohol.repository.ShopRepository">
+
 	
 	<select id="productall" resultType="com.mid.alcohol.domain.shop.Products">
+
 		select * from products where userid = #{userid}
 	</select>
-	
-	<select id="searchlist" resultType="com.mid.alcohol.domain.shop.Products">
+
+	<select id="searchlist"
+		resultType="com.mid.alcohol.domain.shop.Products">
 		select * from products where userid = #{userid}
 		<if test="option == 1">
 			AND productname LIKE #{search}
 		</if>
-		 <if test="option == 2">
+		<if test="option == 2">
 			AND hashtag LIKE #{search}
 		</if>
 		<if test="option == 3">
 			AND brand LIKE #{search}
 		</if>
 		<if test="option == 4">
-			AND (productname LIKE #{search} OR brand LIKE #{search} OR hashtag LIKE #{search})
+			AND (productname LIKE #{search} OR brand LIKE #{search} OR
+			hashtag LIKE #{search})
 		</if>
 	</select>
 
 	<insert id="createpd">
-		INSERT INTO products (productname, standard, unit, price, brand, userid, expirationdate, alcohol_level, hashtag, photopath, category)
-		VALUES (#{productname}, #{standard}, #{unit}, #{price}, #{brand}, #{userid}, #{expirationdate}, #{alcohol_level}, #{hashtag}, #{photopath}, #{category})
+		INSERT INTO products (productname, standard, unit,
+		price, brand, userid, expirationdate, alcohol_level, hashtag,
+		photopath, category)
+		VALUES (#{productname}, #{standard}, #{unit},
+		#{price}, #{brand}, #{userid}, #{expirationdate}, #{alcohol_level},
+		#{hashtag}, #{photopath}, #{category})
 	</insert>
+
 	
 
 	
 
 	<select id="readdetail" resultType="com.mid.alcohol.domain.shop.Products">
+
 		SELECT * FROM products WHERE pid = #{pid}
 	</select>
-	
+
 	<delete id="deletepd">
 		DELETE FROM products WHERE pid = #{pid}
 	</delete>
-	
+
 	<update id="updatepd">
-		UPDATE products SET productname=#{productname}, standard=#{standard}, unit=#{unit}, price=#{price}, brand=#{brand}, userid=#{userid}, expirationdate=#{expirationdate}, alcohol_level=#{alcohol_level}, hashtag=#{hashtag}, photopath=#{photopath}, category=#{category}
+		UPDATE products SET productname=#{productname},
+		standard=#{standard}, unit=#{unit}, price=#{price}, brand=#{brand},
+		userid=#{userid}, expirationdate=#{expirationdate},
+		alcohol_level=#{alcohol_level}, hashtag=#{hashtag},
+		photopath=#{photopath}, category=#{category}
 		WHERE pid = #{pid}
 	</update>
+
+	<select id="readpd"
+		resultType="com.mid.alcohol.domain.shop.Products">
+		SELECT * FROM products WHERE pid = #{pid}
+	</select>
+
+
+	<select id="getAdminProductInfoDto"
+		resultType="com.mid.alcohol.dto.shop.AdminProductInfoDto">
+		SELECT p.pid, p.productname, p.standard, p.price, p.brand, o.basketid,
+		o.quantity, u.username, u.useraddress, u.userphone, u.useremail,
+		o.status
+		FROM products p
+		JOIN orders o
+		on p.pid = o.productid
+		join users u
+		on o.usernickname = u.usernickname
+		where p.userid = #{userNickname}
+	</select>
+
+	<insert id="createBasket">
+		INSERT INTO basket (productid, quantity, price)	
+		VALUES (#{productid}, #{quantity}, #{price})
+	</insert>
     
+
+    <update id="updateDelivery">
+    	update orders
+    	set status = 1
+    	where productid = #{productid} and basketid = #{basketid}
+    </update>
+
+
 
 </mapper>

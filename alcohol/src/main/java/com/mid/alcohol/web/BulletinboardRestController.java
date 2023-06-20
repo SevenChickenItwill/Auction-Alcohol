@@ -46,47 +46,58 @@ public class BulletinboardRestController {
 	public ResponseEntity<Integer> recommendUp(
 			@PathVariable long boardId,
 			@PathVariable String loginId) {
-		log.info("recommentUp(id= {})", boardId);
+		log.info("recommentUp(board_id= {}, login_id= {})", boardId, loginId);
 		
 		RecommendUp recommend = new RecommendUp(boardId, loginId);
 		
-		int selectResult = bulletinboardService.recommendUpSelect(recommend);
-		log.info("CONTROLLER selectResult= {}", selectResult);
+		// 추천 업, 테이블 추가 전 중복 검색
+		int recommendUpSelect = bulletinboardService.recommendUpSelect(recommend);
+		log.info("recommendUpSelect= {}", recommendUpSelect);
 		
-		if (selectResult == 1) {
-			return ResponseEntity.ok(selectResult);
+		if (recommendUpSelect != 0) {
+			log.info("중복 추천 입니다.");
+			
+			return ResponseEntity.ok(recommendUpSelect);
 		}
 		
+		// 추천 업시 게시글 추천 +1
 		int result = bulletinboardService.recommendUp(boardId);
 		log.info("result= {}", result);
 		
-		int insertResult = bulletinboardService.recommendUpInsert(recommend);
-		log.info("insertResult= {}", insertResult);
+		// 추천 업시 COMMMENDUP 테이블에 객체 추가
+		int recommendUpInsert = bulletinboardService.recommendUpInsert(recommend);
+		log.info("recommendUpInsert= {}", recommendUpInsert);
 		
-		return ResponseEntity.ok(selectResult);
+		return ResponseEntity.ok(recommendUpSelect);
 	}
 	
 	@PostMapping("/recommenddo/{boardId},{loginId}")
 	public ResponseEntity<Integer> recommendDo(
 			@PathVariable long boardId,
 			@PathVariable String loginId) {
-		log.info("recommendDo(id= {})", boardId);
+		log.info("recommendDo(board_id= {}, login_id= {})", boardId, loginId);
 		
 		RecommendDown recommend = new RecommendDown(boardId, loginId);
 		
-		int selectResult = bulletinboardService.recommendDownSelect(recommend);
+		// 추천 다운, 테이블 추가 전 중복 검색
+		int recommendDownSelect = bulletinboardService.recommendDownSelect(recommend);
+		log.info("recommendDownSelect= {}", recommendDownSelect);
 		
-		if (selectResult == 1) {
-			return ResponseEntity.ok(selectResult);
+		if (recommendDownSelect != 0) {
+			log.info("중복 비추천 입니다.");
+			
+			return ResponseEntity.ok(recommendDownSelect);
 		}
 		
+		// 추천 다운시 게시글 추천 -1
 		int result = bulletinboardService.recommendDo(boardId);
 		log.info("result= {}", result);
 		
-		int insertRresult = bulletinboardService.recommendDownInsert(recommend);
-		log.info("insertRresult= {}", insertRresult);
+		// 추천 다운시 COMMENDDOWN테이블에 객체 추가
+		int recommendDownInsert = bulletinboardService.recommendDownInsert(recommend);
+		log.info("recommendDownInsert= {}", recommendDownInsert);
 		
-		return ResponseEntity.ok(selectResult);
+		return ResponseEntity.ok(recommendDownSelect);
 	}
 	
 	@PostMapping("/create/{category}/{nickname}/{user_id}/{title}/{content}")

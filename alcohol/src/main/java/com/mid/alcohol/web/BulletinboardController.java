@@ -225,29 +225,6 @@ public class BulletinboardController {
 		model.addAttribute("board", dto);
 	}
 
-//    @PostMapping("/update")
-//    public String readByIdUpdate(BulletinboardUpdateDto dto, String file, Model model) {
-//        log.info("update(dto={})", dto);
-//        
-//        String path = "C:/workspace/lab-midproject/middlePj/alcohol/src/main/webapp/static/images/";
-//        log.info("fileName= {}", path + file);
-//        
-//        try {
-//        	dto.setImage(path + file);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//        
-//        int result = bulletinboardService.readByIdUpdate(dto);
-//        log.info("result= {}", result);
-//        
-//        BulletinboardDetailDto Detaildto = bulletinboardService.selectById(dto.getBoard_id());
-//        
-//        model.addAttribute("deal", Detaildto);
-//        
-//        return "redirect:/bulletinboard/board/detail?id=" + Detaildto.getBoard_id();
-//    }
-
 	@PostMapping("/delete")
 	public String dealDelete(long board_id) {
 		log.info("dealDelete(id= {})", board_id);
@@ -264,7 +241,7 @@ public class BulletinboardController {
 		int result = bulletinboardService.bulletinboardDelete(board_id);
 		log.info("result = {}", result);
 
-		return "redirect:/bulletinboard/board/list?num=0";
+		return "redirect:/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0";
 	}
 
 	@GetMapping("/create")
@@ -272,7 +249,7 @@ public class BulletinboardController {
 		log.info("create()");
 	}
 
-	private static String path = "C:\\workspace\\lab-midproject\\middlePj\\alcohol\\src\\main\\webapp\\static\\images\\";
+	private static String path = "C:\\imgs\\";
 
 	@PostMapping("/create/{boardId}")
 	public String boardCreate(@PathVariable("boardId") long boardId, @RequestBody MultipartFile file) {
@@ -294,13 +271,15 @@ public class BulletinboardController {
 
 		int result = bulletinboardService.imageUpdate(boardId, photopath);
 
-		return "redirect:/bulletinboard/board/list?num=0";
+		return "redirect:/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0";
 	}
 
 	@PostMapping("/update/{boardId}")
 	public String readByIdUpdate(@PathVariable("boardId") long boardId, @RequestBody MultipartFile file) {
 		log.info("RESTCOTROLLER: readByIdUpdate(file= {})", file);
-
+		
+		log.info("CONTROLLER update fileName= {}", file.getOriginalFilename());
+		
 		if (!file.isEmpty()) {
 			UUID uid = UUID.randomUUID();
 			String name = uid + file.getOriginalFilename();
