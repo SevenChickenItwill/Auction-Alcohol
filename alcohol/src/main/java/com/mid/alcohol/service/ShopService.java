@@ -15,7 +15,12 @@ import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mid.alcohol.domain.payment.Basket;
 import com.mid.alcohol.domain.shop.Products;
+import com.mid.alcohol.dto.shop.AdminProductInfoDto;
+
+import com.mid.alcohol.dto.shop.BasketSaveDto;
+import com.mid.alcohol.dto.shop.DeliveryDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
 import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
@@ -158,11 +163,38 @@ public class ShopService {
 		return shoprepository.updatepd(dto);
 	}
 
+
 	public List<ShopPaymentListDto> readPaymentListByUser(String attribute) {
 		// TODO Auto-generated method stub
 		log.info("readPaymentListByUser(id={})",attribute);
 		
 		return shoprepository.readPaymentListByUser(attribute);
+
+	public ShopDetailDto readpd(long pid) {
+		// TODO Auto-generated method stub
+		log.info("readpd={}", pid);
+		
+		Products products = shoprepository.readpd(pid);
+		
+		return ShopDetailDto.FromEntity(products);
+	}
+
+
+	public List<AdminProductInfoDto> getAdminProductInfoDto(String userNickname) {
+		// TODO Auto-generated method stub
+		return shoprepository.getAdminProductInfoDto(userNickname);
+	}
+	
+	public int createBasket(BasketSaveDto dto) {
+		
+		Basket basket = dto.toEntity();
+		
+		return shoprepository.createBasket(basket);
+	}
+
+	public void updateDelivery(DeliveryDto dto) {
+		shoprepository.updateDelivery(dto);
+
 	}
 	
 	

@@ -8,6 +8,7 @@ import com.mid.alcohol.domain.board.RecommendUp;
 import com.mid.alcohol.dto.board.BulletinboardCreateDto;
 import com.mid.alcohol.dto.board.BulletinboardDetailDto;
 import com.mid.alcohol.dto.board.BulletinboardImageUpdateDto;
+import com.mid.alcohol.dto.board.BulletinboardKeywordDto;
 import com.mid.alcohol.dto.board.BulletinboardListDto;
 import com.mid.alcohol.dto.board.BulletinboardUpdateDto;
 
@@ -28,7 +29,7 @@ public interface BulletinboardRepository {
     
     List<BulletinboardListDto> selectWhereContent(String keyword);
     
-    List<BulletinboardListDto> selectWhereTitleAndContent(String keywordT, String keywordC);
+    List<BulletinboardListDto> selectWhereTitleAndContent(BulletinboardKeywordDto dto);
     
     List<BulletinboardListDto> selectWhereNickname(String keyword);
     

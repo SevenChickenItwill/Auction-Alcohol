@@ -14,14 +14,13 @@ import lombok.NoArgsConstructor;
 
 public class UserPasswordUpdateDto {
 	private String userEmail;
-	private String userPassword;
-	
+	private String userAccountNewPasswordModify;
 	
 	public User toEntity() {
 		
 		return User.builder()
 				.userEmail(userEmail)
-				.userPassword(userPassword)
+				.userPassword(userAccountNewPasswordModify)			
 				.build();
 	}
 	

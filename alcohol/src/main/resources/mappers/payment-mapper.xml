@@ -7,13 +7,12 @@
 <mapper namespace="com.mid.alcohol.repository.PaymentRepository">
 	<!-- 기존 배송지를 변경할 때 -->
 
+
  	<update id="updateDeliveryInfo">
  		UPDATE users
  		SET userAddress = #{userAddress}, userPhone = #{userPhone}, userEmail = #{userEmail}
  		WHERE userNickname = #{userNickname}
  	</update>
- 	
- 	
 
 
 	<!-- DB에 저장되어 있는 회원정보 기본값 읽어오기 (test) -->
@@ -25,35 +24,106 @@
 
 	<insert id="insertPayment">
 		INSERT INTO payment_list (userNickname)
-		VALUES (#{userNickname})
+		VALUES
+		(#{userNickname})
 	</insert>
 
 
 	<!-- userid의 장바구니 목록을 가져온다. -->
-	<select id="readBasketByUserid"
+	<select id="readBasketByUserNickname"
 		resultType="com.mid.alcohol.dto.payment.BasketListDto">
-		SELECT b.basketid, b.productid, b.price, b.quantity, p.brandname, p.pname
+		SELECT b.basketid, b.productid, b.price, b.quantity,
+		p.brandname, p.pname
 		FROM basket b
 		JOIN auctionproducts p
-		ON b.productid = p.productid
-		WHERE b.userid = #{userid}
+		ON b.productid
+		= p.productid
+		WHERE b.userNickname = #{userNickname}
 	</select>
 
 	<select id="readPaymentList" resultType="java.lang.Integer">
 		SELECT *
-		FROM payment_list
+		FROM
+		payment_list
 		WHERE userNickname = #{userNickname}
 		AND paymentid = (
-			SELECT MAX(paymentid)
-			FROM payment_list
-			WHERE userNickname = #{userNickname}
+		SELECT MAX(paymentid)
+		FROM payment_list
+		WHERE userNickname =
+		#{userNickname}
 		)
 	</select>
 
 	<insert id="insertOrder">
 		INSERT INTO orders
-		values (#{paymentid}, #{productid}, #{quantity}, #{price}, #{totalAmount},
+		values (#{paymentid}, #{productid},
+		#{quantity}, #{price}, #{totalAmount},
 		#{userNickname}, #{basketid})
 	</insert>
 
+	<update id="updateBaket">
+		UPDATE basket
+		SET quantity = #{quantity}
+		WHERE basketid
+		= #{basketid}
+	</update>
+
+	<delete id="deletebasket">
+		DELETE FROM basket
+		WHERE basketid = #{basketid}
+	</delete>
+
+	<insert id="insertPaymentList">
+		INSERT INTO orders (paymentid, productid, quantity, price, usernickname, basketid)
+		values (#{paymentid}, #{productid},
+		#{quantity}, #{price}, #{userNickname}, #{basketid})
+	</insert>
+
+	<delete id="deleteOrders">
+		DELETE FROM orders
+		WHERE paymentid = #{paymentid}
+	</delete>
+
+	<delete id="deletePayment">
+		DELETE FROM payment_list
+		WHERE paymentid =
+		#{paymentid}
+	</delete>
+
+	<select id="getPaymentList"
+		resultType="com.mid.alcohol.dto.payment.PaymentListDto">
+		SELECT *
+		FROM orders
+		WHERE paymentid = #{paymentid}
+	</select>
+
+	<select id="getBasketidFromOrders"
+		resultType="java.lang.Integer">
+		SELECT basketid
+		FROM orders
+		WHERE paymentid = #{paymentid}
+	</select>
+
+	<select id="getPname" resultType="java.lang.String">
+		SELECT pname
+		FROM (
+		SELECT
+		a.pname
+		FROM auctionproducts a
+		JOIN orders o ON a.productid =
+		o.productid
+		WHERE o.basketid = #{basketid}
+		)
+		WHERE ROWNUM &lt;= 1
+	</select>
+
+	<select id="getBasketInfo"
+		resultType="com.mid.alcohol.dto.payment.BasketListDto">
+		SELECT b.basketid, b.productid, b.quantity, b.price, b.pname, p.brandname
+		FROM basket b
+		JOIN auctionproducts p
+		ON b.productid = p.productid
+		WHERE b.basketid = #{basketid}
+	</select>
+	
 </mapper>
