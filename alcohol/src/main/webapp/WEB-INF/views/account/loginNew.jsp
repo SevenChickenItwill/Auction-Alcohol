@@ -115,7 +115,7 @@
 						</div>
                     </form>
                     <div>
-                   <a href="/alcohol/signup/findByUserPassword">비밀번호 찾기</a>
+                   <a class="btn" href="/alcohol/signup/findByUserPassword">비밀번호 찾기</a>
                 </div>
                </div>
 				<div class="btnWrapper d-grid gap-2 d-md-flex justify-content-md-end">

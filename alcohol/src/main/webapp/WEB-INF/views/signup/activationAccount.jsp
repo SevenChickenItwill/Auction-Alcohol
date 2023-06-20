@@ -86,6 +86,10 @@ button:hover {
 			</div>
 		</form>
 	</div>
+    <div>
+       <a class="btn" href="/alcohol/signup/findByUserPassword">비밀번호 찾기</a>
+    </div>
+ 
 	<div>
 		<button id="btnActivationAccount">활성화 시키기</button>
 	</div>
