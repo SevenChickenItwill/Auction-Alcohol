@@ -13,114 +13,188 @@
     rel="stylesheet"
     crossorigin="anonymous">
 	</head>
-	<style>
-	.sidebar{
-    position: fixed;
-    top: 0;
+<style>
+.p-3 {
+    padding: 2rem!important;
+}
+li{
+	font-size:large;
+	font-weight:bold;
+	padding-bottom: 35px;
+}
+.container {
+    
+    width: 100%;
+  }
+  .navbar {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .navbar .navbar-nav .nav-link {
+    color: #fff;
+  }
+
+
+.scrollable-table-container {
+	height: 300px;
+	overflow-y: scroll;
+}
+
+.scrollable-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.scrollable-table th, .scrollable-table td {
+	padding: 8px;
+	border: 1px solid #ccc;
+	
+
+}
+#modals{
+	position: fixed;
+    
+
+}
+.sidebar{
+    position: absolute;
+    top: 60px;
     left: 0;
     height: 100%;
-    width: 200px;
+    width: 240px;
     
 
 }
 .mains{
-    margin-left: 220px;
+    margin-right: 220px;
+    margin-left: 380px;
+    
 }
 
 .headers{
-    margin-left:220px;
+    margin: 0px 270px;
+    
 }
-	</style>
-	<body>
-	
-	<div class="flex-shrink-0 p-3 bg-white sidebars" style="width: 200px;">
+body{
+
+	background-color: light;
+}
+</style>
+</head>
+<body>
+
+<div id="sidebar" class="flex-shrink-0 p-3 bg-light sidebar">
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
+    <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark list-group-item list-group-item-action">
+          관리자 메인
+        </a>
+      </li>
       <li class="nav-item">
         <c:url var="auctionProduct" value="/auction/product" />
-        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
-          경매상품조회/수정
+        <a href="${ auctionProduct }" class="nav-link link-dark list-group-item list-group-item-action" aria-current="page">
+          경매 상품조회/수정
         </a>
       </li>
       <li>
         <c:url var="productcreate" value="/auction/productcreate" />
-        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
-          경매상품등록
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0 list-group-item list-group-item-action">
+          경매 상품등록
         </a>
       </li>
       <li>
-        <c:url var="auctionManagement" value="/auction/auction" />
-        <a href="${ auctionManagement }" class="nav-link link-dark">
-          경매조회/수정
+        <c:url var="auctionm" value="/auction/auction" />
+        <a href="${ auctionm }" class="nav-link link-dark list-group-item list-group-item-action">
+          경매 조회/수정
         </a>
       </li>
       <li>
-        <c:url var="auctionadmin" value="/auction" />
-        <a href="${ auctionadmin }" class="nav-link link-dark">
-          관리자 메뉴
+        <c:url var="auctionRegistration" value="/auction/registration" />
+        <a href="${ auctionRegistration }" class="nav-link link-dark list-group-item list-group-item-action">
+          경매 등록
         </a>
       </li>
             <li>
       	<c:url var="shopproducts" value="/shop/pdlist" />
-        <a href="${ shopproducts }" class="nav-link link-dark">
+        <a href="${ shopproducts }" class="nav-link link-dark list-group-item list-group-item-action">
           쇼핑몰 상품조회
         </a>
       </li>
       <li>
       	<c:url var="shopcreate" value="/shop/pdcreate" />
-        <a href="${ shopcreate }" class="nav-link link-dark">
+        <a href="${ shopcreate }" class="nav-link link-dark list-group-item list-group-item-action">
           쇼핑몰 상품등록
         </a>
       </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="#" class="nav-link link-dark list-group-item list-group-item-action">
+          쇼핑몰 주문현황
+        </a>
+      </li>
     </ul>
+    
+    
   </div>
 
 		<div>
-        <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">상품 등록 페이지</span>
-      </a>
-
-      <ul class="nav nav-pills">
-        <li class="nav-link px-2 link-dark">
-        <a href="#" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item">${ sessionScope.userNickname } 님</li>
-        
-      </ul>
-      <div>
+        <div class="container" style="width: 100%; max-width: 9999px">
+  <header>
+		<div class="navbar navbar-dark bg-dark shadow-sm">
+			<div class="container" style="width: 100px;">
+				<a href="#" class="navbar-brand d-flex align-items-center"> 
+				
+						<path
+							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+						<circle cx="12" cy="13" r="4"></circle></svg> <strong style="text-align: center;">칠면주조 경매 리스트</strong>
+				</a>
+				
+				
+			</div>
+			
+<nav class="nav nav-pills flex-column flex-sm-row">
+   <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/auction/auctionlist">Auction</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/bulletinboard/board/list?num=0">Board</a>
+  <a style="margin-left:80px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
+  <a style="margin-left:437px; color:white; font-weight: bold; font-size: large;" class="flex-sm-fill text-sm-center nav-link">{${ sessionScope.userNickname } 님}</a>
+  <c:url var="logout" value="/account/logout"></c:url>
+      	<a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+</nav>
+		</div>
+		<input class="card d-none" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
+	</header>
+</div>
       	<c:url var="logout" value="/account/logout"></c:url>
-      	<a href="${ logout }"><button>로그아웃</button></a>
+      	<a href="${ logout }"><button class="btn">로그아웃</button></a>
       </div>
-    </header>
-  </div>
+    
+  
 	<main class="mains">
 		<div class="form">
 			<form id="createform" class="form">
-				<label for="productname">상품명</label>
-				<input type="text" required="required" name="productname" id="productname" />
-				<label for="standard">규격</label>
-				<input type="text" required="required" name="standard" id="standard" />
-				<label for="unit">단위</label>
-				<input type="text" required="required" name="unit" id="unit" />
-				<label for="price">가격</label>
-				<input type="number" required="required" name="price" id="price" />
-				<label for="brand">브랜드</label>
-				<input type="text" required="required" name="brand" id="brand" />
+				<label class="form-label" for="productname">상품명</label>
+				<input class="form-control" type="text" required="required" name="productname" id="productname" />
+				<label class="form-label" for="standard">규격</label>
+				<input class="form-control" type="text" required="required" name="standard" id="standard" />
+				<label class="form-label" for="unit">단위</label>
+				<input class="form-control" type="text" required="required" name="unit" id="unit" />
+				<label class="form-label" for="price">가격</label>
+				<input class="form-control" type="number" required="required" name="price" id="price" />
+				<label class="form-label" for="brand">브랜드</label>
+				<input class="form-control" type="text" required="required" name="brand" id="brand" />
 				<input value="${ sessionScope.userNickname }" class="d-none" type="text" required="required" name="userid" id="userid" />
-				<label for="expirationdate">유통기한</label>
-				<input type="text" required="required" name="expirationdate" id="expirationdate" />
-				<label for="alcohol_level">도수</label>
-				<input type="number" required="required" name="alcohol_level" id="alcohol_level" />
-				<label for="hashtag">해시태그</label>
-				<input type="text" required="required" name="hashtag" id="hashtag" />
+				<label class="form-label" for="expirationdate">유통기한</label>
+				<input class="form-control" type="text" required="required" name="expirationdate" id="expirationdate" />
+				<label class="form-label" for="alcohol_level">도수</label>
+				<input class="form-control" type="number" required="required" name="alcohol_level" id="alcohol_level" />
+				<label class="form-label" for="hashtag">해시태그</label>
+				<input class="form-control" type="text" required="required" name="hashtag" id="hashtag" />
 				<input class="d-none" type="text" required="required" name="photopath" id="photopath" />
-				<label for="category">카테고리</label>
+				<label class="form-label" for="category">카테고리</label>
 					<%-- value 는 category 테이블의 코드랑 동일하게 설정함. --%>
 					<select class="form-control" id="category" name="category">
 						<option selected="selected" value="1">탁주</option>

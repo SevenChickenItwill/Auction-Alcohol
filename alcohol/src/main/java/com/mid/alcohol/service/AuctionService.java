@@ -18,6 +18,8 @@ import com.mid.alcohol.domain.auction.AuctionProducts;
 import com.mid.alcohol.domain.auction.Chat;
 import com.mid.alcohol.domain.auction.Photo;
 import com.mid.alcohol.domain.auction.UserAuction;
+import com.mid.alcohol.dto.auction.AuctionChartDataDto;
+import com.mid.alcohol.dto.auction.AuctionChartDto;
 import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.auction.AuctionListDto;
 import com.mid.alcohol.dto.auction.AuctionOpenDto;
@@ -27,6 +29,7 @@ import com.mid.alcohol.dto.auction.ChatInputDto;
 import com.mid.alcohol.dto.auction.ChatListDto;
 import com.mid.alcohol.dto.auction.ChatRoomDto;
 import com.mid.alcohol.dto.auction.ProductSearchDto;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
 import com.mid.alcohol.repository.AuctionRepository;
 
@@ -248,7 +251,9 @@ public class AuctionService {
 		// TODO Auto-generated method stub
 		log.info("readlist()");
 		
-		return auctionrepository.readEndAuctionList();
+		List<AuctionListDto> list = auctionrepository.readEndAuctionList();
+		
+		return list;
 	}
 
 	public int updatebat(ChatInputDto dto) {
@@ -304,6 +309,31 @@ public class AuctionService {
 		}
 		log.info("{}",list3);
 		return list3;
+	}
+
+	public Photo findphotoroot(int productId) {
+		// TODO Auto-generated method stub
+		return auctionrepository.findphotoroot(productId);
+	}
+
+	public List<AuctionChartDataDto> readSalesData(AuctionChartDto dto) {
+		// TODO Auto-generated method stub
+		log.info("readSalesData({})",dto);
+		
+		 List<AuctionChartDataDto> list = auctionrepository.readSalesData(dto);
+		 
+		
+		 
+		 
+		 
+		 return list;
+	}
+
+	public List<AuctionChartDataDto> readAuctionData(AuctionChartDto dto) {
+		// TODO Auto-generated method stub
+		dto.toEntity();
+		
+		return auctionrepository.readAuctionData(dto);
 	}
 
 	

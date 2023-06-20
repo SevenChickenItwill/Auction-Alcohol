@@ -67,16 +67,16 @@
 			 html = `
 			 <tr>
 			 	<td>${ list.pid }</td>
-						<td>${ list.productname }</td>
-						<td>${ list.standard }</td>
-						<td>${ list.unit }</td>
-						<td>${ list.price }</td>
-						<td>${ list.brand }</td>
-						<td>${ list.userid }</td>
-						<td>${ list.expirationdate }</td>
-						<td>${ list.alcohol_level }</td>
-						<td>${ list.hashtag }</td>
-						<td>${ categorys }</td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.productname }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.standard }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.unit }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.price }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.brand }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.userid }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.expirationdate }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.alcohol_level }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ list.hashtag }</a></td>
+						<td><a href="/alcohol/shop/pdmodify?pid=${list.pid}">${ categorys }</a></td>
 						<td><img src = "data:image/jpeg;base64,${ list.photopath }" /></td>
 			 </tr>
 			 

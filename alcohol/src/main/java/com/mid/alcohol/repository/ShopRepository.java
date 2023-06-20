@@ -7,6 +7,7 @@ import com.mid.alcohol.domain.shop.Products;
 import com.mid.alcohol.dto.shop.AdminProductInfoDto;
 import com.mid.alcohol.dto.shop.DeliveryDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 
 public interface ShopRepository {
@@ -23,6 +24,9 @@ public interface ShopRepository {
 	
 	int updatepd(ShopDetailDto dto);
 
+
+	List<ShopPaymentListDto> readPaymentListByUser(String userNickname);
+
 	Products readpd(long pid);
 
 	List<AdminProductInfoDto> getAdminProductInfoDto(String userNickname);
@@ -30,6 +34,5 @@ public interface ShopRepository {
 	int createBasket(Basket basket);
 
 	void updateDelivery(DeliveryDto dto);
-
 	
 }

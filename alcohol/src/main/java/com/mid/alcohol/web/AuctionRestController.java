@@ -2,6 +2,7 @@ package com.mid.alcohol.web;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,14 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.auction.AuctionProducts;
 import com.mid.alcohol.domain.auction.Photo;
+import com.mid.alcohol.dto.auction.AuctionChartDataDto;
+import com.mid.alcohol.dto.auction.AuctionChartDto;
 import com.mid.alcohol.dto.auction.AuctionDetailSearchDto;
 import com.mid.alcohol.dto.auction.AuctionListDto;
+import com.mid.alcohol.dto.auction.AuctionListPhotoDto;
 import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.dto.auction.ChatInputDto;
 import com.mid.alcohol.dto.auction.ChatListDto;
 import com.mid.alcohol.dto.auction.ChatRoomDto;
 
 import com.mid.alcohol.dto.auction.ProductSearchDto;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
@@ -102,18 +107,37 @@ public class AuctionRestController {
 	}
 	
 	@GetMapping("/refresh/{status}")
-	public ResponseEntity<List<AuctionListDto>> refreshChat(@PathVariable int status){
+	public ResponseEntity<List<AuctionListPhotoDto>> refreshChat(@PathVariable int status){
 		
 		log.info("refreshChat()");
-		List<AuctionListDto> list;
+		List<AuctionListDto> list2;
 		
 		if(status == 1) {
-			list = acservice.readInglist();
+			list2 = acservice.readInglist();
 		} else if(status == 2) {
-			list = acservice.readEndlist();
+			list2 = acservice.readEndlist();
 		} else {
-			list = acservice.readAlllist();
+			list2 = acservice.readAlllist();
 		}
+		
+		List<AuctionListPhotoDto> list = new ArrayList<>();
+		
+		for(int i = 0 ; i<list2.size() ; i++) {
+			
+			Photo root = acservice.findphotoroot(list2.get(i).getProductId()); 
+			list.add(AuctionListPhotoDto.FromChange(list2.get(i)));
+			String imgs;
+			try {
+				imgs = productservice.listToTagImage(productservice.resizeImage(root.getPhotopath()));
+				list.get(i).setPhotopath(imgs);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
 		
 		return ResponseEntity.ok(list);
 	}
@@ -153,6 +177,31 @@ public class AuctionRestController {
 		
 		
 		return ResponseEntity.ok(base64);
+		
+	}
+	
+	// Chart Maker
+	@PostMapping("/loadchartdata")
+	public ResponseEntity<List<AuctionChartDataDto>> makechartShop(@RequestBody AuctionChartDto dto){
+		log.info("makechartShop(dto={})",dto);
+		dto.toEntity();
+		List<AuctionChartDataDto> list = acservice.readSalesData(dto);
+		
+		
+		
+		return ResponseEntity.ok(list);
+	}
+	
+	@PostMapping("/loadauctionchart")
+	public ResponseEntity<List<AuctionChartDataDto>> makechartAuction(@RequestBody AuctionChartDto dto){
+		
+		log.info("makechartAuction({})",dto);
+		
+		
+		
+		List<AuctionChartDataDto> list = acservice.readAuctionData(dto);
+		
+		return ResponseEntity.ok(list);
 		
 	}
 

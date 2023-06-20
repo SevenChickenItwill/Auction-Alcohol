@@ -7,13 +7,17 @@
 	 const detailform = document.querySelector('form#detailform');
 	 const btndelete = document.querySelector('button#btndelete');
 	 
-	 btndelete.addEventListener('click', () => {
+	 btndelete.addEventListener('click', (e) => {
 		 const check = confirm('정말 삭제할까요?');
 		 console.log(check);
 		 if (check) {
 			 detailform.action = './productdelete';
 			 detailform.method = 'post';
 			 detailform.submit();
+			 
+		 } else {
+			 e.preventDefault();
 		 }
+		 
 	 });
  });

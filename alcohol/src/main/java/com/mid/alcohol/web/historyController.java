@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class historyController {
 	private final BulletinboardService bulletinboardService;
 
+	// 안쓰는 거 나중에 지워야됌.
 	@GetMapping("/historylist") 
 	public void list(String nickname, Model model) {
 		log.info("list()");

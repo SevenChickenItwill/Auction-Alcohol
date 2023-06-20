@@ -22,6 +22,7 @@ import com.mid.alcohol.dto.shop.AdminProductInfoDto;
 import com.mid.alcohol.dto.shop.BasketSaveDto;
 import com.mid.alcohol.dto.shop.DeliveryDto;
 import com.mid.alcohol.dto.shop.ShopDetailDto;
+import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 import com.mid.alcohol.repository.ShopRepository;
@@ -162,6 +163,13 @@ public class ShopService {
 		return shoprepository.updatepd(dto);
 	}
 
+
+	public List<ShopPaymentListDto> readPaymentListByUser(String attribute) {
+		// TODO Auto-generated method stub
+		log.info("readPaymentListByUser(id={})",attribute);
+		
+		return shoprepository.readPaymentListByUser(attribute);
+
 	public ShopDetailDto readpd(long pid) {
 		// TODO Auto-generated method stub
 		log.info("readpd={}", pid);
@@ -186,6 +194,7 @@ public class ShopService {
 
 	public void updateDelivery(DeliveryDto dto) {
 		shoprepository.updateDelivery(dto);
+
 	}
 	
 	

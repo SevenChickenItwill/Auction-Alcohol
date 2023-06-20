@@ -400,5 +400,34 @@
     	select * from Chat Where userid = #{userNickname}
     </select>
     
+    <select id="findphotoroot" resultType="com.mid.alcohol.domain.auction.Photo">
+    	select * from Productphoto where productid = #{pid}
+    </select>
+    
+    <select id="readSalesData" resultType="com.mid.alcohol.dto.auction.AuctionChartDataDto">
+    	select sum(o.totalamount) AS "total", EXtract(MONTH FROM o.paydate) AS "month" from orders o
+    	join products p on o.productid = p.pid
+    	join users u on u.usernickname = o.usernickname
+    	where p.userid = #{userid}
+    	AND o.paydate >= #{date}
+    	GROUP BY EXTRACT(MONTH FROM o.paydate)
+    </select>
+    
+    <select id="readAuctionData" resultType="com.mid.alcohol.dto.auction.AuctionChartDataDto">
+    	select sum(a.nowbid) AS "total",EXtract(MONTH FROM a.auctionend) AS "month"
+    	from auction a
+    	JOIN auctionproducts p ON p.productid = a.productid
+    	WHERE a.auctioneer = #{userid}
+    	GROUP BY EXtract(MONTH FROM a.auctionend)
+    </select>
+    
+    <select id="readAuctionStatus" resultType="com.mid.alcohol.domain.auction.Auction" >
+    	select * from Auction Where status = 1
+    </select>
+    
+    
+    <insert id="automakeRoom">
+    	INSERT INTO userauction VALUES (#{cid}, #{chatroom}, 0)
+    </insert>
     
 </mapper>

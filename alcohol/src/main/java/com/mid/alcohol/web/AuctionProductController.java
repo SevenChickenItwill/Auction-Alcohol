@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mid.alcohol.domain.auction.AuctionProducts;
+import com.mid.alcohol.domain.auction.Photo;
 import com.mid.alcohol.dto.auction.AuctionCreateDto;
 import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.service.AuctionProductService;
+import com.mid.alcohol.service.AuctionService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -31,6 +33,9 @@ public class AuctionProductController {
 
 	@Autowired
 	private AuctionProductService apservice;
+	
+	
+	
 	
 	@GetMapping("/product")
 	public String productManage(Model model, HttpSession session) {
