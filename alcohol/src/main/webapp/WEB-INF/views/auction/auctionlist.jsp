@@ -105,15 +105,10 @@ a:active {
 						<circle cx="12" cy="13" r="4"></circle></svg> <strong>Album</strong>
 				</a>
 
-				<c:url var="paymain" value="/payment/payindex">
-				</c:url>
-				<a href="${paymain}">결제하기</a>
+				<c:url value="/shop/shopmain" var="shopMain">
+	  				<c:param name="num" value="0" />
+				</c:url><a href="${shopMain}" class="text-info">상품 스토어</a>
 
-				<c:url value="/bulletinboard/board/list" var="boardList" >
-                    <c:param name="num" value="0" />
-                </c:url>
-				<a href="${ boardList }" class="text-danger">커뮤니티</a>
-				
 
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarHeader"

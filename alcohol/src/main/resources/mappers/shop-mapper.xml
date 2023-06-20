@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mid.alcohol.repository.ShopRepository">
-
+	
 	<select id="productall" resultType="com.mid.alcohol.domain.shop.Products">
 		select * from products where userid = #{userid}
 	</select>
@@ -29,6 +29,9 @@
 		VALUES (#{productname}, #{standard}, #{unit}, #{price}, #{brand}, #{userid}, #{expirationdate}, #{alcohol_level}, #{hashtag}, #{photopath}, #{category})
 	</insert>
 	
+
+	
+
 	<select id="readdetail" resultType="com.mid.alcohol.domain.shop.Products">
 		SELECT * FROM products WHERE pid = #{pid}
 	</select>
@@ -42,4 +45,5 @@
 		WHERE pid = #{pid}
 	</update>
     
+
 </mapper>

@@ -12,7 +12,6 @@
 				integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 				crossorigin="anonymous">
 	  <title>Payment</title>
-	  <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 	  <style>
 	    #payment-button{ width:100%; padding:15px; background-color:#3065AC; color:white; border-radius:3px; font-size:16px; border:none; margin-top:10px}
 		.title {margin: 0 0 4px; font-size: 24px; font-weight: 600;color: #4e5968;}

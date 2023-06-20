@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mid.alcohol.repository.ShopUserRepository">
+	<!-- 상품 정보들 읽기 -->
+	<select id="readProductsInfo" resultType="com.mid.alcohol.dto.shopuser.ShopUserReadDto">
+		SELECT * FROM products
+	</select>
+	
+	
+	<!-- 상품 카테고리별로 보기 -->
+	<select id="category" resultType="com.mid.alcohol.domain.shop.Products">
+		SELECT * FROM products where category = #{category}
+	</select>
+	
+	
+	<!-- 상품명으로 검색하기 -->
+	<select id="searchProductname" resultType="com.mid.alcohol.dto.shopuser.ShopUserReadDto">
+		SELECT * FROM products WHERE productname LIKE '%' || #{productname} || '%'
+	</select>
+	
+	<!-- 브랜드명으로 검색하기 -->
+	<select id="searchBrand" resultType="com.mid.alcohol.dto.shopuser.ShopUserReadDto">
+		SELECT * FROM products WHERE brand LIKE '%' || #{brand} || '%'
+	</select>
+	
+	<!-- 상품명 + 브랜드명으로 검색하기 -->
+	<select id="searchProductnameAndBrand" resultType="com.mid.alcohol.dto.shopuser.ShopUserReadDto">
+		SELECT * FROM products WHERE productname LIKE '%' || #{productname} || '%'
+		OR brand LIKE '%' || #{brand} || '%'
+	</select>
+	
+   
+</mapper>
