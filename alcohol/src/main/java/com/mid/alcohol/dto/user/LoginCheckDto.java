@@ -20,7 +20,7 @@ public class LoginCheckDto {
 	
 	public User toEntity() {
 		
-	 return	User.builder().userEmail(userEmail).userPassword(userPassword).category(category).build();
+	 return	User.builder().userEmail(userEmail).userPassword(userPassword).categorys(category).build();
 		
 	}
 	

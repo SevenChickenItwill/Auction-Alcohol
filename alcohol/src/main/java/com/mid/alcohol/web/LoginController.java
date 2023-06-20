@@ -44,7 +44,7 @@ public class LoginController {
         session.setAttribute("userEmail", user.getUserEmail());
         session.setAttribute("userPassword", user.getUserPassword());
         session.setAttribute("userNickname", user.getUserNickname());
-        session.setAttribute("category", user.getCategory());
+        session.setAttribute("category", user.getCategorys());
         
         return "redirect:/";
     }

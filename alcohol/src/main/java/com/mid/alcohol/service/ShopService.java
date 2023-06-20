@@ -169,6 +169,7 @@ public class ShopService {
 		log.info("readPaymentListByUser(id={})",attribute);
 		
 		return shoprepository.readPaymentListByUser(attribute);
+	}
 
 	public ShopDetailDto readpd(long pid) {
 		// TODO Auto-generated method stub
