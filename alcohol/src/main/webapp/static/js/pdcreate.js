@@ -107,7 +107,7 @@
 		 if(photopaths==''){
 			 
 			 alert('사진을 업로드하지 않아 기본 사진으로 업로드됩니다');
-			 photopathinput.value='C:\imgs\defaultimg.jpg'
+			 photopathinput.value='C:/imgs/defaultimg.jpg';
 			 
 		 }
 		 

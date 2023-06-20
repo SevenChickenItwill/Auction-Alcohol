@@ -45,6 +45,7 @@ public class LoginController {
         session.setAttribute("userPassword", user.getUserPassword());
         session.setAttribute("userNickname", user.getUserNickname());
         session.setAttribute("category", user.getCategorys());
+        session.setAttribute("deactivationaccount", user.getDeactivationAccount());
         
         return "redirect:/";
     }

@@ -13,7 +13,8 @@
 	"USERNICKNAME" VARCHAR2(20 BYTE), 
 	"BASKETID" NUMBER, 
 	"STATUS" NUMBER DEFAULT 0, 
-	"PAYDATE" TIMESTAMP (6) DEFAULT systimestamp
+	"PAYDATE" TIMESTAMP (6) DEFAULT systimestamp, 
+	"TOTALAMOUNT" NUMBER(12,0)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -23,6 +24,18 @@
   TABLESPACE "USERS" ;
 
    COMMENT ON COLUMN "SCOTT"."ORDERS"."STATUS" IS '배송상태';
+--------------------------------------------------------
+--  DDL for Trigger TRIGGER1
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."TRIGGER1" 
+BEFORE INSERT OR UPDATE OF price, quantity ON ORDERS
+FOR EACH ROW
+BEGIN
+  :NEW.totalamount := :NEW.price * :NEW.quantity;
+END;
+/
+ALTER TRIGGER "SCOTT"."TRIGGER1" ENABLE;
 --------------------------------------------------------
 --  Constraints for Table ORDERS
 --------------------------------------------------------

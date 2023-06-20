@@ -17,10 +17,11 @@ public class LoginCheckDto {
 	private String userEmail;
 	private String userPassword;
 	private int category;
+	private int deactivationaccount;
 	
 	public User toEntity() {
 		
-	 return	User.builder().userEmail(userEmail).userPassword(userPassword).categorys(category).build();
+	 return	User.builder().userEmail(userEmail).userPassword(userPassword).categorys(category).deactivationAccount(deactivationaccount).build();
 		
 	}
 	
