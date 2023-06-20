@@ -1,6 +1,7 @@
 package com.mid.alcohol.test;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,10 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.mid.alcohol.dto.auction.AuctionCreateDto;
 import com.mid.alcohol.dto.auction.AuctionReadDto;
+import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.repository.AuctionProductRepository;
 import com.mid.alcohol.service.AuctionProductService;
+import com.mid.alcohol.service.ShopService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +30,19 @@ public class RepositoryTest {
 	private AuctionProductRepository respository;
 	@Autowired
 	private AuctionProductService service;
+	@Autowired
+	private ShopService shopservice;
+	
+	@Test
+	public void writeshop() {
+		
+		log.info("write()");
+		int count = 0;
+		for(int i = 0 ; i<100 ; i++) {
+		shopservice.createPd(ShopProductCreateDto.builder().alcohol_level(15.5).brand("대한주류"+count).category(new Random().nextInt(1,13)).expirationdate("2일 이내 섭취").hashtag("설명").photopath("C:\\imgs\\defaultimg.jpg").price(100*count).productname("맛있는전통술"+count).standard("355ml").unit("EA").userid("김돗개").build());
+		count++;
+		}
+	}
 	
 //	@Test
 	public void write() {
@@ -40,7 +56,7 @@ public class RepositoryTest {
 		log.info("write count = {}",result);
 	}
 	
-	@Test
+//	@Test
 	public void read() {
 		log.info("read()");
 		List<AuctionReadDto> list = service.read("test");
