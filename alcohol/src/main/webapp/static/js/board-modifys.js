@@ -43,6 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
 		//	return;
 		//}
 		
+		if (title.length > 1000) {
+			alert('제목은 1000자 이내로 작성하십시오.');
+			return;
+		}
+		
+		if (content.length > 825) {
+			alert('내용은 825자 이내로 작성하십시오.');
+			return;
+		}
 		
 		let dtoUrl = `/alcohol/api/recommend/update/${board_id}/${title}/${content}`;
 		

@@ -83,10 +83,10 @@
 			if (comment.nickname === userNickname) {
 				userCheckHTML = `
 				<div id="userCheck">
-				<button class="btnDelete" data-id="${comment.commentId}">
+				<button class="btnDelete btn btn-secondary" style="font-size: 16px; padding: 10px; width: 60px;" data-id="${comment.commentId}">
            		 삭제
          		</button>
-          		<button class="btnUpdate" data-id="${comment.commentId}">
+          		<button class="btnUpdate btn btn-secondary" data-id="${comment.commentId}" style="font-size: 16px; padding: 10px; width: 60px;">
            		 수정
           		</button>
         	</div>
@@ -97,11 +97,11 @@
 			<div class="card">
         <div id="commentcontent">
           <span class="d-none">${comment.commentId}</span>
-          <span>${comment.nickname}</span>
-          <span>(${time})</span>
+          <span class="fw-bold">${comment.nickname}</span>
+          <span class="text-secondary">(${time})</span>
         </div>
         <div>
-          <textarea id="writings">${comment.content}</textarea>
+          <textarea class="col-5 form-control" style="height: 100px; height: 100px;" id="writings">${comment.content}</textarea>
         </div>
         ${userCheckHTML}
       </div>
@@ -204,7 +204,7 @@
 	const createComment = (e) => {
 		e.preventDefault();
 		console.log('이벤트');
-		const pId = document.querySelector('input#pId').value;
+		const pId = document.querySelector('input#productid').value;
 		const content = textareaContent.value;
 		const nickname = inputUserNickname.value;
 		const pname = document.querySelector('input#productname').value;

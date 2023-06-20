@@ -102,7 +102,7 @@
 								<div>
 									<div>
 										<div style="width: 500px;">
-											<div>
+											<div style="word-break: break-all;">
 												<h5 class="fs-2 fw-bold" style="margin-bottom: 17px;">${ board.title }</h5>
 											</div>
 											<p class="userFont">${ board.nickname }(${ board.user_id })
@@ -115,23 +115,24 @@
 													id="recommendCnt"> 추천수 ${ board.recommend } <span
 													class="vr" style="margin-left: 8px; margin-right: 8px;">
 												</span>
+												</span> <span class="badge rounded-pill text-bg-warning"> 댓글<span
+													id="boardCommendCount"></span>
 												</span>
-												<span class="badge rounded-pill text-bg-warning">
-												 댓글<span id="boardCommendCount">[개수]</span>
-												 </span>
 											</p>
 											<div class="imgDiv">
 												<img src="data:image/jpeg;base64,${ image }" alt="이미지" />
 											</div>
-											
-											<p>${ board.content }</p>
-
+											<div style="word-break: break-all;">
+												<p>${ board.content }</p>
+											</div>
 											<div class="recommendBtn">
 												<div style="margin-right: 10px;">
-													<input type="button" class="btn btn-success" value="추천" id="recommendUp" />
+													<input type="button" class="btn btn-info" value="추천"
+														id="recommendUp" />
 												</div>
 												<div style="margin-left: 10px;">
-													<input class="btn btn-success" type="button" value="비추천" id="recommendDo" />
+													<input class="btn btn-info" type="button" value="비추천"
+														id="recommendDo" />
 												</div>
 											</div>
 
@@ -140,38 +141,55 @@
 								</div>
 							</div>
 						</form>
-						<input class="d-none" type="text" value="${ board.nickname }"
-							name="writerid" /> <input class="d-none" type="text"
-							value="${ sessionScope.userNickname }" name="checkid" /> 
 						
+
+						<c:set var="writerid" value="${ board.nickname }"></c:set>
+						<c:set var="checkid" value="${ sessionScope.userNickname }"></c:set>
+
 						<div class="d-grid gap-2">
-							<c:url value="/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0" var="boardList" />
-							<a href="${ boardList }" class="btn btn-outline-secondary" type="button">목록페이지</a>
+							<c:url
+								value="/bulletinboard/board/list?num=0&keyword=&category=&boardNumber=0"
+								var="boardList" />
+							<a href="${ boardList }" class="btn btn-dark"
+								type="button">목록페이지</a>
 						</div>
-						<div class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 10px;">
-							<c:if test="${ checkid eq writerid }">
+						<c:if test="${ checkid eq writerid }">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end"
+								style="margin-top: 10px;">
 								<c:url var="boardModify" value="/bulletinboard/board/modify">
 									<c:param name="id" value="${ board.board_id }"></c:param>
 								</c:url>
-								<a href="${ boardModify }" class="btn btn-outline-secondary " type="button">수정하기</a>
-								<button class="btn btn-outline-secondary" type="button"
+								<a href="${ boardModify }" class="btn btn-dark "
+									type="button">수정하기</a>
+								<button class="btn btn-dark" type="button"
 									id="deleteBoardBtn">삭제하기</button>
-							</c:if>
-						</div>
-						
+							</div>
+						</c:if>
+						<c:if test="${ checkid ne writerid }">
+							<div class="d-grid gap-2 d-md-flex justify-content-md-end"
+								style="margin-top: 10px;">
+								<c:url var="boardModify" value="/bulletinboard/board/modify">
+									<c:param name="id" value="${ board.board_id }"></c:param>
+								</c:url>
+								<a href="${ boardModify }" class="btn btn-dark d-none"
+									type="button">수정하기</a>
+								<button class="btn btn-dark d-none" type="button"
+									id="deleteBoardBtn">삭제하기</button>
+							</div>
+						</c:if>
+
 						<hr style="margin-top: 30px; margin-bottom: 5px;" />
-						
+
 						<div>
 							<input id="updateCommentId" type="hidden" />
 						</div>
-						
-						
+
 						<div>
 							<span>전체 댓글</span> <span id="commentCount"></span>
 						</div>
-						
+
 						<hr style="margin-top: 5px; margin-bottom: 15px;" />
-						
+
 						<div class="form-floating" style="height: 100px; height: 30px;">
 							<div class="form-control" style="padding: 5px;">
 								<label for="viewUserNickname">닉네임</label>
@@ -179,18 +197,20 @@
 								<span name="viewUserNickname">${ sessionScope.userNickname }</span>
 							</div>
 						</div>
-						
-						<input value="${ sessionScope.userNickname }" class="d-none" id="userNickname"
-								readonly />
-						
+
+						<input value="${ sessionScope.userNickname }" class="d-none"
+							id="userNickname" readonly />
+
 						<div class="form-floating mb-3">
-							<textarea class="col-5 form-control" style="height: 100px; height: 150px;"
-								 placeholder="댓글 쓰기" id="content"></textarea>
+							<textarea class="col-5 form-control"
+								style="height: 100px; height: 150px;" placeholder="댓글 쓰기"
+								id="content"></textarea>
 						</div>
 						<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-							<button type="button" class="btn btn-secondary" id="commentReg" style="margin-bottom: 30px;">등록</button>
+							<button type="button" class="btn btn-dark" id="commentReg"
+								style="margin-bottom: 30px;">등록</button>
 						</div>
-						
+
 						<hr style="margin-top: 5px; margin-bottom: 15px;" />
 
 						<div id="replies"></div>

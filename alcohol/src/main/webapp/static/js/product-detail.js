@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const inputProductid = document.querySelector('input#productid');
 	const inputPrice = document.querySelector('input#price');
 	const inputQuantity = document.querySelector('input#quantity');
-
+	const inputPname = document.querySelector('input#productname');
 
 
 	const sendToBasket = (e) => {
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const productid = inputProductid.value;
 		const price = inputPrice.value;
 		const quantity = inputQuantity.value;
+		const productname = inputPname.value;
 		
 		var a = 1;
 		
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 
-		const reqUrl = `/alcohol/api/shop/pddetails/productid=${productid}/price=${price}/quantity=${quantity}`
+		const reqUrl = `/alcohol/api/shop/pddetails/productid=${productid}/price=${price}/quantity=${quantity}/productname=${productname}`
 		
 		axios.post(reqUrl)
 			.then((response) => {

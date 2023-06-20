@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// 댓글 카운트
 	const boardCommendCount = document.querySelector('span#boardCommendCount');
-
+	
 	deleteBtn.addEventListener('click', (e) => {
 
 		const board_id = inputId.value;
@@ -205,10 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
 			// 조건문을 먹여 닉네임 일치 시 삭제 수정 버튼을 보여줌
 			if (comment.nickname === userNickname) {
 				userCheckHTML = `
-          <button class="btnDelete btn btn-secondary" style="font-size: 16px; padding: 10px; width: 60px;" data-id="${comment.commentId}">
+          <button class="btnDelete btn btn-dark" style="font-size: 16px; padding: 10px; width: 60px;" data-id="${comment.commentId}">
             삭제
           </button>
-          <button class="btnUpdate btn btn-secondary" data-id="${comment.commentId}" style="font-size: 16px; padding: 10px; width: 60px;">
+          <button class="btnUpdate btn btn-dark" data-id="${comment.commentId}" style="font-size: 16px; padding: 10px; width: 60px;">
             수정
           </button>
       `;
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		btnSave.textContent = '수정 완료';
 		btnSave.classList.add('btnSave');
 		btnSave.classList.add('btn');
-		btnSave.classList.add('btn-secondary');
+		btnSave.classList.add('btn-dark');
 		btnSave.style.padding = '10px';
 		btnSave.style.width = '100px';
 		btnSave.style.marginRight = '5px';
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		btnCancel.textContent = '수정 취소';
 		btnCancel.classList.add('btnCancel');
 		btnCancel.classList.add('btn');
-		btnCancel.classList.add('btn-secondary');
+		btnCancel.classList.add('btn-dark');
 		btnCancel.style.padding = '10px';
 		btnCancel.style.width = '100px';
 
@@ -361,6 +361,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		if (content === '') {
 			alert('댓글 내용을 입력하세요.');
+			return;
+		}
+		
+		if (content.length > 500) {
+			alert('댓글은 500자 이하로 작성가능합니다.');
 			return;
 		}
 
