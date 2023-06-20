@@ -244,15 +244,15 @@ body{
 					<input id="productid" type="text" value="${ product.productid }" name="productid" class="d-none">
 					<div>
 						<label>상품명</label>
-						<input class="form-control" type="text" name="pname" value="${ product.pname }" >
+						<input maxlength="45" class="form-control" type="text" name="pname" value="${ product.pname }" >
 					</div>
 					<div>
 						<label>제조사(생산자)</label>
-						<input class="form-control" type="text" name="constructor" value="${ product.constructor }" >
+						<input maxlength="45" class="form-control" type="text" name="constructor" value="${ product.constructor }" >
 					</div>
 					<div>
 						<label>브랜드</label>
-						<input class="form-control" type="text" name="brandname" value="${ product.brandname }" >
+						<input maxlength="45" class="form-control" type="text" name="brandname" value="${ product.brandname }" >
 					</div>
 					<div>
 						<label>종류</label>
@@ -273,7 +273,7 @@ body{
 					</div>
 					<div>
 						<label>원가</label>
-						<input class="form-control" type="number" name="cost" value="${ product.cost }" >
+						<input pattern="\d{1,15}" class="form-control" type="number" name="cost" value="${ product.cost }" >
 					</div>
 					<div>
 						<input class="form-control" type="submit" value="수정완료"> 

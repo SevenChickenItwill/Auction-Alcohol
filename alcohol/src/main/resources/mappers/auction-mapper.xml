@@ -385,8 +385,14 @@
 	</delete>
 	
 	<update id="updatebat">
-		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid}, status = ${status} WHERE aid = #{aid}
+		update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid}, status = #{status}
+        WHERE aid = #{aid}
 	</update>
+    
+    <update id="updatebatDate">
+        update auction set bidCount = #{bidCount}, bidder = #{bidder}, nowbid = #{nowBid}, status = #{status}, auctionend=systimestamp
+        WHERE aid = #{aid}
+    </update>
 
     <update id="updateStatus">
         update auction set status = 2 WHERE #{now} > auctionend AND status != 2
@@ -411,6 +417,7 @@
     	where p.userid = #{userid}
     	AND o.paydate >= #{date}
     	GROUP BY EXTRACT(MONTH FROM o.paydate)
+        ORDER BY EXTRACT(MONTH FROM o.paydate) ASC
     </select>
     
     <select id="readAuctionData" resultType="com.mid.alcohol.dto.auction.AuctionChartDataDto">
@@ -419,6 +426,7 @@
     	JOIN auctionproducts p ON p.productid = a.productid
     	WHERE a.auctioneer = #{userid}
     	GROUP BY EXtract(MONTH FROM a.auctionend)
+        ORDER BY EXTRACT(MONTH FROM a.auctionend) ASC
     </select>
     
     <select id="readAuctionStatus" resultType="com.mid.alcohol.domain.auction.Auction" >

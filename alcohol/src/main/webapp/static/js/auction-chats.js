@@ -48,7 +48,7 @@
 		 		<input class="d-none" name="cid${cid}" id="cid${cid}" value="${cid}"/>`;
 		 ;
 		 } else{
-			 html = `<input class="chatings form-control text-bg-secondary" type="text" value="${userid} : ${message}" readonly="readonly"/>
+			 html = `<input style="text-align: left;" class="chatings form-control text-bg-secondary" type="text" value="${userid} : ${message}" readonly="readonly"/>
 			 <input class="d-none" name="cid${cid}" id="cid${cid}" value="${cid}"/>`;
 		 }
 		 nowbids.value = `${nowbid}`;
@@ -135,6 +135,9 @@
 			 dealbid = `${bidnow + (passbid * 0.05)}`;
 		 }
 		 dealbid = parseInt(dealbid);
+		 if(dealbid>=passbid){
+			 dealbid = parseInt(passbid);
+		 }
 		 let batmsg = `${userid} 님이 ${dealbid} 원 금액에 배팅했습니다.`;
 		 let bidup = `${dealbid}`;
 		 let countup = `${countbid+1}`;
@@ -190,7 +193,7 @@
 				 nowbid : passbid,
 				 bidder : userid,
 				 bidcount : countup,
-				 status : status
+				 status : 2
 				 
 			 }
 			 

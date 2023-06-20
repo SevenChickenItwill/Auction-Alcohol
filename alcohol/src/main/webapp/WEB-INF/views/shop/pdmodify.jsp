@@ -230,22 +230,22 @@ body{
 			<form id="modifyform" class="form">
 				<input type="number" name="pid" id="pid" class="d-none" value="${detail.pid }"/>
 				<label class="form-label" for="productname">상품명</label>
-				<input class="form-control" type="text" required="required" name="productname" id="productname" value="${detail.productname }"/>
+				<input maxlength="45" class="form-control" type="text" required="required" name="productname" id="productname" value="${detail.productname }"/>
 				<label class="form-label" for="standard">규격</label>
-				<input class="form-control" type="text" required="required" name="standard" id="standard" value="${ detail.standard }"/>
+				<input maxlength="45" class="form-control" type="text" required="required" name="standard" id="standard" value="${ detail.standard }"/>
 				<label class="form-label" for="unit">단위</label>
-				<input class="form-control" type="text" required="required" name="unit" id="unit" value="${ detail.unit }"/>
+				<input maxlength="45" class="form-control" type="text" required="required" name="unit" id="unit" value="${ detail.unit }"/>
 				<label class="form-label" for="price">가격</label>
-				<input class="form-control" type="number" required="required" name="price" id="price" value="${ detail.price }"/>
+				<input pattern="\d{1,15}" class="form-control" type="number" required="required" name="price" id="price" value="${ detail.price }"/>
 				<label class="form-label" for="brand">브랜드</label>
-				<input class="form-control" type="text" required="required" name="brand" id="brand" value="${ detail.brand }"/>
+				<input maxlength="45" class="form-control" type="text" required="required" name="brand" id="brand" value="${ detail.brand }"/>
 				<input value="${ sessionScope.userNickname }" class="d-none" type="text" required="required" name="userid" id="userid" />
 				<label class="form-label" for="expirationdate">유통기한</label>
-				<input class="form-control" type="text" required="required" name="expirationdate" id="expirationdate" value="${ detail.expirationdate }"/>
+				<input maxlength="45" class="form-control" type="text" required="required" name="expirationdate" id="expirationdate" value="${ detail.expirationdate }"/>
 				<label class="form-label" for="alcohol_level">도수</label>
-				<input class="form-control" type="number" required="required" name="alcohol_level" id="alcohol_level" value="${ detail.alcohol_level }"/>
+				<input pattern="\d{1,15}" class="form-control" type="number" required="required" name="alcohol_level" id="alcohol_level" value="${ detail.alcohol_level }"/>
 				<label class="form-label" for="hashtag">해시태그</label>
-				<input class="form-control" type="text" required="required" name="hashtag" id="hashtag" value="${ detail.hashtag }"/>
+				<input maxlength="98" class="form-control" type="text" required="required" name="hashtag" id="hashtag" value="${ detail.hashtag }"/>
 				<input class="d-none" type="text" required="required" name="photopath" id="photopath" value="${ detail.photopath }" />
 				<label class="form-label" for="category">카테고리</label>
 					<%-- value 는 category 테이블의 코드랑 동일하게 설정함. --%>

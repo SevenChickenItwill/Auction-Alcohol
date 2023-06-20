@@ -123,7 +123,9 @@ public interface AuctionRepository {
 
 	List<Auction> readAuctionStatus();
 	
-	int automakeRoom(UserAuction room); 
+	int automakeRoom(UserAuction room);
+
+	int updatebatDate(Auction entity); 
 	
 }
 

@@ -274,7 +274,7 @@ body{
 				</c:url>
 				<form method="post" action="${ search }" id="searchForm" class="form">
 					<label class="form-label" for="searchtext" >검색 내용</label> 
-					<input class="form-control my-3" name="searchtext" id="searchtext" type="text" /> 
+					<input maxlength="45" class="form-control my-3" name="searchtext" id="searchtext" type="text" /> 
 					
 					<input class="d-none" type="text" name="userid" id="userid"	value="${ sessionScope.userNickname }" /> 
 					<input class="form-control" type="submit" id="btnAuctionSearch" value="검색" />
@@ -326,8 +326,8 @@ body{
 				<div class="form-control">
 					<div class="form-control">
 						<label for="minimum">현재 입찰가</label> 
-						<input type="number"
-							id="minimum" name="minimum" value="10000" style="border-radius: 5px;" /> ~ <input
+						<input type="number" pattern="\d{1,15}"
+							id="minimum" name="minimum" value="10000" style="border-radius: 5px;" /> ~ <input pattern="\d{1,15}"
 							type="number" id="maximum" name="maximum" value="1000000" style="border-radius: 5px;" />
 					</div>
 				</div>
@@ -340,7 +340,7 @@ body{
 					</select>
 				</div>
 				<div class="form-control">
-					<label for="searchtext2">검색 내용</label> <input  type="text"
+					<label for="searchtext2">검색 내용</label> <input maxlength="45" type="text"
 						id="searchtext2" name="searchtext2" class="card form-control" />
 				</div>
 
