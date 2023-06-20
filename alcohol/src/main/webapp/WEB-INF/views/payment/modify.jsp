@@ -22,7 +22,7 @@
 
 <body>
 	<header class="my-2 p-5 text-center text-bg-dark">
-		<h1>배송지 변경/수정 페이지</h1>
+	<h3>배송지 수정</h3>
 	</header>
 	
 	

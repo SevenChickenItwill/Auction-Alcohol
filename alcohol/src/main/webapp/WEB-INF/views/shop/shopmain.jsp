@@ -24,56 +24,45 @@
 	div#page {
 		text-Align: center;
 	}
+	
+	a#title:hover {
+		color: pink;
+	}
+	
+	a#nick-name:hover{
+		color: #F7BE81;
+	}
+	
+	header {
+		color: white;
+	}
 	</style>
 </head>
 
 <body>
-	<header>
-		<nav class="navbar navbar-expand-lg bg-light" style="background-color: transparent">
+	<header background-color:dark;>
+		<nav class="navbar navbar-dark bg-dark fixed-top">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">칠면주</a>
-				<button class="navbar-toggler" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false"
-					aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><hr class="dropdown-divider"></li>
-								<li><a class="dropdown-item" href="#">Something
-										elsehere</a></li>
-							</ul></li>
-						<li class="nav-item"><a class="nav-link disabled">Disabled</a></li>
-					</ul>
-					<!---------------------------------------------------------------------------->
-					<li class="nav-item">${ sessionScope.userNickname }님</li>
-					<div>
-						<c:url var="logout" value="/account/logout"></c:url>
-						<a href="${ logout }"><button>로그아웃</button></a>
-					</div>
+				<a id="title" class="navbar-brand" href="#">칠면주 주류 쇼핑몰</a>
+				<!---------------------------------------------------------------------------->
+				<div>
+				<a id="nick-name">${ sessionScope.userNickname }님</a>
+					<c:url var="logout" value="/account/logout"></c:url>
+					<a href="${ logout }"><button type="button" class="btn btn-dark">로그아웃</button></a>
 				</div>
 			</div>
 		</nav>
-		<hr />
+
 	</header>
 
 
-	<h1>상품 찾기</h1>
+	<h1>dd</h1>
+	<br>
+	<h2>    </h2>
 	<c:url var="productstype" value="/shop/shopmain" >
 		<c:param name="num" value="0"></c:param>
 	</c:url>
-	
+	<div style=" display: flex; justify-content: space-between; align-items: center;">
 	<form method="post" action="${ productstype }">
 		<select name="category">
 			<option value="1">탁주</option>
@@ -89,11 +78,12 @@
 			<option value="11">주정</option>
 			<option value="12">기타주류</option>
 		</select>
-		<input type="submit" value="찾기">
+		<button type="submit" class="btn btn-dark">찾기</button>
 	</form>
 
 
 	<!-- 상품명/브랜드명으로 검색하기 -->	
+	<div>
 	<c:url value="/shop/shopsearch" var="search"></c:url>
 	<form class="d-flex" action="${ search }" role="search">
 		<input type="number" class="d-none" name="page" value="0" />
@@ -102,9 +92,11 @@
 			<option value="brand">브랜드</option>
 			<option value="pnamebrand">상품명 + 브랜드</option>
 		</select>
-		<input class="form-control me-2" name="keyword" placeholder="Search" required />
-		<input type="submit" value="검색" />
+		<input class="form-control me-2" name="keyword" placeholder="검색어를 입력해주세요" style="width: 400px;" required />
+		<button type="submit" class="btn btn-dark">검색</button>
 	</form>
+	</div>
+	</div>
 	<hr />
 
 
@@ -121,19 +113,21 @@
 				</c:url>
 				<div id="list" class="card" style="width: 18rem;">
 					<a href="">
+							<li class="list-group-item">상품명: ${ list.productname }</li>
 						<div class="card-body">
 							<li class="list-group-item"><img width="100%" height="150px" src="data:image/jpeg;base64,${list.photopath}" /></li>
 						</div>
+						
+						
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item"></li>
 							<li class="list-group-item">브랜드: ${ list.brand }</li>
-							<li class="list-group-item">상품정보: ${ list.productname }, 용량: ${ list.standard }, 규격: ${ list.unit }</li>
-							<li class="list-group-item">도수: ${ list.alcohol_level }, 유통기한: ${ list.expirationdate }</li>
+							<li class="list-group-item">상품정보: ${ list.hashtag } <br> 용량: ${ list.standard },<br> 규격: ${ list.unit }</li>
+							<li class="list-group-item">도수: ${ list.alcohol_level },<br> 유통기한: ${ list.expirationdate }</li>
 							<li class="list-group-item">가격: ${ list.price }</li>
 						</ul>
 					</a>
 					<div class="card-body">
-						<a href="" class="card-link">구매하기</a>
+						<button type="button" class="btn btn-dark">구매하기</button>
 					</div>
 				</div>
 			</c:forEach>
