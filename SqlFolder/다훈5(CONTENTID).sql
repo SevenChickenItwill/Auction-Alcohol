@@ -1,0 +1,80 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 화요일-6월-20-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table CHAT
+--------------------------------------------------------
+
+  CREATE TABLE "SCOTT"."CHAT" 
+   (	"CID" NUMBER(8,0), 
+	"USERID" VARCHAR2(15 CHAR), 
+	"CONVERSATION" VARCHAR2(500 CHAR), 
+	"TEXTTYPE" NUMBER(1,0) DEFAULT 0, 
+	"CONTENTID" NUMBER(8,0), 
+	"CREATEDTIME" TIMESTAMP (6) DEFAULT systimestamp
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index CHAT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SCOTT"."CHAT_PK" ON "SCOTT"."CHAT" ("CONTENTID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Trigger CHAT_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."CHAT_TRG" 
+BEFORE INSERT ON CHAT 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SCOTT"."CHAT_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger CHAT_TRG1
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."CHAT_TRG1" 
+BEFORE INSERT ON CHAT 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.CONTENTID IS NULL THEN
+      SELECT CHAT_SEQ.NEXTVAL INTO :NEW.CONTENTID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SCOTT"."CHAT_TRG1" ENABLE;
+--------------------------------------------------------
+--  Constraints for Table CHAT
+--------------------------------------------------------
+
+  ALTER TABLE "SCOTT"."CHAT" MODIFY ("CID" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."CHAT" MODIFY ("USERID" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."CHAT" MODIFY ("CONVERSATION" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."CHAT" MODIFY ("CONTENTID" NOT NULL ENABLE);
+  ALTER TABLE "SCOTT"."CHAT" ADD CONSTRAINT "CHAT_PK" PRIMARY KEY ("CONTENTID")
+  USING INDEX "SCOTT"."CHAT_PK"  ENABLE;
+  ALTER TABLE "SCOTT"."CHAT" MODIFY ("CREATEDTIME" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table CHAT
+--------------------------------------------------------
+
+  ALTER TABLE "SCOTT"."CHAT" ADD CONSTRAINT "CHAT_FK1" FOREIGN KEY ("CID")
+	  REFERENCES "SCOTT"."USERAUCTION" ("CID") ENABLE;

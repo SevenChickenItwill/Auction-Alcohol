@@ -1,16 +1,17 @@
 --------------------------------------------------------
---  ∆ƒ¿œ¿Ã ª˝º∫µ  - ±›ø‰¿œ-6ø˘-09-2023   
+--  ÌååÏùºÏù¥ ÏÉùÏÑ±Îê® - ÌôîÏöîÏùº-6Ïõî-20-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table BASKET
 --------------------------------------------------------
 
   CREATE TABLE "SCOTT"."BASKET" 
-   (	"USERID" VARCHAR2(15 BYTE), 
+   (	"USERNICKNAME" VARCHAR2(15 BYTE), 
 	"PRODUCTID" NUMBER(8,0), 
 	"BASKETID" NUMBER(8,0), 
 	"QUANTITY" NUMBER(8,0), 
-	"PRICE" NUMBER(10,0)
+	"PRICE" NUMBER(10,0), 
+	"PNAME" VARCHAR2(20 BYTE)
    ) SEGMENT CREATION IMMEDIATE 
   PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
  NOCOMPRESS LOGGING
@@ -18,10 +19,6 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
-REM INSERTING into SCOTT.BASKET
-SET DEFINE OFF;
-Insert into SCOTT.BASKET (USERID,PRODUCTID,BASKETID,QUANTITY,PRICE) values ('test',4,1,3,1000);
-Insert into SCOTT.BASKET (USERID,PRODUCTID,BASKETID,QUANTITY,PRICE) values ('test',6,2,2,5000);
 --------------------------------------------------------
 --  DDL for Index BASKET_PK
 --------------------------------------------------------
@@ -45,6 +42,7 @@ BEGIN
     NULL;
   END COLUMN_SEQUENCES;
 END;
+
 /
 ALTER TRIGGER "SCOTT"."BASKET_TRG" ENABLE;
 --------------------------------------------------------
@@ -60,19 +58,49 @@ BEGIN
     NULL;
   END COLUMN_SEQUENCES;
 END;
+
 /
 ALTER TRIGGER "SCOTT"."BASKET_TRG1" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BASKET_TRG2
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."BASKET_TRG2" 
+BEFORE INSERT ON BASKET 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SCOTT"."BASKET_TRG2" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger BASKET_TRG3
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."BASKET_TRG3" 
+BEFORE INSERT ON BASKET 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.BASKETID IS NULL THEN
+      SELECT BASKET_SEQ3.NEXTVAL INTO :NEW.BASKETID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SCOTT"."BASKET_TRG3" ENABLE;
 --------------------------------------------------------
 --  Constraints for Table BASKET
 --------------------------------------------------------
 
+  ALTER TABLE "SCOTT"."BASKET" MODIFY ("PNAME" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."BASKET" MODIFY ("BASKETID" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."BASKET" MODIFY ("PRODUCTID" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."BASKET" ADD CONSTRAINT "BASKET_PK" PRIMARY KEY ("BASKETID")
-  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
-  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
-  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
-  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
-  TABLESPACE "USERS"  ENABLE;
+  USING INDEX "SCOTT"."BASKET_PK"  ENABLE;
   ALTER TABLE "SCOTT"."BASKET" MODIFY ("PRICE" NOT NULL ENABLE);
   ALTER TABLE "SCOTT"."BASKET" MODIFY ("QUANTITY" NOT NULL ENABLE);

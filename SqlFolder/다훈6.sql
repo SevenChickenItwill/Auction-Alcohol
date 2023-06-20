@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  파일이 생성됨 - 수요일-6월-14-2023   
+--  파일이 생성됨 - 화요일-6월-20-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table PRODUCTPHOTO
@@ -15,6 +15,3 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
-REM INSERTING into SCOTT.PRODUCTPHOTO
-SET DEFINE OFF;
-

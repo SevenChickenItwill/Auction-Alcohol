@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  파일이 생성됨 - 금요일-6월-09-2023   
+--  파일이 생성됨 - 화요일-6월-20-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table PAYMENT
@@ -27,9 +27,6 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
-REM INSERTING into SCOTT.PAYMENT
-SET DEFINE OFF;
-Insert into SCOTT.PAYMENT (ORDER_ID,ORDER_PHONE,ORDER_EMAIL,ORDER_ADRESS,PRODUCT_PRICE,TOTAL_PRICE,PRODUCT_NAME,PRODUCT_QUANTITY,PRODUCT_INFO,DERIVERY_FEE,CARD_NUMBER,ORDER_NAME,SELLER_NAME,ORDERDATE_TIME) values ('3','010-0000-0000','admin@itwill','gangnam itwill',1000,1000,'aaaa',1,'dddddddd',100,'23124','admin','fff',to_timestamp('23/06/02 10:02:59.784000000','RR/MM/DD HH24:MI:SSXFF'));
 --------------------------------------------------------
 --  DDL for Index PAYMENT_PK
 --------------------------------------------------------
@@ -95,13 +92,28 @@ FOR EACH ROW
 BEGIN
   <<COLUMN_SEQUENCES>>
   BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SCOTT"."PAYMENT_TRG3" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger PAYMENT_TRG4
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SCOTT"."PAYMENT_TRG4" 
+BEFORE INSERT ON PAYMENT 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
     IF INSERTING AND :NEW.ORDER_ID IS NULL THEN
       SELECT PAYMENT_SEQ3.NEXTVAL INTO :NEW.ORDER_ID FROM SYS.DUAL;
     END IF;
   END COLUMN_SEQUENCES;
 END;
 /
-ALTER TRIGGER "SCOTT"."PAYMENT_TRG3" ENABLE;
+ALTER TRIGGER "SCOTT"."PAYMENT_TRG4" ENABLE;
 --------------------------------------------------------
 --  Constraints for Table PAYMENT
 --------------------------------------------------------

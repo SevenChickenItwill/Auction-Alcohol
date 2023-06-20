@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  파일이 생성됨 - 금요일-6월-09-2023   
+--  파일이 생성됨 - 화요일-6월-20-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table USERAUCTION
@@ -16,12 +16,6 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
-REM INSERTING into SCOTT.USERAUCTION
-SET DEFINE OFF;
-Insert into SCOTT.USERAUCTION (CID,CHATROOM,MEMBETCOUNT) values (14,'테스트경매',0);
-Insert into SCOTT.USERAUCTION (CID,CHATROOM,MEMBETCOUNT) values (6,'붓싼테스트',0);
-Insert into SCOTT.USERAUCTION (CID,CHATROOM,MEMBETCOUNT) values (15,'채팅방 생성용',0);
-Insert into SCOTT.USERAUCTION (CID,CHATROOM,MEMBETCOUNT) values (8,'대한경매특판',0);
 --------------------------------------------------------
 --  DDL for Index CI_UA_PK
 --------------------------------------------------------

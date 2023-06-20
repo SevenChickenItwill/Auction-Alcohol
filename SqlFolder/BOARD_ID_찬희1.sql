@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  파일이 생성됨 - 수요일-6월-14-2023   
+--  파일이 생성됨 - 화요일-6월-20-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table BULLETINBOARD
@@ -23,11 +23,6 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
-REM INSERTING into SCOTT.BULLETINBOARD
-SET DEFINE OFF;
-Insert into SCOTT.BULLETINBOARD (BOARD_ID,TITLE,NICKNAME,USER_ID,TIME,VIEWS,RECOMMEND,CONTENT,CATEGORY,IMAGE) values (28,'2233','테슬라대주주','leechanhee@gmail.com',to_date('2023/06/14 18:27:01','YYYY/MM/DD HH24:MI:SS'),0,0,'222222',1,'C:\workspace\lab-midproject\middlePj\alcohol\src\main\webapp\static\images\c5cec32c-829d-455b-8916-ed54b78df410dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg');
-Insert into SCOTT.BULLETINBOARD (BOARD_ID,TITLE,NICKNAME,USER_ID,TIME,VIEWS,RECOMMEND,CONTENT,CATEGORY,IMAGE) values (27,'1111122','테슬라대주주','leechanhee@gmail.com',to_date('2023/06/14 18:26:53','YYYY/MM/DD HH24:MI:SS'),0,0,'1122',1,'C:\workspace\lab-midproject\middlePj\alcohol\src\main\webapp\static\images\946c531a-4761-4d73-a231-8cc6626ec6469fc764ca0704ce3ebaba47c50f8b7e8f617ea012db208c18f6e83b1a90a7baa7.png');
-Insert into SCOTT.BULLETINBOARD (BOARD_ID,TITLE,NICKNAME,USER_ID,TIME,VIEWS,RECOMMEND,CONTENT,CATEGORY,IMAGE) values (29,'312312','테슬라대주주','leechanhee@gmail.com',to_date('2023/06/14 18:28:00','YYYY/MM/DD HH24:MI:SS'),0,0,'312312',0,'C:\workspace\lab-midproject\middlePj\alcohol\src\main\webapp\static\images\57f8002d-580d-43cb-8a2b-8a605f0ea0a9mainBackground2.jpg');
 --------------------------------------------------------
 --  DDL for Index BULLETINBOARD_PK
 --------------------------------------------------------

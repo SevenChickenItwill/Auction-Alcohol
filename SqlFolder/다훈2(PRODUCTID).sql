@@ -1,5 +1,5 @@
 --------------------------------------------------------
---  파일이 생성됨 - 금요일-6월-09-2023   
+--  파일이 생성됨 - 화요일-6월-20-2023   
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table AUCTIONPRODUCTS
@@ -20,11 +20,6 @@
   PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
   BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
   TABLESPACE "USERS" ;
-REM INSERTING into SCOTT.AUCTIONPRODUCTS
-SET DEFINE OFF;
-Insert into SCOTT.AUCTIONPRODUCTS (PRODUCTID,PNAME,CATEGORY,CONSTRUCTOR,BRANDNAME,COST,USERID) values (21,'울산청주',1,'김울산','울산주류',5500,'test');
-Insert into SCOTT.AUCTIONPRODUCTS (PRODUCTID,PNAME,CATEGORY,CONSTRUCTOR,BRANDNAME,COST,USERID) values (22,'붓싼주류',6,'김붓싼','붓싼데이',1000,'test');
-Insert into SCOTT.AUCTIONPRODUCTS (PRODUCTID,PNAME,CATEGORY,CONSTRUCTOR,BRANDNAME,COST,USERID) values (1,'서울탁주',1,'김다훈','서울주류',8000,'test');
 --------------------------------------------------------
 --  DDL for Index ACP_PID_PK
 --------------------------------------------------------
