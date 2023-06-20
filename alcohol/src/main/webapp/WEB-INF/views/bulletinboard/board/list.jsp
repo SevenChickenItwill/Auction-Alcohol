@@ -149,8 +149,8 @@
 							class="btn btn-dark btn-lg">추천순</button></a>
 					<c:url value="/bulletinboard/board/create" var="dealCreated" />
 					<c:if test="${ sessionScope.userNickname ne null }">
-						<a href="${ dealCreated }" class="textNav"><button
-								type="button" class="btn btn-dark btn-lg">새글작성</button></a>
+						<a href="${ dealCreated }" class="textNav">
+						<button type="button" class="btn btn-dark btn-lg">새글작성</button></a>
 					</c:if>
 				</div>
 				<!-- 포스트 테이블 -->
