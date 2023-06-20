@@ -29,5 +29,21 @@
 		VALUES (#{productname}, #{standard}, #{unit}, #{price}, #{brand}, #{userid}, #{expirationdate}, #{alcohol_level}, #{hashtag}, #{photopath}, #{category})
 	</insert>
 	
+
 	
+
+	<select id="readdetail" resultType="com.mid.alcohol.domain.shop.Products">
+		SELECT * FROM products WHERE pid = #{pid}
+	</select>
+	
+	<delete id="deletepd">
+		DELETE FROM products WHERE pid = #{pid}
+	</delete>
+	
+	<update id="updatepd">
+		UPDATE products SET productname=#{productname}, standard=#{standard}, unit=#{unit}, price=#{price}, brand=#{brand}, userid=#{userid}, expirationdate=#{expirationdate}, alcohol_level=#{alcohol_level}, hashtag=#{hashtag}, photopath=#{photopath}, category=#{category}
+		WHERE pid = #{pid}
+	</update>
+    
+
 </mapper>

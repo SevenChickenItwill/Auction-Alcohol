@@ -5,7 +5,7 @@
  document.addEventListener('DOMContentLoaded',()=>{
 	 
 	 const btnsearch = document.querySelector('button#btnsearch');
-	 const userid = document.querySelector('input#userid');
+	 const userid = document.querySelector('input#userid').value;
 	 const tbodys = document.querySelector('tbody#tbodys');
 	 const searchtext = document.querySelector('input#searchtext');
 	 const searchoption = document.querySelector('select#searchoption');
@@ -18,7 +18,7 @@
 		 
 		 
 		 
-		 const reqUrl = '/alcohol/api/shop/serach';
+		 const reqUrl = '/alcohol/api/shop/search';
 		 const data = {
 			 
 			 userid : userid,

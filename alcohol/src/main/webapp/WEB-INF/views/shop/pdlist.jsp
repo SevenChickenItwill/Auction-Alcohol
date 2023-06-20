@@ -12,11 +12,95 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     rel="stylesheet"
     crossorigin="anonymous">
+    <style>
+    .sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200px;
+    
+
+}
+.mains{
+    margin-left: 220px;
+}
+
+.headers{
+    margin-left:220px;
+}
+    
+    </style>
 	</head>
 	<body>
-		
-		<header><h1>상품 리스트</h1></header>
-		<main>
+	
+	<div class="flex-shrink-0 p-3 bg-white sidebars" style="width: 200px;">
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <c:url var="auctionProduct" value="/auction/product" />
+        <a href="${ auctionProduct }" class="nav-link link-dark" aria-current="page">
+          경매상품조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="productcreate" value="/auction/productcreate" />
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0">
+          경매상품등록
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionManagement" value="/auction/auction" />
+        <a href="${ auctionManagement }" class="nav-link link-dark">
+          경매조회/수정
+        </a>
+      </li>
+      <li>
+        <c:url var="auctionadmin" value="/auction" />
+        <a href="${ auctionadmin }" class="nav-link link-dark">
+          관리자 메뉴
+        </a>
+      </li>
+            <li>
+      	<c:url var="shopproducts" value="/shop/pdlist" />
+        <a href="${ shopproducts }" class="nav-link link-dark">
+          쇼핑몰 상품조회
+        </a>
+      </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="${ shopcreate }" class="nav-link link-dark">
+          쇼핑몰 상품등록
+        </a>
+      </li>
+    </ul>
+  </div>
+
+		<div>
+        <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/alcohol/auction" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">상품 관리 페이지</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-link px-2 link-dark">
+        <a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+        <li class="nav-item">${ sessionScope.userNickname } 님</li>
+        
+      </ul>
+      <div>
+      	<c:url var="logout" value="/account/logout"></c:url>
+      	<a href="${ logout }"><button>로그아웃</button></a>
+      </div>
+    </header>
+  </div>
+		<main class="mains">
 			<div>
 				<c:url var="pdcreate" value="/shop/pdcreate"></c:url>
 				<a href="${pdcreate }"><button>상품 등록</button></a>
@@ -53,62 +137,65 @@
 					</thead>
 					<tbody id="tbodys">
 					<c:forEach var="list" items="${ prolist }">
+					<c:url var="detail" value="/shop/pdmodify">
+						<c:param name="pid" value="${ list.pid }"></c:param>
+					</c:url>
 					<tr>
-						<td>${ list.pid }</td>
-						<td>${ list.productname }</td>
-						<td>${ list.standard }</td>
-						<td>${ list.unit }</td>
-						<td>${ list.price }</td>
-						<td>${ list.brand }</td>
-						<td>${ list.userid }</td>
-						<td>${ list.expirationdate }</td>
-						<td>${ list.alcohol_level }</td>
-						<td>${ list.hashtag }</td>
+						<td><a href="${detail }">${ list.pid }</a></td>
+						<td><a href="${detail }">${ list.productname }</a></td>
+						<td><a href="${detail }">${ list.standard }</a></td>
+						<td><a href="${detail }">${ list.unit }</a></td>
+						<td><a href="${detail }">${ list.price }</a></td>
+						<td><a href="${detail }">${ list.brand }</a></td>
+						<td><a href="${detail }">${ list.userid }</a></td>
+						<td><a href="${detail }">${ list.expirationdate }</a></td>
+						<td><a href="${detail }">${ list.alcohol_level }</a></td>
+						<td><a href="${detail }">${ list.hashtag }</a></td>
 						<c:if test="${ list.category == 1 }">
-								<td>탁주</td>
+								<td><a href="${detail }">탁주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 2 }">
-								<td>약주</td>
+								<td><a href="${detail }">약주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 3 }">
-								<td>청주</td>
+								<td><a href="${detail }">청주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 4 }">
-								<td>맥주</td>
+								<td><a href="${detail }">맥주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 5 }">
-								<td>과실주</td>
+								<td><a href="${detail }">과실주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 6 }">
-								<td>소주</td>
+								<td><a href="${detail }">소주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 7 }">
-								<td>위스키</td>
+								<td><a href="${detail }">위스키</a></td>
 							</c:if>
 							<c:if test="${ list.category == 8 }">
-								<td>브랜디</td>
+								<td><a href="${detail }">브랜디</a></td>
 							</c:if>
 							<c:if test="${ list.category == 9 }">
-								<td>증류주</td>
+								<td><a href="${detail }">증류주</a></td>
 							</c:if>
 							<c:if test="${ list.category == 10 }">
-								<td>리큐르</td>
+								<td><a href="${detail }">리큐르</a></td>
 							</c:if>
 							<c:if test="${ list.category == 11 }">
-								<td>주정</td>
+								<td><a href="${detail }">주정</a></td>
 							</c:if>
 							<c:if test="${ list.category == 12 }">
-								<td>기타주류</td>
+								<td><a href="${detail }">기타주류</a></td>
 							</c:if>
 						<td><img src = "data:image/jpeg;base64,${ list.photopath }" /></td>
-					</tr>
+					</tr></a>
 					</c:forEach>
 					
 					</tbody>
 				</table>
 			</div>
 		</main>
-		<script src="../static/js/pdlist.js"></script>
+		<script src="../static/js/pdlists.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"

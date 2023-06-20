@@ -30,7 +30,7 @@ public class ShopRestController {
 	private ShopService shopservice;
 	
 	@PostMapping("/search")
-	public ResponseEntity<List<Products>> searchlist(ShopSearchDto dto){
+	public ResponseEntity<List<Products>> searchlist(@RequestBody ShopSearchDto dto){
 		log.info("searchlist(dto={})",dto);
 		List<Products> list = shopservice.searchlist(dto);
 		log.info("list={}",list);

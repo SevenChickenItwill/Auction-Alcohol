@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			event.preventDefault(); // 이벤트의 기본 동작(폼 제출)을 중지합니다.
 			return;
 		}
-
+		
 
 
 		const url = `/alcohol/api/signup/signupEmail/${userEmail}`;
@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				signupEmailForm.action = '/alcohol/signup/signupEmail';
 				signupEmailForm.method = 'post';
 				signupEmailForm.submit();
+			
 			}
 		} catch (error) {
 			console.log(error);

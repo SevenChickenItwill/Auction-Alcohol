@@ -62,6 +62,18 @@
           관리자 메뉴
         </a>
       </li>
+            <li>
+      	<c:url var="shopproducts" value="/shop/pdlist" />
+        <a href="${ shopproducts }" class="nav-link link-dark">
+          쇼핑몰 상품조회
+        </a>
+      </li>
+      <li>
+      	<c:url var="shopcreate" value="/shop/pdcreate" />
+        <a href="${ shopcreate }" class="nav-link link-dark">
+          쇼핑몰 상품등록
+        </a>
+      </li>
     </ul>
   </div>
   <!-- ----------------------------------------------------------------------------------------------------------------------------------------------------- -->

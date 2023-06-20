@@ -15,21 +15,20 @@
  <!-- 회원가입 정보 -->
  <insert id="userMainSignup">
   insert into USERS (userEmail, userPassword, userPasswordCheck, userName,
-  userAge, userAddress, userPhone, userNickname, userBirthday,
-  userJoindate, userGender, category)
+  userAge, userAddress, userPhone, userNickname, userBirthday, userJoindate, userGender, categorys)
   values (#{userEmail}, #{userPassword}, #{userPasswordCheck}, #{userName},
   #{userAge}, #{userAddress}, #{userPhone}, #{userNickname},
-  #{userBirthday}, #{userJoindate}, #{userGender}, #{category})
+  #{userBirthday}, #{userJoindate}, #{userGender}, #{categorys})
 
  </insert>
 
- <!-- 이메일 중복체크 -->
+ <!-- 이메일 중복체크, 계정 상세정보 보여주기 -->
  <select id="findByUserEmail"
   resultType="com.mid.alcohol.domain.user.User">
   select * from USERS where userEmail = #{userEmail}
  </select>
 
- <!-- 별명 중복체크, 계정 상세정보 보여주기 -->
+ <!-- 별명 중복체크 -->
  <select id="findByUserNickname"
   resultType="com.mid.alcohol.domain.user.User">
   select * from USERS where userNickname = #{userNickname}
@@ -54,6 +53,27 @@
   set USERPHONE = #{userPhone}
   where USEREMAIL = #{userEmail}
  </update>
+ 
+ <!-- 주소 수정 -->
+ <update id="AddressUpdate">
+  update USERS
+  set USERADDRESS = #{userAddress}
+  where USEREMAIL = #{userEmail}
+ </update>
+ 
+ <!-- 계정 비활성화 -->
+  <update id="DeactivationAccount">
+   update USERS
+   set DEACTIVATIONACCOUNT = 1
+   where USEREMAIL = #{userEmail}
+  </update>
+  
+  <!-- 계정 활성화 -->
+  <update id="ActivationAccount">
+   update USERS
+   set DEACTIVATIONACCOUNT = 0
+   where USEREMAIL = #{userEmail}
+  </update>
 
  <!-- 수정할 때 해당 이메일의 비밀번호인지 확인-->
  <select id="findUserByEmailAndPassword"
@@ -63,6 +83,14 @@
   WHERE userEmail = #{userEmail} AND
   userPassword = #{userPassword}
  </select>
-
-
+ 
+ <!-- 유저 비밀번호 찾기 -->
+  <select id="findByUserPassword"
+   resultType="com.mid.alcohol.domain.user.User">
+  SELECT *
+  FROM USERS
+  WHERE userEmail = #{userEmail} AND 
+  userName = #{userName} AND userPhone = #{userPhone}
+  </select>
+  
 </mapper>

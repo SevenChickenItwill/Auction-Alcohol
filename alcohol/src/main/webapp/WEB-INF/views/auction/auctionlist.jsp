@@ -109,6 +109,7 @@ a:active {
 	  				<c:param name="num" value="0" />
 				</c:url><a href="${shopMain}" class="text-info">상품 스토어</a>
 
+
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarHeader"
 					aria-controls="navbarHeader" aria-expanded="false"
