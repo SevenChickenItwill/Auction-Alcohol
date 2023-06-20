@@ -70,6 +70,7 @@ li{
 .mains{
     margin-right: 220px;
     margin-left: 380px;
+    height: 1500px;
     
 }
 
@@ -85,6 +86,11 @@ body{
 	margin: 20px 0px;
     height: 70px;
     font-size: xx-large;
+
+}
+.chart-container{
+	height: 1800px;
+	width: 100%;
 
 }
 </style>
@@ -224,20 +230,35 @@ body{
         
     </div>
     <main class="mains">
+    <div class="chart-container" style="height: 1500px;">
+    <div>
+    <div>
     	<div style="display: flex; justify-content: center;">
     		<h1>월별 매출액 추이</h1>
     	</div>
     	<div>
-    		<canvas id="MonthlySales">
+    		<canvas id="MonthlySales" height="100px">
     		
     		</canvas>
+    	</div>
+    	</div>
+    	</div>
+    	<br />
+    	<br />
+    	<div>
+    	<div>
+    	
+    	<div style="display: flex; justify-content: center;">
+    		<h1>월별 경매 매출 추이</h1>
     	</div>
     	<div>
-    		<canvas id="MonthlyAuction">
+    		<canvas id="MonthlyAuction" height="100px">
     		
     		</canvas>
     	</div>
-    	
+    	</div>
+    	</div>
+    	</div>
     </main>
     
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

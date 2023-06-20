@@ -121,5 +121,9 @@ public interface AuctionRepository {
 
 	List<AuctionChartDataDto> readAuctionData(AuctionChartDto dto);
 
+	List<Auction> readAuctionStatus();
+	
+	int automakeRoom(UserAuction room); 
+	
 }
 

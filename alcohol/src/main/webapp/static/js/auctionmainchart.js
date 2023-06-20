@@ -73,7 +73,7 @@
   }
   
   const myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: months,
       datasets: [{

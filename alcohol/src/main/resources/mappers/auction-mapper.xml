@@ -421,4 +421,13 @@
     	GROUP BY EXtract(MONTH FROM a.auctionend)
     </select>
     
+    <select id="readAuctionStatus" resultType="com.mid.alcohol.domain.auction.Auction" >
+    	select * from Auction Where status = 1
+    </select>
+    
+    
+    <insert id="automakeRoom">
+    	INSERT INTO userauction VALUES (#{cid}, #{chatroom}, 0)
+    </insert>
+    
 </mapper>
