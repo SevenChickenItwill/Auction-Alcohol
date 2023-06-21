@@ -101,7 +101,7 @@ public class AuctionController {
     	log.info("dto={}",dto);
     	model.addAttribute("detail",dto);
     	
-    	return "auction/auctionmodify";
+    	return "/auction/auctionmodify";
     }
     
     @PostMapping("/update")

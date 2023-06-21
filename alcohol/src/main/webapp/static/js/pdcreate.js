@@ -88,6 +88,12 @@
 		 let category = categoryselect.value;
 		 let photopaths = photopathinput.value;
 		 
+		 if(productname > 90) {
+			 
+			 alert('상품명은 90자 이내로 가능합니다.');
+			 return;
+		 }
+		 
 		 if(alcohol_level>=100){
 			 
 			 alert('도수를 잘못 입력하셨습니다.');
@@ -107,7 +113,7 @@
 		 if(photopaths==''){
 			 
 			 alert('사진을 업로드하지 않아 기본 사진으로 업로드됩니다');
-			 photopathinput.value='C:\imgs\defaultimg.jpg'
+			 photopathinput.value='C:/imgs/defaultimg.jpg';
 			 
 		 }
 		 

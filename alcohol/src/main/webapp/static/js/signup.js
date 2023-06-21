@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const btnCancel = document.querySelector('#btnCancel');
 	const btnNicknameCheck = document.querySelector('#btnNicknameCheck');
 	let signupOk = 0;
+
 	btnCancel.addEventListener('click', () => {
 		const check = confirm('회원가입을 취소할까요?');
 		if (check) {
@@ -15,10 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	btnNicknameCheck.addEventListener('click', async (e) => {
 		e.preventDefault(); // 이벤트의 기본 동작(폼 제출)을 중지합니다.
-
 		const userNickname = document.querySelector('input#userNickname').value;
 		console.log(userNickname);
-		const url = `/alcohol/api/signup/signup/${userNickname}`;
+
+		if (userNickname.trim() === '') {
+			alert('별명을 입력해주세요.'); // 입력된 별명이 없을 경우 알림 메시지를 표시합니다.
+			return;
+		}
+
+		let url = `/alcohol/api/signup/signup/${userNickname}`;
 		try {
 			let response = await axios.get(url);
 			console.log(response);
@@ -34,12 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		} catch (error) {
 			console.log(error);
+			return;
 		}
 	});
 
 
 	const btnSignup = document.querySelector('#btnSignup');
-	btnSignup.addEventListener('click', () => {
+	btnSignup.addEventListener('click', async () => {
 
 		if (signupOk == 0) {
 			alert('중복검사를 진행하세요');
@@ -50,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const userPassword = document.querySelector('#userPassword').value;
 		const userPasswordCheck = document.querySelector('#userPasswordCheck').value;
 		const sample6_address = document.querySelector('#sample6_address').value;
-		const sample6_postcode= document.querySelector('#sample6_postcode').value;
+		const sample6_postcode = document.querySelector('#sample6_postcode').value;
 		const sample6_detailAddress = document.querySelector('#sample6_detailAddress').value;
 		const sample6_extraAddress = document.querySelector('#sample6_extraAddress').value;
 		const userPhone = document.querySelector('#userPhone').value;
@@ -110,6 +117,32 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (age < 20) {
 			alert('회원가입은 20세 이상만 가능합니다.');
 			return;
+		}
+
+		if (userBirthdate.getFullYear() < 1800) {
+			alert('생년월일을 정확히 입력해주세요.');
+			return;
+		}
+
+
+		console.log(userNickname);
+		let url = `/alcohol/api/signup/signup/${userNickname}`;
+		try {
+			let response = await axios.get(url);
+			console.log(response);
+
+			if (response.data) {
+				// 중복된 경우
+				alert('이미 사용중인 별명입니다.');
+				document.querySelector('input#userNickname').value = ''; // 입력된 별명을 지웁니다.
+				signupOk = 0;
+				return;
+			} else if (signupOk = 0) {
+				alert('중복검사를 진행하세요.')
+				return;
+			}
+		} catch (error) {
+			console.log(error);
 		}
 
 		const check = confirm('회원가입 할까요?');

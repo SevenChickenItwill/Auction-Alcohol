@@ -45,11 +45,6 @@ public class MyScheduler {
 		log.info("updateStart({})",now);
 		auctionrepository.updateStart(now);
 		
-	}
-	
-	@Scheduled(fixedRate=61000)
-	public void updateChatRoom() {
-		
 		List<Auction> list = auctionrepository.readAuctionStatus();
 		List<UserAuction> list2 = auctionrepository.selectAllRoom();
 		int count = 0;
@@ -70,5 +65,7 @@ public class MyScheduler {
 		}
 		
 	}
+	
+	
 	
 }

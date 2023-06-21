@@ -94,16 +94,18 @@
 			}
 			
 			htmlStr += `
-			<div class="card">
+			<div class="cardDiv">
         <div id="commentcontent">
           <span class="d-none">${comment.commentId}</span>
           <span class="fw-bold">${comment.nickname}</span>
           <span class="text-secondary">(${time})</span>
         </div>
-        <div>
-          <textarea class="col-5 form-control" style="height: 100px; height: 100px;" id="writings">${comment.content}</textarea>
+        <div class="form-floating mb-3">
+          <textarea class="col-5 form-control" style="height: 100px; height: 100px;" id="writrings" readonly>${comment.content}</textarea>
         </div>
+        <div id="userCheck" class="d-grid gap-2 d-md-flex justify-content-md-end" style="margin-top: 5px; margin-bottom: 30px;">
         ${userCheckHTML}
+        </div>
       </div>
 			`
 		}
@@ -125,26 +127,47 @@
 	 
 	 const showComment = (e) => {
 		const btn = e.target;
-		const card = btn.closest('.card');
+		const card = btn.closest('.cardDiv');
 		const textarea = card.querySelector('textarea');
+		const buttonDiv = document.createElement('div');
+		const showBtnDelete = card.querySelector('.btnDelete');
+		buttonDiv.classList.add('buttonDiv');
 		
 		btnSave = document.createElement('button');
 		btnSave.textContent = '수정 완료';
 		btnSave.classList.add('btnSave');
+		btnSave.classList.add('btn');
+		btnSave.classList.add('btn-dark');
+		btnSave.style.padding = '10px';
+		btnSave.style.width = '100px';
+		btnSave.style.marginRight = '5px';
 		btnSave.dataset.id = btn.dataset.id;
 		
 		const btnCancel = document.createElement('button');
 		
 		btnCancel.textContent = '수정 취소';
 		btnCancel.classList.add('btnCancel');
+		btnCancel.classList.add('btn');
+		btnCancel.classList.add('btn-dark');
+		btnCancel.style.padding = '10px';
+		btnCancel.style.width = '100px';
 
 		textarea.readOnly = false;
 		textarea.classList.add('editable');
 		btn.disabled = true;
 		btn.style.display = 'none';
+		showBtnDelete.style.display = 'none';
 
-		card.appendChild(btnSave);
-		card.appendChild(btnCancel);
+		buttonDiv.classList.add('d-grid');
+		buttonDiv.classList.add('gap-2');
+		buttonDiv.classList.add('d-md-flex');
+		buttonDiv.classList.add('justify-content-md-end');
+		buttonDiv.style.marginTop = '5px';
+		buttonDiv.style.marginBottom = '10px';
+		buttonDiv.appendChild(btnSave);
+		buttonDiv.appendChild(btnCancel);
+		
+		card.appendChild(buttonDiv);
 
 		btnSave.addEventListener('click', updateComment);
 		btnCancel.addEventListener('click', cancelComment);
@@ -153,7 +176,7 @@
 	function cancelComment(event) {
 
 		const btnCancel = event.target;
-		const card = btnCancel.closest('.card');
+		const card = btnCancel.closest('.cardDiv');
 		const textarea = card.querySelector('.editable');
 		const btnUpdate = card.querySelector('button.btnUpdate');
 
@@ -168,7 +191,7 @@
 
 	function updateComment(event) {
 		const btnSave = event.target;
-		const card = btnSave.closest('.card');
+		const card = btnSave.closest('.cardDiv');
 		const textarea = card.querySelector('.editable');
 		const btnCancel = card.querySelector('.btnCancel');
 		const updateButton = card.querySelector('button.btnUpdate');

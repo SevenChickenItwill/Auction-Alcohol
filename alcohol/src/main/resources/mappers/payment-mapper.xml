@@ -33,11 +33,11 @@
 	<select id="readBasketByUserNickname"
 		resultType="com.mid.alcohol.dto.payment.BasketListDto">
 		SELECT b.basketid, b.productid, b.price, b.quantity,
-		p.brandname, p.pname
+		p.brand, p.productname
 		FROM basket b
-		JOIN auctionproducts p
+		JOIN products p
 		ON b.productid
-		= p.productid
+		= p.pid
 		WHERE b.userNickname = #{userNickname}
 	</select>
 
@@ -106,23 +106,16 @@
 
 	<select id="getPname" resultType="java.lang.String">
 		SELECT pname
-		FROM (
-		SELECT
-		a.pname
-		FROM auctionproducts a
-		JOIN orders o ON a.productid =
-		o.productid
-		WHERE o.basketid = #{basketid}
-		)
-		WHERE ROWNUM &lt;= 1
+		FROM basket
+		WHERE basketid = #{basketid}
 	</select>
 
 	<select id="getBasketInfo"
 		resultType="com.mid.alcohol.dto.payment.BasketListDto">
-		SELECT b.basketid, b.productid, b.quantity, b.price, b.pname, p.brandname
+		SELECT b.basketid, b.productid, b.quantity, b.price, p.productname, p.brand
 		FROM basket b
-		JOIN auctionproducts p
-		ON b.productid = p.productid
+		JOIN products p
+		ON b.productid = p.pid
 		WHERE b.basketid = #{basketid}
 	</select>
 	

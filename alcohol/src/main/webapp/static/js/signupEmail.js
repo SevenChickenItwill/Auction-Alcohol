@@ -2,10 +2,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const signupEmailForm = document.querySelector('#signupEmailForm');
 	const btnNext = document.querySelector('input#btnNext');
-	const userEmail = document.querySelector('#userEmail');
-
 
 	btnNext.addEventListener('click', async (event) => {
+		event.preventDefault();
 		const userEmail = document.querySelector('input#userEmail').value;
 		console.log(userEmail);
 		// userEmail.value로 입력된 값을 가져와서 확인해야 합니다.

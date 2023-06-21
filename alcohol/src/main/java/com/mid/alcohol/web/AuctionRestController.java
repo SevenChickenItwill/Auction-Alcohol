@@ -1,17 +1,12 @@
 package com.mid.alcohol.web;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.FileCopyUtils;
-import org.springframework.util.ResourceUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,17 +24,10 @@ import com.mid.alcohol.dto.auction.AuctionListDto;
 import com.mid.alcohol.dto.auction.AuctionListPhotoDto;
 import com.mid.alcohol.dto.auction.AuctionReadDto;
 import com.mid.alcohol.dto.auction.ChatInputDto;
-import com.mid.alcohol.dto.auction.ChatListDto;
-import com.mid.alcohol.dto.auction.ChatRoomDto;
-
 import com.mid.alcohol.dto.auction.ProductSearchDto;
-import com.mid.alcohol.dto.shop.ShopPaymentListDto;
 import com.mid.alcohol.service.AuctionProductService;
 import com.mid.alcohol.service.AuctionService;
 import com.mid.alcohol.service.AuctionUserService;
-
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -14,7 +14,7 @@
 		SELECT * FROM AuctionProducts WHERE productId = #{productId}
 	</select>
 	<delete id="deleteByProductId">
-		DELETE from AuctionProducts WHERE productId = #{productId}
+        DELETE FROM auctionproducts WHERE productid = #{productId} AND productid NOT IN (SELECT productid FROM auction);
 	</delete>
 	
 	<update id="updateProduct">

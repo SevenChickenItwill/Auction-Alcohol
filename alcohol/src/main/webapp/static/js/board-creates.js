@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// 이미지를 전달할 form
 	const form = document.querySelector('form#createForm');
-	
+
 	const createPost = async (e) => {
 		// 폼데이터 객체 생성
 		e.preventDefault();
-		
+
 		console.log('들어옴');
-		
+
 		let formData = new FormData();
 		const image = document.querySelector('input#file');
 
@@ -49,26 +49,37 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
-		let dtoUrl = `/alcohol/api/recommend/create/${category}/${nickname}/${user_id}/${title}/${content}`;
+		if (title.length > 100) {
+			alert('제목은 100자를 넘길 수 없습니다.');
+			return;
+		}
 		
+		if (content.length > 745) {
+			alert('내용은 745자를 넘길 수 없습니다.');
+			return;
+		}
+		
+		let dtoUrl = `/alcohol/api/recommend/create/${category}/${nickname}/${user_id}/${title}/${content}`;
+
 		try {
 			const result = confirm('생성하시겠습니까?');
 			
-			let responses = await axios.post(dtoUrl);
-			
-			const boardId = responses.data.board_id;
-			console.log(boardId);
-			
-			form.append('file', image.files[0]);
-			
-			if(result) {
+			if (result) {
+				let responses = await axios.post(dtoUrl);
+
+				const boardId = responses.data.board_id;
+				console.log(boardId);
+
+				form.append('file', image.files[0]);
+
+
 				form.enctype = 'multipart/form-data';
 				form.action = `/alcohol/bulletinboard/board/create/${boardId}`;
 				form.method = 'post';
 				form.submit();
-				
+
 			}
-			
+
 		} catch (error) {
 			console.log(error);
 		}

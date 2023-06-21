@@ -31,6 +31,7 @@ public class ChatInputDto {
 	
 	public Auction toAuctionEntity() {
 		
+		
 		return Auction.builder().aid((int)cid).bidCount(bidcount).nowBid(nowbid).bidder(bidder).status(status).build();
 		
 	}

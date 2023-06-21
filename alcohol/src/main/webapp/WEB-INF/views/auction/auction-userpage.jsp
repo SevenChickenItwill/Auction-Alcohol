@@ -45,29 +45,95 @@
   	font-size: x-large;
   
   }
-              </style>
+  .navList {
+	display: flex;
+	flex-direction: row;
+	margin-right: 10px;
+	align-items: center;
+}
+
+.textNav {
+	color: white;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+.textNav:hover {
+	color: blue;
+	text-decoration: underline;
+}
+
+.abc {
+	text-underline-offset: var(--offset, 0.2em);
+	text-decoration: underline 0.12em;
+	transition: --offset 400ms, text-decoration-color 400ms;
+	color: white;
+}
+</style>
 </head>
 <body>
-    <header>
-		<div class="navbar navbar-dark bg-dark shadow-sm">
-			<div class="container">
-				<a href="#" class="navbar-brand d-flex align-items-center"> 
-				
-						<path
+
+	<header>
+		<div>
+			<div class="navbar navbar-dark bg-dark shadow-sm"
+				style="display: flex; flex-wrap: nowrap;">
+				<div>
+					<c:url var="mainPage" value="/" />
+					<a href="${ mainPage }"
+						class="navbar-brand d-flex align-items-center"> <path
 							d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-						<circle cx="12" cy="13" r="4"></circle></svg> <strong>${ list2.auctionName } / ${ list2.pname }</strong>
-				</a>
-				
+						<strong style="margin-left: 10px;">Turkey Brewery</strong>
+					</a>
+				</div>
+				<div style="display: contents;">
+						<div>
+							<!-- 쇼핑몰 -->
+							<c:url value="/shop/shopmain" var="shopPage">
+								<c:param name="num" value="0"></c:param>
+							</c:url>
+							<a href="${ shopPage }" class="abc fw-bold">Shop</a>
+						</div>
+						<div>
+							<!-- 경매 -->
+							<c:url value="/auction/auctionlist" var="auctionlistPage"></c:url>
+							<a href="${ auctionlistPage }" class="abc fw-bold" >Auction</a>
+						</div>
+						<div>
+							<!-- 커뮤티니 -->
+							<c:url value="/bulletinboard/board/list" var="boardPage">
+								<c:param name="num" value="0" />
+								<c:param name="keyword" value=""></c:param>
+								<c:param name="category" value=""></c:param>
+								<c:param name="boardNumber" value="0"></c:param>
+							</c:url>
+							<a href="${ boardPage }" class="abc fw-bold">Board</a>
+						</div>
+						
+							<!-- 관리자 -->
+							<c:if test="${ sessionScope.category == 1 }">
+							<div>
+								<c:url value="/auction" var="adminPage">
+								</c:url>
+								<a href="${ adminPage }" class="abc fw-bold">ManagerPage</a>
+							</div>
+							</c:if>
+						
+						<div>
+							<!-- 마이페이지 -->
+							<c:url value="/auction/auctionview" var="mypage">
+							</c:url>
+							<a href="${ mypage }" class="abc fw-bold">MyPage</a>
+						</div>
+					</div>
+					<div class="navList">
+						<span style="color: white;" >'${ sessionScope.userNickname }'님 &nbsp;</span>
+						<c:url var="logout" value="/account/logout">
+						</c:url>
+						<a style="color: white; font-weight: bold;"
+							class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+					</div>
+				</div>
 			</div>
-<nav class="nav nav-pills flex-column flex-sm-row">
-   <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">Shop</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/auction/auctionlist">Auction</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="/alcohol/bulletinboard/board/list">Board</a>
-  <a style="color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link" href="#">MyPage</a>
-  <a style="margin-left:50px; color:white; font-weight: bold;" class="flex-sm-fill text-sm-center nav-link">${ sessionScope.userNickname } 님 환영합니다.</a>
-</nav>
-		</div>
-		<input class="d-none card" type="text" id="userid" name="userid" value="${ sessionScope.userNickname }" readonly="readonly"/>
 	</header>
         
     
@@ -113,7 +179,7 @@
             <input class="d-none" name="listuserid" value="${list1.userid }" type="text" />
             	
             	<c:if test="${ list1.userid ne loginid }" >
-            		<input class="chatings form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
+            		<input style="text-align: left;" class="chatings form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             	<c:if test="${ list1.userid eq loginid }" >
@@ -145,7 +211,7 @@
             <label style="justify-content: center;
         	align-items: center;
         	display: flex;" for="chatcontent">입력창</label>
-            <input type="text" class="card" id="chatcontent" name="chatcontent" value=""/>
+            <input maxlength="250" type="text" class="card" id="chatcontent" name="chatcontent" value=""/>
             
             <button class="btn btn-outline-dark btnsle" id="btnsubmit" data-bid="0">전송</button>
             <button class="btn btn-outline-warning btnsle" id="btnbat" data-bid="1" pers="1">배팅</button>

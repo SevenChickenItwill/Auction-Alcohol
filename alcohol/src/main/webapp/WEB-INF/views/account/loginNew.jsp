@@ -114,8 +114,8 @@
 							</div>
 						</div>
                     </form>
-                    <div>
-                   <a class="btn" href="/alcohol/signup/findByUserPassword">비밀번호 찾기</a>
+                    <div style="padding-left: 25px;">
+                   <a class="btn" href="/alcohol/signup/findByUserPassword" style="padding-left: 0px;">비밀번호 찾기</a>
                 </div>
                </div>
 				<div class="btnWrapper d-grid gap-2 d-md-flex justify-content-md-end">
