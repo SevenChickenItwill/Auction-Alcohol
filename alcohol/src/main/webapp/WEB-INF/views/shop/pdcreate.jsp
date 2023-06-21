@@ -196,7 +196,7 @@ body {
 					쇼핑몰 상품조회 </a></li>
 			<li><c:url var="shopcreate" value="/shop/pdcreate" /> <a
 				href="${ shopcreate }"
-				class="nav-link link-dark list-group-item list-group-item-action">
+				class="nav-link link-dark list-group-item list-group-item-action text-danger">
 					쇼핑몰 상품등록 </a></li>
 			<li><c:url var="aproductinfo" value="/shop/aproductinfo" /> <a
 				href="${ aproductinfo }"

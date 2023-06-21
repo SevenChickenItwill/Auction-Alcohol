@@ -193,7 +193,7 @@ body {
 				<ul class="nav nav-pills flex-column mb-auto">
 					<li><c:url var="auctionadmin" value="/auction" /> <a
 						href="${ auctionadmin }"
-						class="nav-link link-dark list-group-item list-group-item-action">
+						class="nav-link link-dark list-group-item list-group-item-action text-danger"  >
 							관리자 메인 </a></li>
 					<li class="nav-item"><c:url var="auctionProduct"
 							value="/auction/product" /> <a href="${ auctionProduct }"

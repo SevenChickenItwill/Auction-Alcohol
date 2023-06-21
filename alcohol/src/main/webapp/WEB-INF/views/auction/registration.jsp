@@ -200,7 +200,7 @@ body{
       </li>
       <li>
         <c:url var="auctionRegistration" value="/auction/registration" />
-        <a href="${ auctionRegistration }" class="nav-link link-dark list-group-item list-group-item-action">
+        <a href="${ auctionRegistration }" class="nav-link link-dark list-group-item list-group-item-action text-danger">
           경매 등록
         </a>
       </li>

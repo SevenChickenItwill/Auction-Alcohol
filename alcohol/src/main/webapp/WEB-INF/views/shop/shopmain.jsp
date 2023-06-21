@@ -201,7 +201,7 @@ header {
 
 							<ul class="list-group list-group-flush d-inline-block">
 								<li class="list-group-item d-inline-block text-truncate" style="width: 225px;">상품명: ${ list.productname }</li>
-								<li class="list-group-item">브랜드: ${ list.brand }</li>
+								<li class="list-group-item text-truncate" style="width: 225px;">브랜드: ${ list.brand }</li>
 								<li class="list-group-item" style="width: 225px;">
 									<div>
 										<Sapn  class="d-inline-block text-truncate" style="max-width: 200px;">상품정보: ${list.hashtag}</Sapn> 
@@ -213,7 +213,7 @@ header {
 										<span class="d-inline-block">규격: ${list.unit}</span>
 									</div>
 								</li>
-								<li class="list-group-item">도수: ${ list.alcohol_level },<br>
+								<li class="list-group-item text-truncate" style="width: 225px;">도수: ${ list.alcohol_level },<br>
 									유통기한: ${ list.expirationdate }
 								</li>
 								<li class="list-group-item">가격: ${ list.price }원</li>
@@ -267,7 +267,7 @@ header {
 			style="display: flex; justify-content: space-evenly; align-items: center; margin-bottom: 20px;">
 			<c:url var="nextlist" value="/shop/shopmain">
 				<c:choose>
-					<c:when test="${(nums) * 10 > maxIndex - 10 }">
+					<c:when test="${(nums) * 10 - 1 > maxIndex - 10 }">
 						<c:set var="number" value="${nums}" />
 						<c:param name="num" value="${number}"></c:param>
 					</c:when>
@@ -290,6 +290,9 @@ header {
 				</c:choose>
 
 			</c:url>
+			<div></div>
+			<div></div>
+			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>
@@ -382,6 +385,9 @@ header {
 				<a href="${ maxIndex }"><button class="btn btn-dark"
 						type="button">&gt;&gt;</button></a>
 			</div>
+			<div></div>
+			<div></div>
+			<div></div>
 			<div></div>
 			<div></div>
 			<div></div>

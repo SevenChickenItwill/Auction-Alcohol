@@ -176,7 +176,7 @@ body {
 						관리자 메인 </a></li>
 				<li class="nav-item"><c:url var="auctionProduct"
 						value="/auction/product" /> <a href="${ auctionProduct }"
-					class="nav-link link-dark list-group-item list-group-item-action"
+					class="nav-link link-dark list-group-item list-group-item-action text-danger"
 					aria-current="page"> 경매 상품조회/수정 </a></li>
 				<li><c:url var="productcreate" value="/auction/productcreate" />
 					<a href="${ productcreate }"

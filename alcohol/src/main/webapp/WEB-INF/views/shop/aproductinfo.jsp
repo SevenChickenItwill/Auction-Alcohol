@@ -138,7 +138,7 @@
 								<th>핸드폰번호</th>
 								<th>이메일</th>
 								<th>상태</th>
-								<th>주문상태변경</th>
+								<th>주문상태</th>
 							</tr>
 						</thead>
 						<tbody>

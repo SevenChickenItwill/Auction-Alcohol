@@ -188,7 +188,7 @@ body{
       </li>
       <li>
         <c:url var="productcreate" value="/auction/productcreate" />
-        <a href="${ productcreate }" class="nav-link link-dark rounded border-0 list-group-item list-group-item-action">
+        <a href="${ productcreate }" class="nav-link link-dark rounded border-0 list-group-item list-group-item-action text-danger">
           경매 상품등록
         </a>
       </li>

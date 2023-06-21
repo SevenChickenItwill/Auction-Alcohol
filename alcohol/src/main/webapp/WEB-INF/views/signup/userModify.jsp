@@ -139,8 +139,14 @@ header {
 						name="userAccountBirthday" value="${dto.userBirthday}" readonly>
 				</div>
 			</form>
+			<div style="display: flex; justify-content: space-around;">
 			<div class="deactivate-account">
 				 <a class="btn" href="/alcohol/signup/deactivationAccount">계정 비활성화</a>
+			</div>
+			<div class="deactivate-account">
+				<c:url value="/auction/auctionview" var="mypage"></c:url>
+				<a href="${ mypage }" class="btn">완 료</a>
+			</div>
 			</div>
 		</div>
 	</div>

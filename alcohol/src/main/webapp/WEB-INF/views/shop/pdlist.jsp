@@ -218,7 +218,7 @@ body{
       </li>
             <li>
       	<c:url var="shopproducts" value="/shop/pdlist" />
-        <a href="${ shopproducts }" class="nav-link link-dark list-group-item list-group-item-action">
+        <a href="${ shopproducts }" class="nav-link link-dark list-group-item list-group-item-action text-danger">
           쇼핑몰 상품조회
         </a>
       </li>

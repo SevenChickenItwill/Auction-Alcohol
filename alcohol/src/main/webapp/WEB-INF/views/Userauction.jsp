@@ -184,7 +184,7 @@ h2{
 							<!-- 회원 수정 페이지 -->
 							<c:url var="userModify" value="/signup/userModify" ></c:url>
 						</div>
-						<a href="${ userModify }" class="abc fw-bold">Modification</a>
+						<a href="${ userModify }" class="abc fw-bold">Membership Information</a>
 					</div>
 					<div class="navList">
 						<span style="color: white;" >'${ sessionScope.userNickname }'님 &nbsp;</span>
@@ -315,7 +315,7 @@ h2{
 				<tr>
 					<td>${ history.board_id }</td>
 					<td>
-						<c:url var="postDetailPage" value="/bulletinbaord/board/historydetail">
+						<c:url var="postDetailPage" value="/bulletinboard/board/historydetail">
 							<c:param name="id" value= "${ history.board_id }" />	
 						</c:url>
 						<a href="${ postDetailPage }">${ history.title }</a>

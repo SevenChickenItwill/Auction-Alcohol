@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				<td class="d-none">${product.userid}</td>
 				<td class="d-none" id="productid">${product.productid}</td>
 				<td>
-					<a href="/auction/productdetail?productid=${product.productid}">
+					<a href="/alcohol/auction/productdetail?productid=${product.productid}">
 						${product.pname}
 					</a>
 				</td>

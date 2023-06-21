@@ -195,7 +195,7 @@ body{
       </li>
       <li>
         <c:url var="auctionm" value="/auction/auction" />
-        <a href="${ auctionm }" class="nav-link link-dark list-group-item list-group-item-action">
+        <a href="${ auctionm }" class="nav-link link-dark list-group-item list-group-item-action text-danger">
           경매 조회/수정
         </a>
       </li>

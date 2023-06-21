@@ -94,7 +94,7 @@
 			}
 			
 			htmlStr += `
-			<div class="cardDiv">
+			<div class="cardDiv" style="width: 600px;">
         <div id="commentcontent">
           <span class="d-none">${comment.commentId}</span>
           <span class="fw-bold">${comment.nickname}</span>

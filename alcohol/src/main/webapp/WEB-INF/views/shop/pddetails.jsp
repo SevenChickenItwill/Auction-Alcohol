@@ -254,13 +254,13 @@
 							<label for="content">댓글 작성</label>
 							</div>
 						</div>
-						<div
-							style="display: flex; justify-content: center; margin-right: 459px; margin-top: 20px; justify-content: flex-end;">
+						
+						<div style="display: flex; justify-content: center; margin-top: 20px; justify-content: flex-center;">
 							<button id="commentReg" class="btn btn-secondary">댓글 등록</button>
 						</div>
 					</div>
 
-					<div id="replies" style="margin-top: 20px"></div>
+					<div id="replies" style="display: flex;margin-top: 20px;justify-content: center;"></div>
 				</div>
 			</div>
 		</div>
