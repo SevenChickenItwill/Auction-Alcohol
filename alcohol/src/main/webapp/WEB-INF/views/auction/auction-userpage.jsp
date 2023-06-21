@@ -179,11 +179,11 @@
             <input class="d-none" name="listuserid" value="${list1.userid }" type="text" />
             	
             	<c:if test="${ list1.userid ne loginid }" >
-            		<input style="text-align: left;" class="chatings form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
+            		<input style="text-align: left;" class="my-1 chatings form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             	<c:if test="${ list1.userid eq loginid }" >
-            		<input class="chatings form-control text-end text-bg-warning" type="text" value="${list1.conversation} : ${list1.userid}" readonly="readonly"/>
+            		<input class="my-1 chatings form-control text-end text-bg-warning" type="text" value="${list1.conversation} : ${list1.userid}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             </c:forEach>

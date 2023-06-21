@@ -191,7 +191,7 @@ public class PaymentController {
 				// String nickname = URLEncoder.encode(userNickname, "utf-8");
 				String param = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id&item_name="
 						+ item_name + "&quantity=1&total_amount=" + totalAmount
-						+ "&tax_free_amount=0&approval_url=http://localhost:8081/alcohol/payment/paysuccess&fail_url=http://localhost:8081/alcohol/payment/payfail&cancel_url=http://localhost:8081/alcohol/payment/paycancel";
+						+ "&tax_free_amount=0&approval_url=http://192.168.20.23:8081/alcohol/payment/paysuccess&fail_url=http://192.168.20.23:8081/alcohol/payment/payfail&cancel_url=http://192.168.20.23:8081/alcohol/payment/paycancel";
 				OutputStream ops = connection.getOutputStream();
 				DataOutputStream dops = new DataOutputStream(ops);
 				dops.writeBytes(param);
@@ -258,7 +258,7 @@ public class PaymentController {
 	}
 
 	@PostMapping("/paymentcancel")
-	public void paymentcancel() {
+	public String paymentcancel() {
 		String userNickname = (String) session.getAttribute("userNickname");
 		// 결제 id 가져오기
 		int paymentid = paymentService.readPaymentList(userNickname);
@@ -266,7 +266,8 @@ public class PaymentController {
 		paymentService.deleteOrders(paymentid);
 		// 결제 id로 결제 테이블 지우기
 		paymentService.deletePayment(paymentid);
-
+		
+		return "redirect:/shop/shopmain?num=0";
 	}
 
 }

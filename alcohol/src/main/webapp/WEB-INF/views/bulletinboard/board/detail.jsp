@@ -142,6 +142,9 @@
 					</div>
 				</div>
 			</div>
+			
+			<input class="d-none" value="${ sessionScope.category }" id="userCategory" />
+			
 	</header>
 	<div class="main">
 		<div>

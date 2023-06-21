@@ -242,7 +242,7 @@
 				<div style="display: flex; flex-direction: column;">
 					<div style="display: flex; flex-direction: column;">
 						<div style="align-self: center;margin-top: 20px;">
-						<div id="repl" style="margin-top: 20px">
+						<div id="repl" style="margin-top: 20px ">
 						<span id="CommentCount" style="color: red; font-weight: bold;"></span>
 						<span style="color: red;">개</span>의 상품 리뷰
 					</div>
@@ -259,8 +259,10 @@
 							<button id="commentReg" class="btn btn-secondary">댓글 등록</button>
 						</div>
 					</div>
-
-					<div id="replies" style="display: flex;margin-top: 20px;justify-content: center;"></div>
+					<div style="display: flex; justify-content: center;">
+						<div id="replies" style="display: flex;margin-top: 20px;justify-content: center; flex-direction: column;">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

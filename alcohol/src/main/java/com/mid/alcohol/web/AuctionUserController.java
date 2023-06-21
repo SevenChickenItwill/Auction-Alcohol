@@ -60,6 +60,14 @@ public class AuctionUserController {
 		List<ChatListDto> chatdto = userservice.readChatDataOne(aid);
 		log.info("list1 ={}", chatdto);
 		Photo photo = pdservice.selectPhoto(auctiondto.getProductId());
+		
+		if(photo==null) {
+			
+			photo = new Photo();
+			photo.setPhotopath("C:/imgs/defaultimg.png");
+			
+		}
+		
 		String img = "";
 		try {
 			img = pdservice.listToTagImage(pdservice.resizeImage(photo.getPhotopath()));

@@ -30,6 +30,8 @@ public class AuctionListController {
 	@Autowired
 	private AuctionProductService apservice;
 	
+	private static final String paths = "C:/imgs/defaultimg.png";
+	
 	@GetMapping("/auctionlist")
 	public void auctionList(Model model) {
 		List<AuctionListDto> list = auctionservice.readAlllist();
@@ -39,6 +41,13 @@ public class AuctionListController {
 		for(int i = 0 ; i<list.size() ; i++) {
 			
 			Photo root = auctionservice.findphotoroot(list.get(i).getProductId());
+			
+			if(root == null) {
+				
+				root = new Photo();
+				root.setPhotopath(paths);
+				
+			}
 			list2.add(AuctionListPhotoDto.FromChange(list.get(i)));
 			
 			try {

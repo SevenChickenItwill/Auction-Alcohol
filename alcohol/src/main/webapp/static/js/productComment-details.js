@@ -82,7 +82,7 @@
 			// 조건문을 먹여 닉네임 일치 시 삭제 수정 버튼을 보여줌
 			if (comment.nickname === userNickname) {
 				userCheckHTML = `
-				<div id="userCheck">
+			<div id="userCheck">
 				<button class="btnDelete btn btn-secondary" style="font-size: 16px; padding: 10px; width: 60px;" data-id="${comment.commentId}">
            		 삭제
          		</button>
@@ -186,6 +186,7 @@
 		btnUpdate.style.display = '';
 		btnSave.remove();
 		btnCancel.remove();
+		getCommentWithPid();
 	}
 
 

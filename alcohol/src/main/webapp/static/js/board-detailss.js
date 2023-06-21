@@ -120,7 +120,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	///////////////////////////////////////////////////// 댓글//////////////////////////////////////////////////////
 
 	// 등록버튼 처리
-
+	
+	const userCategory = document.querySelector('input#userCategory');
+	
 	const commentCount = document.querySelector('span#commentCount');
 
 	const commentReg = document.querySelector('button#commentReg');
@@ -184,7 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
 	// comment domain 데이터를 받아서 String 형식을 html에 저장, 추가.
 	const makeCommentElements = (data) => {
 		const userNickname = document.querySelector('input#userNickname').value;
-
+		
+		const category = userCategory.value;
+		
 		// 댓글 개수 업데이트
 		commentCount.innerHTML = data.length; // 배열 길이(원소 개수)
 		boardCommendCount.innerHTML = data.length;
@@ -203,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			// userCheckHTML의 값을 빈 값으로 일단 설정한 뒤
 			let userCheckHTML = '';
 			// 조건문을 먹여 닉네임 일치 시 삭제 수정 버튼을 보여줌
-			if (comment.nickname === userNickname) {
+			if (comment.nickname === userNickname || category == 2) {
 				userCheckHTML = `
           <button class="btnDelete btn btn-dark" style="font-size: 16px; padding: 10px; width: 60px;" data-id="${comment.commentId}">
             삭제

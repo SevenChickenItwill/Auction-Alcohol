@@ -113,6 +113,14 @@ public class AuctionRestController {
 		for(int i = 0 ; i<list2.size() ; i++) {
 			
 			Photo root = acservice.findphotoroot(list2.get(i).getProductId()); 
+			
+			if(root == null) {
+				
+				root = new Photo();
+				root.setPhotopath("C:/imgs/defaultimg.png");
+				
+			}
+			
 			list.add(AuctionListPhotoDto.FromChange(list2.get(i)));
 			String imgs;
 			try {
