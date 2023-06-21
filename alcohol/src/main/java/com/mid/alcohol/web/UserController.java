@@ -221,12 +221,7 @@ public class UserController {
 	// 비밀번호 찾기 페이지
 	@PostMapping("/findByUserPassword")
 	public String findByUserPasswordd() {
-//			@RequestParam("userEmail") String userEmail,
-//			@RequestParam("userName") String username,
-//			@RequestParam("userPhone") String userPhone ) {
-//		log.info("findByUserPasswordd={}", dto);
-//		
-//		User user = userService.findByUserPassword(dto);
+
 		
 		return "/signup/signupEmail";
 	}
