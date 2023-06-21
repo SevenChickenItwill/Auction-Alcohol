@@ -43,13 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		//	return;
 		//}
 		
-		if (title.length > 1000) {
-			alert('제목은 1000자 이내로 작성하십시오.');
+		if (title.length > 100) {
+			alert('제목은 100자를 넘길 수 없습니다.');
 			return;
 		}
 		
-		if (content.length > 825) {
-			alert('내용은 825자 이내로 작성하십시오.');
+		if (content.length > 745) {
+			alert('내용은 745자를 넘길 수 없습니다.');
 			return;
 		}
 		

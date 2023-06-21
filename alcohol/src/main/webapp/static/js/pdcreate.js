@@ -88,6 +88,12 @@
 		 let category = categoryselect.value;
 		 let photopaths = photopathinput.value;
 		 
+		 if(productname > 90) {
+			 
+			 alert('상품명은 90자 이내로 가능합니다.');
+			 return;
+		 }
+		 
 		 if(alcohol_level>=100){
 			 
 			 alert('도수를 잘못 입력하셨습니다.');

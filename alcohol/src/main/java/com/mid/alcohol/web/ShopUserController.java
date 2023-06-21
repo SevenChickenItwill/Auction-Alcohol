@@ -90,11 +90,11 @@ public class ShopUserController {
 
 	@PostMapping("/shopmain")
 	public void shopCategory(Model model, ShopCategoryDto dto,  @RequestParam("num") int num) {
-		log.info("shopCategory()");
-
+		log.info("shopCategory(dto= {})", dto);
+		
 		List<Products> list = shopUserService.category(dto.getCategory());
 		
-		
+		log.info("list= {}", list);
 		
 		String photoPath = "";
 		for (int i = 0; i < list.size(); i++) {
@@ -140,7 +140,6 @@ public class ShopUserController {
 		model.addAttribute("num", num);
 		model.addAttribute("maxIndex", len);
 		model.addAttribute("pageCount", pageCount);
-		model.addAttribute("boards", list);
 		model.addAttribute("listSize", list.size());
 		model.addAttribute("listPageMax", listPageMax);
 

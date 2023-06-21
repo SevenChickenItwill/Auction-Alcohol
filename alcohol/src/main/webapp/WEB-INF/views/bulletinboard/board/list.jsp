@@ -69,7 +69,7 @@
 }
 
 .abc {
-	text-underline-offset: var(--offset, 0.2em);
+	text-underline-offset: var(- -offset, 0.2em);
 	text-decoration: underline 0.12em;
 	transition: --offset 400ms, text-decoration-color 400ms;
 	color: white;
@@ -116,54 +116,55 @@
 					</a>
 				</div>
 				<div style="display: contents;">
-						<div>
-							<!-- 쇼핑몰 -->
-							<c:url value="/shop/shopmain" var="shopPage">
-								<c:param name="num" value="0"></c:param>
-							</c:url>
-							<a href="${ shopPage }" class="abc fw-bold">Shop</a>
-						</div>
-						<div>
-							<!-- 경매 -->
-							<c:url value="/auction/auctionlist" var="auctionlistPage"></c:url>
-							<a href="${ auctionlistPage }" class="abc fw-bold" >Auction</a>
-						</div>
-						<div>
-							<!-- 커뮤티니 -->
-							<c:url value="/bulletinboard/board/list" var="boardPage">
-								<c:param name="num" value="0" />
-								<c:param name="keyword" value=""></c:param>
-								<c:param name="category" value=""></c:param>
-								<c:param name="boardNumber" value="0"></c:param>
-							</c:url>
-							<a href="${ boardPage }" class="abc fw-bold">Board</a>
-						</div>
-						
-							<!-- 관리자 -->
-							<c:if test="${ sessionScope.category == 1 }">
-							<div>
-								<c:url value="/auction" var="adminPage">
-								</c:url>
-								<a href="${ adminPage }" class="abc fw-bold">ManagerPage</a>
-							</div>
-							</c:if>
-						
-						<div>
-							<!-- 마이페이지 -->
-							<c:url value="/auction/auctionview" var="mypage">
-							</c:url>
-							<a href="${ mypage }" class="abc fw-bold">MyPage</a>
-						</div>
-					</div>
-					<div class="navList">
-						<span style="color: white;" >'${ sessionScope.userNickname }'님 &nbsp;</span>
-						<c:url var="logout" value="/account/logout">
+					<div>
+						<!-- 쇼핑몰 -->
+						<c:url value="/shop/shopmain" var="shopPage">
+							<c:param name="num" value="0"></c:param>
 						</c:url>
-						<a style="color: white; font-weight: bold;"
-							class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+						<a href="${ shopPage }" class="abc fw-bold">Shop</a>
+					</div>
+					<div>
+						<!-- 경매 -->
+						<c:url value="/auction/auctionlist" var="auctionlistPage"></c:url>
+						<a href="${ auctionlistPage }" class="abc fw-bold">Auction</a>
+					</div>
+					<div>
+						<!-- 커뮤티니 -->
+						<c:url value="/bulletinboard/board/list" var="boardPage">
+							<c:param name="num" value="0" />
+							<c:param name="keyword" value=""></c:param>
+							<c:param name="category" value=""></c:param>
+							<c:param name="boardNumber" value="0"></c:param>
+						</c:url>
+						<a href="${ boardPage }" class="abc fw-bold">Board</a>
+					</div>
+
+					<!-- 관리자 -->
+					<c:if test="${ sessionScope.category == 1 }">
+						<div>
+							<c:url value="/auction" var="adminPage">
+							</c:url>
+							<a href="${ adminPage }" class="abc fw-bold">ManagerPage</a>
+						</div>
+					</c:if>
+
+					<div>
+						<!-- 마이페이지 -->
+						<c:url value="/auction/auctionview" var="mypage">
+						</c:url>
+						<a href="${ mypage }" class="abc fw-bold">MyPage</a>
 					</div>
 				</div>
+				<div class="navList">
+					<span style="color: white;">'${ sessionScope.userNickname }'님
+						&nbsp;</span>
+					<c:url var="logout" value="/account/logout">
+					</c:url>
+					<a style="color: white; font-weight: bold;"
+						class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+				</div>
 			</div>
+		</div>
 	</header>
 
 	<div style="outline: none" class="main">
@@ -200,7 +201,8 @@
 					<c:url value="/bulletinboard/board/create" var="dealCreated" />
 					<c:if test="${ sessionScope.userNickname ne null }">
 						<a href="${ dealCreated }" class="textNav">
-						<button type="button" class="btn btn-dark btn-lg">새글작성</button></a>
+							<button type="button" class="btn btn-dark btn-lg">새글작성</button>
+						</a>
 					</c:if>
 				</div>
 				<!-- 포스트 테이블 -->
@@ -226,19 +228,21 @@
 													</c:url>
 													<a href="${ detailPage }">
 														<div class="row g-0">
-															<div
-																class="col-md-2"
+															<div class="col-md-2"
 																style="display: flex; align-items: center;">
 																<!-- 이미지 -->
 																<img src="data:image/jpeg;base64,${ board.image }"
-																	class="img-fluid rounded-startc card-img-top"
-																	alt="이미지" />
+																	class="img-fluid rounded-startc card-img-top" alt="이미지" />
 															</div>
 															<div class="col-md-10">
 																<div class="card-body">
 																	<!-- 게시글 제목, 게시글 댓글수 -->
-																	<h5 class="card-title d-inline-block text-truncate" style="max-width: 150px;">${ board.title }<span>[${ board.rcnt }]</span></h5>
-
+																	<div style="display: flex;">
+																		<h5 class="card-title d-inline-block text-truncate"
+																			style="display: inline-block; width: 450px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${ board.title }
+																		</h5>
+																		<span>[${ board.rcnt }]</span>
+																	</div>
 																	<!-- 닉네임(아이디) ㅣ 시간 ㅣ 조회수 ㅣ 추천수   대로 나타냄 -->
 																	<p class="smallNickId  card-text">
 																		<small class="text-body-secondary">${ board.nickname }<br />
@@ -266,7 +270,7 @@
 							<div class="pageNum">
 								<c:url var="nextlist" value="/bulletinboard/board/list">
 									<c:choose>
-										<c:when test="${(nums) * 10 > maxIndex - 10 }">
+										<c:when test="${(nums) * 10 > maxIndex - 11 }">
 											<c:set var="number" value="${nums}" />
 											<c:param name="num" value="${number}"></c:param>
 											<c:param name="keyword" value="${ keyword }"></c:param>
@@ -302,10 +306,11 @@
 
 								</c:url>
 								<div>
-									<c:url var="indexZero" value="/bulletinboard/board/list?num=0">
+									<c:url var="indexZero"
+										value="/bulletinboard/board/list?num=0">
 										<c:param name="keyword" value="${ keyword }"></c:param>
 										<c:param name="category" value="${ category }"></c:param>
-										<c:param name="boardNumber" value="1"></c:param>
+										<c:param name="boardNumber" value="${ boardNumber }"></c:param>
 									</c:url>
 									<a href="${ indexZero }"><button style="padding: 3px 12px;"
 											class="btn btn-dark" type="button">&lt;&lt;</button></a> <a
@@ -317,7 +322,7 @@
 									<c:when test="${ listPageMax < 9 }">
 										<c:forEach begin="${ 1 }" end="${ listPageMax }" var="listFor">
 											<c:url var="listPageNum"
-												value="/bulletinboard/board/list?num=${ listFor - 1 }" />
+												value="/bulletinboard/board/list?num=${ listFor - 1 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 											<a href="${ listPageNum }">${ listFor }</a>
 										</c:forEach>
 									</c:when>
@@ -325,31 +330,31 @@
 									<c:when test="${ (num / 10) * 10 - 4 < 0}">
 
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=0" />
+											value="/bulletinboard/board/list?num=0&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">1</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=1" />
+											value="/bulletinboard/board/list?num=1&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">2</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=2" />
+											value="/bulletinboard/board/list?num=2&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">3</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=3" />
+											value="/bulletinboard/board/list?num=3&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">4</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=4" />
+											value="/bulletinboard/board/list?num=4&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">5</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=5" />
+											value="/bulletinboard/board/list?num=5&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">6</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=6" />
+											value="/bulletinboard/board/list?num=6&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">7</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=7" />
+											value="/bulletinboard/board/list?num=7&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">8</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=8" />
+											value="/bulletinboard/board/list?num=8&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">9</a>
 									</c:when>
 
@@ -358,31 +363,31 @@
 									<c:when test="${ (num / 10) * 10 + 5 > listPageMax  }">
 
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 9 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 9 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 8 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 8 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 8 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 7 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 7 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 7 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 6 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 6 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 6 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 5 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 5 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 5 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 4 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 4 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 4 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 3 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 3 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 3 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 2 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 2 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 2 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax - 1 }</a>
 										<c:url var="listPageNum"
-											value="/bulletinboard/board/list?num=${ listPageMax - 1 }" />
+											value="/bulletinboard/board/list?num=${ listPageMax - 1 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 										<a href="${ listPageNum }">${ listPageMax }</a>
 
 									</c:when>
@@ -391,7 +396,7 @@
 										<c:forEach begin="${ (num / 10) * 10 - 3 }"
 											end="${ (num / 10) * 10 + 5 }" var="listFor">
 											<c:url var="listPageNum"
-												value="/bulletinboard/board/list?num=${ listFor - 1 }" />
+												value="/bulletinboard/board/list?num=${ listFor - 1 }&keyword=${ keyword }&category=${ category }&boardNumber=${ boardNumber }" />
 											<a href="${ listPageNum }">${ listFor }</a>
 										</c:forEach>
 									</c:otherwise>
@@ -404,7 +409,7 @@
 										value="/bulletinboard/board/list?num=${ listPageMax - 1 }">
 										<c:param name="keyword" value="${ keyword }"></c:param>
 										<c:param name="category" value="${ category }"></c:param>
-										<c:param name="boardNumber" value="1"></c:param>
+										<c:param name="boardNumber" value="${ boardNumber }"></c:param>
 									</c:url>
 									<a href="${ maxIndex }"><button style="padding: 3px 12px;"
 											class="btn btn-dark" type="button">&gt;&gt;</button></a>
@@ -438,7 +443,7 @@
 									<div class="keywordSubmit col-sm-9">
 										<input
 											class="d-grid form-control gap-2 d-md-flex justify-content-md-end"
-											type="text" name="keyword" placeholder="검색어" required /> <input
+											type="text" name="keyword" placeholder="검색어" required maxlength="100" /> <input
 											type="submit" class="col-sm-3 btnContent btn btn-dark"
 											value="검색" />
 									</div>
@@ -452,7 +457,7 @@
 		</div>
 	</div>
 	<div>
-		<script 
+		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 			crossorigin="anonymous"></script>

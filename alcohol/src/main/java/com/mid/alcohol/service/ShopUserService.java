@@ -32,7 +32,7 @@ public class ShopUserService {
 	
 	// 상품 카테고리 별로..
 	public List<Products> category(int category) {
-		log.info("category()");
+		log.info("category(category= {})", category);
 		
 		return shopUserRepository.category(category);
 	}
