@@ -13,6 +13,6 @@ public class BasketListDto {
 	private int productid;
 	private long price;
 	private int quantity;
-	private String brandname; // 브랜드명
-	private String pname; // 상품명
+	private String brand; // 브랜드명
+	private String productname; // 상품명
 }

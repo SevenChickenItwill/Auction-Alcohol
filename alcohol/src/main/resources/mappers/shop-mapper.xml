@@ -77,10 +77,12 @@
 		on o.usernickname = u.usernickname
 		where p.userid = #{userNickname}
 	</select>
+	
+	
 
 	<insert id="createBasket">
-		INSERT INTO basket (productid, quantity, price, pname)	
-		VALUES (#{productid}, #{quantity}, #{price}, #{productname})
+		INSERT INTO basket (productid, quantity, price, pname, usernickname)	
+		VALUES (#{productid}, #{quantity}, #{price}, #{productname}, #{userid})
 	</insert>
     
 

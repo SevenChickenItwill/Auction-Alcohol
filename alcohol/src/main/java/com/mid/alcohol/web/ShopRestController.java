@@ -23,6 +23,7 @@ import com.mid.alcohol.dto.shop.ShopProductCreateDto;
 import com.mid.alcohol.dto.shop.ShopSearchDto;
 import com.mid.alcohol.service.ShopService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -82,9 +83,9 @@ public class ShopRestController {
 	}
 	
 	@PostMapping("/pddetails/productid={productid}/price={price}/quantity={quantity}/productname={productname}")
-	public void basketSave(BasketSaveDto dto) {
+	public void basketSave(BasketSaveDto dto, HttpSession session) {
 		log.info("CONTROLLER basketSave(DTO={})", dto);
-		
+		dto.setUserNickname((String)session.getAttribute("userNickname"));
 		int result = shopservice.createBasket(dto);
 		
 		}

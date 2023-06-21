@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			inputs.forEach((s) => {
 				const selector = `input#${s}-${id}`
 				const inputElement = document.querySelector(selector);
+				console.log(selector);
 				if (checkbox.checked) {
 					// form에 name속성 부여
 					inputElement.setAttribute('name', s);
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			// form에 name속성 부여
 			const checked = e.target.checked;
 			const id = e.target.getAttribute('data-id');
-			const inputs = ["quantity", "basketid"]
+			const inputs = ["quantity", "basketid", "productid", "price"]
 			inputs.forEach((s) => {
 
 				const selector = `input#${s}-${id}`

@@ -180,9 +180,9 @@
 					<span class="title mx-3 my-2 py-4">결제 상품</span> <br>
 					<c:forEach var="basket" items="${list}">
 						<div id="div-${ basket.basketid }" class="btn">
-							<label>${basket.brandname}</label>
+							<label>${basket.brand}</label>
 							<hr>
-							<label>${basket.pname}</label> <br> <br> <label
+							<label>${basket.productname}</label> <br> <br> <label
 								style="text-align: left;">상품금액 ${ basket.price }원</label> <br>
 							<label>주문수량</label> <label>${ basket.quantity }개</label> <br>
 							<label>주문금액</label> <span>${(basket.quantity * basket.price)}원</span>

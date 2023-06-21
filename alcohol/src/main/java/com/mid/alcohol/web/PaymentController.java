@@ -58,7 +58,7 @@ public class PaymentController {
 		log.info("basketidlist: {}", basketidlist);
 		log.info("productidlist: {}", productidlist);
 		log.info("pricelist: {}", pricelist);
-
+		// 받아온 값으로 basket 업데이트할 값 만들어주기
 		List<BasketUpdateListDto> basketUpdateListDto = new ArrayList<>();
 		for (int i = 0; i < quantitylist.size(); i++) {
 			BasketUpdateListDto basketUpdateDto = new BasketUpdateListDto();

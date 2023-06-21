@@ -220,9 +220,9 @@
 							value="${ basket.productid }" class="d-none"> <input
 							id="basketid-${ basket.basketid }" value="${ basket.basketid }"
 							class="d-none"> <input id="price-${ basket.basketid }"
-							value="${ basket.price }" class="d-none"> <label>${basket.brandname}</label>
+							value="${ basket.price }" class="d-none"> <label>${basket.brand}</label>
 						<hr>
-						<label>${basket.pname}</label> <br> <br> <label
+						<label>${basket.productname}</label> <br> <br> <label
 							style="text-align: left;">상품금액 ${ basket.price }원</label> <br>
 						<label>주문수량</label> <label>${ basket.quantity }개</label> <br>
 						<label>주문금액</label> <span id="orderAmount-${basket.basketid}"

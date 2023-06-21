@@ -122,7 +122,7 @@
 
 	<hr>
 	<div style="display: flex; justify-content: center;">
-		<div class="form-control" style="width: 700px;">
+		<div class="form-control" style="width: 1400px;">
 			<div style="display: flex; justify-content: center;">
 				<div class="card-boby py-3">
 					<table class="table">
@@ -133,15 +133,12 @@
 								<th>브랜드</th>
 								<th>가격</th>
 								<th>수량</th>
-								<th>구매자정보</th>
-								<th>상태</th>
-							</tr>
-							
-							<tr>
 								<th>구매자</th>	
 								<th>주소</th>
 								<th>핸드폰번호</th>
 								<th>이메일</th>
+								<th>상태</th>
+								<th>주문상태변경</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -152,6 +149,10 @@
 								<td>${ info.brand }</td>
 								<td>${ info.price }</td>
 								<td>${ info.quantity }</td>
+								<td>${ info.username }</td>
+								<td>${ info.useraddress }</td>
+								<td>${ info.userphone }</td>
+								<td>${ info.useremail }</td>
 								<td id="status" data-id="${ info.pid }">
 									<c:if test="${ info.status == 0}">
 										상품준비중
@@ -160,14 +161,6 @@
 										배송중
 									</c:if>
 								</td>
-								<td id="btnView" class="btn" data-id="${ info.pid }">View Info</td>
-							</tr>
-							
-							<tr id="userinfo" data-id="${ info.pid }" class="d-none">
-								<td>${ info.username }</td>
-								<td>${ info.useraddress }</td>
-								<td>${ info.userphone }</td>
-								<td>${ info.useremail }</td>
 								<td id="delivery" class="btn" data-id="${ info.pid }" data-bid="${ info.basketid }">배송중</td>
 							</tr>
 					</c:forEach>
@@ -176,12 +169,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="my-3" style="display: flex; justify-content: center;">
-		<c:url var="view" value="/auction/auctionview" />
-		<form action="${ view }">
-			<input type="submit" value="주문목록">
-		</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 	<script src="../static/js/aproductinfo.js"></script>
