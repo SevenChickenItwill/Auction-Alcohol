@@ -207,7 +207,7 @@ main {
 				<a href="${ shopPage }" class="shoppingmall-font">주류 쇼핑몰로 이동</a>
 			</p>
 			<p>
-				<a href="${ auctionListPage }" class="bidmall-font">경매몰로 이동</a>
+				<a href="${ auctionlistPage }" class="bidmall-font">경매몰로 이동</a>
 			</p>
 		</div>
 

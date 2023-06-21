@@ -57,7 +57,7 @@ public class ShopUserService {
             String keywordPname = keyword;
             String keywordBrand = keywordPname;
             
-            ShopUserSearchDto dto = new ShopUserSearchDto("keyword", "keywordPname");
+            ShopUserSearchDto dto = new ShopUserSearchDto(keyword, keywordPname);
             
             List<ShopUserReadDto> list = shopUserRepository.searchProductnameAndBrand(dto);
 

@@ -198,7 +198,6 @@ public class ShopUserController {
 		model.addAttribute("num", pagenum);
 		model.addAttribute("maxIndex", len);
 		model.addAttribute("pageCount", pageCount);
-		model.addAttribute("boards", list);
 		model.addAttribute("listSize", list.size());
 		model.addAttribute("listPageMax", listPageMax);
 		model.addAttribute("keyword", keyword);

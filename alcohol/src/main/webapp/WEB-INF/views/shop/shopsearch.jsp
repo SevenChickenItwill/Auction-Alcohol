@@ -189,7 +189,7 @@ header {
 			<c:set var="maxIndex" value="${ maxIndex }" />
 
 			<c:if test="${ maxIndex - 1 > 0 }">
-				<c:forEach items="${ products }" var="list" begin="${count}"
+				<c:forEach items="${ search }" var="list" begin="${count}"
 					end="${ maxIndex -1 }">
 					<c:url var="pddetails" value="/shop/pddetails">
 						<c:param name="id" value="${ list.pid }"></c:param>

@@ -27,8 +27,8 @@
 	
 	<!-- 상품명 + 브랜드명으로 검색하기 -->
 	<select id="searchProductnameAndBrand" resultType="com.mid.alcohol.dto.shopuser.ShopUserReadDto">
-		SELECT * FROM products WHERE productname LIKE '%' || #{productname} || '%'
-		OR brand LIKE '%' || #{brand} || '%'
+		SELECT * FROM products WHERE productname LIKE ('%' || #{productname} || '%')
+		OR brand LIKE ('%' || #{brand} || '%')
 	</select>
 	
    
