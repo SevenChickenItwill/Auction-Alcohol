@@ -120,17 +120,13 @@
 
 .birDiv {
 	display: flex;
-    justify-content: space-around;
-    align-items: center;
-    font-size: 28px;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 28px;
 }
 
 .btnSignCan {
 	padding-bottom: 16px;
-}
-
-.btn {
-	margin-left: auto;
 }
 </style>
 </head>
@@ -164,14 +160,12 @@
 									</select>
 								</div>
 								<div class="nameDiv col-md-12">
-									<label for="userName"></label> 
-									<input type="text" id="userName"
+									<label for="userName"></label> <input type="text" id="userName"
 										name="userName" placeholder="이름"
 										class="nameInput form-control rounded" autofocus />
 								</div>
 								<div class="passwordDiv col-md-12">
-									<label for="userPassword"></label> 
-									<input type="password"
+									<label for="userPassword"></label> <input type="password"
 										id="userPassword" name="userPassword" placeholder="비밀번호"
 										class="passwordInput form-control rounded" required />
 								</div>
@@ -289,8 +283,10 @@
 										class="phoneInput form-control rounded">
 									<!--  <small id="phoneErrorMessage" style="color: red;"></small> -->
 								</div>
-								<div class="nicknameDiv row g-3">
-									<div class="col-sm-8">
+								<div class="nicknameDiv row g-3"
+									style="display: flex; align-items: center;">
+									<div class="col-sm-8"
+										style="display: flex; align-items: center;">
 										<label for="userNickname"></label> <input type="text"
 											id="userNickname" name="userNickname" placeholder="닉네임"
 											required class="form-control" />
@@ -319,9 +315,10 @@
 								<div class="birDiv col-sm-3">
 									<label>생년월일</label>
 								</div>
-								<div class="col-sm-9 d-grid gap-2 d-md-flex justify-content-md-end">
-									<input class="phoneInput form-control rounded" type="date" id="userBirthday" name="userBirthday" 
-										required />
+								<div
+									class="col-sm-9 d-grid gap-2 d-md-flex justify-content-md-end">
+									<input class="phoneInput form-control rounded" type="date"
+										id="userBirthday" name="userBirthday" required />
 								</div>
 							</div>
 							<div>
@@ -333,9 +330,11 @@
 							<br />
 						</form>
 						<div>
-							<div class="btnSignCan d-grid gap-2 d-md-flex justify-content-md-end">
-								<input class="btn btn-dark me-md-2" type="submit" id="btnCancel" value="취소"> 
-								<input class="btn btn-dark" type="submit" id="btnSignup" value="회원가입" />
+							<div
+								class="btnSignCan d-grid gap-2 d-md-flex justify-content-md-end">
+								<input class="btn btn-dark me-md-2" type="submit" id="btnCancel"
+									value="취소"> <input class="btn btn-dark" type="submit"
+									id="btnSignup" value="회원가입" />
 							</div>
 						</div>
 					</div>
