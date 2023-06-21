@@ -92,8 +92,11 @@ public class AuctionProductController {
 		
 		int result = apservice.delete(productid);
 		log.info("삭제결과={}", result);
-		
-		return "redirect:/auction/product";
+		if(result>=1) {
+			return "redirect:/auction/product";
+		} else {
+			return "/auction/productdetail?productid="+productid;
+		}
 	}
 	
 	@PostMapping("/productmodify")

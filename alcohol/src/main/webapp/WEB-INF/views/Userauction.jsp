@@ -201,7 +201,7 @@ h2{
     display: flex;
     justify-content: center;
 	">
-	<div style="width: 1100px; margin-top: 100px;">
+	<div style="width: 1500px; margin-top: 100px;">
 	<div class="form-control">
 	<div class="auctionform">
 	

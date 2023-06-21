@@ -33,6 +33,10 @@ public class AuctionOpenDto {
 	
 	public Auction toEntity() {
 		
+		if(status==1) {
+			auctionStart = LocalDateTime.now();
+		}
+		
 		Auction auction = Auction.builder().auctioneer(auctioneer).auctionName(auctionName).productId(productId).passBid(passbid).nowBid((passbid/10)*3).auctionStart(auctionStart).auctionEnd(auctionEnd).bidder(auctioneer).status(status).build();
 		
 		return auction;

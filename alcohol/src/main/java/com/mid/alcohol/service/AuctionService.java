@@ -261,7 +261,11 @@ public class AuctionService {
 		log.info("dto={}",dto);
 		Auction entity = dto.toAuctionEntity();
 		log.info("{}",entity);
-		return auctionrepository.updatebat(entity);
+		if(entity.getStatus()==1) {
+			return auctionrepository.updatebat(entity);
+		} else {
+			return auctionrepository.updatebatDate(entity);
+		}
 	}
 
 	public List<AuctionListDto> readUserEnd(String attribute) {

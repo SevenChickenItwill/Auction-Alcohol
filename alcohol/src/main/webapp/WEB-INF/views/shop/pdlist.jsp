@@ -243,7 +243,7 @@ body{
 			<div class="card">
 				<label class="mx-2 form-label" style="font-weight: bold; font-size: xx-large;" for="searchtext">검색창</label>
 				<div><input type="text" value="${ sessionScope.userNickname }" class="d-none" name="userid" id="userid"></div>
-				<input class="form-control" type="text" placeholder="검색할 내용을 입력하세요." id="searchtext" name="searchtext" />
+				<input maxlength="45" class="form-control" type="text" placeholder="검색할 내용을 입력하세요." id="searchtext" name="searchtext" />
 				<label class="mx-2 form-label">검색 종류</label>
 				<select id="searchoption" name="searchoption" class="form-control">
 					<option value="1">상품명</option>

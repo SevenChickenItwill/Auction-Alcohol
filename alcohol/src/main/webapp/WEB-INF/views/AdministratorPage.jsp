@@ -110,8 +110,9 @@ body {
 }
 
 .chart-container {
+    margin-left: 150px;
 	height: 1800px;
-	width: 100%;
+	width: 85%;
 }
 </style>
 </head>

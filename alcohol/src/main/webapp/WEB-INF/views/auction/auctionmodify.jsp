@@ -215,8 +215,8 @@ body{
         </a>
       </li>
       <li>
-      	<c:url var="shopcreate" value="/shop/pdcreate" />
-        <a href="#" class="nav-link link-dark list-group-item list-group-item-action">
+      	<c:url var="shopinfo" value="/shop/aproductinfo" />
+        <a href="${ shopinfo }" class="nav-link link-dark list-group-item list-group-item-action">
           쇼핑몰 주문현황
         </a>
       </li>
@@ -229,6 +229,7 @@ body{
         <br />
         
 		<div class="card">
+            <input class="d-none" type="text" name="userid" id="userid" value="${ sessionScope.userNickname }">
             <c:url var="auctionupdate" value="/auction/update">
                <c:param name="aid" value="${ detail.aid }" />
             </c:url>
@@ -236,18 +237,19 @@ body{
                 <div>
                     <input class="d-none" type="number" id="aid" name="aid" readonly value="${ detail.aid }" />
                 </div>
+                
                 <div>
                     
                     <input type="text" id="auctioneer" value="${ detail.auctioneer }" name="auctioneer" class="d-none" readonly="readonly"/>
                 </div>
                 <div>
                     <label class="form-label mx-2" for="auctionName">경매명</label>
-                    <input class="form-control" value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" />
+                    <input maxlength="45" class="form-control" value="${ detail.auctionName }" id="auctionName" name="auctionName" type="text" />
                 </div>
                 
                 <div>
                     <label class="form-label mx-2" for="pname">상품명</label>
-                    <input class="form-control" value="${ detail.pname }" id="pname" name="pname" type="text"  />
+                    <input maxlength="45" class="form-control" value="${ detail.pname }" id="pname" name="pname" type="text"  />
                     <button class="card btn" id="btnsearch">내 상품 찾기</button>
                 </div>
                 <div>
@@ -264,7 +266,7 @@ body{
                 </div>
                 <div>
                     <label class="form-label mx-2" for="passBid">즉시 낙찰가</label>
-                    <input class="form-control" value="${ detail.passbid }" id="passbid" name="passbid" type="number"  />
+                    <input pattern="\d{1,15}" class="form-control" value="${ detail.passbid }" id="passbid" name="passbid" type="number"  />
                 </div>
                 <div>
                     <label class="form-label mx-2" for="auctionStart">경매 시작일</label>

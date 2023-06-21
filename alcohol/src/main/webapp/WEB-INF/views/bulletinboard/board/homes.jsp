@@ -204,10 +204,10 @@ main {
 
 		<div class="grids">
 			<p>
-				<a href="#" class="shoppingmall-font">주류 쇼핑몰로 이동</a>
+				<a href="${ shopPage }" class="shoppingmall-font">주류 쇼핑몰로 이동</a>
 			</p>
 			<p>
-				<a href="${ auctionList }" class="bidmall-font">경매몰로 이동</a>
+				<a href="${ auctionListPage }" class="bidmall-font">경매몰로 이동</a>
 			</p>
 		</div>
 

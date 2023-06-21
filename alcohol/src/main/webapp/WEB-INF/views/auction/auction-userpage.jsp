@@ -179,7 +179,7 @@
             <input class="d-none" name="listuserid" value="${list1.userid }" type="text" />
             	
             	<c:if test="${ list1.userid ne loginid }" >
-            		<input class="chatings form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
+            		<input style="text-align: left;" class="chatings form-control text-bg-secondary" type="text" value="${list1.userid} : ${list1.conversation}" readonly="readonly"/>
             		<input class="d-none" id="${ list1.cid }" name="${list1.cid }" type="number" value="${ list1.cid }" />
             	</c:if>
             	<c:if test="${ list1.userid eq loginid }" >
@@ -211,7 +211,7 @@
             <label style="justify-content: center;
         	align-items: center;
         	display: flex;" for="chatcontent">입력창</label>
-            <input type="text" class="card" id="chatcontent" name="chatcontent" value=""/>
+            <input maxlength="250" type="text" class="card" id="chatcontent" name="chatcontent" value=""/>
             
             <button class="btn btn-outline-dark btnsle" id="btnsubmit" data-bid="0">전송</button>
             <button class="btn btn-outline-warning btnsle" id="btnbat" data-bid="1" pers="1">배팅</button>

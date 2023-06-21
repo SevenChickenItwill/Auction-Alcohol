@@ -242,12 +242,12 @@ body{
                 </div>
                 <div class="form-control">
                     <label for="auctionName">경매명</label> <input
-                        id="auctionName" name="auctionName" type="text" class="form-control my-2">
+                       maxlength="45" id="auctionName" name="auctionName" type="text" class="form-control my-2">
                 </div>
 
                 <div class="form-control">
                     <label for="pname">상품명</label> <input id="pname"
-                        name="pname" type="text" class="form-control my-2">
+                      maxlength="45"  name="pname" type="text" class="form-control my-2">
                     <button class="btn btn-outline-dark"
                         id="btnProductSearch">내 상품 찾기</button>
                 </div>
@@ -268,7 +268,7 @@ body{
                 </div>
                 <div class="form-control">
                     <label for="passBid">즉시 낙찰가</label> <input
-                        id="passbid" name="passbid" type="number"
+                       pattern="\d{1,15}" id="passbid" name="passbid" type="number"
                         value="100000" class="form-control my-2">
                 </div>
                 <div class="form-control">

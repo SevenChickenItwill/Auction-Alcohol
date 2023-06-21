@@ -236,20 +236,20 @@ body{
 				<input class="d-none" name="userId" id="userId"
 					value="${ sessionScope.userNickname }" />
 				<div class="form-control">
-					<label for="productName">상품명</label> <input class="form-control"
+					<label for="productName">상품명</label> <input maxlength="45" class="form-control"
 						type="text" name="pName" id="pName" />
 				</div>
 				<div class="form-control">
-					<label for="brandname">브랜드명</label> <input class="form-control"
+					<label for="brandname">브랜드명</label> <input maxlength="45" class="form-control"
 						type="text" name="brandname" id="brandName" />
 				</div>
 				<div class="form-control">
-					<label for="constructorName">제조사(생산자)</label> <input
+					<label for="constructorName">제조사(생산자)</label> <input maxlength="45"
 						class="form-control" type="text" name="constructor"
 						id="constructor" />
 				</div>
 				<div class="form-control">
-					<label for="cost">원가</label> <input class="form-control"
+					<label pattern="\d{1,15}" for="cost">원가</label> <input class="form-control"
 						type="number" name="cost" id="cost" />
 				</div>
 				<div class="form-control">
