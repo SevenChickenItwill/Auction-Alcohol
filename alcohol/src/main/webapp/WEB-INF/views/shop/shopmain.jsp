@@ -77,61 +77,62 @@ header {
 					</a>
 				</div>
 				<div style="display: contents;">
-						<div>
-							<!-- 쇼핑몰 -->
-							<c:url value="/shop/shopmain" var="shopPage">
-								<c:param name="num" value="0"></c:param>
-							</c:url>
-							<a href="${ shopPage }" class="abc fw-bold">Shop</a>
-						</div>
-						<div>
-							<!-- 경매 -->
-							<c:url value="/auction/auctionlist" var="auctionlistPage"></c:url>
-							<a href="${ auctionlistPage }" class="abc fw-bold" >Auction</a>
-						</div>
-						<div>
-							<!-- 커뮤티니 -->
-							<c:url value="/bulletinboard/board/list" var="boardPage">
-								<c:param name="num" value="0" />
-								<c:param name="keyword" value=""></c:param>
-								<c:param name="category" value=""></c:param>
-								<c:param name="boardNumber" value="0"></c:param>
-							</c:url>
-							<a href="${ boardPage }" class="abc fw-bold">Board</a>
-						</div>
-						
-							<!-- 관리자 -->
-							<c:if test="${ sessionScope.category == 1 }">
-							<div>
-								<c:url value="/auction" var="adminPage">
-								</c:url>
-								<a href="${ adminPage }" class="abc fw-bold">ManagerPage</a>
-							</div>
-							</c:if>
-						
-						<div>
-							<!-- 마이페이지 -->
-							<c:url value="/auction/auctionview" var="mypage">
-							</c:url>
-							<a href="${ mypage }" class="abc fw-bold">MyPage</a>
-						</div>
-						
-						<div>
-							<!-- 장바구니 -->
-							<c:url value="/paymain" var="paymain"></c:url>
-							<a href="${ paymain }" class="abc fw-bold">Basket</a>
-						</div>
-						
-					</div>
-					<div class="navList">
-						<span style="color: white;" >'${ sessionScope.userNickname }'님 &nbsp;</span>
-						<c:url var="logout" value="/account/logout">
+					<div>
+						<!-- 쇼핑몰 -->
+						<c:url value="/shop/shopmain" var="shopPage">
+							<c:param name="num" value="0"></c:param>
 						</c:url>
-						<a style="color: white; font-weight: bold;"
-							class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
+						<a href="${ shopPage }" class="abc fw-bold">Shop</a>
 					</div>
+					<div>
+						<!-- 경매 -->
+						<c:url value="/auction/auctionlist" var="auctionlistPage"></c:url>
+						<a href="${ auctionlistPage }" class="abc fw-bold">Auction</a>
+					</div>
+					<div>
+						<!-- 커뮤티니 -->
+						<c:url value="/bulletinboard/board/list" var="boardPage">
+							<c:param name="num" value="0" />
+							<c:param name="keyword" value=""></c:param>
+							<c:param name="category" value=""></c:param>
+							<c:param name="boardNumber" value="0"></c:param>
+						</c:url>
+						<a href="${ boardPage }" class="abc fw-bold">Board</a>
+					</div>
+
+					<!-- 관리자 -->
+					<c:if test="${ sessionScope.category == 1 }">
+						<div>
+							<c:url value="/auction" var="adminPage">
+							</c:url>
+							<a href="${ adminPage }" class="abc fw-bold">ManagerPage</a>
+						</div>
+					</c:if>
+
+					<div>
+						<!-- 마이페이지 -->
+						<c:url value="/auction/auctionview" var="mypage">
+						</c:url>
+						<a href="${ mypage }" class="abc fw-bold">MyPage</a>
+					</div>
+
+					<div>
+						<!-- 장바구니 -->
+						<c:url value="/paymain" var="paymain"></c:url>
+						<a href="${ paymain }" class="abc fw-bold">Basket</a>
+					</div>
+
+				</div>
+				<div class="navList">
+					<span style="color: white;">'${ sessionScope.userNickname }'님
+						&nbsp;</span>
+					<c:url var="logout" value="/account/logout">
+					</c:url>
+					<a style="color: white; font-weight: bold;"
+						class="flex-sm-fill text-sm-center nav-link" href="${ logout }">로그아웃</a>
 				</div>
 			</div>
+		</div>
 	</header>
 	<c:url var="productstype" value="/shop/shopmain">
 		<c:param name="num" value="0"></c:param>
@@ -184,7 +185,6 @@ header {
 			<c:set var="maxIndex" value="${ maxIndex }" />
 
 			<c:if test="${ maxIndex - 1 > 0 }">
-
 				<c:forEach items="${ products }" var="list" begin="${count}"
 					end="${ maxIndex -1 }">
 					<c:url var="pddetails" value="/shop/pddetails">
@@ -192,27 +192,70 @@ header {
 					</c:url>
 					<div id="list" class="card" style="width: 18rem;">
 						<a href="${ pddetails }">
-							<li class="list-group-item">상품명: ${ list.productname }</li>
+							
 							<div class="card-body">
 								<li class="list-group-item"><img width="100%"
 									height="150px" src="data:image/jpeg;base64,${list.photopath}" /></li>
 							</div>
 
 
-							<ul class="list-group list-group-flush">
+							<ul class="list-group list-group-flush d-inline-block">
+								<li class="list-group-item d-inline-block text-truncate" style="width: 225px;">상품명: ${ list.productname }</li>
 								<li class="list-group-item">브랜드: ${ list.brand }</li>
-								<li class="list-group-item">상품정보: ${ list.hashtag } <br>
-									용량: ${ list.standard },<br> 규격: ${ list.unit }
+								<li class="list-group-item" style="width: 225px;">
+									<div>
+										<Sapn  class="d-inline-block text-truncate" style="max-width: 200px;">상품정보: ${list.hashtag}</Sapn> 
+									</div>
+									<div>
+										<span class="d-inline-block">용량: ${list.standard},</span>
+									</div>
+									<div>
+										<span class="d-inline-block">규격: ${list.unit}</span>
+									</div>
 								</li>
 								<li class="list-group-item">도수: ${ list.alcohol_level },<br>
 									유통기한: ${ list.expirationdate }
 								</li>
-								<li class="list-group-item">가격: ${ list.price }</li>
+								<li class="list-group-item">가격: ${ list.price }원</li>
 							</ul>
 						</a>
 					</div>
 				</c:forEach>
+			</c:if>
+			<c:if test="${ listSize == 1 }">
+				<c:set var="list" value="${products[0]}" />
+				<c:url var="pddetails" value="/shop/pddetails">
+						<c:param name="id" value="${ list.pid }"></c:param>
+					</c:url>
+					<div id="list" class="card" style="width: 18rem;">
+						<a href="${ pddetails }">
+							<div class="card-body">
+								<li class="list-group-item"><img width="100%"
+									height="150px" src="data:image/jpeg;base64,${list.photopath}" /></li>
+							</div>
 
+
+							<ul class="list-group list-group-flush d-inline-block">
+								<li class="list-group-item d-inline-block text-truncate" style="width: 225px;">상품명: ${ list.productname }</li>
+								<li class="list-group-item">브랜드: ${ list.brand }</li>
+								<li class="list-group-item" style="width: 225px;">
+									<div>
+										<Sapn  class="d-inline-block text-truncate" style="max-width: 200px;">상품정보: ${list.hashtag}</Sapn> 
+									</div>
+									<div>
+										<span class="d-inline-block">용량: ${list.standard},</span>
+									</div>
+									<div>
+										<span class="d-inline-block">규격: ${list.unit}</span>
+									</div>
+								</li>
+								<li class="list-group-item">도수: ${ list.alcohol_level },<br>
+									유통기한: ${ list.expirationdate }
+								</li>
+								<li class="list-group-item">가격: ${ list.price }원</li>
+							</ul>
+						</a>
+					</div>
 			</c:if>
 
 		</div>
@@ -221,7 +264,7 @@ header {
 	<!-- 페이지네이션 -->
 	<div id="page">
 		<div
-			style="display: flex; justify-content: space-evenly; align-items: center;">
+			style="display: flex; justify-content: space-evenly; align-items: center; margin-bottom: 20px;">
 			<c:url var="nextlist" value="/shop/shopmain">
 				<c:choose>
 					<c:when test="${(nums) * 10 > maxIndex - 10 }">

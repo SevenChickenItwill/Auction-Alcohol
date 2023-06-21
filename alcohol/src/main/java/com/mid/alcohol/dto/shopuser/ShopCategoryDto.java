@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ShopCategoryDto {
 
-	int category;
+	private int category;
 	
 }

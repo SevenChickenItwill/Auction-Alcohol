@@ -52,7 +52,7 @@ public class BulletinboardController {
 
 	@GetMapping("/search")
 	public void searchList(Model model, @RequestParam("category") String category,
-			@RequestParam("keyword") String keyword, @RequestParam("pagenum2") int pagenum) {
+			@RequestParam("keyword") String keyword, @RequestParam("pagenum2") int pagenum, @RequestParam("boardNumber") int boardNumber) {
 		log.info("searchList(category= {}, keyword= {}, pagenum= {})", category, keyword, pagenum);
 
 		// 검색한 Deal list값을 저장하는 객체 생성.
@@ -109,6 +109,7 @@ public class BulletinboardController {
 		model.addAttribute("listPageMax", listPageMax);
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("category", category);
+		model.addAttribute("boardNumber", boardNumber);
 	}
 
 
@@ -116,6 +117,8 @@ public class BulletinboardController {
 	public void list(Model model, @RequestParam("num") int num, @RequestParam("category") String category,
 			@RequestParam("keyword") String keyword, @RequestParam("boardNumber") int boardNumber) {
 		log.info("list()");
+		
+		log.info("CONTROLLER LIST(num= {}, category= {}, keyword= {}, boardNumber={})", num, category, keyword, boardNumber);
 		
 		List<BulletinboardListDto> list = new ArrayList<>();
 
@@ -134,7 +137,7 @@ public class BulletinboardController {
 
 		// 이미지 크기 조정후 이미지를 view에 보내주기
 		for (int i = 0; i < list.size(); i++) {
-
+					
 			try {
 
 				list.get(i).setImage(
@@ -170,7 +173,7 @@ public class BulletinboardController {
 		log.info("count= {}", count);
 
 		// 페이지 쪽수 마지막 값을 찾기 위해서
-		int listPageMax = (int) ((list.size() / 10) + 1);
+		int listPageMax = (int) ((list.size() / 10));
 		log.info("listPageMax ={}", listPageMax);
 
 		model.addAttribute("pageListCount", count);
