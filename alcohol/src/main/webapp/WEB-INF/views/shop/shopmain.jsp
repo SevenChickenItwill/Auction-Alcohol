@@ -176,7 +176,6 @@ header {
 
 
 	<!-- 상품 정보 -->
-	<div>
 		<div style="display: inline-block;">
 			<c:set var="len" value="${ length }"></c:set>
 			<c:set var="count" value="${ pageCount }" />
@@ -216,7 +215,6 @@ header {
 			</c:if>
 
 		</div>
-	</div>
 
 	<!-- 페이지네이션 -->
 	<div id="page">
