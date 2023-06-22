@@ -182,7 +182,7 @@
 												<img src="data:image/jpeg;base64,${ image }" alt="이미지" />
 											</div>
 											<div style="word-break: break-all;">
-												<p>${ board.content }</p>
+												<div class="comment-message" style="white-space:pre-wrap; margin-bottom: 10px;"><c:out value="${ board.content }" ></c:out></div>
 											</div>
 											<div class="recommendBtn">
 												<div style="margin-right: 10px;">

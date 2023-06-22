@@ -49,9 +49,9 @@ public interface BulletinboardRepository {
 	
 	int viewsUp(long boardId);
 
-	List<Bulletinboard> selectAnnouncement();
+	List<BulletinboardListDto> selectAnnouncement();
 	
-	List<Bulletinboard> selectOrderByRecommend();
+	List<BulletinboardListDto> selectOrderByRecommend();
 
 	List<Bulletinboard> readHistoryByNickname(String nickname);
 	

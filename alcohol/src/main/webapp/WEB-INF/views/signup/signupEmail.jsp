@@ -98,7 +98,7 @@
 				</header>
 				<div>
 					<c:url var="signupEmail" value="/signup/signupEmail"></c:url>
-					<form id="signupEmailForm" method="post" action="${ signupEmail }">
+					<form id="signupEmailForm">
 						<div class="formWrapper row">
 							<div class="formContent col-md-12">
 								<label for="userEmail"></label> 

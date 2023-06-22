@@ -424,7 +424,7 @@
     	select sum(a.nowbid) AS "total",EXtract(MONTH FROM a.auctionend) AS "month"
     	from auction a
     	JOIN auctionproducts p ON p.productid = a.productid
-    	WHERE a.auctioneer = #{userid}
+    	WHERE a.auctioneer = #{userid} AND a.status = 2
     	GROUP BY EXtract(MONTH FROM a.auctionend)
         ORDER BY EXTRACT(MONTH FROM a.auctionend) ASC
     </select>

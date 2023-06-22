@@ -337,18 +337,18 @@ public class BulletinboardService {
 	public List<BulletinboardListDto> selectAnnouncement() {
 		log.info("selectAnnouncement()");
 		
-		List<Bulletinboard> list = bulletinboardRepository.selectAnnouncement();
+		List<BulletinboardListDto> list = bulletinboardRepository.selectAnnouncement();
 		
-		return list.stream().map(BulletinboardListDto::fromEntity).toList();
+		return list;
 	}
 	
 	// 추천순으로 보는 메서드
 	public List<BulletinboardListDto> selectOrderByRecommend() {
 		log.info("selectOrderByRecommend()");
 		
-		List<Bulletinboard> list = bulletinboardRepository.selectOrderByRecommend();
+		List<BulletinboardListDto> list = bulletinboardRepository.selectOrderByRecommend();
 		
-		return list.stream().map(BulletinboardListDto::fromEntity).toList();
+		return list;
 	}
 	
 	// 닉네임으로 게시글 찾기

@@ -173,7 +173,7 @@ public class BulletinboardController {
 		log.info("count= {}", count);
 
 		// 페이지 쪽수 마지막 값을 찾기 위해서
-		int listPageMax = (int) ((list.size() / 10));
+		int listPageMax = (int) ((list.size() / 10) + 1);
 		log.info("listPageMax ={}", listPageMax);
 
 		model.addAttribute("pageListCount", count);

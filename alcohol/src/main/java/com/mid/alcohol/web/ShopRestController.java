@@ -85,6 +85,7 @@ public class ShopRestController {
 	@PostMapping("/pddetails/productid={productid}/price={price}/quantity={quantity}/productname={productname}")
 	public void basketSave(BasketSaveDto dto, HttpSession session) {
 		log.info("CONTROLLER basketSave(DTO={})", dto);
+		log.info("======================================================{}", dto.getProductname());
 		dto.setUserNickname((String)session.getAttribute("userNickname"));
 		int result = shopservice.createBasket(dto);
 		

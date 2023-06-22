@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const price = inputPrice.value;
 		const quantity = inputQuantity.value;
 		const productname = inputPname.value;
-		
+		console.log(productname);
 		var a = 1;
 		
 		if (quantity < a || quantity === '') {

@@ -48,10 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			return;
 		}
 		
-		if (content.length > 745) {
-			alert('내용은 745자를 넘길 수 없습니다.');
-			return;
-		}
 		
 		let dtoUrl = `/alcohol/api/recommend/update/${board_id}/${title}/${content}`;
 		

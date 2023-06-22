@@ -270,7 +270,7 @@
 							<div class="pageNum">
 								<c:url var="nextlist" value="/bulletinboard/board/list">
 									<c:choose>
-										<c:when test="${(nums) * 10 > maxIndex - 11 }">
+										<c:when test="${(nums) * 10 > maxIndex - 10 }">
 											<c:set var="number" value="${nums}" />
 											<c:param name="num" value="${number}"></c:param>
 											<c:param name="keyword" value="${ keyword }"></c:param>

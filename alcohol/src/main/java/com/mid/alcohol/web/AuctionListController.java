@@ -74,6 +74,14 @@ List<AuctionListPhotoDto> list2 = new ArrayList<>();
 		for(int i = 0 ; i<list.size() ; i++) {
 			
 			Photo root = auctionservice.findphotoroot(list.get(i).getProductId());
+			
+			if(root == null) {
+				
+				root = new Photo();
+				root.setPhotopath(paths);
+				
+			}
+			
 			list2.add(AuctionListPhotoDto.FromChange(list.get(i)));
 			
 			try {
@@ -101,6 +109,14 @@ List<AuctionListPhotoDto> list2 = new ArrayList<>();
 		for(int i = 0 ; i<list.size() ; i++) {
 			
 			Photo root = auctionservice.findphotoroot(list.get(i).getProductId());
+			
+			if(root == null) {
+				
+				root = new Photo();
+				root.setPhotopath(paths);
+				
+			}
+			
 			list2.add(AuctionListPhotoDto.FromChange(list.get(i)));
 			
 			try {

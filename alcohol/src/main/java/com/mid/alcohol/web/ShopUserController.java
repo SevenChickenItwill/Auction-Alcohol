@@ -61,13 +61,13 @@ public class ShopUserController {
 			num = 0;
 		}
 
-		int pageCount = 25 * num;
+		int pageCount = 15 * num;
 		log.info("num = {}", num);
 
-		if (pageCount + 25 > length) {
+		if (pageCount + 15 > length) {
 			len = length;
 		} else {
-			len = pageCount + 25;
+			len = pageCount + 15;
 		}
 
 		// 페이지 쪽수를 매기기 위해 설정한 값.
@@ -75,7 +75,7 @@ public class ShopUserController {
 		log.info("count= {}", count);
 
 		// 페이지 쪽수 마지막 값을 찾기 위해서
-		int listPageMax = (int) ((list.size() / 25) + 1);
+		int listPageMax = (int) ((list.size() / 15) + 1);
 		log.info("listPageMax ={}", listPageMax);
 
 		model.addAttribute("pageListCount", count);
@@ -118,13 +118,13 @@ public class ShopUserController {
 			num = 0;
 		}
 
-		int pageCount = 25 * num;
+		int pageCount = 15 * num;
 		log.info("num = {}", num);
 
-		if (pageCount + 25 > length) {
+		if (pageCount + 15 > length) {
 			len = length;
 		} else {
-			len = pageCount + 25;
+			len = pageCount + 15;
 		}
 
 		// 페이지 쪽수를 매기기 위해 설정한 값.
@@ -132,7 +132,7 @@ public class ShopUserController {
 		log.info("count= {}", count);
 
 		// 페이지 쪽수 마지막 값을 찾기 위해서
-		int listPageMax = (int) ((list.size() / 25) + 1);
+		int listPageMax = (int) ((list.size() / 15) + 1);
 		log.info("listPageMax ={}", listPageMax);
 
 		model.addAttribute("pageListCount", count);
@@ -176,13 +176,13 @@ public class ShopUserController {
 			pagenum = 0;
 		}
 
-		int pageCount = 25 * pagenum;
+		int pageCount = 15 * pagenum;
 		log.info("num = {}", pagenum);
 
-		if (pageCount + 25 > length) {
+		if (pageCount + 15 > length) {
 			len = length;
 		} else {
-			len = pageCount + 25;
+			len = pageCount + 15;
 		}
 
 		// 페이지 쪽수를 매기기 위해 설정한 값.
@@ -190,7 +190,7 @@ public class ShopUserController {
 		log.info("count= {}", searchCount);
 
 		// 페이지 쪽수 마지막 값을 찾기 위해서
-		int listPageMax = (int) ((list.size() / 25	) + 1);
+		int listPageMax = (int) ((list.size() / 15	) + 1);
 		log.info("listPageMax ={}", listPageMax);
 
 		model.addAttribute("pageListCount", searchCount);
