@@ -53,3 +53,9 @@ https://docs.google.com/presentation/d/16wprJgfBjFNou5ZzGCVkJEukFeNOHWiTI3tsQ1cG
 
 ( 결과물 PPT - 지대한, 김도현 )
 https://docs.google.com/presentation/d/1XqvPb8Qgms3M_4YLO7WoCSMO7VsYWXP00NdN10AhSA8/edit?usp=sharing
+
+( Story Board - 유다한 )
+![KakaoTalk_20230815_185448899](https://github.com/SevenChickenItwill/middlePj/assets/117079872/ff0f0e37-d875-4353-b79e-3254ddc65326)
+
+( E-R Diagram - 유다한 )
+![KakaoTalk_20230815_185448899_01](https://github.com/SevenChickenItwill/middlePj/assets/117079872/6828a961-7c21-488a-b243-536f1ba4f343)
